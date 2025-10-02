@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 
 class Venta{
@@ -16,7 +17,7 @@ public:
     Cliente getCliente(); //Composicion
     Producto getProducto(); //Composicion
     std::string getFecha(); /*Hacemos una clase para fecha? Quizas podamos
-                            implementarla en otras cosas as adelante*/
+                            implementarla en otras cosas mas adelante*/
     int getCantidad();
     float getImporte;
 
