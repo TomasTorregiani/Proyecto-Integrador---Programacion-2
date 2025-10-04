@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 class Cliente{
 public:
@@ -12,9 +13,10 @@ public:
     //Setters
     //El setter de idCliente no es necesario
     void setNombre(std::string nombre);
-    void setApellido(std::string apaellido);
+    void setApellido(std::string apellido);
     //El setter de cuil no es necesario
-    void setTipoCliente(int numeroTelefono);
+    void setTipoCliente(int tipoCliente);
+    void setNumeroTelefono(int numeroTelefono);
     void setEmail(std::string email);
     void setDireccion(std::string direccion);
 
@@ -30,7 +32,7 @@ public:
 protected:
 
 private:
-    int _idClientes;
+    int _idCliente;
     char _nombre[50];
     char _apellido[50];
     int _cuil;

@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1758591345 source:c:\users\tomas\desktop\utn-tup\programación 2\tp integrador - prog 2\main.cpp
+	<iostream>
+	"Cliente.h"
+
+1758591248 c:\users\tomas\desktop\utn-tup\programación 2\tp integrador - prog 2\cliente.h
+	<iostream>
+
+1758591658 source:c:\users\tomas\desktop\utn-tup\programación 2\tp integrador - prog 2\cliente.cpp
+	<iostream>
+	<cstring>
+	"Cliente.h"
+
