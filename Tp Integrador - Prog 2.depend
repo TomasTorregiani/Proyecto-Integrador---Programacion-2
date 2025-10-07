@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1758591345 source:c:\users\tomas\desktop\utn-tup\programación 2\tp integrador - prog 2\main.cpp
+1758591810 source:c:\users\tomas\desktop\utn-tup\programación 2\tp integrador - prog 2\main.cpp
 	<iostream>
 	"Cliente.h"
 
@@ -10,4 +10,21 @@
 	<iostream>
 	<cstring>
 	"Cliente.h"
+
+1759857977 source:c:\users\tomas\desktop\utn-tup\programación 2\tp integrador - prog 2\detalleventa.cpp
+	"DetalleVenta.h"
+
+1759858055 c:\users\tomas\desktop\utn-tup\programación 2\tp integrador - prog 2\detalleventa.h
+	"Producto.h"
+
+1759857937 c:\users\tomas\desktop\utn-tup\programación 2\tp integrador - prog 2\producto.h
+	<iostream>
+
+1759858821 source:c:\users\tomas\desktop\utn-tup\programación 2\tp integrador - prog 2\venta.cpp
+	"Venta.h"
+	<cstring>
+
+1759857977 c:\users\tomas\desktop\utn-tup\programación 2\tp integrador - prog 2\venta.h
+	"Cliente.h"
+	"DetalleVenta.h"
 

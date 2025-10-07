@@ -1,32 +1,37 @@
 #pragma once
 
+#include "Cliente.h"
+#include "DetalleVenta.h"
+
 
 class Venta{
 public:
     //Constructores
     Venta();
-    Venta(int idVenta, Cliente cliente,
-          Producto producto, std::string fecha,
-          int cantidad, float importe);
+    Venta(int idVenta, Cliente cliente, std::string fecha, int cantidadDetalles);
+    ~Venta();
+
+    bool agregarDetalle(DetalleVenta detalle);
+    float calcularTotal();
 
     //No es necesario ningun setter
 
     //Getters
     int getIdVenta();
     Cliente getCliente(); //Composicion
-    Producto getProducto(); //Composicion
     std::string getFecha(); /*Hacemos una clase para fecha? Quizas podamos
-                            implementarla en otras cosas as adelante*/
-    int getCantidad();
-    float getImporte;
+                            implementarla en otras cosas mas adelante*/
+    int getCantidadDetalles();
 
 protected:
 
 private:
-    int idVenta;
-    Cliente cliente;
-    Producto producto;
-    char fecha[30];
-    int cantidad;
-    float importe;
+    int _idVenta;
+    Cliente _cliente;
+    char _fecha[30];
+    DetalleVenta* _detalles; //Detalles es cada producto de la venta
+    int _cantidadDetalles;
+    int _detallesAgregados;
 };
+
+
