@@ -7,9 +7,10 @@ Venta::Venta()
     strcpy(_fecha, "");
 }
 
-Venta::Venta(int idVenta, Cliente cliente, std::string fecha, int cantidadDetalles){
+Venta::Venta(int idVenta, Cliente cliente, Vendedor vendedor, std::string fecha, int cantidadDetalles){
     _idVenta = idVenta;
     _cliente = cliente;
+    _vendedor = vendedor;
     strcpy(_fecha,fecha.c_str());
     _cantidadDetalles = cantidadDetalles;
     _detallesAgregados = 0;
@@ -43,6 +44,10 @@ int Venta::getIdVenta(){
 
 Cliente Venta::getCliente(){
     return _cliente;
+}
+
+Vendedor Venta::getVendedor(){
+	return _vendedor;
 }
 
 std::string Venta::getFecha(){

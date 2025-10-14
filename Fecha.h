@@ -15,7 +15,7 @@ public:
 	int getMes();
 	int getAnio();
 
-	void mostrarFecha();
+	std::string getFecha();
 
 private:
 	int _dia, _mes, _anio;
