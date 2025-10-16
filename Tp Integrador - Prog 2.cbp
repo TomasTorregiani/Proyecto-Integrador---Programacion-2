@@ -37,6 +37,9 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="DetalleVenta.cpp" />
+		<Unit filename="DetalleVenta.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Producto.cpp" />
 		<Unit filename="Producto.h">
 			<Option target="&lt;{~None~}&gt;" />
