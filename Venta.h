@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Vendedor.h"
 #include "Cliente.h"
 #include "DetalleVenta.h"
 
@@ -8,7 +9,7 @@ class Venta{
 public:
     //Constructores
     Venta();
-    Venta(int idVenta, Cliente cliente, std::string fecha, int cantidadDetalles);
+    Venta(int idVenta, Cliente cliente, Vendedor vendedor, std::string fecha, int cantidadDetalles);
     ~Venta();
 
     bool agregarDetalle(DetalleVenta detalle);
@@ -19,8 +20,8 @@ public:
     //Getters
     int getIdVenta();
     Cliente getCliente(); //Composicion
-    std::string getFecha(); /*Hacemos una clase para fecha? Quizas podamos
-                            implementarla en otras cosas mas adelante*/
+    Vendedor getVendedor();
+    std::string getFecha();
     int getCantidadDetalles();
 
 protected:
@@ -28,6 +29,7 @@ protected:
 private:
     int _idVenta;
     Cliente _cliente;
+    Vendedor _vendedor; //agregue el vendedor
     char _fecha[30];
     DetalleVenta* _detalles; //Detalles es cada producto de la venta
     int _cantidadDetalles;
