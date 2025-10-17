@@ -15,8 +15,11 @@ public:
 	int getMes();
 	int getAnio();
 
+	bool validarFecha(int dia, int mes, int anio);
 	std::string getFecha();
 
 private:
 	int _dia, _mes, _anio;
+	bool anioBisiesto(int anio); //privado porque es una validación interna de la clase.
+    int diasDelMes(int mes, int anio); // idem;
 };

@@ -6,15 +6,49 @@ using namespace std;
 
 Fecha::Fecha(){}
 
-Fecha::Fecha(int dia, int mes, int anio)
-{
-    setDia(dia);
-    setMes(mes);
-    setAnio(anio);
+Fecha::Fecha(int dia, int mes, int anio){
+	if (validarFecha(dia, mes, anio)){
+		setMes(mes);
+		setAnio(anio);
+		setDia(dia);
+	}else{
+		_dia = 1;
+		_mes = 1;
+		_anio = 2000;
+		cout << "FECHA INCORRECTA. Se asigno una fecha por defecto." << endl;
+	}
 }
 
-void Fecha::setDia(int dia){
-	_dia = dia;
+
+bool Fecha::validarFecha(int dia, int mes, int anio){
+    if (anio < 2000 || anio > 2100){
+        return false;
+    }
+
+    if (mes < 1 || mes > 12){
+        return false;
+    }
+
+    if (dia < 1 || dia > diasDelMes(mes, anio)){
+        return false;
+    }
+
+    return true;
+}
+
+bool Fecha::anioBisiesto(int anio){
+    if((anio % 4 == 0 && anio % 100 != 0) || (anio % 400 == 0)){
+		return true;
+    }
+}
+
+int Fecha::diasDelMes(int mes, int anio){
+    int dias[]={31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    if(mes == 2 && anioBisiesto(anio)){
+        return 29;
+    }
+    return dias[mes - 1];
 }
 
 void Fecha::setMes(int mes){
@@ -23,6 +57,12 @@ void Fecha::setMes(int mes){
 
 void Fecha::setAnio(int anio){
 	_anio = anio;
+}
+
+void Fecha::setDia(int dia){
+    if(dia >= 1 && dia <= diasDelMes(_mes, _anio)){
+        _dia = dia;
+    }
 }
 
 int Fecha::getDia(){return _dia;}

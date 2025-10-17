@@ -32,52 +32,53 @@
 	"Cliente.h"
 	"DetalleVenta.h"
 
-1760455588 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\cliente.cpp
+1760639395 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\cliente.cpp
 	<iostream>
 	<cstring>
 	"Cliente.h"
 
-1760455588 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\cliente.h
+1760639395 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\cliente.h
 	<iostream>
 
-1760459727 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\detalleventa.cpp
+1760639395 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\detalleventa.cpp
 	"DetalleVenta.h"
 
-1760459727 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\detalleventa.h
+1760639395 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\detalleventa.h
 	"Producto.h"
 
-1760459727 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\producto.h
+1760674696 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\producto.h
 	<iostream>
 
-1760459727 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\producto.cpp
+1760674720 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\producto.cpp
 	"Producto.h"
 	<cstring>
 
-1760459727 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\venta.cpp
+1760679022 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\venta.cpp
 	"Venta.h"
 	<cstring>
 
-1760459727 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\venta.h
+1760674697 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\venta.h
+	"Vendedor.h"
 	"Cliente.h"
 	"DetalleVenta.h"
 
-1760460612 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\main.cpp
+1760639395 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\main.cpp
 	<iostream>
 	"Cliente.h"
 
-1760461804 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\fecha.cpp
+1760679097 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\fecha.cpp
 	"Fecha.h"
 	<string>
 	<iostream>
 
-1760461860 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\fecha.h
+1760678891 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\fecha.h
 	<string>
 
-1760462991 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\vendedor.cpp
+1760639395 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\vendedor.cpp
 	<iostream>
 	<cstring>
 	"Vendedor.h"
 
-1760463053 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\vendedor.h
+1760639395 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\vendedor.h
 	<iostream>
 
