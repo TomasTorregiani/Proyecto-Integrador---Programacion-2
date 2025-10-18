@@ -14,12 +14,8 @@ Venta::Venta(int idVenta, Cliente cliente, Vendedor vendedor, std::string fecha)
     _vendedor = vendedor;
     strcpy(_fecha,fecha.c_str());
 
-    /*_cantidadDetalles = 0;
+    _cantidadDetalles = 0;
     _detalles = nullptr;
-
-    /*_cantidadDetalles = cantidadDetalles;*/
-    _detallesAgregados = 0;
-    _detalles = new DetalleVenta[_cantidadDetalles];*/
 
 }
 

@@ -37,13 +37,10 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="DetalleVenta.cpp" />
-<<<<<<< HEAD
-		<Unit filename="DetalleVenta.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-=======
+
+
 		<Unit filename="DetalleVenta.h" />
->>>>>>> 1f7cd1596b2eaee8ca21c17cb6f62a0c5652dc97
+
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
 		<Unit filename="MenuPrincipal.cpp" />
