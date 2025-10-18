@@ -15,7 +15,7 @@ Producto::Producto(){
 
 Producto::Producto(int idProducto, string descripcion,
              string marca, string tipoProducto,
-             int cantidadDisponible, float precio){
+             int cantidadDisponible, long long precio){
 
                     _idProducto = idProducto; //Mejorar el id para que sea automatico y autoincrementable
                     strcpy(_descripcion, descripcion.c_str());
@@ -25,6 +25,6 @@ Producto::Producto(int idProducto, string descripcion,
                     _precio = precio;
 }
 
-float Producto::getPrecio(){
+long long Producto::getPrecio(){
     return _precio;
 }

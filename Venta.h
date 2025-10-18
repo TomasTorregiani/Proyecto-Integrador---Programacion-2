@@ -9,17 +9,19 @@ class Venta{
 public:
     //Constructores
     Venta();
+
     Venta(int idVenta, Cliente cliente, Vendedor vendedor, std::string fecha);
-    ~Venta();
+
+    ~Venta(); // cuando se carga el detalle de la venta?? (DetalleVenta)
 
     bool agregarDetalle(DetalleVenta detalle);
-    float calcularTotal();
+    long long calcularTotal();
 
     //No es necesario ningun setter
 
     //Getters
     int getIdVenta();
-    Cliente getCliente(); //Composicion
+    Cliente getCliente();
     Vendedor getVendedor();
     std::string getFecha();
     int getCantidadDetalles();

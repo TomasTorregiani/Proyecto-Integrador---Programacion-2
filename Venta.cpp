@@ -7,13 +7,20 @@ Venta::Venta()
     strcpy(_fecha, "");
 }
 
+
 Venta::Venta(int idVenta, Cliente cliente, Vendedor vendedor, std::string fecha){
     _idVenta = idVenta;
     _cliente = cliente;
     _vendedor = vendedor;
     strcpy(_fecha,fecha.c_str());
-    _cantidadDetalles = 0;
+
+    /*_cantidadDetalles = 0;
     _detalles = nullptr;
+
+    /*_cantidadDetalles = cantidadDetalles;*/
+    _detallesAgregados = 0;
+    _detalles = new DetalleVenta[_cantidadDetalles];*/
+
 }
 
 Venta::~Venta(){
@@ -32,7 +39,7 @@ bool Venta::agregarDetalle(DetalleVenta detalle){
     return true;
 }
 
-float Venta::calcularTotal(){
+long long Venta::calcularTotal(){
     float total = 0;
     for(int i = 0; i < _cantidadDetalles; i++){
         total += _detalles[i].getSubtotal();
