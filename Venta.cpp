@@ -7,14 +7,13 @@ Venta::Venta()
     strcpy(_fecha, "");
 }
 
-Venta::Venta(int idVenta, Cliente cliente, Vendedor vendedor, std::string fecha, int cantidadDetalles){
+Venta::Venta(int idVenta, Cliente cliente, Vendedor vendedor, std::string fecha){
     _idVenta = idVenta;
     _cliente = cliente;
     _vendedor = vendedor;
     strcpy(_fecha,fecha.c_str());
-    _cantidadDetalles = cantidadDetalles;
-    _detallesAgregados = 0;
-    _detalles = new DetalleVenta[_cantidadDetalles];
+    _cantidadDetalles = 0;
+    _detalles = nullptr;
 }
 
 Venta::~Venta(){
@@ -22,11 +21,14 @@ Venta::~Venta(){
 }
 
 bool Venta::agregarDetalle(DetalleVenta detalle){
-    if(_detallesAgregados >= _cantidadDetalles){
-        return false;
+    DetalleVenta* nuevo = new DetalleVenta[_cantidadDetalles + 1];
+    for(int i = 0; i < _cantidadDetalles; i++){
+        nuevo[i] = _detalles[i];
     }
-    _detalles[_detallesAgregados] = detalle;
-    _detallesAgregados++;
+    nuevo[_cantidadDetalles] = detalle;
+    delete[] _detalles;
+    _detalles = nuevo;
+    _cantidadDetalles++;
     return true;
 }
 

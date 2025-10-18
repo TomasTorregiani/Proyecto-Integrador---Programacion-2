@@ -9,7 +9,7 @@ class Venta{
 public:
     //Constructores
     Venta();
-    Venta(int idVenta, Cliente cliente, Vendedor vendedor, std::string fecha, int cantidadDetalles);
+    Venta(int idVenta, Cliente cliente, Vendedor vendedor, std::string fecha);
     ~Venta();
 
     bool agregarDetalle(DetalleVenta detalle);
@@ -33,7 +33,6 @@ private:
     char _fecha[30];
     DetalleVenta* _detalles; //Detalles es cada producto de la venta
     int _cantidadDetalles;
-    int _detallesAgregados;
 };
 
 

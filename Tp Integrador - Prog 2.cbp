@@ -37,16 +37,17 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="DetalleVenta.cpp" />
-
 		<Unit filename="DetalleVenta.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
-
+		<Unit filename="MenuPrincipal.cpp" />
 		<Unit filename="Producto.cpp" />
 		<Unit filename="Producto.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="TodosLosMenu.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="Vendedor.cpp" />
