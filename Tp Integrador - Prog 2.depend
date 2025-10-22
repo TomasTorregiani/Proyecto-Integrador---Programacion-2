@@ -55,18 +55,19 @@
 	"Producto.h"
 	<cstring>
 
-1760679022 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\venta.cpp
+1760822410 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\venta.cpp
 	"Venta.h"
 	<cstring>
 
-1760674697 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\venta.h
+1760821868 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\venta.h
 	"Vendedor.h"
 	"Cliente.h"
 	"DetalleVenta.h"
 
-1760639395 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\main.cpp
+1760822410 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\main.cpp
 	<iostream>
 	"Cliente.h"
+	"TodosLosMenu.h"
 
 1760679097 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\fecha.cpp
 	"Fecha.h"
@@ -120,5 +121,32 @@
 	"TodosLosMenu.h"
 
 1760812327 source:c:\users\tomas\desktop\utn-tup\programación 2\tp integrador - prog 2\menulistadosyconsultas.cpp
+	"TodosLosMenu.h"
+
+1760821868 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\todoslosmenu.h
+
+1760822410 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\menugestionvendedores.cpp
+	"TodosLosMenu.h"
+
+1760822410 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\menuinformesyreportes.cpp
+	"TodosLosMenu.h"
+
+1760822410 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\menulistadosyconsultas.cpp
+	"TodosLosMenu.h"
+
+1760822410 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\menuprincipal.cpp
+	<iostream>
+	<cstdlib>
+	"TodosLosMenu.h"
+
+1761153975 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\menugestionclientes.cpp
+	<iostream>
+	"TodosLosMenu.h"
+
+1761153975 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\menugestionfacturacion.cpp
+	<iostream>
+	"TodosLosMenu.h"
+
+1761167730 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\menugestionproductos.cpp
 	"TodosLosMenu.h"
 

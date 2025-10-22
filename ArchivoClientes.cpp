@@ -5,7 +5,7 @@
 
 using namespace std;
 
-ArchivoClientes()::ArchivoClientes(const char* n){
+ArchivoClientes::ArchivoClientes(const char* n){
     strcpy(_nombre, n);
     _tamanioRegistro = sizeof(Cliente);
 }
@@ -41,50 +41,8 @@ bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion){
     return escribio;
 }
 
-int ArchivoClientes::buscarClientePorId(int idCliente){
-    Cliente cliente;
-    FILE *p = nullptr;
-    p = fopen(_nombre, "rb");
-
-    if(p == nullptr){
-        cout << "No se pudo abrir el archivo" << endl;
-        return -1;
-    }
-    int cantidadRegistros = contarRegistros();
-    for(int i = 0; i < cantidadRegistros; i++){
-        fread(&cliente, _tamanioRegistro,1,p);
-        if(cliente.getIdCliente() == idCliente){
-            return cliente.getApellido(); //Aca tengo el problema de que lo ideal seria
-            fclose(p);                    // devolver  nombre y apellido. Pero c++ no me
-        }                                 // permite devolver 2 valores
-    }
-    fclose(p);
-    return 0;
-}
-
-int ArchivoLibros::eliminarCliente(int idCliente){ //No esta terminado el metodo eliminarCliente()
-    Cliente cliente;
-    FILE *p = nullptr;
-    p = fopen(_nombre, "wb");
-
-    if(p = nullptr){
-        cout << "No se logro leer el archivo" << endl;
-        return -1;
-    }
-
-    int cantidadRegistros = contarRegistros();
-    for(int i = 0; i < cantidadRegistros; i++){
-        fread(&cliente, _tamanioRegistro, 1, p);
-        if(&cliente.getIdCliente() == idCliente){
-
-        }
-    }
-
-}
-
 int ArchivoClientes::contarRegistros(){
-    FILE *p = nullptr;
-    p = fopen(_nombre, "rb");
+    FILE *p = fopen(_nombre, "rb");
 
     if(p == nullptr){
         cout << "Problemas al leer el archivo" << endl;
@@ -98,6 +56,46 @@ int ArchivoClientes::contarRegistros(){
     return cantidadRegistros;
 }
 
+std::string ArchivoClientes::buscarClientePorId(int idCliente){
+    Cliente cliente;
+    FILE *p = nullptr;
+    p = fopen(_nombre, "rb");
+
+    if(p == nullptr){
+        cout << "No se pudo abrir el archivo" << endl;
+        return "No se pudo abrir el archivo";
+    }
+    int cantidadRegistros = contarRegistros();
+    for(int i = 0; i < cantidadRegistros; i++){
+        fread(&cliente, _tamanioRegistro,1,p);
+        if(cliente.getIdCliente() == idCliente){
+            return cliente.getApellido() + " " + cliente.getNombre();
+            fclose(p);
+        }
+    fclose(p);
+    return 0;
+}
+
+int ArchivoClientes::eliminarCliente(int idCliente){ //No esta terminado el metodo eliminarCliente()
+    Cliente cliente;
+    FILE *p = nullptr;
+    p = fopen(_nombre, "rb+");
+
+    if(p == nullptr){
+        cout << "No se logro leer el archivo" << endl;
+        return -1;
+    }
+
+    int cantidadRegistros = contarRegistros();
+    for(int i = 0; i < cantidadRegistros; i++){
+        fread(&cliente, _tamanioRegistro, 1, p);
+        if(cliente.getIdCliente() == idCliente){
+
+        }
+
+    }
+
+}
 
 
 
