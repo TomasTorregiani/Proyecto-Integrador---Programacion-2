@@ -13,7 +13,7 @@ void MenuGestionFacturacion(){
         cout << "1) Nueva venta" << endl;
         cout << "2) Ver detalle de factura" << endl;
         cout << "3) Eliminar Factura" << endl;
-        cout << "4) Volver al menu principal" << endl;
+        cout << "0) Volver al menu principal" << endl;
         cout << endl;
         cout << "Elige una opcion" << endl;
         cin >> opcion;
