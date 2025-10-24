@@ -9,9 +9,7 @@ class Venta{
 public:
     //Constructores
     Venta();
-
     Venta(int idVenta, Cliente cliente, Vendedor vendedor, std::string fecha);
-
     ~Venta(); // cuando se carga el detalle de la venta?? (DetalleVenta)
 
     bool agregarDetalle(DetalleVenta detalle);

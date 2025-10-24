@@ -33,9 +33,9 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="ArchivoClientes.cpp" />
-
 		<Unit filename="ArchivoClientes.h" />
-
+		<Unit filename="ArchivoVentas.cpp" />
+		<Unit filename="ArchivoVentas.h" />
 		<Unit filename="Cliente.cpp" />
 		<Unit filename="Cliente.h">
 			<Option target="&lt;{~None~}&gt;" />
