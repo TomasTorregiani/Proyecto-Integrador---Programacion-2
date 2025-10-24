@@ -16,6 +16,7 @@ Venta::Venta(int idVenta, Cliente cliente, Vendedor vendedor, std::string fecha)
 
     _cantidadDetalles = 0;
     _detalles = nullptr;
+    _anulada = false;
 
 }
 
@@ -61,4 +62,8 @@ std::string Venta::getFecha(){
 
 int Venta::getCantidadDetalles(){
     return _cantidadDetalles;
+}
+
+void Venta::anularVenta(){
+	_anulada = true; 
 }

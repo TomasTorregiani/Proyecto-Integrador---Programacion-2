@@ -28,6 +28,7 @@ public:
     int getTipoCliente();
     std::string getEmail();
     std::string getDireccion();
+    void eliminarCliente();
 
 protected:
 
@@ -40,4 +41,5 @@ private:
     int _numeroTelefono;
     char _email[20];
     char _direccion[20];
+    bool _activo; 
 };
