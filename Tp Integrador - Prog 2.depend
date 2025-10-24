@@ -34,12 +34,12 @@
 	"Cliente.h"
 	"DetalleVenta.h"
 
-1760639395 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\cliente.cpp
+1761263962 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\cliente.cpp
 	<iostream>
 	<cstring>
 	"Cliente.h"
 
-1760639395 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\cliente.h
+1761263846 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\cliente.h
 	<iostream>
 
 1760639395 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\detalleventa.cpp
@@ -48,18 +48,18 @@
 1760639395 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\detalleventa.h
 	"Producto.h"
 
-1760674696 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\producto.h
+1761263820 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\producto.h
 	<iostream>
 
-1760674720 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\producto.cpp
+1761263732 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\producto.cpp
 	"Producto.h"
 	<cstring>
 
-1760822410 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\venta.cpp
+1761263521 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\venta.cpp
 	"Venta.h"
 	<cstring>
 
-1760821868 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\venta.h
+1761263133 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\venta.h
 	"Vendedor.h"
 	"Cliente.h"
 	"DetalleVenta.h"
@@ -77,12 +77,12 @@
 1760678891 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\fecha.h
 	<string>
 
-1760639395 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\vendedor.cpp
+1761263824 source:c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\vendedor.cpp
 	<iostream>
 	<cstring>
 	"Vendedor.h"
 
-1760639395 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\vendedor.h
+1761263602 c:\users\matías\desktop\tp integradorrr\proyecto-integrador---programacion-2\vendedor.h
 	<iostream>
 
 1760805527 source:c:\users\tomas\desktop\utn-tup\programación 2\tp integrador - prog 2\fecha.cpp

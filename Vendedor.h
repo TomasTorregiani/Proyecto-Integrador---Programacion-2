@@ -27,6 +27,7 @@ public:
     int getNumeroTelefono();
     std::string getEmail();
     std::string getDireccion();
+    void eliminarVendedor();
 
 protected:
 
@@ -37,4 +38,5 @@ private:
     int _numeroTelefono;
     char _email[20];
     char _direccion[20];
+    bool _activo; 
 };

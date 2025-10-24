@@ -90,21 +90,11 @@ int ArchivoClientes::eliminarCliente(int idCliente){ //No esta terminado el meto
     for(int i = 0; i < cantidadRegistros; i++){
         fread(&cliente, _tamanioRegistro, 1, p);
         if(cliente.getIdCliente() == idCliente){
-
+					cliente.eliminarCliente(); //cambia el _activo a false, hay que implementar la "eliminación" en archivo.
         }
 
     }
-
 }
-
-
-
-
-
-
-
-
-
 
 
 

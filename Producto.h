@@ -24,6 +24,7 @@ public:
     std::string getTipoProducto();
     int getCantidadDisponible();
     long long getPrecio();
+    void eliminarProducto();
 
 protected:
 
@@ -34,4 +35,5 @@ private:
     char _tipoProducto[50];
     int _cantidadDisponible;
     long long _precio;
+    bool _activo;
 };

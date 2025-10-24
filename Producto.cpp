@@ -11,6 +11,7 @@ Producto::Producto(){
     strcpy(_tipoProducto, "");
     _cantidadDisponible = 0;
     _precio = 0;
+    _activo = true;
 }
 
 Producto::Producto(int idProducto, string descripcion,
@@ -27,4 +28,8 @@ Producto::Producto(int idProducto, string descripcion,
 
 long long Producto::getPrecio(){
     return _precio;
+}
+
+void Producto::eliminarProducto(){
+	_activo = false;
 }

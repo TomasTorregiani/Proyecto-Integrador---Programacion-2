@@ -25,6 +25,7 @@ public:
     Vendedor getVendedor();
     std::string getFecha();
     int getCantidadDetalles();
+    void anularVenta();	
 
 protected:
 
@@ -35,6 +36,7 @@ private:
     char _fecha[30];
     DetalleVenta* _detalles; //Detalles es cada producto de la venta
     int _cantidadDetalles;
+    bool _anulada;
 };
 
 

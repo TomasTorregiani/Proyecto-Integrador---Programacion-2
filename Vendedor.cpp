@@ -18,6 +18,7 @@ Vendedor::Vendedor(int idVendedor, std::string nombre,
     setApellido(apellido);
     setEmail(email);
     setDireccion(direccion);
+    _activo = true;
 }
 void Vendedor::setNombre(string nombre){
     strncpy(_nombre, nombre.c_str(), sizeof(_nombre) - 1);
@@ -55,3 +56,8 @@ string Vendedor::getEmail(){
 string Vendedor::getDireccion(){
     return _direccion;
 }
+
+void Vendedor::eliminarVendedor(){
+	_activo = false;
+}
+

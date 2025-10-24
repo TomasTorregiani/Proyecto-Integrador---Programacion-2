@@ -23,6 +23,7 @@ Cliente::Cliente(int idCliente, std::string nombre,
     setTipoCliente(tipoCliente);
     setEmail(email);
     setDireccion(direccion);
+    _activo = true; 
 }
 void Cliente::setNombre(string nombre){
     strncpy(_nombre, nombre.c_str(), sizeof(_nombre) - 1);
@@ -67,3 +68,8 @@ string Cliente::getEmail(){
 string Cliente::getDireccion(){
     return _direccion;
 }
+
+void Cliente::eliminarCliente(){
+	_activo = false; 
+}
+
