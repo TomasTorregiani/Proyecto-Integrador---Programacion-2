@@ -2,6 +2,7 @@
 #include <cstring>
 #include "ArchivoClientes.h"
 #include "Cliente.h"
+#include "FuncionesGlobales.h"
 
 using namespace std;
 
@@ -41,21 +42,6 @@ bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion){
     return escribio;
 }
 
-int ArchivoClientes::contarRegistros(){
-    FILE *p = fopen(_nombre, "rb");
-
-    if(p == nullptr){
-        cout << "Problemas al leer el archivo" << endl;
-        return -1;
-    }
-
-    fseek(p, 0, SEEK_END);
-    int cantidadRegistros = ftell(p)/_tamanioRegistro;
-    fclose(p);
-
-    return cantidadRegistros;
-}
-
 std::string ArchivoClientes::buscarClientePorId(int idCliente){
     Cliente cliente;
     FILE *p = nullptr;
@@ -86,7 +72,7 @@ int ArchivoClientes::eliminarCliente(int idCliente){ //No esta terminado el meto
         return -1;
     }
 
-    int cantidadRegistros = contarRegistros();
+    int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro);
     for(int i = 0; i < cantidadRegistros; i++){
         fread(&cliente, _tamanioRegistro, 1, p);
         if(cliente.getIdCliente() == idCliente){

@@ -13,7 +13,7 @@ public:
     int agregarCliente(Cliente registro);
     bool modificarDatosCliente(Cliente registro, int posicion);
     std::string buscarClientePorId(int idCliente);
-    int contarRegistros();
+
     int eliminarCliente(int idCliente);
 };
 
