@@ -1,1 +1,9 @@
-Tp Integrador - Prog 2.layout
+# Code::Blocks
+*.layout
+*.depend
+
+# Compilados
+*.o
+*.exe
+bin/
+obj/
