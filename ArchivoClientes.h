@@ -12,7 +12,7 @@ public:
     ArchivoClientes(const char* n);
     int agregarCliente(Cliente registro);
     bool modificarDatosCliente(Cliente registro, int posicion);
-    std::string buscarClientePorId(int idCliente);
+    Cliente buscarClientePorId(int idCliente);
 
     int eliminarCliente(int idCliente);
 };

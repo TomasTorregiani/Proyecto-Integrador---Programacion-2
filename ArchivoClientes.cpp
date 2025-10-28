@@ -42,24 +42,25 @@ bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion){
     return escribio;
 }
 
-std::string ArchivoClientes::buscarClientePorId(int idCliente){
+Cliente ArchivoClientes::buscarClientePorId(int idCliente){
     Cliente cliente;
     FILE *p = nullptr;
     p = fopen(_nombre, "rb");
 
     if(p == nullptr){
         cout << "No se pudo abrir el archivo" << endl;
-        return "No se pudo abrir el archivo";
+        return Cliente();
     }
     int cantidadRegistros = contarRegistros();
     for(int i = 0; i < cantidadRegistros; i++){
         fread(&cliente, _tamanioRegistro,1,p);
         if(cliente.getIdCliente() == idCliente){
-            return cliente.getApellido() + " " + cliente.getNombre();
             fclose(p);
+            return cliente;
         }
+    }
     fclose(p);
-    return 0;
+    return Cliente();
 }
 
 int ArchivoClientes::eliminarCliente(int idCliente){ //No esta terminado el metodo eliminarCliente()

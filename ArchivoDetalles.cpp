@@ -46,10 +46,10 @@ int ArchivoDetalles::verDetalleVenta(int idVenta, DetalleVenta *detalles){
     int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro);
     int encontrados = 0;
 
-    for(int i = 0; i < cantidadRegistros && encontrados < _maxDetalles; i++){
+    for(int i = 0; i < cantidadRegistros; i++){
         fread(&detalle, _tamanioRegistro, 1, p);
         if(detalle.getIdVenta() == idVenta){
-            detalles[encontrados] = detalle;
+            detalles[encontrados] = detalle; //
             encontrados++;
         }
     }

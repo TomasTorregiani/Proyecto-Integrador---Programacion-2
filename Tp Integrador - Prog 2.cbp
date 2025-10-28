@@ -36,6 +36,10 @@
 		<Unit filename="ArchivoClientes.h" />
 		<Unit filename="ArchivoDetalles.cpp" />
 		<Unit filename="ArchivoDetalles.h" />
+		<Unit filename="ArchivoVentas.cpp" />
+		<Unit filename="ArchivoVentas.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Cliente.cpp" />
 		<Unit filename="Cliente.h">
 			<Option target="&lt;{~None~}&gt;" />

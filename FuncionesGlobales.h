@@ -1,3 +1,3 @@
 #pragma once
 
-int contarRegistros(const char *n, int tamanioRegistro);
+int contarRegistros(const char *nombreArchivo, int tamanioRegistro);

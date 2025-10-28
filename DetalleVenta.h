@@ -5,7 +5,7 @@
 class DetalleVenta{
 public:
     DetalleVenta();
-    DetalleVenta(int idVenta; Producto producto, int cantidad);
+    DetalleVenta(Producto producto, int cantidad);
 
     // Getters
     int getIdVenta();

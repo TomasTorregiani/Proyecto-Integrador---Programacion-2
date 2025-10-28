@@ -5,8 +5,8 @@
 using namespace std;
 
 Cliente::Cliente()
-:_idCliente(0), _nombre("Tomas"),
-_apellido("Torre"), _cuil(0),
+:_idCliente(0), _nombre(),
+_apellido(), _cuil(0),
 _tipoCliente(0), _numeroTelefono(0),
 _email(""), _direccion(""){}
 
@@ -23,7 +23,7 @@ Cliente::Cliente(int idCliente, std::string nombre,
     setTipoCliente(tipoCliente);
     setEmail(email);
     setDireccion(direccion);
-    _activo = true; 
+    _activo = true;
 }
 void Cliente::setNombre(string nombre){
     strncpy(_nombre, nombre.c_str(), sizeof(_nombre) - 1);
@@ -70,6 +70,6 @@ string Cliente::getDireccion(){
 }
 
 void Cliente::eliminarCliente(){
-	_activo = false; 
+	_activo = false;
 }
 
