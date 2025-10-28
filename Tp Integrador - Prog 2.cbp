@@ -34,8 +34,12 @@
 		</Compiler>
 		<Unit filename="ArchivoClientes.cpp" />
 		<Unit filename="ArchivoClientes.h" />
+		<Unit filename="ArchivoDetalles.cpp" />
+		<Unit filename="ArchivoDetalles.h" />
 		<Unit filename="ArchivoVentas.cpp" />
-		<Unit filename="ArchivoVentas.h" />
+		<Unit filename="ArchivoVentas.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Cliente.cpp" />
 		<Unit filename="Cliente.h">
 			<Option target="&lt;{~None~}&gt;" />
@@ -44,6 +48,10 @@
 		<Unit filename="DetalleVenta.h" />
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
+		<Unit filename="FuncionesGlobales.cpp" />
+		<Unit filename="FuncionesGlobales.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="MenuGestionClientes.cpp" />
 		<Unit filename="MenuGestionFacturacion.cpp" />
 		<Unit filename="MenuGestionProductos.cpp" />

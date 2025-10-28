@@ -1,68 +1,56 @@
-
 #include <iostream>
-
 #include "ArchivoVentas.h"
 #include "Venta.h"
+#include "FuncionesGlobales.h"
 
 using namespace std;
 
 ArchivoVentas::ArchivoVentas(const char* n){
     strcpy(_nombre, n);
-    _tamanioRegistro = sizeof(Venta)
+    _tamanioRegistro = sizeof(Venta);
 }
 
-int ArchivoVentas::agregarVenta(DetalleVenta nuevaVenta){
+int ArchivoVentas::agregarVenta(Venta& venta){
     FILE* p = nullptr;
     p = fopen(_nombre, "ab");
 
     if(p == nullptr){
-        cout << "No se abrio correctamente el archivo" << endl;
+        cout << "El archivo no se abrio correctamente" << endl;
         return -1;
     }
 
-    int escribio = fwrite(&nuevaVenta, _tamanioRegistro, 1, p);
+    int escribio = fwrite(&venta, _tamanioRegistro, 1, p);
+
     fclose(p);
 
-    if(escribio != 0){
-        cout << "El registro se guardo correctamente" << endl;
-        return escribio
-    } else{
-        return 0;
+    if(escribio > 0){
+        cout << "Se escribio correctamente" << endl;
+        return 1;
     }
+
+    cout << "No se escribio ningun archivo" << endl;
+    return 0;
 }
 
-DetalleVenta ArchivoVentas::verDetalleVenta(int idVenta){
+Venta ArchivoVentas::obtenerVenta(int idVenta){
     FILE* p = nullptr;
     p = fopen(_nombre, "rb");
 
     if(p == nullptr){
-        cout << "No se pudo leer el archivo" << endl;
+        cout << "No se leyo correctamente el archivo" << endl;
+        return Venta();  // Constructor por defecto (debería setear id = -1 o 0)
     }
 
-    fseek(p, 0, SEEK_SET);
+    Venta registro;
 
-    int cantidadRegistros = contarRegistros(); /*Esta funcion no existe todavia.
-                                                Tengo que crearla. La pregunta es,
-                                                me conviene hacer una funcion global
-                                                ya que se va a utilizar en varios Arhivos?
-                                                Hasta ahora la use en archivoclientes y tmb
-                                                la voy a necesitar aca.*/
-
-    for(int i = 0; i < )
-}
-
-int ArchivoVentas::contarRegistros(){
-    FILE* p = nullptr;
-    p = fopen(_nombre, "rb");
-
-    if(p == nullptr){
-        cout << "No se pudo abrir correctamente el archivo" << endl;
+    int cantidad = cantidadRegistros(_nombre, _tamanioRegistro);
+    for(int i = 0; i < cantidad; i++){
+        fread(&registro, _tamanioRegistro, 1, p);
+        if(registro.getIdVenta() == idVenta){
+            fclose(p);
+            return registro;
+        }
     }
-
-    fseek(p, 0, SEEK_END); // ==> Colocamos el puntero al final del registro para que nos de el tamanio en bytes.
-    int cantidadRegistros = ftell(p)/_tamanioRegistro;
-
     fclose(p);
-    return cantidadRegistros;
-
+    return Venta(); //No encontrado
 }

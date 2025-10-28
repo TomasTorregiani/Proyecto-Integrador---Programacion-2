@@ -23,7 +23,7 @@ public:
     Vendedor getVendedor();
     std::string getFecha();
     int getCantidadDetalles();
-    void anularVenta();	
+    void anularVenta();
 
 protected:
 

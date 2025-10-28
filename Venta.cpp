@@ -65,5 +65,5 @@ int Venta::getCantidadDetalles(){
 }
 
 void Venta::anularVenta(){
-	_anulada = true; 
+	_anulada = true;
 }
