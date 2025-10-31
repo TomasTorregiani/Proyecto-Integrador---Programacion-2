@@ -3,7 +3,7 @@
 #include "DetalleVenta.h"
 #include "Venta.h"
 
-class ArchivoDetalles(){
+class ArchivoDetalles{
 private:
     char _nombre[50];
     int _tamanioRegistro;

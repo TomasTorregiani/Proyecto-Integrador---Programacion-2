@@ -10,12 +10,12 @@ _apellido(), _cuil(0),
 _tipoCliente(0), _numeroTelefono(0),
 _email(""), _direccion(""){}
 
-Cliente::Cliente(int idCliente, std::string nombre,
+Cliente::Cliente(std::string nombre,
             std::string apellido, int cuil,
             int tipoCliente, int numeroTelefono,
             std::string email, std::string direccion)
 {
-    _idCliente = 0; //Empezar en 1 e ir sumando;
+    _idCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + 1;
     setNombre(nombre);
     setApellido(apellido);
     _cuil = 1111; //En donde se pide el cuil? No deberia ser necesario un set ya
@@ -23,6 +23,24 @@ Cliente::Cliente(int idCliente, std::string nombre,
     setTipoCliente(tipoCliente);
     setEmail(email);
     setDireccion(direccion);
+    _activo = true;
+}
+void Cliente::cargarCliente(){
+    _idCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + ;
+    cout << "Ingresar nombre cliente nuevo: " << endl;
+    cin >> _nombre;
+    cout << "Ingresar apellido cliente nuevo: " << endl;
+    cin >> _apellido;
+    cout << "Ingresar cuit cliente nuevo: " << endl;
+    cin >> _cuil;
+    cout << "Ingresar tipo cliente nuevo: " << endl;
+    cin >> _tipoCliente;
+    cout << "Ingresar numero de telefono: " << endl;
+    cin >> _numeroTelefono;
+    cout << "Ingresar email cliente nuevo: " << endl;
+    cin >> _email;
+    cout << "Ingresar direccion cliente nuevo: " << endl;
+    cin >> _direccion;
     _activo = true;
 }
 void Cliente::setNombre(string nombre){

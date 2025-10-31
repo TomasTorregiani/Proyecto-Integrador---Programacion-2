@@ -8,12 +8,11 @@ Venta::Venta()
 }
 
 
-Venta::Venta(int idVenta, Cliente cliente, Vendedor vendedor, std::string fecha){
-    _idVenta = idVenta;
-    _cliente = cliente;
-    _vendedor = vendedor;
+Venta::Venta(int cliente, int vendedor, std::string fecha){
+    _idVenta = contarRegistros("ventas.dat", sizeof(Venta)) + 1;
+    _idCliente = IdCliente;
+    _idVendedor = IdVendedor;
     strcpy(_fecha,fecha.c_str());
-
     _cantidadDetalles = 0;
     _detalles = nullptr;
     _anulada = false;

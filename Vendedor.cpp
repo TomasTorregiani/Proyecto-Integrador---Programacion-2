@@ -5,21 +5,48 @@
 using namespace std;
 
 Vendedor::Vendedor()
-:_idVendedor(0), _nombre("Matias"),
-_apellido("Cortes"),_numeroTelefono(0),
-_email(""), _direccion(""){}
+: _idVendedor(0), _nombre(),
+_apellido(), _numeroTelefono(0),
+_email(""), _direccion(""){
+}
 
 Vendedor::Vendedor(int idVendedor, std::string nombre,
             std::string apellido,int numeroTelefono,
             std::string email, std::string direccion)
 {
-    _idVendedor = 0; //Empezar en 1 e ir sumando;
+    _idVendedor = contarRegistros("vendedores.dat", sizeof(Vendedor)) + 1;
     setNombre(nombre);
     setApellido(apellido);
     setEmail(email);
     setDireccion(direccion);
     _activo = true;
 }
+
+void Vendedor::cargarVendedor(){
+    _idVendedor = contarRegistros("vendedores.dat" , sizeof(Vendedor)) + 1;
+    cout << "Ingrese nombre: " << endl;
+    cin >> _nombre
+    cout << "Ingrese apellido: " << endl;
+    cin >> _apellido;
+    cout << "Ingrese número de teléfono: " << endl;
+    cin >> _numeroTelefono;
+    cout << "Ingrese email: " << endl;
+    cin >> _email;
+    cout << "Ingrese dirección: " << endl;
+    cin >> _direccion;
+    _activo = true;
+}
+
+void mostrar() const {
+    cout << "\n--- Datos del vendedor ---\n";
+    cout << "ID: " << _idVendedor << endl;
+    cout << "Nombre: " << _nombre << endl;
+    cout << "Apellido: " << _apellido << endl;
+    cout << "Teléfono: " << _numeroTelefono << endl;
+    cout << "Email: " << _email << endl;
+    cout << "Dirección: " << _direccion << endl;
+    cout << "Activo: " << (_activo ? "Sí" : "No") << endl;
+    }
 void Vendedor::setNombre(string nombre){
     strncpy(_nombre, nombre.c_str(), sizeof(_nombre) - 1);
     _nombre[49] = '\0';
