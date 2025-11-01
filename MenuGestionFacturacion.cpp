@@ -82,10 +82,6 @@ void MenuGestionFacturacion(){
                 }
                 do{
                     int idProducto;
-                    int opcion;
-                    cout << "Desea agregar productos? (1 = Si / 2 = No)" << endl;
-                    cin >> opcion;
-
                     cout << "Ingrese id del producto a agregar: " << endl;
                     cin >> idProducto;
 
@@ -106,8 +102,10 @@ void MenuGestionFacturacion(){
                         // Guardar detalle
                         archivoDetalles.agregarDetalle(detalle);
                         cout << "Detalle agregado correctamente." << endl;
-
                     }
+                    int opcion;
+                    cout << "Desea agregar productos? (1 = Si / 2 = No)" << endl;
+                    cin >> opcion;
                 }while(opcion == 1);
 
             }

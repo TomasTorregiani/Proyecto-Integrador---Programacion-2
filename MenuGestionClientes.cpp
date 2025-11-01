@@ -75,7 +75,28 @@ void MenuGestionClientes(){
             }
             break;
             case 4:{
-                cout << "Eliminar Cliente" << endl;
+                cout << "**** ELIMINAR CLIENTE ****" << endl;
+                int idCliente;
+                cout << "Ingrese id cliente a eliminar" << endl;
+                cin >> idCliente;
+
+                ArchivoClientes archivoC("clientes.dat");
+                int posicionClienteAEliminar = archivoC.obtenerPosicionCliente(idCliente);
+
+                if(posicionClienteAEliminar == -1){
+                    cout << "Cliente no encontrado" << endl;
+                } else {
+                    Cliente clienteAEliminar = archivoC.buscarClientePorId(idCliente);
+                    clienteAEliminar.eliminarCliente();
+
+                    bool modificarCliente = archivoC.modificarDatosCliente(clienteAEliminar, posicionClienteAEliminar);
+
+                    if(modificarCliente){
+                        cout << "Cliente eliminado con exito" << endl;
+                    } else {
+                        cout << "Error al eliminar el cliente" << endl;
+                    }
+                }
             }
             break;
             case 0:
