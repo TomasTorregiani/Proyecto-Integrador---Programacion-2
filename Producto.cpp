@@ -29,7 +29,12 @@ Producto::Producto(int idProducto, string descripcion,
 long long Producto::getPrecio(){
     return _precio;
 }
-
+int Producto::getIdProducto(){
+    return _idProducto;
+}
 void Producto::eliminarProducto(){
 	_activo = false;
+}
+string Producto::getDescripcion(){
+    return _descripcion;
 }

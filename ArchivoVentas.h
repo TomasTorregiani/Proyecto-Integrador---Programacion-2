@@ -13,5 +13,5 @@ public:
     Venta obtenerVenta(int idVenta);
     int buscarPosicionPorID(int idVenta);
     int actualizarVentaEnPosicion(int posicion, Venta& venta);
-
+    Cliente obtenerCliente(int idCliente);
 };

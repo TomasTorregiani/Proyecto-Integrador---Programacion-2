@@ -5,12 +5,14 @@ class Cliente{
 public:
     //Constructores
     Cliente();
-    Cliente(int idCliente, std::string nombre,
+    Cliente(std::string nombre,
             std::string apellido, int cuil,
             int tipoCliente, int numeroTelefono,
             std::string email, std::string direccion);
 
     void cargarCliente();
+    void modificarCliente();
+    void mostrarCliente();
     //Setters
     //El setter de idCliente no es necesario
     void setNombre(std::string nombre);
@@ -29,6 +31,7 @@ public:
     int getTipoCliente();
     std::string getEmail();
     std::string getDireccion();
+
     void eliminarCliente();
 
 protected:

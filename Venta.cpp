@@ -1,14 +1,15 @@
-
-#include "Venta.h"
+#include <iostream>
 #include <cstring>
+#include "Venta.h"
+#include "DetalleVenta.h"
+#include "FuncionesGlobales.h"
 
 Venta::Venta()
 :_idVenta(0), _cantidadDetalles(0){
     strcpy(_fecha, "");
 }
 
-
-Venta::Venta(int cliente, int vendedor, std::string fecha){
+Venta::Venta(int IdCliente, int IdVendedor, std::string fecha){
     _idVenta = contarRegistros("ventas.dat", sizeof(Venta)) + 1;
     _idCliente = IdCliente;
     _idVendedor = IdVendedor;
@@ -35,6 +36,10 @@ bool Venta::agregarDetalle(DetalleVenta detalle){
     return true;
 }
 
+void Venta::anularVenta(){
+    _anulada = true;
+}
+
 long long Venta::calcularTotal(){
     float total = 0;
     for(int i = 0; i < _cantidadDetalles; i++){
@@ -42,27 +47,21 @@ long long Venta::calcularTotal(){
     }
     return total;
 }
-
 int Venta::getIdVenta(){
     return _idVenta;
 }
-
-Cliente Venta::getCliente(){
-    return _cliente;
+int Venta::getIdCliente(){
+    return _idCliente;
 }
-
-Vendedor Venta::getVendedor(){
-	return _vendedor;
+int Venta::getIdVendedor(){
+    return _idVendedor;
 }
-
 std::string Venta::getFecha(){
     return _fecha;
 }
-
 int Venta::getCantidadDetalles(){
     return _cantidadDetalles;
 }
-
-void Venta::anularVenta(){
-	_anulada = true;
+bool Venta::getAnulada(){
+    return _anulada;
 }

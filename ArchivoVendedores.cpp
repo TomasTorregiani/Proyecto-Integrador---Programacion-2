@@ -2,6 +2,7 @@
 #include <cstring>
 #include "ArchivoVendedores.h"
 #include "Vendedor.h"
+#include "FuncionesGlobales.h"
 
 using namespace std;
 
@@ -40,7 +41,7 @@ Vendedor ArchivoVendedores::buscarVendedorPorId(int idVendedor){
 
     Vendedor registroVendedor;
 
-    int cantidad = contarRegistros(_nombre, _tamanioRegistro);
+    int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro);
     for(int i = 0; i < cantidadRegistros; i++){
         fread(&registroVendedor, _tamanioRegistro, 1, p);
         if(registroVendedor.getIdVendedor() == idVendedor){

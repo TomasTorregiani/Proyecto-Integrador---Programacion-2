@@ -2,8 +2,9 @@
 
 #include "Vendedor.h"
 #include "Cliente.h"
-#include "DetalleVenta.h"
 
+//Declaracion adelantada
+class DetalleVenta;
 
 class Venta{
 public:
@@ -14,6 +15,7 @@ public:
     ~Venta(); // cuando se carga el detalle de la venta?? (DetalleVenta)
 
     bool agregarDetalle(DetalleVenta detalle);
+
     long long calcularTotal();
 
     //No es necesario ningun setter
@@ -24,6 +26,7 @@ public:
     int getIdVendedor();
     std::string getFecha();
     int getCantidadDetalles();
+    bool getAnulada();
     void anularVenta();
 
 protected:

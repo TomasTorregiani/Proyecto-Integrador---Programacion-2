@@ -11,6 +11,7 @@ public:
             std::string email, std::string direccion);
 
     void cargarVendedor();
+    void mostrarVendedor();
     //Setters
     //El setter de idCliente no es necesario //Por??
     //El setter de idVendedor no es necesario //Por??

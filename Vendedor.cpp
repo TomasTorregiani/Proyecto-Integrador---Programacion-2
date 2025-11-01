@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include "Vendedor.h"
+#include "FuncionesGlobales.h"
 
 using namespace std;
 
@@ -25,7 +26,7 @@ Vendedor::Vendedor(int idVendedor, std::string nombre,
 void Vendedor::cargarVendedor(){
     _idVendedor = contarRegistros("vendedores.dat" , sizeof(Vendedor)) + 1;
     cout << "Ingrese nombre: " << endl;
-    cin >> _nombre
+    cin >> _nombre;
     cout << "Ingrese apellido: " << endl;
     cin >> _apellido;
     cout << "Ingrese número de teléfono: " << endl;
@@ -37,7 +38,7 @@ void Vendedor::cargarVendedor(){
     _activo = true;
 }
 
-void mostrar() const {
+void Vendedor::mostrarVendedor(){
     cout << "\n--- Datos del vendedor ---\n";
     cout << "ID: " << _idVendedor << endl;
     cout << "Nombre: " << _nombre << endl;

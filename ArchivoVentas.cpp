@@ -33,7 +33,7 @@ int ArchivoVentas::agregarVenta(Venta& venta){
     return 0;
 }
 
-int ArchivoVentas::buscarPosicionPorID(int idVenta){ //Aca quede...
+int ArchivoVentas::buscarPosicionPorID(int idVenta){
     FILE* p = nullptr;
     p = fopen(_nombre, "rb");
 
@@ -44,7 +44,7 @@ int ArchivoVentas::buscarPosicionPorID(int idVenta){ //Aca quede...
 
     Venta registro;
 
-    int cantidad = cantidadRegistros(_nombre, _tamanioRegistro);
+    int cantidad = contarRegistros(_nombre, _tamanioRegistro);
     for(int i = 0; i < cantidad; i++){
         fread(&registro, _tamanioRegistro, 1, p);
         if(registro.getIdVenta() == idVenta){
@@ -67,7 +67,7 @@ Venta ArchivoVentas::obtenerVenta(int idVenta){
 
     Venta registro;
 
-    int cantidad = cantidadRegistros(_nombre, _tamanioRegistro);
+    int cantidad = contarRegistros(_nombre, _tamanioRegistro);
     for(int i = 0; i < cantidad; i++){
         fread(&registro, _tamanioRegistro, 1, p);
         if(registro.getIdVenta() == idVenta){
@@ -79,8 +79,8 @@ Venta ArchivoVentas::obtenerVenta(int idVenta){
     return Venta(); //No encontrado
 }
 
-int ArchivoVentas::anularVenta(int idVenta){
-    FILE* p = nullptr;
+/*int ArchivoVentas::anularVenta(int idVenta){ //Este metodo entonces no se usa?
+    FILE* p = nullptr;                         //Y lo manejamos directamente con actualizarVentaEnPosicion
     p = fopen(_nombre, "rb+");
 
     if(p == nullptr){
@@ -96,7 +96,7 @@ int ArchivoVentas::anularVenta(int idVenta){
 
         }
     }
-}
+}*/
 
 int ArchivoVentas::actualizarVentaEnPosicion(int posicion, Venta& venta){
     FILE* p = nullptr;
@@ -115,5 +115,9 @@ int ArchivoVentas::actualizarVentaEnPosicion(int posicion, Venta& venta){
         fclose(p);
         return sobreEscribio;
     }
+}
+
+Cliente ArchivoVentas::obtenerCliente(int idCliente){
+
 }
 

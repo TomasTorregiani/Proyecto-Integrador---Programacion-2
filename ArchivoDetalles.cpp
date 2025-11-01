@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <cstring>
 #include "ArchivoDetalles.h"
@@ -12,7 +11,7 @@ ArchivoDetalles::ArchivoDetalles(const char* n){
     _tamanioRegistro = sizeof(DetalleVenta);
 }
 
-int ArchivoDetalles::agregarDetalle(DetalleVenta detalle){
+int ArchivoDetalles::agregarDetalle(DetalleVenta& detalle){
     FILE* p = nullptr;
     p = fopen(_nombre, "ab");
 

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include "Cliente.h"
+#include "FuncionesGlobales.h"
 
 using namespace std;
 
@@ -10,10 +11,10 @@ _apellido(), _cuil(0),
 _tipoCliente(0), _numeroTelefono(0),
 _email(""), _direccion(""){}
 
-Cliente::Cliente(std::string nombre,
-            std::string apellido, int cuil,
+Cliente::Cliente(string nombre,
+            string apellido, int cuil,
             int tipoCliente, int numeroTelefono,
-            std::string email, std::string direccion)
+            string email, string direccion)
 {
     _idCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + 1;
     setNombre(nombre);
@@ -26,7 +27,7 @@ Cliente::Cliente(std::string nombre,
     _activo = true;
 }
 void Cliente::cargarCliente(){
-    _idCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + ;
+    _idCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + 1;
     cout << "Ingresar nombre cliente nuevo: " << endl;
     cin >> _nombre;
     cout << "Ingresar apellido cliente nuevo: " << endl;
@@ -43,6 +44,31 @@ void Cliente::cargarCliente(){
     cin >> _direccion;
     _activo = true;
 }
+void Cliente::modificarCliente(){
+    cout << "Ingresar nombre cliente nuevo: " << endl;
+    cin >> _nombre;
+    cout << "Ingresar apellido cliente nuevo: " << endl;
+    cin >> _apellido;
+    cout << "Ingresar cuit cliente nuevo: " << endl;
+    cin >> _cuil;
+    cout << "Ingresar tipo cliente nuevo: " << endl;
+    cin >> _tipoCliente;
+    cout << "Ingresar numero de telefono: " << endl;
+    cin >> _numeroTelefono;
+    cout << "Ingresar email cliente nuevo: " << endl;
+    cin >> _email;
+    cout << "Ingresar direccion cliente nuevo: " << endl;
+    cin >> _direccion;
+}
+void Cliente::mostrarCliente(){
+    cout << "=== DATOS DEL CLIENTE ===" << endl;
+    cout << "ID Cliente: " << _idCliente << endl;
+    cout << "Nombre: " << _nombre << endl;
+    cout << "Apellido: " << _apellido << endl;
+    cout << "Numero de telefono: " << _numeroTelefono << endl;
+    cout << "Email: " << _email << endl;
+}
+
 void Cliente::setNombre(string nombre){
     strncpy(_nombre, nombre.c_str(), sizeof(_nombre) - 1);
     _nombre[49] = '\0';

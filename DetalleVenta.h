@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Producto.h"
 
 class DetalleVenta{

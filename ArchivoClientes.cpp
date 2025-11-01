@@ -19,25 +19,6 @@ int ArchivoClientes::agregarCliente(Cliente registro){
     }
 
     int escribio = fwrite(&registro, _tamanioRegistro, 1, p);
-
-    fclose(p);
-    return escribio;
-}
-
-bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion){
-    FILE *p = nullptr;
-    p = fopen(_nombre, "rb+");
-
-    if(p == nullptr){
-        cout << "No se pudo abrir el archivo" << endl;
-        return false;
-    }
-
-    fseek(p, posicion*_tamanioRegistro, SEEK_SET);
-    bool escribio = fwrite(&registro, _tamanioRegistro, 1, p);
-    if(escribio){
-        cout << "El registro se sobreescribio correctamente" << endl;
-    }
     fclose(p);
     return escribio;
 }
@@ -61,6 +42,47 @@ Cliente ArchivoClientes::buscarClientePorId(int idCliente){
     }
     fclose(p);
     return Cliente();
+}
+
+int ArchivoClientes::obtenerPosicionCliente(int idCliente){
+    FILE* p = nullptr;
+    p = fopen(_nombre, "rb");
+    if(p == nullptr){
+        cout << "El archivo no se abrio correctamente" << endl;
+        return -1;
+    }
+    fseek(p, 0, SEEK_SET);
+    int cantidadRegistros = contarRegistros("clientes.dat", _tamanioRegistro);
+    Cliente registro;
+    for(int i = 0; i < cantidadRegistros; i++){
+        fread(&registro, _tamanioRegistro, 1, p);
+        if(registro.getIdCliente() == idCliente){
+            cout << "Registro encontrado correctamente";
+            fclose(p);
+            return i;
+        }
+    }
+    cout << "Registro no encontrado" << endl;
+    fclose(p);
+    return -1;
+}
+
+bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion){
+    FILE *p = nullptr;
+    p = fopen(_nombre, "rb+");
+
+    if(p == nullptr){
+        cout << "No se pudo abrir el archivo" << endl;
+        return false;
+    }
+
+    fseek(p, posicion*_tamanioRegistro, SEEK_SET);
+    bool escribio = fwrite(&registro, _tamanioRegistro, 1, p);
+    if(escribio){
+        cout << "El registro se sobreescribio correctamente" << endl;
+    }
+    fclose(p);
+    return escribio;
 }
 
 int ArchivoClientes::eliminarCliente(int idCliente){ //No esta terminado el metodo eliminarCliente()
