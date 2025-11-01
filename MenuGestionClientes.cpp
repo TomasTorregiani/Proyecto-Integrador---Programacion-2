@@ -6,9 +6,7 @@
 using namespace std;
 
 void MenuGestionClientes(){
-
     int opcion;
-
     while(true){
         system("cls");
         cout << "**** GESTION DE CLIENTES ****" << endl;

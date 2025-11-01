@@ -85,25 +85,33 @@ bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion){
     return escribio;
 }
 
-int ArchivoClientes::eliminarCliente(int idCliente){ //No esta terminado el metodo eliminarCliente()
-    Cliente cliente;
-    FILE *p = nullptr;
-    p = fopen(_nombre, "rb+");
-
-    if(p == nullptr){
-        cout << "No se logro leer el archivo" << endl;
-        return -1;
-    }
-
-    int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro);
-    for(int i = 0; i < cantidadRegistros; i++){
-        fread(&cliente, _tamanioRegistro, 1, p);
-        if(cliente.getIdCliente() == idCliente){
-					cliente.eliminarCliente(); //cambia el _activo a false, hay que implementar la "eliminación" en archivo.
-        }
-
-    }
-}
+//int ArchivoClientes::eliminarCliente(int idCliente){
+//    Cliente cliente;
+//    FILE *p = nullptr;
+//    p = fopen(_nombre, "rb+");
+//
+//    if(p == nullptr){
+//        cout << "No se logro leer el archivo" << endl;
+//        return -1;
+//    }
+//
+//    int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro);
+//    for(int i = 0; i < cantidadRegistros; i++){
+//        fread(&cliente, _tamanioRegistro, 1, p);
+//        if(cliente.getIdCliente() == idCliente){
+//            int sobreEscribio = fwrite(&cliente, _tamanioRegistro, 1, p);
+//            if(sobreEscribio == 0){
+//                cout << "Error al eliminar el archivo" << endl;
+//                fclose(p);
+//                return -1;
+//            }else {
+//                cout << "El archivo se anulo correctamente" << endl;
+//                fclose(p);
+//                return sobreEscribio;
+//            }
+//        }
+//    }
+//}
 
 
 

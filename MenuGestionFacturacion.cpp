@@ -12,9 +12,7 @@
 using namespace std;
 
 void MenuGestionFacturacion(){
-
     int opcion;
-
     while(true){
         system("cls");
         cout << "**** MENU FACTURACION ****" << endl;
@@ -68,7 +66,6 @@ void MenuGestionFacturacion(){
                     if(escribio == 1){
                         cout << "Vendedor guardado correctamente" << endl;
                     }
-
                 }else {
                     nuevoVendedor = vendedorEncontrado;
                 }

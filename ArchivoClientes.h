@@ -14,7 +14,7 @@ public:
     bool modificarDatosCliente(Cliente registro, int posicion);
     Cliente buscarClientePorId(int idCliente);
     int obtenerPosicionCliente(int idCliente);
-    int eliminarCliente(int idCliente);
+    int eliminarCliente(int idCliente //Necesario?);
 };
 
 
