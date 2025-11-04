@@ -10,6 +10,7 @@ public:
             int tipoCliente, int numeroTelefono,
             std::string email, std::string direccion);
 
+    void cargarCliente();
     //Setters
     //El setter de idCliente no es necesario
     void setNombre(std::string nombre);
@@ -41,5 +42,5 @@ private:
     int _numeroTelefono;
     char _email[20];
     char _direccion[20];
-    bool _activo; 
+    bool _activo;
 };

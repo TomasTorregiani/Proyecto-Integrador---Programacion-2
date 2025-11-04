@@ -1,6 +1,6 @@
 
 #include <iostream>
-
+#include <cstring>
 #include "ArchivoDetalles.h"
 #include "Venta.h"
 #include "FuncionesGlobales.h"

@@ -51,7 +51,7 @@ Cliente ArchivoClientes::buscarClientePorId(int idCliente){
         cout << "No se pudo abrir el archivo" << endl;
         return Cliente();
     }
-    int cantidadRegistros = contarRegistros();
+    int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro);
     for(int i = 0; i < cantidadRegistros; i++){
         fread(&cliente, _tamanioRegistro,1,p);
         if(cliente.getIdCliente() == idCliente){

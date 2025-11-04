@@ -2,8 +2,10 @@
 #include "TodosLosMenu.h"
 #include "ArchivoDetalles.h"
 #include "Fecha.h"
-#inlcude "ArchivoCliente.h"
+#include "ArchivoCliente.h"
 #include "Cliente.h"
+#include "Vendedor.h"
+#include "ArchivoVendedores.h"
 
 using namespace std;
 
@@ -33,31 +35,11 @@ void MenuGestionFacturacion(){
                 Cliente encontrado = archivoC.buscarClientePorId(idCliente);
                 Cliente clienteParaVenta;
                 if(encontrado.getIdCliente() == 0){
-                    int idNuevoCliente, cuilClienteNuevo, tipoClienteNuevo, numeroTelefonoClienteNuevo;
-                    string nombreClienteNuevo, apellidoClienteNuevo,emailNuevoCliente,direccionClienteNuevo;
-
                     cout << "No se encontro ningun registro con ese id" << endl;
                     cout << "Agregar Nuevo Cliente: " << endl;
                     cout << "---------------------" << endl;
-                    idNuevoCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + 1;
-                    cout << "Ingresar nombre cliente nuevo: " << endl;
-                    cin >> nombreClienteNuevo;
-                    cout << "Ingresar apellido cliente nuevo: " << endl;
-                    cin >> apellidoClienteNuevo;
-                    cout << "Ingresar cuit cliente nuevo: " << endl;
-                    cin >> cuilClienteNuevo;
-                    cout << "Ingresar tipo cliente nuevo: " << endl;
-                    cin >> tipoClienteNuevo;
-                    cout << "Ingresar numero de telefono: " << endl;
-                    cin >> numeroTelefonoClienteNuevo;
-                    cout << "Ingresar email cliente nuevo: " << endl;
-                    cin >> emailNuevoCliente;
-                    cout << "Ingresar direccion cliente nuevo: " << endl;
-                    cin >> direccionClienteNuevo;
 
-                    Cliente nuevoCliente(idNuevoCliente, nombreClienteNuevo, apellidoClienteNuevo,
-                                        cuilClienteNuevo, tipoClienteNuevo, numeroTelefonoClienteNuevo,
-                                        emailNuevoCliente, direccionClienteNuevo);
+                    clienteParaVenta = encontrado.cargarCliente();
                     int escribio = archivoC.agregarCliente(nuevoCliente);
                     if(escribio == 1){
                         cout << "El archivo se escribio correctamente" << endl;
@@ -67,6 +49,34 @@ void MenuGestionFacturacion(){
                     clienteParaVenta = encontrado;
                 }
 
+                int idVendedor;
+                cout << "Ingrese id Vendedor: " << endl;
+                cin >> idVendedor;
+
+                ArchivoVendedor archivoV("vendedores.dat");
+                Vendedor encontrado = archivoV.buscarVendedorPorId(idVendedor);
+                Vendedor nuevoVendedor;
+                if(encontrado.getIdVendedor() == 0){
+                    cout << "No se encontro ningun registro con ese id" << endl;
+                    cout << "Agregar Nuevo Vendedor: " << endl;
+                    cout << "---------------------" << endl;
+                    nuevoVendedor = encontrado.cargarVendedor();
+                    int escribio = archivoV.agregarVendedor(nuevoVendedor);
+                    if(escribio == 1){
+                        cout << "Vendedor guardado correctamente" << endl;
+                    }
+
+                }else {
+                    nuevoVendedor = encontrado;
+                }
+                Venta nuevaVenta(clienteParaVenta.getIdCliente(), nuevoVendedor.getIdVendedor(), "11/11/1111");
+                ArchivoVentas archivoVenta("ventas.dat");
+                int agregoVenta = archivoVenta.agregarVenta(nuevaVenta);
+                if(agregoVenta == 0 ){
+                    cout << "Error al agregar el archivo" << endl;
+                }else {
+                    cout << "Venta agregada correctamente" << endl;
+                }
             }
             break;
             case 2: {
@@ -100,7 +110,17 @@ void MenuGestionFacturacion(){
                 }
             }
             break;
-            case 3: cout << "Eliminar venta" << endl;
+            case 3: {
+                int idVentaAEliminar;
+                cout << "Ingrese id de la venta a eliminar: " << endl;
+                cin >> idVentaAEliminar;
+
+                ArchivoVentas archivo("ventas.dat");
+
+                int posicion = archivo.buscarPosicionPorID(idVentaAEliminar); //Aca quede....
+
+
+            }
             break;
             case 0: cout << "Volviendo al menu principal" << endl;
             return;

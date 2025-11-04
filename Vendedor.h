@@ -10,6 +10,7 @@ public:
             std::string apellido, int numeroTelefono,
             std::string email, std::string direccion);
 
+    void cargarVendedor();
     //Setters
     //El setter de idCliente no es necesario //Por??
     //El setter de idVendedor no es necesario //Por??
@@ -38,5 +39,5 @@ private:
     int _numeroTelefono;
     char _email[20];
     char _direccion[20];
-    bool _activo; 
+    bool _activo;
 };
