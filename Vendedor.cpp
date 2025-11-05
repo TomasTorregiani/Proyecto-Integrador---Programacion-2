@@ -38,6 +38,19 @@ void Vendedor::cargarVendedor(){
     _activo = true;
 }
 
+void Vendedor::modificarVendedor(){
+    cout << "Ingrese nombre: " << endl;
+    cin >> _nombre;
+    cout << "Ingrese apellido: " << endl;
+    cin >> _apellido;
+    cout << "Ingrese número de teléfono: " << endl;
+    cin >> _numeroTelefono;
+    cout << "Ingrese email: " << endl;
+    cin >> _email;
+    cout << "Ingrese dirección: " << endl;
+    cin >> _direccion;
+}
+
 void Vendedor::mostrarVendedor(){
     cout << "\n--- Datos del vendedor ---\n";
     cout << "ID: " << _idVendedor << endl;

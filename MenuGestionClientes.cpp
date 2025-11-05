@@ -14,6 +14,7 @@ void MenuGestionClientes(){
         cout << "2) Modificar Datos Cliente" << endl;
         cout << "3) Buscar Cliente por Id" << endl;
         cout << "4) Eliminar Cliente" << endl;
+        cout << "5) Listar todos los clientes" << endl;
         cout << "0) Volver al menu principal" << endl;
         cout << endl;
         cout << "Elige una opcion: " << endl;
@@ -97,8 +98,14 @@ void MenuGestionClientes(){
                 }
             }
             break;
+            case 5: {
+                cout << "LISTAR LOS CLIENTES" << endl;
+                ArchivoClientes archivoC("clientes.dat");
+                archivoC.listarClientes();
+            }
+            break;
             case 0:
-                cout << "Volver al menu principal" << endl;
+                cout << "Volviendo al menu principal" << endl;
             return;
             default: cout << "Ingrese un valor valido" << endl;
             break;

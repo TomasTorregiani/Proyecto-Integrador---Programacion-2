@@ -22,7 +22,6 @@ int ArchivoVendedores::agregarVendedor(Vendedor vendedor){
 
     int escribio = fwrite(&vendedor, _tamanioRegistro, 1, p);
     if(escribio == 1){
-        cout << "El archivo se escribio correctamente" << endl;
         fclose(p);
         return 1;
     }
@@ -50,6 +49,43 @@ Vendedor ArchivoVendedores::buscarVendedorPorId(int idVendedor){
         }
     }
     fclose(p);
-    cout << "No se encontro el vendedor" << endl;
     return Vendedor();
+}
+int ArchivoVendedores::buscarPosicionDelVendedor(int idVendedor){
+    FILE* p = nullptr;
+    p = fopen(_nombre, "rb");
+    if(p == nullptr){
+        cout << "No se pudo abrir el archivo" << endl;
+        return -1;
+    }
+    int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro);
+    Vendedor vendedor;
+    for(int i = 0; i < cantidadRegistros; i++){
+        fread(&vendedor, _tamanioRegistro, 1, p);
+        if(vendedor.getIdVendedor() == idVendedor){
+            fclose(p);
+            cout << "Registro encontrado exitosamente";
+            return i;
+        }
+    }
+    fclose(p);
+    cout << "No se encontro el registro" << endl;
+}
+int ArchivoVendedores::modificarDatosVendedor(Vendedor registroVendedor, int posicion){
+    FILE* p = nullptr;
+    p = fopen(_nombre, "rb+");
+    if(p == nullptr){
+        cout << "El archivo no se abrio correctamente" << endl;
+        return 0;
+    }
+    fseek(p, (_tamanioRegistro*posicion), SEEK_SET);
+
+    int escribio = fwrite(&registroVendedor, _tamanioRegistro, 1, p);
+    if(escribio != 0){
+        fclose(p);
+        return escribio;
+    }else{
+        fclose(p);
+        return 0;
+    }
 }

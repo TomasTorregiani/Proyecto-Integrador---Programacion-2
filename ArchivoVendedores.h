@@ -10,5 +10,7 @@ public:
     ArchivoVendedores(const char *n);
     int agregarVendedor(Vendedor vendedor);
     Vendedor buscarVendedorPorId(int idVendedor);
+    int buscarPosicionDelVendedor(int idVendedor);
+    int modificarDatosVendedor(Vendedor registroVendedor, int posicion);
 };
 

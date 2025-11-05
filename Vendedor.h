@@ -12,6 +12,8 @@ public:
 
     void cargarVendedor();
     void mostrarVendedor();
+    void modificarVendedor();
+
     //Setters
     //El setter de idCliente no es necesario //Por??
     //El setter de idVendedor no es necesario //Por??

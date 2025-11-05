@@ -9,8 +9,8 @@ int contarRegistros(const char *nombreArchivo, int tamanioRegistro){
     p = fopen(nombreArchivo, "rb");
 
     if(p == nullptr){
-        cout << "El archivo no se leyo correctamente" << endl;
-        return -1;
+        cout << "El archivo no existe todavia" << endl;
+        return 0;
     }
 
     fseek(p, 0, SEEK_END);

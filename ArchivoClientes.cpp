@@ -85,6 +85,21 @@ bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion){
     return escribio;
 }
 
+void ArchivoClientes::listarClientes(){
+    FILE* p = nullptr;
+    p = fopen(_nombre, "rb");
+    if(p == nullptr){
+        cout << "El archivo no se abrio correctamente" << endl;
+    }
+    fseek(p, 0, SEEK_SET);
+    int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro);
+    Cliente registro;
+    for(int i = 0; i < cantidadRegistros; i++){
+        fread(&registro, _tamanioRegistro, 1, p);
+        registro.mostrarCliente();
+    }
+}
+
 //int ArchivoClientes::eliminarCliente(int idCliente){
 //    Cliente cliente;
 //    FILE *p = nullptr;

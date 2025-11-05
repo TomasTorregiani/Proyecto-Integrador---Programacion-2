@@ -8,7 +8,6 @@ private:
     int _tamanioRegistro;
 public:
     ArchivoVentas(const char* n);
-
     int agregarVenta(Venta& venta);
     Venta obtenerVenta(int idVenta);
     int buscarPosicionPorID(int idVenta);
