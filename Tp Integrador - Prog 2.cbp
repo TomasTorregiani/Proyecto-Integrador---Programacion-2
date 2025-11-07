@@ -33,32 +33,49 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="ArchivoClientes.cpp" />
-		<Unit filename="ArchivoClientes.h" />
+		<Unit filename="ArchivoClientes.h">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="ArchivoDetalles.cpp" />
-		<Unit filename="ArchivoDetalles.h" />
+		<Unit filename="ArchivoDetalles.h">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="ArchivoProductos.cpp" />
 		<Unit filename="ArchivoProductos.h">
+			<Option compile="1" />
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="ArchivoVendedores.cpp" />
 		<Unit filename="ArchivoVendedores.h">
+			<Option compile="1" />
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="ArchivoVentas.cpp" />
 		<Unit filename="ArchivoVentas.h">
+			<Option compile="1" />
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="Cliente.cpp" />
 		<Unit filename="Cliente.h">
+			<Option compile="1" />
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="DetalleVenta.cpp" />
-		<Unit filename="DetalleVenta.h" />
+		<Unit filename="DetalleVenta.h">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="Fecha.cpp" />
-		<Unit filename="Fecha.h" />
+		<Unit filename="Fecha.h">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="FuncionesGlobales.cpp" />
 		<Unit filename="FuncionesGlobales.h">
+			<Option compile="1" />
 			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="ManagerClientes.cpp" />
+		<Unit filename="ManagerClientes.h">
+			<Option compile="1" />
 		</Unit>
 		<Unit filename="MenuGestionClientes.cpp" />
 		<Unit filename="MenuGestionFacturacion.cpp" />
@@ -69,15 +86,20 @@
 		<Unit filename="MenuPrincipal.cpp" />
 		<Unit filename="Producto.cpp" />
 		<Unit filename="Producto.h">
+			<Option compile="1" />
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="TodosLosMenu.h">
+			<Option compile="1" />
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="Vendedor.cpp" />
-		<Unit filename="Vendedor.h" />
+		<Unit filename="Vendedor.h">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="Venta.cpp" />
 		<Unit filename="Venta.h">
+			<Option compile="1" />
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="main.cpp" />
