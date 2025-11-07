@@ -10,7 +10,7 @@ public:
             int tipoCliente, int numeroTelefono,
             std::string email, std::string direccion);
 
-    void cargarCliente();
+    void crearCliente();
     void modificarCliente();
     void mostrarCliente();
     //Setters

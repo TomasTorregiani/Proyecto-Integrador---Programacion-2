@@ -11,6 +11,24 @@ ArchivoProductos::ArchivoProductos(const char* n){
     _tamanioRegistro = sizeof(Producto);
 }
 
+int ArchivoProductos::agregarNuevoProducto(Producto nuevoProducto){
+    FILE* p = nullptr;
+    p = fopen(_nombre, "ab");
+    if(p == nullptr){
+        cout << "Problemas al abrir el archivo" << endl;
+        return -1;
+    }
+
+    int escribrio = fwrite(&nuevoProducto, _tamanioRegistro, 1, p);
+    if(escribrio == 1){
+        fclose(p);
+        return 1;
+    }else{
+        fclose(p);
+        return 0;
+    }
+}
+
 Producto ArchivoProductos::buscarProductoPorId(int idProducto){
     FILE* p = nullptr;
     p = fopen(_nombre, "rb");
@@ -32,9 +50,54 @@ Producto ArchivoProductos::buscarProductoPorId(int idProducto){
             return registro;
         }
     }
+    fclose(p);
     cout << "Registro no encontrado" << endl;
     return Producto();
 }
+
+int ArchivoProductos::buscarPosicionPorId(int idProducto){
+    FILE* p = nullptr;
+    p = fopen(_nombre, "rb");
+
+    if(p == nullptr){
+        cout << "No se abrio correctamente el archivo" << endl;
+        return -1;
+    }
+
+    fseek(p, 0, SEEK_SET);
+    Producto registroProducto;
+    int cantidadDeRegistros = contarRegistros(_nombre, _tamanioRegistro);
+    for(int i = 0; i < cantidadDeRegistros; i++){
+        fread(&registroProducto, _tamanioRegistro, 1, p);
+        if(registroProducto.getIdProducto() == idProducto){
+            fclose(p);
+            return i;
+        }
+    }
+    fclose(p);
+    return -1;
+}
+
+int ArchivoProductos::agregarProductoModificado(Producto productoModificado, int posicionProdModificado){
+    FILE* p = nullptr;
+    p = fopen(_nombre, "rb+");
+    if(p == nullptr){
+        cout << "Error al abrir el archivo" << endl;
+        return 0;
+    }
+
+    fseek(p, (posicionProdModificado * _tamanioRegistro), SEEK_SET);
+    int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro);
+
+    int escribio = fwrite(&productoModificado, _tamanioRegistro, 1, p);
+    if(escribio == 1){
+        fclose(p);
+        return 1;
+    }
+    fclose(p);
+    return 0;
+}
+
 
 
 

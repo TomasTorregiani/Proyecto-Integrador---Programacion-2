@@ -8,9 +8,9 @@ public:
     Vendedor();
     Vendedor(int idVendedor, std::string nombre,
             std::string apellido, int numeroTelefono,
-            std::string email, std::string direccion);
+            std::string email, std::string direccion); //Creo que directamente sacaria este constructor y dejaria uno vacio
 
-    void cargarVendedor();
+    void crearVendedor();
     void mostrarVendedor();
     void modificarVendedor();
 

@@ -8,5 +8,8 @@ private:
 public:
     ArchivoProductos(const char* n);
 
+    int agregarNuevoProducto(Producto nuevoProducto);
     Producto buscarProductoPorId(int idProducto);
+    int buscarPosicionPorId(int idProducto);
+    int agregarProductoModificado(Producto productoModificado, int posicionProdModificado);
 };

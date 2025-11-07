@@ -11,11 +11,10 @@ _apellido(), _numeroTelefono(0),
 _email(""), _direccion(""){
 }
 
-Vendedor::Vendedor(int idVendedor, std::string nombre,
+Vendedor::Vendedor(std::string nombre,
             std::string apellido,int numeroTelefono,
             std::string email, std::string direccion)
 {
-    _idVendedor = contarRegistros("vendedores.dat", sizeof(Vendedor)) + 1;
     setNombre(nombre);
     setApellido(apellido);
     setEmail(email);
@@ -23,7 +22,7 @@ Vendedor::Vendedor(int idVendedor, std::string nombre,
     _activo = true;
 }
 
-void Vendedor::cargarVendedor(){
+void Vendedor::crearVendedor(){
     _idVendedor = contarRegistros("vendedores.dat" , sizeof(Vendedor)) + 1;
     cout << "Ingrese nombre: " << endl;
     cin >> _nombre;

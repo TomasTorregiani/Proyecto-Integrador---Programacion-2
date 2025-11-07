@@ -1,6 +1,7 @@
-
-#include "Producto.h"
+#include <iostream>
 #include <cstring>
+#include "Producto.h"
+#include "FuncionesGlobales.h"
 
 using namespace std;
 
@@ -24,6 +25,34 @@ Producto::Producto(int idProducto, string descripcion,
                     strcpy(_tipoProducto, tipoProducto.c_str());
                     _cantidadDisponible = cantidadDisponible;
                     _precio = precio;
+}
+
+void Producto::crearNuevoProducto(){
+    _idProducto = contarRegistros("productos.dat", sizeof(Producto)) + 1; //Deberiamos cambiar esto. Y que el id de cada producto
+    cout << "Ingrese descripcion: " << endl;                              //asi como de cada venta o lo que sea se deberia trabajar
+    cin >> _descripcion;                                                  //directamente en archivos
+    cout << "Ingrese marca: " << endl;
+    cin >> _marca;
+    cout << "Ingrese tipo de producto: " << endl;
+    cin >> _tipoProducto;
+    cout << "Ingrese cantidad disponible: " << endl;
+    cin >> _cantidadDisponible;
+    cout << "Ingrese precio: " << endl;
+    cin >> _precio;
+    _activo = true;
+}
+
+void Producto::modificarProducto(){
+    cout << "Ingrese descripcion: " << endl;
+    cin >> _descripcion;
+    cout << "Ingrese marca: " << endl;
+    cin >> _marca;
+    cout << "Ingrese tipo de producto: " << endl;
+    cin >> _tipoProducto;
+    cout << "Ingrese cantidad disponible: " << endl;
+    cin >> _cantidadDisponible;
+    cout << "Ingrese precio: " << endl;
+    cin >> _precio;
 }
 
 long long Producto::getPrecio(){

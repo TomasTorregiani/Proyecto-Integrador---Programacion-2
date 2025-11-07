@@ -24,7 +24,7 @@ void MenuGestionVendedores(){
             case 1: {
                 cout << "**** NUEVO VENDEDOR ****" << endl;
                 Vendedor nuevoVendedor;
-                nuevoVendedor.cargarVendedor();
+                nuevoVendedor.crearVendedor();
                 ArchivoVendedores archivoVendedor("vendedores.dat");
                 int agrego = archivoVendedor.agregarVendedor(nuevoVendedor);
                 if(agrego != 0){
@@ -70,12 +70,38 @@ void MenuGestionVendedores(){
             }
             break;
             case 4: {
+                cout << "**** ELIMINAR VENDEDOR ****" << endl;
                 int idVendedor;
                 cout << "Ingrese el id del vendedor: " << endl;
                 cin >> idVendedor;
 
+                ArchivoVendedores archivoVendedor("vendedores.dat");
+                int posicionVendedor = archivoVendedor.buscarPosicionDelVendedor(idVendedor);
+                if(posicionVendedor != -1){
+                    cout << "Registro encontrado exitosamente" << endl;
+                    Vendedor vendedorAEliminar = archivoVendedor.buscarVendedorPorId(idVendedor);
+                    vendedorAEliminar.eliminarVendedor();
 
+                    int eliminoVendedor = archivoVendedor.modificarDatosVendedor(vendedorAEliminar, posicionVendedor);
+                    if(eliminoVendedor != 0){
+                        cout << "Vendedor eliminado correctamente" << endl;
+                    }else{
+                        cout << "Error al eliminar el vendedor" << endl;
+                    }
+                }else {
+                    cout << "No se encontro el registro" << endl;
+                }
             }
+            break;
+            case 5: {
+                cout << "**** LISTAR TODOS LOS VENDEDORES ****" << endl;
+                ArchivoVendedores archivoVendedor("vendedores.dat");
+
+                archivoVendedor.listarVendedores();
+            }
+            break;
+            case 0: cout << "Volviendo al menu principal..." << endl;
+            return;
         }
     }
 }

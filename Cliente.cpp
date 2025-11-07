@@ -26,7 +26,7 @@ Cliente::Cliente(string nombre,
     setDireccion(direccion);
     _activo = true;
 }
-void Cliente::cargarCliente(){
+void Cliente::crearCliente(){
     _idCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + 1;
     cout << "Ingresar nombre cliente nuevo: " << endl;
     cin >> _nombre;

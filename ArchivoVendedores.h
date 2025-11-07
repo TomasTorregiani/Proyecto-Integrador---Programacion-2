@@ -12,5 +12,6 @@ public:
     Vendedor buscarVendedorPorId(int idVendedor);
     int buscarPosicionDelVendedor(int idVendedor);
     int modificarDatosVendedor(Vendedor registroVendedor, int posicion);
+    void listarVendedores();
 };
 

@@ -9,6 +9,10 @@ public:
              std::string marca, std::string tipoProducto,
              int cantidadDisponible, long long precio);
 
+    void crearNuevoProducto();
+    void modificarProducto();
+    void eliminarProducto();
+
     //Setters
     //Setter de idProducto no es necesario
     void setDescripcion(std::string descripcion);
@@ -24,7 +28,6 @@ public:
     std::string getTipoProducto();
     int getCantidadDisponible();
     long long getPrecio();
-    void eliminarProducto();
 
 protected:
 
