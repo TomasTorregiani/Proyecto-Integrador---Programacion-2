@@ -1,23 +1,61 @@
 #pragma once
 #include <cstring>
 #include "Cliente.h"
+#include "ManagerClientes.h"
 
 class ArchivoClientes{
 
-private:
-    char _nombre[30];
-    int _tamanioRegistro;
-
 public:
-    ArchivoClientes(const char* n);
-    int agregarCliente(Cliente registro);
-    bool modificarDatosCliente(Cliente registro, int posicion);
-    Cliente buscarClientePorId(int idCliente);
-    int obtenerPosicionCliente(int idCliente);
-    int eliminarCliente(int idCliente);
+	
+    ArchivoClientes(const char* nombreArchivo = "clientes.dat");
+    bool guardarCliente(Cliente registro); //ok. siempre guarda al final.
+    int buscarClientePorId(int idCliente); //INPROCESS
+    bool eliminarCliente(int idCliente); //TODO
+    bool modificarDatosCliente(Cliente registro, int posicion); //TODO
+    
+    int getTamañoRegistro();
+    int getCantidadRegistros();
+    
     void listarClientes();
+    
+		int obtenerPosicionCliente(int idCliente);
+    
+private:
+	
+    const char* _nombreArchivo; //se asigna cuando llamo al constructor?
 };
 
+
+
+
+
+/*class TareaArchivo
+{
+  public:
+  	
+    TareaArchivo(std::string nombreArchivo = "tareas.dat");
+    
+    bool guardar(Tarea registro);
+    
+    bool guardar(int pos, Tarea tarea);
+    
+    int buscarID(int id);
+    
+    bool eliminar(int pos);
+    
+    // bool modificar(Tarea tarea);
+    
+    
+    Tarea leer(int pos);
+    int leerTodos(Tarea tareas[], int cantidad);
+    int getCantidadRegistros();
+    int getNuevoID();
+    
+    
+    
+  private:
+    std::string _nombreArchivo;
+};*/
 
 
 

@@ -28,8 +28,7 @@ void MenuGestionClientes()
         {
         case 1:
             {
-                ManagerClientes manCliente;
-                manCliente.agregarCliente();
+                ManagerClientes.nuevoCliente();
 								
                 
                 /*ArchivoClientes archivoNuevoCLiente("clientes.dat");

@@ -3,9 +3,16 @@
 
 using namespace std;
 
-ManagerClientes::ManagerClientes();
+ManagerClientes::ManagerClientes(){
 
+}
+	
 void ManagerClientes::nuevoCliente(){
+		
+		
+		
+		cout << "Ingrese el nombre del Cliente: " << endl; 
+		cin << _nombre;
 		
 		//FIXME
 		

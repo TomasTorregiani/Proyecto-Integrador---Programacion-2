@@ -6,42 +6,62 @@
 
 using namespace std;
 
-ArchivoClientes::ArchivoClientes(const char* n){
-    strcpy(_nombre, n);
-    _tamanioRegistro = sizeof(Cliente);
+ArchivoClientes::ArchivoClientes(const char* nombreArchivo) //constructor, recibe nombre del archivo
+: _nombreArchivo(nombreArchivo){ //la lista de inicialización asigna el parametro a _nombreArchivo.
+
 }
 
-int ArchivoClientes::agregarCliente(Cliente registro){
-    FILE *p;
-    p=fopen(_nombre, "ab");
-    if(p==nullptr){
+bool ArchivoClientes::guardarCliente(Cliente registro){ //recibre el registro de un cliente. 
+	FILE *pFile;
+	bool escribio; //uso booleano porque solo vamos a escribir de un cliente a la vez.
+	
+	pFile = fopen(_nombreArchivo, "ab"); //abre el archivo en la última posición. Si no existe, lo crea.
+
+	if (pFile == nullptr){
+		return false;
+	}
+	
+	resultado = fwrite(&registro, sizeof(Cliente), 1, pFile); //graba 1 registro de Cliente.
+	
+	fclose(pFile);
+	
+	return escribio; 	
+}
+
+//FIXME:
+
+int ArchivoClientes::buscarClientePorId(int idCliente){ 
+
+    Cliente cliente;
+
+    FILE *pFile;
+    pFile = fopen(_nombreArchivo, "rb"); //ok
+
+    if(pFile == nullptr){
         return -1;
     }
-
-    int escribio = fwrite(&registro, _tamanioRegistro, 1, p);
-    fclose(p);
-    return escribio;
-}
-
-Cliente ArchivoClientes::buscarClientePorId(int idCliente){
-    Cliente cliente;
-    FILE *p = nullptr;
-    p = fopen(_nombre, "rb");
-
-    if(p == nullptr){
-        cout << "No se pudo abrir el archivo" << endl;
-        return Cliente();
+    
+    while(fread(&cliente, sizeof(Cliente), 1, pFile)){
+    if(cliente.getIdCliente == idCliente){
+      pos = ftell(pFile)/sizeof(Tarea) - 1;
+      break;
     }
+  }
+ 
+  
+  
+    
     int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro);
     for(int i = 0; i < cantidadRegistros; i++){
         fread(&cliente, _tamanioRegistro,1,p);
-        if(cliente.getIdCliente() == idCliente){
+        if(cliente. == idCliente){
             fclose(p);
             return cliente;
         }
     }
-    fclose(p);
-    return Cliente();
+    fclose(pFile);
+    
+    return Cliente(); //??
 }
 
 int ArchivoClientes::obtenerPosicionCliente(int idCliente){

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstring>
 #include "Cliente.h"
+#include "ArchivoClientes.h"
 #include "FuncionesGlobales.h"
 
 using namespace std;
