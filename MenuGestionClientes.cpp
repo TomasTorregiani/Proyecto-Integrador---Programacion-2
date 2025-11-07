@@ -6,9 +6,11 @@
 
 using namespace std;
 
-void MenuGestionClientes(){
+void MenuGestionClientes()
+{
     int opcion;
-    while(true){
+    while(true)
+    {
         system("cls");
         cout << "**** GESTION DE CLIENTES ****" << endl;
         cout << "1) Nuevo Cliente" << endl;
@@ -22,14 +24,14 @@ void MenuGestionClientes(){
         cin >> opcion;
 
         system("cls");
-        switch(opcion){
-            case 1: {
-                Cliente nuevoCliente;
-                nuevoCliente.crearCliente();
-
-                ManagerClientes managerCliente;
-                managerCliente.agregarCliente(nuevoCliente);
-
+        switch(opcion)
+        {
+        case 1:
+            {
+                ManagerClientes manCliente;
+                manCliente.agregarCliente();
+								
+                
                 /*ArchivoClientes archivoNuevoCLiente("clientes.dat");
                 int agregado = archivoNuevoCLiente.agregarCliente(nuevoCliente);
 
@@ -40,7 +42,8 @@ void MenuGestionClientes(){
                 }*/
             }
             break;
-            case 2: {
+        case 2:
+            {
                 int idClienteAModificar;
                 cout << "Ingrese el id del cliente que quiere modificar: " << endl;
                 cin >> idClienteAModificar;
@@ -48,36 +51,48 @@ void MenuGestionClientes(){
                 ArchivoClientes clienteAModificar("clientes.dat");
                 Cliente registro = clienteAModificar.buscarClientePorId(idClienteAModificar);
                 int posicion = clienteAModificar.obtenerPosicionCliente(idClienteAModificar);
-                if(posicion == -1){
+                if(posicion == -1)
+                {
                     cout << "Error al obtener la posicion del archivo" << endl;
-                }else {
-                    if(registro.getIdCliente() != 0){
+                }
+                else
+                {
+                    if(registro.getIdCliente() != 0)
+                    {
                         registro.modificarCliente();
                         bool datosModificados = clienteAModificar.modificarDatosCliente(registro, posicion);
-                        if(datosModificados){
+                        if(datosModificados)
+                        {
                             cout << "Se modificaron los datos correctamente" << endl;
-                        }else{
+                        }
+                        else
+                        {
                             cout << "Hubo un error al actualizar los datos" << endl;
                         }
                     }
                 }
             }
             break;
-            case 3:{
+        case 3:
+            {
                 int idCliente;
                 cout << "Ingresar id de cliente: " << endl;
                 cin >> idCliente;
 
                 ArchivoClientes archivo("clientes.dat");
                 Cliente registro = archivo.buscarClientePorId(idCliente);
-                if(registro.getIdCliente() == 0){
+                if(registro.getIdCliente() == 0)
+                {
                     cout << "No se encontro ningun cliente con ese id" << endl;
-                }else{
+                }
+                else
+                {
                     registro.mostrarCliente();
                 }
             }
             break;
-            case 4:{
+        case 4:
+            {
                 cout << "**** ELIMINAR CLIENTE ****" << endl;
                 int idCliente;
                 cout << "Ingrese id cliente a eliminar" << endl;
@@ -86,32 +101,40 @@ void MenuGestionClientes(){
                 ArchivoClientes archivoC("clientes.dat");
                 int posicionClienteAEliminar = archivoC.obtenerPosicionCliente(idCliente);
 
-                if(posicionClienteAEliminar == -1){
+                if(posicionClienteAEliminar == -1)
+                {
                     cout << "Cliente no encontrado" << endl;
-                } else {
+                }
+                else
+                {
                     Cliente clienteAEliminar = archivoC.buscarClientePorId(idCliente);
                     clienteAEliminar.eliminarCliente();
 
                     bool modificarCliente = archivoC.modificarDatosCliente(clienteAEliminar, posicionClienteAEliminar);
 
-                    if(modificarCliente){
+                    if(modificarCliente)
+                    {
                         cout << "Cliente eliminado con exito" << endl;
-                    } else {
+                    }
+                    else
+                    {
                         cout << "Error al eliminar el cliente" << endl;
                     }
                 }
             }
             break;
-            case 5: {
+        case 5:
+            {
                 cout << "LISTAR LOS CLIENTES" << endl;
                 ArchivoClientes archivoC("clientes.dat");
                 archivoC.listarClientes();
             }
             break;
-            case 0:
-                cout << "Volviendo al menu principal" << endl;
+        case 0:
+            cout << "Volviendo al menu principal" << endl;
             return;
-            default: cout << "Ingrese un valor valido" << endl;
+        default:
+            cout << "Ingrese un valor valido" << endl;
             break;
         }
         system("pause");

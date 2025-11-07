@@ -77,6 +77,18 @@
 		<Unit filename="ManagerClientes.h">
 			<Option compile="1" />
 		</Unit>
+		<Unit filename="ManagerProductos.cpp" />
+		<Unit filename="ManagerProductos.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="ManagerVendedores.cpp" />
+		<Unit filename="ManagerVendedores.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="ManagerVentas.cpp" />
+		<Unit filename="ManagerVentas.h">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="MenuGestionClientes.cpp" />
 		<Unit filename="MenuGestionFacturacion.cpp" />
 		<Unit filename="MenuGestionProductos.cpp" />
