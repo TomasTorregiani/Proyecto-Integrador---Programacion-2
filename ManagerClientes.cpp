@@ -3,51 +3,76 @@
 
 using namespace std;
 
-ManagerClientes::ManagerClientes(){
+ManagerClientes::ManagerClientes()
+{
 
 }
-	
-void ManagerClientes::nuevoCliente()
-:_activo=true
-	{ 
-		//FIXME
-		Cliente cliente; 
-		//Pide todos los datos del cliente??
-		
-		cliente.setNombre();
-		cliente.setApellido();
-		cliente.setCuil();
-		cliente.setNumeroTelefono();
-		cliente.setEmail();
-		cliente.setDireccion();
-		
-		//Fin de pedir todos los datos; 
-		
-    if(ArchivoClientes.guardarCliente(cliente)){
-			cout << "El cliente se guardo correctamente" << endl;
-    }else {
-			cout << " === Error: El cliente no se guardo correctamente === " << endl;
+
+void ManagerClientes::nuevoCliente()  //crea clase, pide datos, valida y graba.
+{
+    Cliente cliente;
+    
+    _idCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + 1;
+    
+    cout << "Ingresar nombre cliente nuevo: " << endl;
+    cin >> _nombre; //con cliente.setNombre();
+    cout << "Ingresar apellido cliente nuevo: " << endl;
+    cin >> _apellido; //con cliente.setApellido();
+    cout << "Ingresar cuit cliente nuevo: " << endl;
+    cin >> _cuil;  //con cliente.setCuil();
+    cout << "Ingresar numero de telefono: " << endl;
+    cin >> _numeroTelefono;  //con cliente.setTelefono();
+    cout << "Ingresar email cliente nuevo: " << endl;
+    cin >> _email;  //con cliente.setEmail();
+    cout << "Ingresar direccion cliente nuevo: " << endl;
+    cin >> _direccion;  //con cliente.setDireccion();
+    
+    _activo = true;
+
+    if(ArchivoClientes.guardarCliente(cliente))  //se está todo okey, graba.
+    {
+        cout << "El cliente se guardo correctamente" << endl;
+    }
+    else
+    {
+        cout << " === Error: El cliente no se guardo correctamente === " << endl;
     }
 }
 
-void ManagerClientes::listarClientes(){
-	
-//TODO
-	
-}
-
-void ManagerClientes::modificarCliente(){
-	
-//TODO
-	
-}	
-
-void ManagerClientes::eliminarCliente(int id){
-	
-	int pos = _archivo.//FIXME
-	
+/*void ManagerClientes::eliminarCliente(int id)
+{
 	_activo = false;
-}
+}*/
+
+
+/*void ManagerClientes::modificarCliente()
+{
+	cout << "Ingresar nombre cliente nuevo: " << endl;
+    cin >> _nombre;
+    cout << "Ingresar apellido cliente nuevo: " << endl;
+    cin >> _apellido;
+    cout << "Ingresar cuit cliente nuevo: " << endl;
+    cin >> _cuil;
+    cout << "Ingresar tipo cliente nuevo: " << endl;
+    cin >> _tipoCliente;
+    cout << "Ingresar numero de telefono: " << endl;
+    cin >> _numeroTelefono;
+    cout << "Ingresar email cliente nuevo: " << endl;
+    cin >> _email;
+    cout << "Ingresar direccion cliente nuevo: " << endl;
+    cin >> _direccion;
+
+
+}*/
+
+/*void ManagerClientes::listarClientes()
+{
+
+
+
+}*/
+
+
 
 
 

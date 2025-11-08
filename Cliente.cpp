@@ -8,9 +8,8 @@ using namespace std;
 
 Cliente::Cliente()
 :_idCliente(0), _nombre(),
-_apellido(), _cuil(0),
-_tipoCliente(0), _numeroTelefono(0),
-_email(""), _direccion(""){}
+_apellido(), _cuil(0), _numeroTelefono(0),
+_email(""), _direccion(""), _activo = true{}
 
 Cliente::Cliente(string nombre,
             string apellido, int cuil,
@@ -27,41 +26,9 @@ Cliente::Cliente(string nombre,
     setDireccion(direccion);
     _activo = true;
 }
-void Cliente::crearCliente(){
-    _idCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + 1;
-    cout << "Ingresar nombre cliente nuevo: " << endl;
-    cin >> _nombre;
-    cout << "Ingresar apellido cliente nuevo: " << endl;
-    cin >> _apellido;
-    cout << "Ingresar cuit cliente nuevo: " << endl;
-    cin >> _cuil;
-    cout << "Ingresar tipo cliente nuevo: " << endl;
-    cin >> _tipoCliente;
-    cout << "Ingresar numero de telefono: " << endl;
-    cin >> _numeroTelefono;
-    cout << "Ingresar email cliente nuevo: " << endl;
-    cin >> _email;
-    cout << "Ingresar direccion cliente nuevo: " << endl;
-    cin >> _direccion;
-    _activo = true;
-}
-void Cliente::modificarCliente(){
-    cout << "Ingresar nombre cliente nuevo: " << endl;
-    cin >> _nombre;
-    cout << "Ingresar apellido cliente nuevo: " << endl;
-    cin >> _apellido;
-    cout << "Ingresar cuit cliente nuevo: " << endl;
-    cin >> _cuil;
-    cout << "Ingresar tipo cliente nuevo: " << endl;
-    cin >> _tipoCliente;
-    cout << "Ingresar numero de telefono: " << endl;
-    cin >> _numeroTelefono;
-    cout << "Ingresar email cliente nuevo: " << endl;
-    cin >> _email;
-    cout << "Ingresar direccion cliente nuevo: " << endl;
-    cin >> _direccion;
-}
+
 void Cliente::mostrarCliente(){
+	
     cout << "=== DATOS DEL CLIENTE ===" << endl;
     cout << "ID Cliente: " << _idCliente << endl;
     cout << "Nombre: " << _nombre << endl;
@@ -78,9 +45,10 @@ void Cliente::setApellido(string apellido){
     strncpy(_apellido, apellido.c_str(), sizeof(_apellido) - 1);
     _apellido[49] = '\0';
 }
-void Cliente::setTipoCliente(int tipoCliente){
-    _tipoCliente = tipoCliente;
+void Cliente::setCuil(int cuil){
+		_cuil = cuil;
 }
+
 void Cliente::setNumeroTelefono(int numeroTelefono){
     _numeroTelefono = numeroTelefono;
 }
@@ -104,9 +72,7 @@ string Cliente::getApellido(){
 int Cliente::getCuil(){
     return _cuil;
 }
-int Cliente::getTipoCliente(){
-    return _tipoCliente;
-}
+
 string Cliente::getEmail(){
     return _email;
 }

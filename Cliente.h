@@ -9,18 +9,16 @@ public:
     Cliente();
     Cliente(int idCliente, string nombre,string apellido, int cuil, int numeroTelefono,
 						string email, string direccion, bool activo);
-
-    void crearCliente();
-    void modificarCliente();
-    void mostrarCliente();
+    
     //Setters
     //El setter de idCliente no es necesario
     void setNombre(string nombre);
     void setApellido(string apellido);
-    //El setter de cuil no es necesario
+    void setCuil(int numeroCuil);
     void setNumeroTelefono(int numeroTelefono);
     void setEmail(string email);
     void setDireccion(string direccion);
+    void setEstado(bool estado);
 
     //Getters
     int getIdCliente();
@@ -29,8 +27,9 @@ public:
     int getCuil();
     string getEmail();
     string getDireccion();
+		bool getEstado();
 
-    void eliminarCliente();
+    
 
 protected:
 
