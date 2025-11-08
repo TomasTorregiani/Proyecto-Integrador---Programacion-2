@@ -7,24 +7,28 @@ ManagerClientes::ManagerClientes(){
 
 }
 	
-void ManagerClientes::nuevoCliente(){
-		
-		
-		
-		cout << "Ingrese el nombre del Cliente: " << endl; 
-		cin << _nombre;
-		
+void ManagerClientes::nuevoCliente()
+:_activo=true
+	{ 
 		//FIXME
+		Cliente cliente; 
+		//Pide todos los datos del cliente??
 		
-    ArchivoClientes archivoCliente("clientes.dat");
-    int agregado = archivoCliente.nuevoCliente(cliente);
-    if(agregado == 1){
-        cout << "Cliente agregado correctamente" << endl;
-    }else{
-        cout << "Error al agregar el cliente" << endl;
+		cliente.setNombre();
+		cliente.setApellido();
+		cliente.setCuil();
+		cliente.setNumeroTelefono();
+		cliente.setEmail();
+		cliente.setDireccion();
+		
+		//Fin de pedir todos los datos; 
+		
+    if(ArchivoClientes.guardarCliente(cliente)){
+			cout << "El cliente se guardo correctamente" << endl;
+    }else {
+			cout << " === Error: El cliente no se guardo correctamente === " << endl;
     }
 }
-
 
 void ManagerClientes::listarClientes(){
 	

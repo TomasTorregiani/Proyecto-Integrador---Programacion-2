@@ -1,37 +1,34 @@
 #pragma once
 #include <iostream>
+#include <cstring>
 #include "ArchivoClientes.h"
 
 class Cliente{
 public:
     //Constructores
     Cliente();
-    Cliente(std::string nombre,
-            std::string apellido, int cuil,
-            int tipoCliente, int numeroTelefono,
-            std::string email, std::string direccion);
+    Cliente(int idCliente, string nombre,string apellido, int cuil, int numeroTelefono,
+						string email, string direccion, bool activo);
 
     void crearCliente();
     void modificarCliente();
     void mostrarCliente();
     //Setters
     //El setter de idCliente no es necesario
-    void setNombre(std::string nombre);
-    void setApellido(std::string apellido);
+    void setNombre(string nombre);
+    void setApellido(string apellido);
     //El setter de cuil no es necesario
-    void setTipoCliente(int tipoCliente);
     void setNumeroTelefono(int numeroTelefono);
-    void setEmail(std::string email);
-    void setDireccion(std::string direccion);
+    void setEmail(string email);
+    void setDireccion(string direccion);
 
     //Getters
     int getIdCliente();
-    std::string getNombre();
-    std::string getApellido();
+    string getNombre();
+    string getApellido();
     int getCuil();
-    int getTipoCliente();
-    std::string getEmail();
-    std::string getDireccion();
+    string getEmail();
+    string getDireccion();
 
     void eliminarCliente();
 
@@ -42,9 +39,8 @@ private:
     char _nombre[50];
     char _apellido[50];
     int _cuil;
-    int _tipoCliente;
     int _numeroTelefono;
-    char _email[20];
-    char _direccion[20];
+    char _email[50];
+    char _direccion[50];
     bool _activo;
 };
