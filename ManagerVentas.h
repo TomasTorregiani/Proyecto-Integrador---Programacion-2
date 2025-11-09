@@ -10,7 +10,9 @@ public:
     void nuevaVenta();
     void agregarProducto(); //ojo acá.
     void listarVentas();
-    void eliminarVenta(); //sería como una nota de crédito.
+    void eliminarVenta(int idVenta); //sería como una nota de crédito.
+    void cargarCliente();
+    void modificarVenta();
 
 /*protected:
 		void mostrarVenta(Venta venta);*/

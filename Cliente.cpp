@@ -10,12 +10,14 @@ using namespace std;
 Cliente::Cliente()
 :_idCliente(0), _nombre(),
 _apellido(), _cuil(0), _numeroTelefono(0),
-_email(""), _direccion(""), _activo = true{}
+_email(""), _direccion(""), _activo(true){
 
-Cliente::Cliente(tring nombre,
-            string apellido, int cuil,
+}
+
+Cliente::Cliente(std::string nombre,
+            std::string apellido, int cuil,
             int tipoCliente, int numeroTelefono,
-            string email, string direccion)
+            std::string email, std::string direccion)
 {
     _idCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + 1;
     setNombre(nombre);
@@ -28,11 +30,11 @@ Cliente::Cliente(tring nombre,
     _activo = true;
 }
 
-void Cliente::setNombre(string nombre){
+void Cliente::setNombre(std::string nombre){
     strncpy(_nombre, nombre.c_str(), sizeof(_nombre) - 1);
     _nombre[49] = '\0';
 }
-void Cliente::setApellido(string apellido){
+void Cliente::setApellido(std::string apellido){
     strncpy(_apellido, apellido.c_str(), sizeof(_apellido) - 1);
     _apellido[49] = '\0';
 }
@@ -69,9 +71,5 @@ string Cliente::getEmail(){
 }
 string Cliente::getDireccion(){
     return _direccion;
-}
-
-void Cliente::eliminarCliente(){
-	_activo = false;
 }
 

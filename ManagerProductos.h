@@ -1,13 +1,13 @@
 #pragma once
 #include "ArchivoProductos.h"
-#include "Productos.h"
+#include "Producto.h"
 
 class ManagerProductos
 {
 
 public:
 		ManagerProducto();
-    void agregarProducto();
+    void nuevoProducto();
     void listarProductos();
     void eliminarProducto();
     void modificarProducto();	

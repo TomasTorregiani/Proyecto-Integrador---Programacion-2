@@ -1,7 +1,7 @@
 #pragma once
 #include <cstring>
+#include <string>
 #include "Cliente.h"
-#include "ManagerClientes.h"
 
 class ArchivoClientes{
 
@@ -9,11 +9,11 @@ public:
 	
     ArchivoClientes(const char* nombreArchivo = "clientes.dat");
     bool guardarCliente(Cliente registro); //ok. siempre guarda al final.
-    int buscarClientePorId(int idCliente); //INPROCESS
+    std::string buscarClientePorId(int idCliente); //INPROCESS
     bool eliminarCliente(int idCliente); //TODO
     bool modificarDatosCliente(Cliente registro, int posicion); //TODO
     
-    int getTamañoRegistro();
+    int getTamanoRegistro();
     int getCantidadRegistros();
     
     void listarClientes();
@@ -21,8 +21,8 @@ public:
 		int obtenerPosicionCliente(int idCliente);
     
 private:
-	
     const char* _nombreArchivo; //se asigna cuando llamo al constructor?
+    int _tamanioRegistro;
 };
 
 

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <string>
 #include "ArchivoClientes.h"
 #include "Cliente.h"
 #include "FuncionesGlobales.h"
@@ -38,74 +39,76 @@ bool ArchivoClientes::guardarCliente(Cliente registro)  //recibre el registro de
 
 //FIXME:
 
-int ArchivoClientes::buscarClientePorId(int idCliente)
+std::string ArchivoClientes::buscarClientePorId(int idCliente)
 {
 
     Cliente cliente;
-
+		
+		std::string nombre;
+		
     FILE *pFile;
     pFile = fopen(_nombreArchivo, "rb"); //ok
 
     if(pFile == nullptr)
     {
-        return -1;
+			return "Error al abrir el archivo" ;
     }
 
     while(fread(&cliente, sizeof(Cliente), 1, pFile))
     {
-        if(cliente.getIdCliente == idCliente)
+        if(cliente.getIdCliente() == idCliente)
         {
-            pos = ftell(pFile)/sizeof(Tarea) - 1;
+            int pos = ftell(pFile)/sizeof(Cliente) - 1; //Y qué hace después?
             break;
         }
     }
 
-    int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro);
+    int cantidadRegistros = contarRegistros(_nombreArchivo, _tamanioRegistro);
     for(int i = 0; i < cantidadRegistros; i++)
     {
-        fread(&cliente, _tamanioRegistro,1,p);
-        if(cliente. == idCliente)
+        fread(&cliente, _tamanioRegistro,1,pFile);
+        if(cliente.getIdCliente() == idCliente)
         {
-            fclose(p);
-            return cliente;
+						nombre = cliente.getNombre();
+            return nombre;
+            fclose(pFile);
         }
     }
     fclose(pFile);
-
-    return Cliente(); //??
+    return "No se encontro un cliente con el id ingresado"; 
 }
 
 int ArchivoClientes::obtenerPosicionCliente(int idCliente)
 {
-    FILE* p = nullptr;
-    p = fopen(_nombre, "rb");
-    if(p == nullptr)
+    FILE* pFile = nullptr;
+    pFile = fopen(_nombreArchivo, "rb");
+    if(pFile == nullptr)
     {
         cout << "El archivo no se abrio correctamente" << endl;
         return -1;
     }
-    fseek(p, 0, SEEK_SET);
+    fseek(pFile, 0, SEEK_SET);
     int cantidadRegistros = contarRegistros("clientes.dat", _tamanioRegistro);
     Cliente registro;
     for(int i = 0; i < cantidadRegistros; i++)
     {
-        fread(&registro, _tamanioRegistro, 1, p);
+        fread(&registro, _tamanioRegistro, 1, pFile);
         if(registro.getIdCliente() == idCliente)
         {
             cout << "Registro encontrado correctamente";
-            fclose(p);
+            fclose(pFile);
             return i;
         }
     }
     cout << "Registro no encontrado" << endl;
-    fclose(p);
+    fclose(pFile);
     return -1;
 }
 
 bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion)
 {
     FILE *p = nullptr;
-    p = fopen(_nombre, "rb+");
+    p = fopen(_nombreArchivo, "rb+");
 
     if(p == nullptr)
     {
@@ -123,7 +126,7 @@ bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion)
     return escribio;
 }
 
-void ArchivoClientes::listarClientes()
+/*void ArchivoClientes::listarClientes()
 {
     FILE* p = nullptr;
     p = fopen(_nombre, "rb");
@@ -137,9 +140,9 @@ void ArchivoClientes::listarClientes()
     for(int i = 0; i < cantidadRegistros; i++)
     {
         fread(&registro, _tamanioRegistro, 1, p);
-        registro.mostrarCliente(); //??
+        registro.mostrarCliente(); //?? <<< aca tira error.
     }
-}
+}*/
 
 /*int ArchivoClientes::eliminarCliente(int idCliente){
     FILE *p = nullptr;

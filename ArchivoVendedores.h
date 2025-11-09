@@ -8,11 +8,11 @@ class ArchivoVendedores
 public:
     ArchivoVendedores(const char* nombreArchivo = "vendedores.dat");
     bool guardarVendedor(Vendedor registro); //ok. siempre guarda al final.
-    int buscarVendedorPorId(int idVendedor); //INPROCESS
-    bool eliminarVendedor(int idVendedor); //TODO
-    bool modificarDatosVendedor(Vendedor registro, int posicion); //TODO
+    std::string buscarVendedorPorId(int idVendedor); //INPROCESS
+    bool eliminarDatosVendedor(int idVendedor); //TODO
+    int modificarDatosVendedor(Vendedor registro, int posicion); //TODO
 
-    int getTamañoRegistro();
+    int getTamanioRegistro();
     int getCantidadRegistros();
 
     void listarVendedores();
@@ -21,4 +21,5 @@ public:
     
 private:
     const char* _nombreArchivo;
+    int _tamanioRegistro;
 };

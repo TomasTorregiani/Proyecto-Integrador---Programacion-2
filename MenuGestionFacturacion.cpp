@@ -40,7 +40,7 @@ void MenuGestionFacturacion(){
                     cout << "---------------------" << endl;
 
                     Cliente nuevoCliente;
-                    nuevoCliente.cargarCliente();
+                    nuevoCliente.cargarCliente(); //debe estar en el managerVentas
                     int escribio = archivoC.agregarCliente(nuevoCliente);
                     if(escribio == 1){
                         cout << "El archivo se escribio correctamente" << endl;

@@ -7,7 +7,7 @@ using namespace std;
 void MenuGestionProductos(){
     int opcion;
     while(true){
-        system("cls")
+        system("cls");
         cout << "****"
         cout << "1) Nuevo Producto" << endl;
         cout << "2) Modificar datos producto" << endl;

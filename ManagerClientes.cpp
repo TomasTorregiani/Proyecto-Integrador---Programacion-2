@@ -1,39 +1,55 @@
 #include <iostream>
 #include <string>
-#inglude <cstring>
+#include <cstring>
 #include "ManagerClientes.h"
 #include "ArchivoClientes.h"
+#include "FuncionesGlobales.h"
 #include "Cliente.h"
 
 using namespace std;
 
 ManagerClientes::ManagerClientes()
 {
-
+	_archivo = new ArchivoClientes("clientes.dat");
 }
 
 void ManagerClientes::nuevoCliente()  //crea clase, pide datos, valida y graba.
 {
     Cliente cliente;
+    char nombre[50], apellido[50], email[50], direccion[100];
+    int idCliente, cuilCliente, telefonoCliente;
+    bool estado;
     
     _idCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + 1;
     
     cout << "Ingresar nombre cliente nuevo: " << endl;
-    cin >> _nombre; //con cliente.setNombre();
-    cout << "Ingresar apellido cliente nuevo: " << endl;
-    cin >> _apellido; //con cliente.setApellido();
-    cout << "Ingresar cuit cliente nuevo: " << endl;
-    cin >> _cuil;  //con cliente.setCuil();
-    cout << "Ingresar numero de telefono: " << endl;
-    cin >> _numeroTelefono;  //con cliente.setTelefono();
-    cout << "Ingresar email cliente nuevo: " << endl;
-    cin >> _email;  //con cliente.setEmail();
-    cout << "Ingresar direccion cliente nuevo: " << endl;
-    cin >> _direccion;  //con cliente.setDireccion();
+    cin.ignore();
+    cin.getline(nombre, 50);
+    cliente.setNombre(nombre);
     
-    _activo = true;
+    cout << "Ingresar apellido cliente nuevo: " << endl;
+    cin.getline(apellido, 50);
+		cliente.setApellido(apellido);
+		
+    cout << "Ingresar cuil cliente nuevo: " << endl;
+    cin >> cuilCliente;
+    cliente.setCuil(cuilCliente);
+    
+    cout << "Ingresar numero de telefono: " << endl;
+    cin >> telefonoCliente;
+    cliente.setNumeroTelefono(telefonoCliente);
+    
+    cout << "Ingresar email cliente nuevo: " << endl;
+    cin.ignore();
+    cin.getline(email, 50);  
+    
+    cout << "Ingresar direccion cliente nuevo: " << endl;
+    cin.getline(direccion, 50);  
+     
+    estado = true;
+    cliente.setEstado(estado);
 
-    if(ArchivoClientes.guardarCliente(cliente))  //se está todo okey, graba.
+    if(ArchivoClientes.guardarCliente(cliente))  //si está todo okey, graba.
     {
         cout << "El cliente se guardo correctamente" << endl;
     }
@@ -45,7 +61,8 @@ void ManagerClientes::nuevoCliente()  //crea clase, pide datos, valida y graba.
 
 void ManagerClientes::eliminarCliente(int idCliente)
 {
-	_activo = false;
+	/*Si */
+	
 	/*if(ArchivoClientes.eliminarCliente(int idCliente))  //se está todo okey, graba.
     {
         cout << "El cliente se guardo correctamente" << endl;

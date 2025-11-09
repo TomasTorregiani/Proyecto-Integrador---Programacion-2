@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-
+#include <string>
 
 class Vendedor{
 public:
@@ -8,7 +8,7 @@ public:
     Vendedor();
     Vendedor(int idVendedor, std::string nombre,
             std::string apellido, int numeroTelefono,
-            std::string email, std::string direccion); //Creo que directamente sacaria este constructor y dejaria uno vacio
+            std::string email, std::string direccion);
 
     void crearVendedor();
     void mostrarVendedor();

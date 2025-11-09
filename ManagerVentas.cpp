@@ -3,9 +3,9 @@
 
 using namespace std;
 
-ManagerVentas::ManagerVentas();
+ManagerVentas::ManagerVentas(){}
 
-void ManagerVentas::nuevoVenta(){
+void ManagerVentas::nuevaVenta(){
 		
 		//FIXME
 		
@@ -18,6 +18,9 @@ void ManagerVentas::nuevoVenta(){
     }
 }
 
+void ManagerVentas::cargarCliente(){
+
+}
 
 void ManagerVentas::listarVentas(){
 	
@@ -31,9 +34,9 @@ void ManagerVentas::modificarVenta(){
 	
 }	
 
-void ManagerVentas::eliminarVenta(int id){
+void ManagerVentas::eliminarVenta(int idVenta){
 	
-	int pos = _archivo.//FIXME
+	int pos = _archivo;//FIXME
 	
 	_activo = false;
 }

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-ManagerProductos::ManagerProductos();
+ManagerProductos::ManagerProductos(){};
 
 void ManagerProductos::nuevoProducto(){
 		

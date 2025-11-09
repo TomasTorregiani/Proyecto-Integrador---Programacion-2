@@ -1,6 +1,6 @@
 #pragma once
 #include "ArchivoVendedores.h"
-#include "Vendedores.h"
+#include "Vendedor.h"
 
 class ManagerVendedores
 {

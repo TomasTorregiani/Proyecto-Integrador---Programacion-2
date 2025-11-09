@@ -1,7 +1,5 @@
 #pragma once
 #include <string>
-#include "ArchivoClientes.h"
-#include "ManagerClientes.h"
 
 class Cliente{
 public:
@@ -11,7 +9,7 @@ public:
 						std::string email, std::string direccion, bool activo);
     
     //Setters
-    //El setter de idCliente no es necesario
+    //El setter de idCliente no es necesario??
     void setNombre(std::string nombre);
     void setApellido(std::string apellido);
     void setCuil(int numeroCuil);
@@ -25,6 +23,7 @@ public:
     std::string getNombre();
     std::string getApellido();
     int getCuil();
+    int getNumeroTelefono();
     std::string getEmail();
     std::string getDireccion();
 		bool getEstado();
