@@ -1,32 +1,32 @@
 #pragma once
-#include <iostream>
-#include <cstring>
+#include <string>
 #include "ArchivoClientes.h"
+#include "ManagerClientes.h"
 
 class Cliente{
 public:
     //Constructores
     Cliente();
-    Cliente(int idCliente, string nombre,string apellido, int cuil, int numeroTelefono,
-						string email, string direccion, bool activo);
+    Cliente(int idCliente, std::string nombre,std::string apellido, int cuil, int numeroTelefono,
+						std::string email, std::string direccion, bool activo);
     
     //Setters
     //El setter de idCliente no es necesario
-    void setNombre(string nombre);
-    void setApellido(string apellido);
+    void setNombre(std::string nombre);
+    void setApellido(std::string apellido);
     void setCuil(int numeroCuil);
     void setNumeroTelefono(int numeroTelefono);
-    void setEmail(string email);
-    void setDireccion(string direccion);
+    void setEmail(std::string email);
+    void setDireccion(std::string direccion);
     void setEstado(bool estado);
 
     //Getters
     int getIdCliente();
-    string getNombre();
-    string getApellido();
+    std::string getNombre();
+    std::string getApellido();
     int getCuil();
-    string getEmail();
-    string getDireccion();
+    std::string getEmail();
+    std::string getDireccion();
 		bool getEstado();
 
     

@@ -1,5 +1,9 @@
 #include <iostream>
+#include <string>
+#inglude <cstring>
 #include "ManagerClientes.h"
+#include "ArchivoClientes.h"
+#include "Cliente.h"
 
 using namespace std;
 
@@ -82,3 +86,8 @@ void ManagerClientes::mostrarCliente(int idCliente){
     cout << "Numero de telefono: " << _numeroTelefono << endl;
     cout << "Email: " << _email << endl;
 }
+
+/*void ManagerClientes::listarClientes(){
+		ArchivoClientes.listarClientes();
+		//TODO
+}*/

@@ -24,11 +24,16 @@ bool ArchivoClientes::guardarCliente(Cliente registro)  //recibre el registro de
         return false;
     }
 
-    resultado = fwrite(&registro, sizeof(Cliente), 1, pFile); //graba 1 registro de Cliente.
+    escribio = fwrite(&registro, sizeof(Cliente), 1, pFile); //graba 1 registro de Cliente.
 
+    if(escribio == true){
+			fclose(pFile);
+			return true;
+    }
+        
     fclose(pFile);
 
-    return escribio;
+    return false;
 }
 
 //FIXME:
@@ -132,7 +137,7 @@ void ArchivoClientes::listarClientes()
     for(int i = 0; i < cantidadRegistros; i++)
     {
         fread(&registro, _tamanioRegistro, 1, p);
-        registro.mostrarCliente();
+        registro.mostrarCliente(); //??
     }
 }
 

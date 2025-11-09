@@ -2,16 +2,23 @@
 
 #include "Vendedor.h"
 
-class ArchivoVendedores{
-private:
-    char _nombre[50];
-    int _tamanioRegistro;
-public:
-    ArchivoVendedores(const char *n);
-    int agregarVendedor(Vendedor vendedor);
-    Vendedor buscarVendedorPorId(int idVendedor);
-    int buscarPosicionDelVendedor(int idVendedor);
-    int modificarDatosVendedor(Vendedor registroVendedor, int posicion);
-    void listarVendedores();
-};
+class ArchivoVendedores
+{
 
+public:
+    ArchivoVendedores(const char* nombreArchivo = "vendedores.dat");
+    bool guardarVendedor(Vendedor registro); //ok. siempre guarda al final.
+    int buscarVendedorPorId(int idVendedor); //INPROCESS
+    bool eliminarVendedor(int idVendedor); //TODO
+    bool modificarDatosVendedor(Vendedor registro, int posicion); //TODO
+
+    int getTamañoRegistro();
+    int getCantidadRegistros();
+
+    void listarVendedores();
+
+		int obtenerPosicionVendedor(int idVendedor);
+    
+private:
+    const char* _nombreArchivo;
+};

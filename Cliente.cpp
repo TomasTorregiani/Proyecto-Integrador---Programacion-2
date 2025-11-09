@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <string>
 #include "Cliente.h"
 #include "ArchivoClientes.h"
 #include "FuncionesGlobales.h"
@@ -11,7 +12,7 @@ Cliente::Cliente()
 _apellido(), _cuil(0), _numeroTelefono(0),
 _email(""), _direccion(""), _activo = true{}
 
-Cliente::Cliente(string nombre,
+Cliente::Cliente(tring nombre,
             string apellido, int cuil,
             int tipoCliente, int numeroTelefono,
             string email, string direccion)

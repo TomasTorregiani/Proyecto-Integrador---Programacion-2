@@ -10,7 +10,7 @@ void ManagerVendedores::nuevoVendedor(){
 		//FIXME
 		
     ArchivoVendedores archivoVendedor("vendedores.dat");
-    int agregado = archivoVendedor.nuevoVendedor(cliente);
+    int agregado = archivoVendedor.nuevoVendedor(vendedor);
     if(agregado == 1){
         cout << "Vendedor agregado correctamente" << endl;
     }else{

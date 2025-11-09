@@ -6,27 +6,27 @@
 
 using namespace std;
 
-ArchivoVendedores::ArchivoVendedores(const char *n){
-    strcpy(_nombre, n);
+ArchivoVendedores::ArchivoVendedores(const char *nombreArchivo){
+    strcpy(_nombre, nombreArchivo);
     _tamanioRegistro = sizeof(Vendedor);
 }
 
-int ArchivoVendedores::agregarVendedor(Vendedor vendedor){
+bool ArchivoVendedores::guardarVendedor(Vendedor vendedor){
     FILE* p = nullptr;
     p = fopen(_nombre, "ab");
 
     if(p == nullptr){
         cout << "El archivo no se abrio correctamente" << endl;
-        return 0;
+        return false;
     }
 
-    int escribio = fwrite(&vendedor, _tamanioRegistro, 1, p);
-    if(escribio == 1){
+    bool escribio = fwrite(&vendedor, _tamanioRegistro, 1, p);
+    if(escribio == true){
         fclose(p);
-        return 1;
+        return true;
     }
     fclose(p);
-    return 0;
+    return false;
 }
 
 Vendedor ArchivoVendedores::buscarVendedorPorId(int idVendedor){

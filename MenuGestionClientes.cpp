@@ -1,8 +1,9 @@
 #include <iostream>
+#include <cstring>
 #include "TodosLosMenu.h"
 #include "Cliente.h"
 #include "ArchivoClientes.h"
-#include "
+
 
 using namespace std;
 
