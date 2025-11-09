@@ -8,9 +8,9 @@ class ManagerClientes
 public:
 		ManagerClientes();
     void nuevoCliente();
-    void listarClientes();
-    void eliminarCliente();
-    void modificarCliente();	
+    void mostrarCliente(int idCliente);
+    void eliminarCliente(int idCliente);
+    void modificarCliente(int idCliente);	
 
 /*protected:
 		void mostrarCliente(Cliente cliente);*/

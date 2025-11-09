@@ -39,10 +39,18 @@ void ManagerClientes::nuevoCliente()  //crea clase, pide datos, valida y graba.
     }
 }
 
-/*void ManagerClientes::eliminarCliente(int id)
+void ManagerClientes::eliminarCliente(int idCliente)
 {
 	_activo = false;
-}*/
+	/*if(ArchivoClientes.eliminarCliente(int idCliente))  //se está todo okey, graba.
+    {
+        cout << "El cliente se guardo correctamente" << endl;
+    }
+    else
+    {
+        cout << " === Error: El cliente no se guardo correctamente === " << endl;
+    }*/
+}
 
 
 /*void ManagerClientes::modificarCliente()
@@ -65,14 +73,12 @@ void ManagerClientes::nuevoCliente()  //crea clase, pide datos, valida y graba.
 
 }*/
 
-/*void ManagerClientes::listarClientes()
-{
-
-
-
-}*/
-
-
-
-
-
+void ManagerClientes::mostrarCliente(int idCliente){
+	
+    cout << "=== DATOS DEL CLIENTE ===" << endl;
+    cout << "ID Cliente: " << _idCliente << endl;
+    cout << "Nombre: " << _nombre << endl;
+    cout << "Apellido: " << _apellido << endl;
+    cout << "Numero de telefono: " << _numeroTelefono << endl;
+    cout << "Email: " << _email << endl;
+}

@@ -27,16 +27,6 @@ Cliente::Cliente(string nombre,
     _activo = true;
 }
 
-void Cliente::mostrarCliente(){
-	
-    cout << "=== DATOS DEL CLIENTE ===" << endl;
-    cout << "ID Cliente: " << _idCliente << endl;
-    cout << "Nombre: " << _nombre << endl;
-    cout << "Apellido: " << _apellido << endl;
-    cout << "Numero de telefono: " << _numeroTelefono << endl;
-    cout << "Email: " << _email << endl;
-}
-
 void Cliente::setNombre(string nombre){
     strncpy(_nombre, nombre.c_str(), sizeof(_nombre) - 1);
     _nombre[49] = '\0';
