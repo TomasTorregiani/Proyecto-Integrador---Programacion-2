@@ -7,19 +7,19 @@ using namespace std;
 
 Vendedor::Vendedor()
 : _idVendedor(0), _nombre(),
-_apellido(), _numeroTelefono(0),
-_email(""), _direccion(""){
+_apellido(), _cuilVendedor(0),_numeroTelefono(0),
+_email(""), _direccion(""), _estado (true){
 }
 
 Vendedor::Vendedor(std::string nombre,
-            std::string apellido,int numeroTelefono,
-            std::string email, std::string direccion)
+            std::string apellido,int cuilVendedor, int numeroTelefono,
+            std::string email, std::string direccion, bool estado)
 {
     setNombre(nombre);
     setApellido(apellido);
     setEmail(email);
     setDireccion(direccion);
-    _activo = true;
+    _estado = true;
 }
 
 void Vendedor::crearVendedor(){

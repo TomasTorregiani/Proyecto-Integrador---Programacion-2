@@ -76,22 +76,21 @@ void ManagerClientes::eliminarCliente(int idCliente)
 
 /*void ManagerClientes::modificarCliente()
 {
-	cout << "Ingresar nombre cliente nuevo: " << endl;
-    cin >> _nombre;
-    cout << "Ingresar apellido cliente nuevo: " << endl;
-    cin >> _apellido;
-    cout << "Ingresar cuit cliente nuevo: " << endl;
-    cin >> _cuil;
-    cout << "Ingresar tipo cliente nuevo: " << endl;
-    cin >> _tipoCliente;
-    cout << "Ingresar numero de telefono: " << endl;
-    cin >> _numeroTelefono;
-    cout << "Ingresar email cliente nuevo: " << endl;
-    cin >> _email;
-    cout << "Ingresar direccion cliente nuevo: " << endl;
-    cin >> _direccion;
 
-
+	//ingresar idCliente (lo busca y si lo encuentra muestra:)
+	//menu modificar cliente:
+	 
+			1. nombre
+					std::string nuevo_nombre = "";
+					Ingrese nuevo nombre: 
+					cin >> nuevo_nombre;
+					grabar nuevo nombre en la posición del nombre. 
+					
+			2. apellido
+		  3. cuil
+		  4. numero de telefono
+		  5. email
+		  6. direccion
 }*/
 
 void ManagerClientes::mostrarCliente(int idCliente){

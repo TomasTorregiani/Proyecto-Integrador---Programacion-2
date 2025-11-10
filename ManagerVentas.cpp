@@ -8,7 +8,7 @@ ManagerVentas ManagerVentas(){
 
 void ManagerVentas::nuevaVenta(){
 		
-		//FIXME
+		Venta venta; 
 		
     ArchivoVentas archivoVenta("ventas.dat");
     int agregado = archivoVenta.nuevoVenta(venta);
