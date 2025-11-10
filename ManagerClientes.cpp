@@ -49,7 +49,8 @@ void ManagerClientes::nuevoCliente()  //crea clase, pide datos, valida y graba.
     estado = true;
     cliente.setEstado(estado);
 
-    if(ArchivoClientes.guardarCliente(cliente))  //si está todo okey, graba.
+    ArchivoClientes registroArchivo;
+    if(registroArchivo.guardarCliente(cliente))  //si está todo okey, graba.
     {
         cout << "El cliente se guardo correctamente" << endl;
     }

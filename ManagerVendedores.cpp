@@ -50,8 +50,8 @@ void ManagerVendedores::nuevoVendedor(){
         cout << "Error al agregar el vendedor" << endl;
     }*/
     
-    
-    if(ArchivoVendedores.guardarVendedor(vendedor))  //si está todo okey, graba.
+    ArchivoVendedores registroVendedor; 
+    if(registroVendedor.guardarVendedor(vendedor))  //si está todo okey, graba.
     {
         cout << "El vendedor se guardo correctamente" << endl;
     }

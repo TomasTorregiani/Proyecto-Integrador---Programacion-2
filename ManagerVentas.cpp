@@ -11,7 +11,7 @@ void ManagerVentas::nuevaVenta(){
 		Venta venta; 
 		
     ArchivoVentas archivoVenta("ventas.dat");
-    int agregado = archivoVenta.nuevoVenta(venta);
+    int agregado = archivoVenta.agregarVenta(venta);
     if(agregado == 1){
         cout << "Venta agregada correctamente" << endl;
     }else{

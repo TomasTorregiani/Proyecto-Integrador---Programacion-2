@@ -30,7 +30,9 @@ void MenuGestionClientes()
         {
         case 1:
             {
-                ManagerClientes.nuevoCliente();
+            	ManagerClientes gestorCliente; 
+            	
+							gestorCliente.nuevoCliente();
 								
                 
                 /*ArchivoClientes archivoNuevoCLiente("clientes.dat");
