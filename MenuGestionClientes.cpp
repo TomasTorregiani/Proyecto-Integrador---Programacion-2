@@ -3,6 +3,7 @@
 #include "TodosLosMenu.h"
 #include "Cliente.h"
 #include "ArchivoClientes.h"
+#include "ManagerClientes.h"
 
 
 using namespace std;

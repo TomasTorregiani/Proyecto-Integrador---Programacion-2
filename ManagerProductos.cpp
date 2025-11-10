@@ -3,14 +3,15 @@
 
 using namespace std;
 
-ManagerProductos::ManagerProductos(){};
+ManagerProductos ManagerProductos(){
+
+}
 
 void ManagerProductos::nuevoProducto(){
 		
-		//FIXME
-		
+		Producto producto; 
     ArchivoProductos archivoProducto("productos.dat");
-    int agregado = archivoProducto.nuevoProducto(producto);
+    int agregado = archivoProducto.agregarNuevoProducto(producto);
     if(agregado == 1){
         cout << "Producto agregado correctamente" << endl;
     }else{
@@ -31,9 +32,9 @@ void ManagerProductos::modificarProducto(){
 	
 }	
 
-void ManagerProductos::eliminarProducto(int id){
+void ManagerProductos::eliminarProducto(int idProducto){
 	
-	int pos = _archivo.//FIXME
+	/*int pos = _archivo.//FIXME
 	
-	_activo = false;
+	_activo = false;*/
 }

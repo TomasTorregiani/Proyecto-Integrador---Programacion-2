@@ -9,7 +9,7 @@ public:
 		ManagerProducto();
     void nuevoProducto();
     void listarProductos();
-    void eliminarProducto();
+    void eliminarProducto(int idProducto);
     void modificarProducto();	
 
 /*protected:

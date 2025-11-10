@@ -5,9 +5,9 @@ class Cliente{
 public:
     //Constructores
     Cliente();
-    Cliente(int idCliente, std::string nombre,std::string apellido, int cuil, int numeroTelefono,
-						std::string email, std::string direccion, bool activo);
+    Cliente(int idCliente, std::string nombre,std::string apellido, int cuil, int numeroTelefono,std::string email, std::string direccion, bool estado);
     
+    int setIdCliente(); 
     //Setters
     //El setter de idCliente no es necesario??
     void setNombre(std::string nombre);
@@ -40,5 +40,5 @@ private:
     int _numeroTelefono;
     char _email[50];
     char _direccion[50];
-    bool _activo;
+    bool _estado;
 };

@@ -7,7 +7,7 @@ class ManagerVendedores
 
 public:
 		ManagerVendedores();
-    void agregarVendedor();
+    void nuevoVendedor();
     void listarVendedores();
     void modificarVendedor();
     void eliminarVendedor();

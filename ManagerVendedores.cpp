@@ -3,14 +3,15 @@
 
 using namespace std;
 
-ManagerVendedores::ManagerVendedores();
+ManagerVendedores::ManagerVendedores(){}
 
 void ManagerVendedores::nuevoVendedor(){
 		
+		Vendedor vendedor; 
 		//FIXME
 		
     ArchivoVendedores archivoVendedor("vendedores.dat");
-    int agregado = archivoVendedor.nuevoVendedor(vendedor);
+    int agregado = archivoVendedor.nuevoVendedor();
     if(agregado == 1){
         cout << "Vendedor agregado correctamente" << endl;
     }else{

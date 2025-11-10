@@ -3,7 +3,8 @@
 
 using namespace std;
 
-ManagerVentas::ManagerVentas(){}
+ManagerVentas ManagerVentas(){
+}
 
 void ManagerVentas::nuevaVenta(){
 		
@@ -36,9 +37,9 @@ void ManagerVentas::modificarVenta(){
 
 void ManagerVentas::eliminarVenta(int idVenta){
 	
-	int pos = _archivo;//FIXME
+	/*int pos = _archivo;//FIXME
 	
-	_activo = false;
+	_activo = false;*/
 }
 
 

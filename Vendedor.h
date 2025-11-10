@@ -8,7 +8,7 @@ public:
     Vendedor();
     Vendedor(int idVendedor, std::string nombre,
             std::string apellido, int numeroTelefono,
-            std::string email, std::string direccion);
+            std::string email, std::string direccion, bool estado);
 
     void crearVendedor();
     void mostrarVendedor();
@@ -42,5 +42,5 @@ private:
     int _numeroTelefono;
     char _email[20];
     char _direccion[20];
-    bool _activo;
+    bool _estado;
 };

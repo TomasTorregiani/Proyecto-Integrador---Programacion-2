@@ -20,7 +20,7 @@ void ManagerClientes::nuevoCliente()  //crea clase, pide datos, valida y graba.
     int idCliente, cuilCliente, telefonoCliente;
     bool estado;
     
-    _idCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + 1;
+    cliente.setIdCliente();
     
     cout << "Ingresar nombre cliente nuevo: " << endl;
     cin.ignore();
@@ -95,13 +95,13 @@ void ManagerClientes::eliminarCliente(int idCliente)
 }*/
 
 void ManagerClientes::mostrarCliente(int idCliente){
-	
+	/*
     cout << "=== DATOS DEL CLIENTE ===" << endl;
     cout << "ID Cliente: " << _idCliente << endl;
     cout << "Nombre: " << _nombre << endl;
     cout << "Apellido: " << _apellido << endl;
     cout << "Numero de telefono: " << _numeroTelefono << endl;
-    cout << "Email: " << _email << endl;
+    cout << "Email: " << _email << endl;*/
 }
 
 /*void ManagerClientes::listarClientes(){
