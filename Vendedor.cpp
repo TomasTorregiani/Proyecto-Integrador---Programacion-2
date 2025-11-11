@@ -34,7 +34,7 @@ void Vendedor::crearVendedor(){
     cin >> _email;
     cout << "Ingrese dirección: " << endl;
     cin >> _direccion;
-    _activo = true;
+    _estado = true;
 }
 
 void Vendedor::modificarVendedor(){
@@ -58,7 +58,7 @@ void Vendedor::mostrarVendedor(){
     cout << "Teléfono: " << _numeroTelefono << endl;
     cout << "Email: " << _email << endl;
     cout << "Dirección: " << _direccion << endl;
-    cout << "Activo: " << (_activo ? "Sí" : "No") << endl;
+    cout << "Activo: " << (_estado ? "Sí" : "No") << endl;
     }
 void Vendedor::setNombre(string nombre){
     strncpy(_nombre, nombre.c_str(), sizeof(_nombre) - 1);
@@ -98,6 +98,6 @@ string Vendedor::getDireccion(){
 }
 
 void Vendedor::eliminarVendedor(){
-	_activo = false;
+	_estado = false;
 }
 

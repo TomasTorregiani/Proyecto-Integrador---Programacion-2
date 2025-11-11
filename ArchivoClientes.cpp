@@ -8,7 +8,6 @@
 using namespace std;
 
 ArchivoClientes::ArchivoClientes(const char* nombreArchivo) //constructor, recibe nombre del archivo
-    : _nombreArchivo(nombreArchivo)  //la lista de inicialización asigna el parametro a _nombreArchivo.
 {
 
 }
@@ -39,19 +38,17 @@ bool ArchivoClientes::guardarCliente(Cliente registro)  //recibre el registro de
 
 //FIXME:
 
-std::string ArchivoClientes::buscarClientePorId(int idCliente)
+Cliente ArchivoClientes::buscarClientePorId(int idCliente)
 {
 
     Cliente cliente;
-		
-		std::string nombre;
 		
     FILE *pFile;
     pFile = fopen(_nombreArchivo, "rb"); //ok
 
     if(pFile == nullptr)
     {
-			return "Error al abrir el archivo" ;
+			return Cliente(); //devuelvo un cliente vacío. El manager despues arma el cartelito. 
     }
 
     while(fread(&cliente, sizeof(Cliente), 1, pFile))
@@ -69,13 +66,12 @@ std::string ArchivoClientes::buscarClientePorId(int idCliente)
         fread(&cliente, _tamanioRegistro,1,pFile);
         if(cliente.getIdCliente() == idCliente)
         {
-						nombre = cliente.getNombre();
-            return nombre;
-            fclose(pFile);
+        	fclose(pFile);
+					return Cliente();
         }
     }
     fclose(pFile);
-    return "No se encontro un cliente con el id ingresado"; 
+    return Cliente(); //devuelve el constructor inicializado en cero.  
 }
 
 int ArchivoClientes::obtenerPosicionCliente(int idCliente)
@@ -118,11 +114,8 @@ bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion)
 
     fseek(p, posicion*_tamanioRegistro, SEEK_SET);
     bool escribio = fwrite(&registro, _tamanioRegistro, 1, p);
-    if(escribio)
-    {
-        cout << "El registro se sobreescribio correctamente" << endl;
-    }
-    fclose(p);
+		
+		fclose(p);
     return escribio;
 }
 

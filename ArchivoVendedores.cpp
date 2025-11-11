@@ -30,12 +30,12 @@ bool ArchivoVendedores::guardarVendedor(Vendedor vendedor){
     return false;
 }
 
-std::string ArchivoVendedores::buscarVendedorPorId(int idVendedor){		
+Vendedor ArchivoVendedores::buscarVendedorPorId(int idVendedor){		
     FILE *pFile = nullptr;
     pFile = fopen(_nombreArchivo, "rb");
 
     if(pFile == nullptr){
-      return "El archivo no se abrio correctamente";
+      return Vendedor();
     }
 
     Vendedor registroVendedor;
@@ -44,8 +44,8 @@ std::string ArchivoVendedores::buscarVendedorPorId(int idVendedor){
     for(int i = 0; i < cantidadRegistros; i++){
         fread(&registroVendedor, _tamanioRegistro, 1, pFile);
         if(registroVendedor.getIdVendedor() == idVendedor){
+						return Vendedor(); 
             fclose(pFile);
-            return registroVendedor.getNombre();
         }
     }
     fclose(pFile);

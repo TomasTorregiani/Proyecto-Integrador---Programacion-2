@@ -8,7 +8,7 @@ void MenuGestionProductos(){
     int opcion;
     while(true){
         system("cls");
-        cout << "****"
+        cout << "****";
         cout << "1) Nuevo Producto" << endl;
         cout << "2) Modificar datos producto" << endl;
         cout << "3) Eliminar producto" << endl;

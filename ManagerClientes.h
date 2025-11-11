@@ -11,8 +11,7 @@ public:
     void nuevoCliente();
     void mostrarCliente(int idCliente);
     void eliminarCliente(int idCliente);
-    void modificarCliente(int idCliente);
-
+    void modificarCliente();
 		~ManagerClientes();
 /*protected:
 		void mostrarCliente(Cliente cliente);*/
