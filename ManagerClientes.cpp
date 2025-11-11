@@ -57,7 +57,7 @@ void ManagerClientes::nuevoCliente()  //crea clase, pide datos, valida y graba.
 
     bool guardoCliente = registroArchivo.guardarCliente(cliente);
 
-    if(guardoCliente)/*registroArchivo.guardarCliente(cliente))*/  //si est· todo okey, graba.
+    if(guardoCliente)/*registroArchivo.guardarCliente(cliente))*/  //si est√° todo okey, graba.
     {
         cout << "El cliente se guardo correctamente" << endl;
     }
@@ -67,27 +67,45 @@ void ManagerClientes::nuevoCliente()  //crea clase, pide datos, valida y graba.
     }
 }
 
-void ManagerClientes::eliminarCliente(int idCliente)
+void ManagerClientes::eliminarCliente()
 {
-    /*Si */
+    int idCliente;
+    cout << "Ingrese id cliente a eliminar" << endl;
+    cin >> idCliente;
 
-    /*if(ArchivoClientes.eliminarCliente(int idCliente))  //se est· todo okey, graba.
+    ArchivoClientes archivo("clientes.dat");
+    int posicionClienteAEliminar = archivo.obtenerPosicionCliente(idCliente);
+
+    if(posicionClienteAEliminar == -1)
     {
-        cout << "El cliente se guardo correctamente" << endl;
+        cout << "Cliente no encontrado" << endl;
     }
     else
     {
-        cout << " === Error: El cliente no se guardo correctamente === " << endl;
-    }*/
+				Cliente registro;
+        registro = archivo.buscarClientePorId(idCliente);
+				archivo.eliminarCliente(registro);
+				
+				
+
+        /*if(modificarCliente)
+        {
+            cout << "Cliente eliminado con exito" << endl;
+        }
+        else
+        {
+            cout << "Error al eliminar el cliente" << endl;
+        }*/
+    }
 }
 
 
 void ManagerClientes::modificarCliente()
 {
-		int idClienteAModificar;
+    int idClienteAModificar;
     cout << "Ingrese el id del cliente que quiere modificar: " << endl;
     cin >> idClienteAModificar;
-    
+
     char nombre[50], apellido[50], email[50], direccion[100];
     int idCliente, cuilCliente, telefonoCliente;
     bool estado;
@@ -135,7 +153,7 @@ void ManagerClientes::modificarCliente()
 
             estado = true;
             registro.setEstado(estado);
-            
+
             bool datosModificados = clienteAModificar.modificarDatosCliente(registro, posicion);
             if(datosModificados)
             {
@@ -155,7 +173,7 @@ void ManagerClientes::modificarCliente()
     				std::string nuevo_nombre = "";
     				Ingrese nuevo nombre:
     				cin >> nuevo_nombre;
-    				grabar nuevo nombre en la posiciÛn del nombre.
+    				grabar nuevo nombre en la posici√≥n del nombre.
     		2. apellido
     	  3. cuil
     	  4. numero de telefono
@@ -164,15 +182,39 @@ void ManagerClientes::modificarCliente()
 
 }
 
-void ManagerClientes::mostrarCliente(int idCliente)
+void ManagerClientes::mostrarCliente()
 {
-    /*
-    cout << "=== DATOS DEL CLIENTE ===" << endl;
-    cout << "ID Cliente: " << _idCliente << endl;
-    cout << "Nombre: " << _nombre << endl;
-    cout << "Apellido: " << _apellido << endl;
-    cout << "Numero de telefono: " << _numeroTelefono << endl;
-    cout << "Email: " << _email << endl;*/
+    int idCliente;
+    cout << "Ingresar id de cliente: " << endl;
+    cin >> idCliente;
+
+    ArchivoClientes archivo("clientes.dat");
+    Cliente registro = archivo.buscarClientePorId(idCliente);
+    if(registro.getIdCliente() == 0)
+    {
+        cout << "No se encontro ningun cliente con ese id" << endl;
+    }
+    else
+    {
+        cout << "================================" << endl;
+        cout << "ID Cliente: " << registro.getIdCliente() << endl;
+        cout << "CUIL: " << registro.getCuil() << endl;
+        cout << "Nombre: " << registro.getNombre() << endl;
+        cout << "Apellido: " << registro.getApellido() << endl;
+        cout << "Telefono: " << registro.getNumeroTelefono() << endl;
+        cout << "Email: " << registro.getEmail() << endl;
+        cout << "Direccion: " << registro.getDireccion() << endl;
+
+        if(registro.getEstado()==true)
+        {
+            cout << "Estado: Activo" << endl;
+        }
+        else
+        {
+            cout << "Estado: Inactivo " << endl;
+        }
+        cout << "================================" << endl;
+    }
 }
 
 /*void ManagerClientes::listarClientes(){

@@ -17,7 +17,7 @@ bool ArchivoClientes::guardarCliente(Cliente registro)  //recibre el registro de
     FILE *pFile;
     bool escribio; //uso booleano porque solo vamos a escribir de un cliente a la vez.
 
-    pFile = fopen(_nombreArchivo, "ab"); //abre el archivo en la última posición. Si no existe, lo crea.
+    pFile = fopen(_nombreArchivo, "ab"); //abre el archivo en la Ãºltima posiciÃ³n. Si no existe, lo crea.
 
     if (pFile == nullptr)
     {
@@ -48,14 +48,14 @@ Cliente ArchivoClientes::buscarClientePorId(int idCliente)
 
     if(pFile == nullptr)
     {
-			return Cliente(); //devuelvo un cliente vacío. El manager despues arma el cartelito. 
+			return Cliente(); //devuelvo un cliente vacÃ­o. El manager despues arma el cartelito. 
     }
 
     while(fread(&cliente, sizeof(Cliente), 1, pFile))
     {
         if(cliente.getIdCliente() == idCliente)
         {
-            int pos = ftell(pFile)/sizeof(Cliente) - 1; //Y qué hace después?
+            int pos = ftell(pFile)/sizeof(Cliente) - 1; //Y quÃ© hace despuÃ©s?
             break;
         }
     }
@@ -137,7 +137,7 @@ bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion)
     }
 }*/
 
-/*int ArchivoClientes::eliminarCliente(int idCliente){
+int ArchivoClientes::eliminarCliente(Cliente registro){
     FILE *p = nullptr;
     p = fopen(_nombre, "rb+");
 
@@ -146,7 +146,7 @@ bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion)
         return -1;
     }
 
-    int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro);
+    /*int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro);
     for(int i = 0; i < cantidadRegistros; i++){
         fread(&cliente, _tamanioRegistro, 1, p);
         if(cliente.getIdCliente() == idCliente){
@@ -161,8 +161,8 @@ bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion)
                 return sobreEscribio;
             }
         }
-   }
-}*/
+   }*/
+}
 
 
 

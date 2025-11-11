@@ -9,13 +9,13 @@ class ManagerClientes
 public:
 		ManagerClientes();
     void nuevoCliente();
-    void mostrarCliente(int idCliente);
-    void eliminarCliente(int idCliente);
+    void mostrarCliente();
+    void eliminarCliente();
     void modificarCliente();
 		~ManagerClientes();
 /*protected:
 		void mostrarCliente(Cliente cliente);*/
 		
 private:
-    ArchivoClientes* _archivo; //recibe un archivo de clientes para trabajar en él.
+    ArchivoClientes* _archivo; //recibe un archivo de clientes para trabajar en Ã©l.
 };
