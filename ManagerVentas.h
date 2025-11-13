@@ -7,7 +7,7 @@ class ManagerVentas
 
 public:
 		ManagerVenta();
-    void nuevaVenta();
+    void nuevaVenta(ManagerVentas registro);
     void agregarProducto(); //ojo acá.
     void listarVentas();
     void eliminarVenta(int idVenta); //sería como una nota de crédito.

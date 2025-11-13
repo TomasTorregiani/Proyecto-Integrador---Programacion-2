@@ -137,16 +137,16 @@ bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion)
     }
 }*/
 
-int ArchivoClientes::eliminarCliente(Cliente registro){
+bool ArchivoClientes::eliminarCliente(Cliente registro){
     FILE *p = nullptr;
-    p = fopen(_nombre, "rb+");
+    p = fopen(_nombreArchivo, "rb+");
 
    if(p == nullptr){
        cout << "No se logro leer el archivo" << endl;
         return -1;
     }
 
-    /*int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro);
+    /*int cantidadRegistros = contarRegistros(_nombreArchivo, _tamanioRegistro);
     for(int i = 0; i < cantidadRegistros; i++){
         fread(&cliente, _tamanioRegistro, 1, p);
         if(cliente.getIdCliente() == idCliente){

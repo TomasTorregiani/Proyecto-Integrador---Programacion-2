@@ -9,7 +9,7 @@ ManagerVentas ManagerVentas()
 {
 }
 
-void ManagerVentas::nuevaVenta()
+void ManagerVentas::nuevaVenta(ManagerVentas registro)
 {
     int idCliente;
     cout << "Ingrese id del cliente: " << endl;
@@ -23,15 +23,9 @@ void ManagerVentas::nuevaVenta()
         cout << "No se encontro ningun registro con ese id" << endl;
         cout << "Agregar Nuevo Cliente: " << endl;
         cout << "---------------------" << endl;
-
-        Cliente nuevoCliente;
-        nuevoCliente.cargarCliente(); //debe estar en el managerVentas
-        int escribio = archivoC.agregarCliente(nuevoCliente);
-        if(escribio == 1)
-        {
-            cout << "El archivo se escribio correctamente" << endl;
-            clienteParaVenta = nuevoCliente;
-        }
+        
+			registro.cargarCliente(); //mi no entender.
+			
     }
     else
     {
@@ -116,7 +110,13 @@ void ManagerVentas::nuevaVenta()
 
 void ManagerVentas::cargarCliente()
 {
-
+    Venta registroVenta;
+    int escribio = archivoC.agregarCliente(nuevoCliente);
+    if(escribio == 1)
+    {
+        cout << "El archivo se escribio correctamente" << endl;
+        clienteParaVenta = nuevoCliente;
+    }
 }
 
 void ManagerVentas::listarVentas()

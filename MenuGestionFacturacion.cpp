@@ -29,7 +29,7 @@ void MenuGestionFacturacion(){
         switch(opcion){
             case 1: {
 								ManagerVentas gestorVentas;
-								gestorVentas.nuevaVenta();
+								gestorVentas.nuevaVenta(gestorVentas);
             }
             break;
             case 2: {
