@@ -21,5 +21,5 @@ public:
 private:
 	int _dia, _mes, _anio;
 	bool anioBisiesto(int anio); //privado porque es una validación interna de la clase.
-    int diasDelMes(int mes, int anio); // idem;
+	int diasDelMes(int mes, int anio); // idem;
 };

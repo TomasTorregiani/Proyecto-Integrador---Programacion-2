@@ -6,17 +6,37 @@ class ManagerVentas
 {
 
 public:
-		ManagerVenta();
-    void nuevaVenta(ManagerVentas registro);
-    void agregarProducto(); //ojo acá.
+		ManagerVentas();
+		
+    bool nuevaVenta();
+    bool agregarFecha();
+    bool agregarVendedor();
+    bool agregarCliente();
+    bool agregarDetalleVenta(); //ojo acá. Vincular con DetalleVenta
+    void mostrarResumen(); //muestra la factura y el total. Si el usuario dá el okey, la guarda.
+     
+    bool guardarVenta(); 
+    
+		void generarFactura(); 
+    
     void listarVentas();
     void eliminarVenta(int idVenta); //sería como una nota de crédito.
-    void cargarCliente();
-    void modificarVenta();
-
-/*protected:
-		void mostrarVenta(Venta venta);*/
+    
+		~ ManagerVentas(); 
+    
+    /*Validaciones
+    bool validarStock(int idProducto, int cantidad);
+    
+    // Actualizar datos relacionados
+    bool actualizarStock(const Venta& venta);
+    
+    // Consultas y reportes
+    void listarVentas();
+    void consultarPorFecha(Fecha inicio, Fecha fin);
+    void consultarPorCliente(int idCliente);*/
+	
 		
 private:
-    ArchivoVentas _archivo; //recibe un archivo de ventas para trabajar en él.
+    ArchivoVentas _archivo; //recibe un archivo de Ventas para trabajar en él.
+    Venta _ventaActual;
 };

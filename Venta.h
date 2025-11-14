@@ -2,43 +2,42 @@
 
 #include "Vendedor.h"
 #include "Cliente.h"
+#include "Fecha.h"
+#include "DetalleVenta.h"
 
-//Declaracion adelantada
-class DetalleVenta;
+class Venta
+{
 
-class Venta{
 public:
-    //Constructores
-    Venta();
-    //Venta(int idVenta, Cliente cliente, Vendedor vendedor, std::string fecha);//Cambie para no paasarle 2 objetos enteros
-    Venta(int IdCliente, int IdVendedor, std::string fecha);
-    ~Venta(); // cuando se carga el detalle de la venta?? (DetalleVenta)
+		Venta(); 
+    Venta(int idVenta, Fecha fecha, int IdVendedor, int IdCliente, DetalleVenta detalle);
 
-    bool agregarDetalle(DetalleVenta detalle);
+    long calcularTotal();
 
-    long long calcularTotal();
-
-    //No es necesario ningun setter
-
-    //Getters
+    bool setIdVenta();
+    bool setFecha();
+    bool setIdVendedor();
+    bool setIdCliente();
+    void setDetalleVenta();
+    bool setEstado(); 
+    
     int getIdVenta();
-    int getIdCliente();
+		std::string getFecha();
     int getIdVendedor();
-    std::string getFecha();
-    int getCantidadDetalles();
-    bool getAnulada();
-    void anularVenta();
+		int getIdCliente();
+    int getDetalleVenta();
+    bool getEstado(); 
 
-protected:
+    ~Venta();
 
 private:
     int _idVenta;
-    int _idCliente;
-    int _idVendedor; //agregue el vendedor
     char _fecha[30];
+    int _idCliente;
+    int _idVendedor;
     DetalleVenta* _detalles; //Detalles es cada producto de la venta
-    int _cantidadDetalles;
-    bool _anulada;
+    bool _estado;
+    
 };
 
 

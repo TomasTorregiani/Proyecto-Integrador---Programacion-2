@@ -5,7 +5,7 @@
 #include "FuncionesGlobales.h"
 
 Venta::Venta()
-:_idVenta(0), _cantidadDetalles(0){
+:_idVenta(0), idVendedor(0), idCliente(0), _cantidadDetalles(0){
     strcpy(_fecha, "");
 }
 
@@ -17,6 +17,18 @@ Venta::Venta(int IdCliente, int IdVendedor, std::string fecha){
     _cantidadDetalles = 0;
     _detalles = nullptr;
     _anulada = false;
+
+}
+
+bool Venta::agregarVendedor(){
+
+}
+
+bool Venta::agregarCliente(){
+
+}
+
+bool Venta::agregarFecha(){
 
 }
 
