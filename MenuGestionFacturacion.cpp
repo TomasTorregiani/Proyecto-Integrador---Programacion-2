@@ -59,7 +59,7 @@ void MenuGestionFacturacion(){
                         cout << "Vendedor: " << vendedorObtenido.getNombre() << " "
                         << vendedorObtenido.getApellido() << endl;
                         cout << "Fecha: " << ventaObtenida.getFecha()<< endl;
-                        cout << "Estado de la factura: " << (ventaObtenida.getAnulada() == false ? "Vigente" : "Anulada");
+                        cout << "Estado de la factura: " << (ventaObtenida.getEstado() == false ? "Vigente" : "Anulada");
                     }
 
                     ArchivoDetalles archivo("detalle_ventas.dat");

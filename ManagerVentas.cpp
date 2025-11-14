@@ -3,6 +3,7 @@
 #include "ArchivoClientes.h"
 #include "ArchivoVendedores.h"
 #include "Venta.h"
+#include "Vendedor.h"
 
 using namespace std;
 
@@ -10,109 +11,115 @@ ManagerVentas ManagerVentas(){}
 
 bool ManagerVentas::nuevaVenta()
 {
-	_ventaActual = Venta(); 
-	
-	bool agregarFecha();
-	bool agregarVendedor();
-	bool agregarCliente();
-	bool agregarDetalleVenta();
-	void mostrarResumen();
+    Venta ventaActual;
 
-	bool guardarVenta();
+    int idCliente;
+    cout << "Ingrese id del cliente: " << endl;
+    cin >> idCliente;
 
-	void generarFactura();
-
-	void listarVentas();
-	void eliminarVenta(int idVenta);
-
-	~ManagerVenta();
-}
-
-int idCliente;
-cout << "Ingrese id del cliente: " << endl;
-cin >> idCliente;
-
-ArchivoClientes archivoC("clientes.dat");
-Cliente encontrado = archivoC.buscarClientePorId(idCliente);
-Cliente clienteParaVenta;
-if(encontrado.getIdCliente() == 0)
-{
-    cout << "No se encontro ningun registro con ese id" << endl;
-    cout << "Agregar Nuevo Cliente: " << endl;
-    cout << "---------------------" << endl;
-
-    registro.cargarCliente(); //mi no entender.
-
-}
-else
-{
-    clienteParaVenta = encontrado;
-}
-
-int idVendedor;
-cout << "Ingrese id Vendedor: " << endl;
-cin >> idVendedor;
-
-ArchivoVendedores archivoV("vendedores.dat");
-Vendedor vendedorEncontrado = archivoV.buscarVendedorPorId(idVendedor);
-Vendedor nuevoVendedor;
-if(vendedorEncontrado.getIdVendedor() == 0)
-{
-    cout << "No se encontro ningun registro con ese id" << endl;
-    cout << "Agregar Nuevo Vendedor: " << endl;
-    cout << "---------------------" << endl;
-    vendedorEncontrado.cargarVendedor();
-    int escribio = archivoV.agregarVendedor(nuevoVendedor);
-    if(escribio == 1)
+    ArchivoClientes archivoC("clientes.dat");
+    Cliente encontrado = archivoC.buscarClientePorId(idCliente);
+    Cliente clienteParaVenta;
+    if(encontrado.getIdCliente() == 0)
     {
-        cout << "Vendedor guardado correctamente" << endl;
-    }
-}
-else
-{
-    nuevoVendedor = vendedorEncontrado;
-}
-Venta nuevaVenta(clienteParaVenta.getIdCliente(), nuevoVendedor.getIdVendedor(), "11/11/1111");
-ArchivoVentas archivoVenta("ventas.dat");
-int agregoVenta = archivoVenta.agregarVenta(nuevaVenta);
-if(agregoVenta == 0 )
-{
-    cout << "Error al agregar el archivo" << endl;
-}
-else
-{
-    cout << "Venta agregada correctamente" << endl;
-}
-do
-{
-    int idProducto;
-    cout << "Ingrese id del producto a agregar: " << endl;
-    cin >> idProducto;
+        cout << "No se encontro ningun registro con ese id" << endl;
+        cout << "Agregar Nuevo Cliente: " << endl;
+        cout << "---------------------" << endl;
 
-    ArchivoProductos archivoProducto("productos.dat");
-    Producto productoAAgregar = archivoProducto.buscarProductoPorId(idProducto);
-    ArchivoDetalles archivoDetalles("detalles_venta.dat");
-    if(productoAAgregar.getIdProducto() != 0)
+        ventaActual.setIdCliente(); //mi no entender.
+
+    }
+    else
     {
-        int cantidad;
-        cout << "Ingrese la cantidad: ";
-        cin >> cantidad;
-
-        // Crear detalle con producto y cantidad
-        DetalleVenta detalle(productoAAgregar, cantidad);
-
-        // Asociar al id de la venta
-        detalle.setIdVenta(nuevaVenta.getIdVenta());
-
-        // Guardar detalle
-        archivoDetalles.agregarDetalle(detalle);
-        cout << "Detalle agregado correctamente." << endl;
+        clienteParaVenta = encontrado;
     }
-    int opcion;
-    cout << "Desea agregar productos? (1 = Si / 2 = No)" << endl;
-    cin >> opcion;
+
+    int idVendedor;
+    cout << "Ingrese id Vendedor: " << endl;
+    cin >> idVendedor;
+
+    ArchivoVendedores archivoV("vendedores.dat");
+    Vendedor vendedorEncontrado = archivoV.buscarVendedorPorId(idVendedor);
+    Vendedor nuevoVendedor;
+    if(vendedorEncontrado.getIdVendedor() == 0)
+    {
+        cout << "No se encontro ningun registro con ese id" << endl;
+        cout << "Agregar Nuevo Vendedor: " << endl;
+        cout << "---------------------" << endl;
+        vendedorEncontrado.crearVendedor();
+        int escribio = archivoV.guardarVendedor(nuevoVendedor);
+        if(escribio == 1)
+        {
+            cout << "Vendedor guardado correctamente" << endl;
+        }
+    }
+    else
+    {
+        nuevoVendedor = vendedorEncontrado;
+    }
+    Venta ventaActual(clienteParaVenta.getIdCliente(), nuevoVendedor.getIdVendedor(), "11/11/1111");
+    ArchivoVentas archivoVenta("ventas.dat");
+    int agregoVenta = archivoVenta.agregarVenta(ventaActual);
+    if(agregoVenta == 0 )
+    {
+        cout << "Error al agregar el archivo" << endl;
+    }
+    else
+    {
+        cout << "Venta agregada correctamente" << endl;
+    }
+    do
+    {
+        int idProducto;
+        cout << "Ingrese id del producto a agregar: " << endl;
+        cin >> idProducto;
+
+        ArchivoProductos archivoProducto("productos.dat");
+        Producto productoAAgregar = archivoProducto.buscarProductoPorId(idProducto);
+        ArchivoDetalles archivoDetalles("detalles_venta.dat");
+        if(productoAAgregar.getIdProducto() != 0)
+        {
+            int cantidad;
+            cout << "Ingrese la cantidad: ";
+            cin >> cantidad;
+
+            // Crear detalle con producto y cantidad
+            DetalleVenta detalle(productoAAgregar, cantidad);
+
+            // Asociar al id de la venta
+            detalle.setIdVenta(ventaActual.getIdVenta());
+
+            // Guardar detalle
+            archivoDetalles.agregarDetalle(detalle);
+            cout << "Detalle agregado correctamente." << endl;
+        }
+        int opcion;
+        cout << "Desea agregar productos? (1 = Si / 2 = No)" << endl;
+        cin >> opcion;
+    }
+    while(opcion == 1);
+
+    /*Validaciones
+    bool validarStock(int idProducto, int cantidad);
+
+    // Actualizar datos relacionados
+    bool actualizarStock(const Venta& venta);*/
+
 }
-while(opcion == 1);
+
+bool ManagerVentas::agregarDetalleVenta()
+{
+
+
+}
+
+void ManagerVentas::listarVentas() {}
+
+void ManagerVentas::eliminarVenta(int idVenta)
+{
+
+};
+
 
 /*Venta venta;
 
