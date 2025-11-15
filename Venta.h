@@ -14,7 +14,7 @@ public:
     Venta(int idCliente, int idVendedor, std::string fecha);
 
     long calcularTotal();
-    bool anularVenta(); // esto lo tendría que hacer el managerVentas.
+    bool eliminarVenta(); // esto lo tendría que hacer el managerVentas.
     bool agregarDetalle(DetalleVenta detalle);
     
     bool setIdVenta();

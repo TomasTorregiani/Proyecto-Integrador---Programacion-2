@@ -60,7 +60,7 @@ bool Venta::agregarDetalle(DetalleVenta detalle)
     return true;
 }
 
-bool Venta::anularVenta()
+bool Venta::eliminarVenta()
 {
     _estado = false;
 }

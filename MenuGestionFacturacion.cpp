@@ -50,7 +50,7 @@ void MenuGestionFacturacion(){
                     cout << "No se encontro el archivo" << endl;
                 }else{
                     Venta ventaAModificar = archivo.obtenerVenta(idVentaAEliminar);
-                    ventaAModificar.anularVenta();
+                    ventaAModificar.eliminarVenta();
                     int ventaActualizada = archivo.actualizarVentaEnPosicion(posicion, ventaAModificar);
                     if(ventaActualizada == 0){
                         cout << "No se pudo sobreescribir la venta" << endl;

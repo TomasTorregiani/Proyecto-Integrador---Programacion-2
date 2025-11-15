@@ -196,7 +196,12 @@ bool ManagerVentas::agregarDetalleVenta()
 
 void ManagerVentas::listarVentas() {}
 
-void ManagerVentas::eliminarVenta(int idVenta) {}
+void ManagerVentas::eliminarVenta(int idVenta){
+	
+	//TODO//
+	
+}
+
 
 /*Venta venta;
 
