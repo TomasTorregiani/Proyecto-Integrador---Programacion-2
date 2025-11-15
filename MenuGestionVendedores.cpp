@@ -41,7 +41,7 @@ void MenuGestionVendedores(){
                 cin >> idVendedor;
 
                 ArchivoVendedores archivoVendedor("vendedores.dat");
-                int posicionVendedor = archivoVendedor.buscarPosicionDelVendedor(idVendedor);
+                int posicionVendedor = archivoVendedor.obtenerPosicionVendedor(idVendedor);
                 if(posicionVendedor != -1){
                     Vendedor vendedorAModificar = archivoVendedor.buscarVendedorPorId(idVendedor);
                     vendedorAModificar.modificarVendedor();
@@ -76,7 +76,7 @@ void MenuGestionVendedores(){
                 cin >> idVendedor;
 
                 ArchivoVendedores archivoVendedor("vendedores.dat");
-                int posicionVendedor = archivoVendedor.buscarPosicionDelVendedor(idVendedor);
+                int posicionVendedor = archivoVendedor.obtenerPosicionVendedor(idVendedor);
                 if(posicionVendedor != -1){
                     cout << "Registro encontrado exitosamente" << endl;
                     Vendedor vendedorAEliminar = archivoVendedor.buscarVendedorPorId(idVendedor);

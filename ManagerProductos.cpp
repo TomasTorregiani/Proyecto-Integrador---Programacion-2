@@ -1,40 +1,83 @@
 #include <iostream>
 #include "ManagerProductos.h"
+#include "ArchivoProductos.h"
 
 using namespace std;
 
-ManagerProductos ManagerProductos(){
+ManagerProductos ManagerProductos(){}
 
-}
+void ManagerProductos::nuevoProducto()
+{
 
-void ManagerProductos::nuevoProducto(){
-		
-		Producto producto; 
-    ArchivoProductos archivoProducto("productos.dat");
-    int agregado = archivoProducto.agregarNuevoProducto(producto);
-    if(agregado == 1){
-        cout << "Producto agregado correctamente" << endl;
-    }else{
-        cout << "Error al agregar el producto" << endl;
+    cout << "**** NUEVO PRODUCTO ****" << endl;
+
+    Producto nuevoProducto;
+    nuevoProducto.crearNuevoProducto();
+
+    ArchivoProductos archivoProductos("productos.dat");
+    int agregoArchivo = archivoProductos.agregarNuevoProducto(nuevoProducto);
+    if(agregoArchivo == 1)
+    {
+        cout << "Archivo agregado correctamente" << endl;
+    }
+    else
+    {
+        cout << "No se agrego el archivo" << endl;
     }
 }
 
+void ManagerProductos::modificarProducto()
+{
+	cout << "**** MODIFICAR PRODUCTO ****" << endl;
 
-void ManagerProductos::listarProductos(){
+	int idProductoAModificar;
+	cout << "Ingrese id del producto a modificar: " << endl;
+	cin >> idProductoAModificar;
+
+	ArchivoProductos archivoProd("productos.dat");
+	int posicionProductoAModificar = archivoProd.buscarPosicionPorId(idProductoAModificar);
+
+	if(posicionProductoAModificar != -1){
+		cout << "Producto Encontrado" << endl;
+		Producto productoAModificar = archivoProd.buscarProductoPorId(idProductoAModificar);
+		productoAModificar.modificarProducto();
+		int agregoProducto = archivoProd.agregarProductoModificado(productoAModificar, 				posicionProductoAModificar);
+		if(agregoProducto == 1){
+				cout << "Producto agregado correctamente" << endl;
+		}else {
+				cout << "No se pudo agregar el producto" << endl;
+		}
+	}
+}
+
+void ManagerProductos::eliminarProducto(){
 	
-//TODO
+	cout << "**** ELIMINAR PRODUCTO ****" << endl;
+	
+	int idProductoAEliminar;
+	cout << "Ingrese id del producto a eliminar: " << endl;
+	cin >> idProductoAEliminar;
+	
+	ArchivoProductos archivoProd("productos.dat");
+	int posicionProductoAEliminar = archivoProd.buscarPosicionPorId(idProductoAEliminar);
+
+	if(posicionProductoAEliminar != -1){
+		cout << "Producto Encontrado" << endl;
+		Producto productoAEliminar = archivoProd.buscarProductoPorId(idProductoAEliminar);
+		productoAEliminar.eliminarProducto();
+		int agregoProducto = archivoProd.agregarProductoModificado(productoAEliminar, 				posicionProductoAEliminar);
+		if(agregoProducto == 1){
+				cout << "Producto eliminado correctamente" << endl;
+		}else {
+				cout << "No se pudo eliminar el producto" << endl;
+		}
+	}
+	
+	
 	
 }
 
-void ManagerProductos::modificarProducto(){
-	
-//TODO
-	
-}	
-
-void ManagerProductos::eliminarProducto(int idProducto){
-	
-	/*int pos = _archivo.//FIXME
-	
-	_activo = false;*/
+void ManagerProductos::listarProductos()
+{
+ //TODO//
 }

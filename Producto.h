@@ -9,7 +9,7 @@ public:
     Producto();
     Producto(int idProducto, std::string descripcion,
              std::string marca, std::string tipoProducto,
-             int cantidadDisponible, long long precio);
+             int cantidadDisponible, long precio);
 
     void crearNuevoProducto();
     void modificarProducto();
@@ -21,7 +21,7 @@ public:
     //Setter de idMarca no es necesario;
     void setTipoProducto(std::string tipoProducto);
     void setCantidadDisponible(int cantidadDisponible);
-    void setPrecio(long long precio);
+    void setPrecio(long precio);
 
     //Getters
     int getIdProducto();
@@ -29,9 +29,8 @@ public:
     std::string getMarca();
     std::string getTipoProducto();
     int getCantidadDisponible();
-    long long getPrecio();
-
-protected:
+    long getPrecio();
+    bool getEstado(); 
 
 private:
     int _idProducto;
@@ -39,6 +38,6 @@ private:
     char _marca[50];
     char _tipoProducto[50];
     int _cantidadDisponible;
-    long long _precio;
-    bool _activo;
+    long _precio;
+    bool _estado = true;
 };

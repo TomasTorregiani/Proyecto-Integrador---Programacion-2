@@ -9,6 +9,7 @@ public:
     ArchivoVendedores(const char* nombreArchivo = "vendedores.dat");
     bool guardarVendedor(Vendedor registro); //ok. siempre guarda al final.
     Vendedor buscarVendedorPorId(int idVendedor);
+    bool agregarVendedor(Vendedor registro); 
     bool eliminarDatosVendedor(int idVendedor); //TODO
     int modificarDatosVendedor(Vendedor registro, int posicion); //TODO
 

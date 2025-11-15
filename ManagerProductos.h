@@ -6,10 +6,10 @@ class ManagerProductos
 {
 
 public:
-		ManagerProducto();
+		ManagerProductos();
     void nuevoProducto();
     void listarProductos();
-    void eliminarProducto(int idProducto);
+    void eliminarProducto();
     void modificarProducto();	
 
 /*protected:

@@ -12,7 +12,7 @@ Producto::Producto(){
     strcpy(_tipoProducto, "");
     _cantidadDisponible = 0;
     _precio = 0;
-    _activo = true;
+    _estado = true;
 }
 
 Producto::Producto(int idProducto, string descripcion,
@@ -39,7 +39,7 @@ void Producto::crearNuevoProducto(){
     cin >> _cantidadDisponible;
     cout << "Ingrese precio: " << endl;
     cin >> _precio;
-    _activo = true;
+    _estado = true;
 }
 
 void Producto::modificarProducto(){
@@ -55,15 +55,19 @@ void Producto::modificarProducto(){
     cin >> _precio;
 }
 
-long long Producto::getPrecio(){
+long Producto::getPrecio(){
     return _precio;
 }
 int Producto::getIdProducto(){
     return _idProducto;
 }
 void Producto::eliminarProducto(){
-	_activo = false;
+	_estado = false;
 }
 string Producto::getDescripcion(){
     return _descripcion;
+}
+
+bool Producto::getEstado(){
+	return _estado; 
 }

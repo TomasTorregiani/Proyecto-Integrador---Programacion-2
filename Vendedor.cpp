@@ -11,7 +11,7 @@ _apellido(), _cuilVendedor(0),_numeroTelefono(0),
 _email(""), _direccion(""), _estado (true){
 }
 
-Vendedor::Vendedor(std::string nombre,
+Vendedor::Vendedor(int idVendedor, std::string nombre,
             std::string apellido,int cuilVendedor, int numeroTelefono,
             std::string email, std::string direccion, bool estado)
 {

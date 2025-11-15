@@ -12,6 +12,12 @@ ArchivoVendedores::ArchivoVendedores(const char *nombreArchivo){
 	_tamanioRegistro = sizeof(Vendedor);
 }
 
+bool ArchivoVendedores::agregarVendedor(Vendedor registro){
+
+		// TODO // 
+
+}
+
 bool ArchivoVendedores::guardarVendedor(Vendedor vendedor){
     FILE* p = nullptr;
     p = fopen(_nombreArchivo, "ab");

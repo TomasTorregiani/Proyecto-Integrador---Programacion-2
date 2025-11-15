@@ -10,10 +10,12 @@ class Venta
 
 public:
 		Venta(); 
-    Venta(int idVenta, Fecha fecha, int IdVendedor, int IdCliente, DetalleVenta detalle);
+    Venta(int idVenta, std::string fecha, int IdVendedor, int IdCliente, DetalleVenta detalle);
 
     long calcularTotal();
-
+    bool anularVenta(); // esto lo tendría que hacer el managerVentas.
+    bool agregarDetalle(DetalleVenta detalle);
+    
     bool setIdVenta();
     bool setFecha();
     bool setIdVendedor();
@@ -26,6 +28,7 @@ public:
     int getIdVendedor();
 		int getIdCliente();
     int getDetalleVenta();
+    int getCantidadDetalles();
     bool getEstado(); 
 
     ~Venta();
@@ -37,6 +40,7 @@ private:
     int _idVendedor;
     DetalleVenta* _detalles; //Detalles es cada producto de la venta
     bool _estado;
+    int _cantidadDetalles; 
     
 };
 

@@ -5,40 +5,48 @@
 #include "FuncionesGlobales.h"
 
 Venta::Venta()
-:_idVenta(0), idVendedor(0), idCliente(0), _cantidadDetalles(0){
+    :_idVenta(0), _idVendedor(0), _idCliente(0), _cantidadDetalles(0)
+{
     strcpy(_fecha, "");
 }
 
-Venta::Venta(int IdCliente, int IdVendedor, std::string fecha){
+Venta::Venta(int idVenta,  std::string fecha, int IdCliente, int IdVendedor, DetalleVenta detalle)
+{
     _idVenta = contarRegistros("ventas.dat", sizeof(Venta)) + 1;
     _idCliente = IdCliente;
     _idVendedor = IdVendedor;
     strcpy(_fecha,fecha.c_str());
     _cantidadDetalles = 0;
     _detalles = nullptr;
-    _anulada = false;
+    _estado = true;
 
 }
 
-bool Venta::agregarVendedor(){
+/*bool Venta::agregarVendedor()
+{
 
 }
 
-bool Venta::agregarCliente(){
-
+bool Venta::agregarCliente()
+{
+    
 }
 
-bool Venta::agregarFecha(){
+bool Venta::agregarFecha()
+{
 
-}
+}*/
 
-Venta::~Venta(){
+Venta::~Venta()
+{
     delete[] _detalles;
 }
 
-bool Venta::agregarDetalle(DetalleVenta detalle){
+bool Venta::agregarDetalle(DetalleVenta detalle)
+{
     DetalleVenta* nuevo = new DetalleVenta[_cantidadDetalles + 1];
-    for(int i = 0; i < _cantidadDetalles; i++){
+    for(int i = 0; i < _cantidadDetalles; i++)
+    {
         nuevo[i] = _detalles[i];
     }
     nuevo[_cantidadDetalles] = detalle;
@@ -48,32 +56,41 @@ bool Venta::agregarDetalle(DetalleVenta detalle){
     return true;
 }
 
-void Venta::anularVenta(){
-    _anulada = true;
+bool Venta::anularVenta()
+{
+    _estado = false;
 }
 
-long long Venta::calcularTotal(){
+long Venta::calcularTotal()
+{
     float total = 0;
-    for(int i = 0; i < _cantidadDetalles; i++){
+    for(int i = 0; i < _cantidadDetalles; i++)
+    {
         total += _detalles[i].getSubtotal();
     }
     return total;
 }
-int Venta::getIdVenta(){
+int Venta::getIdVenta()
+{
     return _idVenta;
 }
-int Venta::getIdCliente(){
+int Venta::getIdCliente()
+{
     return _idCliente;
 }
-int Venta::getIdVendedor(){
+int Venta::getIdVendedor()
+{
     return _idVendedor;
 }
-std::string Venta::getFecha(){
+std::string Venta::getFecha()
+{
     return _fecha;
 }
-int Venta::getCantidadDetalles(){
+int Venta::getCantidadDetalles()
+{
     return _cantidadDetalles;
 }
-bool Venta::getAnulada(){
-    return _anulada;
+bool Venta::getEstado()
+{
+    return _estado;
 }

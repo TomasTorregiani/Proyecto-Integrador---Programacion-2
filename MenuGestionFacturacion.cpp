@@ -33,47 +33,8 @@ void MenuGestionFacturacion(){
             }
             break;
             case 2: {
-                int idVenta;
-                cout << "Ingrese el id de venta: " << endl;
-                cin >> idVenta;
-
-                ArchivoVentas archivoV("ventas.dat");
-
-                Venta ventaObtenida = archivoV.obtenerVenta(idVenta);
-                if(ventaObtenida.getIdVenta() == 0){
-                    cout << "No se encontro la venta";
-
-                } else{
-                    ArchivoClientes archivoC("clientes.dat");
-                    Cliente clienteObtenido = archivoC.buscarClientePorId(ventaObtenida.getIdCliente());
-
-                    ArchivoVendedores registroArchivoVendedores("vendedores.dat");
-                    Vendedor vendedorObtenido = registroArchivoVendedores.buscarVendedorPorId(ventaObtenida.getIdVendedor());
-
-                    if(clienteObtenido.getIdCliente() == 0 || vendedorObtenido.getIdVendedor() == 0){
-                        cout << "Error al buscar cliente o vendedor";
-                    }else{
-                        //Mostramos la cabecera de la factura
-                        cout << "Cliente: " << clienteObtenido.getNombre() << " "
-                        << clienteObtenido.getApellido() << endl;
-                        cout << "Vendedor: " << vendedorObtenido.getNombre() << " "
-                        << vendedorObtenido.getApellido() << endl;
-                        cout << "Fecha: " << ventaObtenida.getFecha()<< endl;
-                        cout << "Estado de la factura: " << (ventaObtenida.getEstado() == false ? "Vigente" : "Anulada");
-                    }
-
-                    ArchivoDetalles archivo("detalle_ventas.dat");
-                    DetalleVenta detalles[50];
-
-                    int cantidadDetalles = archivo.verDetalleVenta(idVenta, detalles);
-                    for(int i = 0; i < cantidadDetalles; i++){
-                        //Mostramos los detalles de la factura
-                        cout << "Producto: " << detalles[i].getProducto().getDescripcion() << endl;
-                        cout << "Cantidad: " << detalles[i].getCantidad() << endl;
-                        cout << "Subtotal: " << detalles[i].getSubtotal() << endl;
-                        cout << "-----------------------------------" << endl;
-                    }
-                }
+								ManagerVentas gestorVentas;
+								gestorVentas.verDetalleFactura();
             }
             break;
             case 3: {
