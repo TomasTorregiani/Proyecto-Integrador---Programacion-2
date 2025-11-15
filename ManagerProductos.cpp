@@ -4,7 +4,9 @@
 
 using namespace std;
 
-ManagerProductos ManagerProductos(){}
+ManagerProductos::ManagerProductos(){
+	_archivo = new ArchivoProductos(); 
+}
 
 void ManagerProductos::nuevoProducto()
 {
@@ -80,4 +82,11 @@ void ManagerProductos::eliminarProducto(){
 void ManagerProductos::listarProductos()
 {
  //TODO//
+}
+
+ManagerProductos::~ManagerProductos(){
+	if(_archivo != nullptr){
+		delete _archivo; 
+		_archivo = nullptr;
+	}
 }

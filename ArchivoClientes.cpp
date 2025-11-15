@@ -119,6 +119,12 @@ bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion)
     return escribio;
 }
 
+int ArchivoClientes::agregarCliente(Cliente registro){
+
+	//TODO//
+
+}
+
 /*void ArchivoClientes::listarClientes()
 {
     FILE* p = nullptr;
@@ -136,6 +142,10 @@ bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion)
         registro.mostrarCliente(); //?? <<< aca tira error.
     }
 }*/
+
+void ArchivoClientes::listarClientes(){
+	//TODO//
+}
 
 bool ArchivoClientes::eliminarCliente(Cliente registro){
     FILE *p = nullptr;

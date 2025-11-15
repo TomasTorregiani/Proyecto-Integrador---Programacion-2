@@ -6,10 +6,11 @@
 #include "Venta.h"
 #include "Vendedor.h"
 #include "ArchivoProductos.h"
+#include <string>
 
 using namespace std;
 
-ManagerVentas ManagerVentas() {}
+ManagerVentas::ManagerVentas(){}
 
 bool ManagerVentas::nuevaVenta()
 {
@@ -239,5 +240,10 @@ void ManagerVentas::eliminarVenta(int idVenta)
     _activo = false;
 }*/
 
-
+ManagerVentas::~ ManagerVentas(){
+	if (_archivo != nullptr) {
+        delete _archivo;
+        _archivo = nullptr;
+	}	
+}
 

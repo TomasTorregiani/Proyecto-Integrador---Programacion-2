@@ -60,6 +60,17 @@ void Vendedor::mostrarVendedor(){
     cout << "Dirección: " << _direccion << endl;
     cout << "Activo: " << (_estado ? "Sí" : "No") << endl;
     }
+    
+void Vendedor::eliminarVendedor(){
+	_estado = false;
+}
+    
+    
+    
+void Vendedor::setCuilVendedor(int cuilVendedor){
+	_cuilVendedor = cuilVendedor;
+}    
+    
 void Vendedor::setNombre(string nombre){
     strncpy(_nombre, nombre.c_str(), sizeof(_nombre) - 1);
     _nombre[49] = '\0';
@@ -68,7 +79,6 @@ void Vendedor::setApellido(string apellido){
     strncpy(_apellido, apellido.c_str(), sizeof(_apellido) - 1);
     _apellido[49] = '\0';
 }
-
 void Vendedor::setNumeroTelefono(int numeroTelefono){
     _numeroTelefono = numeroTelefono;
 }
@@ -79,6 +89,13 @@ void Vendedor::setDireccion(string direccion){
     strncpy(_direccion, direccion.c_str(), sizeof(_direccion) - 1);
     _direccion[49] = '\0';
 }
+
+bool Vendedor::setEstado(bool estado){
+	_estado = estado;
+}
+
+
+
 
 int Vendedor::getIdVendedor(){
     return _idVendedor;
@@ -97,7 +114,4 @@ string Vendedor::getDireccion(){
     return _direccion;
 }
 
-void Vendedor::eliminarVendedor(){
-	_estado = false;
-}
 

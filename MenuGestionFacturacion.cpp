@@ -1,5 +1,6 @@
 #include <iostream>
 #include "TodosLosMenu.h"
+#include "ManagerVentas.h"
 #include "ArchivoDetalles.h"
 #include "Fecha.h"
 #include "ArchivoClientes.h"
@@ -8,7 +9,7 @@
 #include "ArchivoVendedores.h"
 #include "ArchivoVentas.h"
 #include "ArchivoProductos.h"
-#include "ManagerVentas.h"
+
 
 using namespace std;
 

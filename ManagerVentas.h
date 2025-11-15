@@ -15,7 +15,7 @@ public:
     void listarVentas();
     void eliminarVenta(int idVenta); //sería como una nota de crédito.
     
-		~ ManagerVentas(); 
+		~ManagerVentas(); 
     
     /*Consultas y reportes
     void listarVentas();
@@ -24,6 +24,6 @@ public:
 	
 		
 private:
-    ArchivoVentas _archivo; //recibe un archivo de Ventas para trabajar en él.
+    ArchivoVentas* _archivo; //recibe un archivo de Ventas para trabajar en él.
     Venta _ventaActual;
 };

@@ -4,6 +4,7 @@
 class ArchivoProductos{
 
 public:
+		ArchivoProductos();
     ArchivoProductos(const char* n);
 
     int agregarNuevoProducto(Producto nuevoProducto);

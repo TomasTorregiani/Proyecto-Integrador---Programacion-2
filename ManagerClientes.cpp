@@ -221,3 +221,11 @@ void ManagerClientes::mostrarCliente()
 		ArchivoClientes.listarClientes();
 		//TODO
 }*/
+
+ManagerClientes::~ManagerClientes()
+{
+    if (_archivo != nullptr) {
+        delete _archivo;
+        _archivo = nullptr;
+    }
+}

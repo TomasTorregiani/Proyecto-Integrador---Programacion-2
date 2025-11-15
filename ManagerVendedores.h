@@ -16,5 +16,5 @@ public:
 		void mostrarVendedor(Vendedor vendedor);*/
 		
 private:
-    ArchivoVendedores _archivo; //recibe un archivo de vendedor para trabajar en él.
+    ArchivoVendedores* _archivo; //recibe un archivo de vendedor para trabajar en él.
 };

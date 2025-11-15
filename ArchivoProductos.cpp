@@ -6,6 +6,8 @@
 
 using namespace std;
 
+ArchivoProductos::ArchivoProductos(){}
+
 ArchivoProductos::ArchivoProductos(const char* n){
     strcpy(_nombre, n);
     _tamanioRegistro = sizeof(Producto);

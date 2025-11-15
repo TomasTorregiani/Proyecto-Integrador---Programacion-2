@@ -87,3 +87,6 @@ int Cliente::getNumeroTelefono(){
 	return _numeroTelefono; 
 }
 
+bool Cliente::getEstado(){
+	return _estado;
+}
