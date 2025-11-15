@@ -2,7 +2,8 @@
 #include "TodosLosMenu.h"
 #include "Cliente.h"
 #include "ArchivoClientes.h"
-#include "
+//#include "ManagerCliente.h"
+
 
 using namespace std;
 
@@ -27,17 +28,17 @@ void MenuGestionClientes(){
                 Cliente nuevoCliente;
                 nuevoCliente.crearCliente();
 
-                ManagerClientes managerCliente;
-                managerCliente.agregarCliente(nuevoCliente);
+                //ManagerClientes managerCliente;
+                //managerCliente.agregarCliente(nuevoCliente);
 
-                /*ArchivoClientes archivoNuevoCLiente("clientes.dat");
+                ArchivoClientes archivoNuevoCLiente("clientes.dat");
                 int agregado = archivoNuevoCLiente.agregarCliente(nuevoCliente);
 
                 if(agregado == 1){
                     cout << "Cliente agregado correctamente" << endl;
                 }else{
                     cout << "Error al agregar cliente" << endl;
-                }*/
+                }
             }
             break;
             case 2: {

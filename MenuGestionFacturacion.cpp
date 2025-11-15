@@ -8,6 +8,8 @@
 #include "ArchivoVendedores.h"
 #include "ArchivoVentas.h"
 #include "ArchivoProductos.h"
+#include "Producto.h"
+#include "ArchivoProductos.h"
 
 using namespace std;
 
@@ -27,6 +29,7 @@ void MenuGestionFacturacion(){
         system("cls");
         switch(opcion){
             case 1: {
+                cout << "**** NUEVA VENTA ****" << endl;
                 int idCliente;
                 cout << "Ingrese id del cliente: " << endl;
                 cin >> idCliente;
@@ -40,7 +43,7 @@ void MenuGestionFacturacion(){
                     cout << "---------------------" << endl;
 
                     Cliente nuevoCliente;
-                    nuevoCliente.cargarCliente();
+                    nuevoCliente.crearCliente();
                     int escribio = archivoC.agregarCliente(nuevoCliente);
                     if(escribio == 1){
                         cout << "El archivo se escribio correctamente" << endl;
@@ -56,20 +59,17 @@ void MenuGestionFacturacion(){
 
                 ArchivoVendedores archivoV("vendedores.dat");
                 Vendedor vendedorEncontrado = archivoV.buscarVendedorPorId(idVendedor);
-                Vendedor nuevoVendedor;
                 if(vendedorEncontrado.getIdVendedor() == 0){
                     cout << "No se encontro ningun registro con ese id" << endl;
                     cout << "Agregar Nuevo Vendedor: " << endl;
                     cout << "---------------------" << endl;
-                    vendedorEncontrado.cargarVendedor();
-                    int escribio = archivoV.agregarVendedor(nuevoVendedor);
+                    vendedorEncontrado.crearVendedor();
+                    int escribio = archivoV.agregarVendedor(vendedorEncontrado);
                     if(escribio == 1){
                         cout << "Vendedor guardado correctamente" << endl;
                     }
-                }else {
-                    nuevoVendedor = vendedorEncontrado;
                 }
-                Venta nuevaVenta(clienteParaVenta.getIdCliente(), nuevoVendedor.getIdVendedor(), "11/11/1111");
+                Venta nuevaVenta(clienteParaVenta.getIdCliente(), vendedorEncontrado.getIdVendedor(), "11/11/1111");
                 ArchivoVentas archivoVenta("ventas.dat");
                 int agregoVenta = archivoVenta.agregarVenta(nuevaVenta);
                 if(agregoVenta == 0 ){
@@ -77,6 +77,7 @@ void MenuGestionFacturacion(){
                 }else {
                     cout << "Venta agregada correctamente" << endl;
                 }
+                int opcion;
                 do{
                     int idProducto;
                     cout << "Ingrese id del producto a agregar: " << endl;
@@ -86,6 +87,7 @@ void MenuGestionFacturacion(){
                     Producto productoAAgregar = archivoProducto.buscarProductoPorId(idProducto);
                     ArchivoDetalles archivoDetalles("detalles_venta.dat");
                     if(productoAAgregar.getIdProducto() != 0){
+                        cout << "Producto encontrado" << endl;
                         int cantidad;
                         cout << "Ingrese la cantidad: ";
                         cin >> cantidad;
@@ -93,21 +95,32 @@ void MenuGestionFacturacion(){
                         // Crear detalle con producto y cantidad
                         DetalleVenta detalle(productoAAgregar, cantidad);
 
-                         // Asociar al id de la venta
+                        // Asociar al id de la venta
                         detalle.setIdVenta(nuevaVenta.getIdVenta());
 
                         // Guardar detalle
                         archivoDetalles.agregarDetalle(detalle);
                         cout << "Detalle agregado correctamente." << endl;
+                    }else{
+                        cout << "Producto no encontrado" << endl;
+                        Producto nuevoProducto;
+                        nuevoProducto.crearNuevoProducto();
+                        ArchivoProductos archivoP("productos.dat");
+                        int productoAgregado = archivoP.agregarNuevoProducto(nuevoProducto);
+                        if(productoAgregado != 0){
+                            cout << "Producto agregado correctamente" << endl;
+                        }else{
+                            cout << "Error al agregar el nuevo producto" << endl;
+                        }
                     }
-                    int opcion;
-                    cout << "Desea agregar productos? (1 = Si / 2 = No)" << endl;
+                    cout << "Desea agregar mas productos? (1 = Si / 2 = No)" << endl;
                     cin >> opcion;
                 }while(opcion == 1);
 
             }
             break;
             case 2: {
+                cout << "**** VER DETALLE DE FACTURA ****" << endl;
                 int idVenta;
                 cout << "Ingrese el id de venta: " << endl;
                 cin >> idVenta;
@@ -115,8 +128,12 @@ void MenuGestionFacturacion(){
                 ArchivoVentas archivoV("ventas.dat");
 
                 Venta ventaObtenida = archivoV.obtenerVenta(idVenta);
+                cout << "DEBUG: ID Venta obtenida: " << ventaObtenida.getIdVenta() << endl;
+                cout << "DEBUG: ID Cliente: " << ventaObtenida.getIdCliente() << endl;
+                cout << "DEBUG: ID Vendedor: " << ventaObtenida.getIdVendedor() << endl;
+                cout << "DEBUG: Fecha: " << ventaObtenida.getFecha() << endl;
                 if(ventaObtenida.getIdVenta() == 0){
-                    cout << "No se encontro la venta";
+                    cout << "No se encontro la venta" << endl;
 
                 } else{
                     ArchivoClientes archivoC("clientes.dat");
@@ -134,13 +151,14 @@ void MenuGestionFacturacion(){
                         cout << "Vendedor: " << vendedorObtenido.getNombre() << " "
                         << vendedorObtenido.getApellido() << endl;
                         cout << "Fecha: " << ventaObtenida.getFecha()<< endl;
-                        cout << "Estado de la factura: " << (ventaObtenida.getAnulada() == false ? "Vigente" : "Anulada");
+                        cout << "Estado de la factura: " << (ventaObtenida.getAnulada() == false ? "Vigente" : "Anulada") << endl;
                     }
 
-                    ArchivoDetalles archivo("detalle_ventas.dat");
+                    ArchivoDetalles archivo("detalles_venta.dat");
                     DetalleVenta detalles[50];
 
                     int cantidadDetalles = archivo.verDetalleVenta(idVenta, detalles);
+                    cout << "**** Detalles de la factura ****" << endl;
                     for(int i = 0; i < cantidadDetalles; i++){
                         //Mostramos los detalles de la factura
                         cout << "Producto: " << detalles[i].getProducto().getDescripcion() << endl;

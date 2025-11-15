@@ -8,15 +8,13 @@ class DetalleVenta;
 
 class Venta{
 public:
-    //Constructores
     Venta();
-    //Venta(int idVenta, Cliente cliente, Vendedor vendedor, std::string fecha);//Cambie para no paasarle 2 objetos enteros
     Venta(int IdCliente, int IdVendedor, std::string fecha);
     ~Venta(); // cuando se carga el detalle de la venta?? (DetalleVenta)
 
     bool agregarDetalle(DetalleVenta detalle);
 
-    long long calcularTotal();
+    void calcularTotal();
 
     //No es necesario ningun setter
 
@@ -26,6 +24,7 @@ public:
     int getIdVendedor();
     std::string getFecha();
     int getCantidadDetalles();
+    float getTotal();
     bool getAnulada();
     void anularVenta();
 
@@ -38,6 +37,7 @@ private:
     char _fecha[30];
     DetalleVenta* _detalles; //Detalles es cada producto de la venta
     int _cantidadDetalles;
+    float _totalVenta;
     bool _anulada;
 };
 

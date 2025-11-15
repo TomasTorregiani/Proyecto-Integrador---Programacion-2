@@ -40,13 +40,18 @@ void Venta::anularVenta(){
     _anulada = true;
 }
 
-long long Venta::calcularTotal(){
+void Venta::calcularTotal(){
     float total = 0;
     for(int i = 0; i < _cantidadDetalles; i++){
         total += _detalles[i].getSubtotal();
     }
-    return total;
+    _totalVenta = total;
 }
+
+float Venta::getTotal(){
+    return _totalVenta;
+}
+
 int Venta::getIdVenta(){
     return _idVenta;
 }

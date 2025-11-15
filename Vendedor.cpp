@@ -15,6 +15,7 @@ Vendedor::Vendedor(std::string nombre,
             std::string apellido,int numeroTelefono,
             std::string email, std::string direccion)
 {
+    _idVendedor = contarRegistros("vendedores.dat" , sizeof(Vendedor)) + 1;
     setNombre(nombre);
     setApellido(apellido);
     setEmail(email);
@@ -28,11 +29,11 @@ void Vendedor::crearVendedor(){
     cin >> _nombre;
     cout << "Ingrese apellido: " << endl;
     cin >> _apellido;
-    cout << "Ingrese número de teléfono: " << endl;
+    cout << "Ingrese numero de telefono: " << endl;
     cin >> _numeroTelefono;
     cout << "Ingrese email: " << endl;
     cin >> _email;
-    cout << "Ingrese dirección: " << endl;
+    cout << "Ingrese direccion: " << endl;
     cin >> _direccion;
     _activo = true;
 }
@@ -42,11 +43,11 @@ void Vendedor::modificarVendedor(){
     cin >> _nombre;
     cout << "Ingrese apellido: " << endl;
     cin >> _apellido;
-    cout << "Ingrese número de teléfono: " << endl;
+    cout << "Ingrese número de telefono: " << endl;
     cin >> _numeroTelefono;
     cout << "Ingrese email: " << endl;
     cin >> _email;
-    cout << "Ingrese dirección: " << endl;
+    cout << "Ingrese direccion: " << endl;
     cin >> _direccion;
 }
 
@@ -55,9 +56,9 @@ void Vendedor::mostrarVendedor(){
     cout << "ID: " << _idVendedor << endl;
     cout << "Nombre: " << _nombre << endl;
     cout << "Apellido: " << _apellido << endl;
-    cout << "Teléfono: " << _numeroTelefono << endl;
+    cout << "Telefono: " << _numeroTelefono << endl;
     cout << "Email: " << _email << endl;
-    cout << "Dirección: " << _direccion << endl;
+    cout << "Direccion: " << _direccion << endl;
     cout << "Activo: " << (_activo ? "Sí" : "No") << endl;
     }
 void Vendedor::setNombre(string nombre){
@@ -96,8 +97,9 @@ string Vendedor::getEmail(){
 string Vendedor::getDireccion(){
     return _direccion;
 }
-
 void Vendedor::eliminarVendedor(){
 	_activo = false;
 }
-
+bool Vendedor::getEstado(){
+    return _activo;
+}

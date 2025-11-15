@@ -55,17 +55,20 @@ void MenuGestionVendedores(){
                 }
             break;
             case 3: {
-                cout << "**** BUSCAR VENDEDOR POR ID ****";
+                cout << "**** BUSCAR VENDEDOR POR ID ****" << endl;
                 int idVendedor;
                 cout << "Ingrese id del vendedor: " << endl;
                 cin >> idVendedor;
 
-                ArchivoVendedores archivoVendedor("vendedor.dat");
+                ArchivoVendedores archivoVendedor("vendedores.dat");
                 Vendedor registroVendedor = archivoVendedor.buscarVendedorPorId(idVendedor);
                 if(registroVendedor.getIdVendedor() == 0){
                     cout << "No se encontro el vendedor" << endl;
                 }else {
-                    cout << "El vendedor se encontro correctamente" << endl;
+                    cout << "Vendedor encontrado:" << endl;
+                    cout << "Nombre: " << registroVendedor.getNombre() << endl;
+                    cout << "Apellido: " << registroVendedor.getApellido() << endl;
+                    cout << "Estado: " << (registroVendedor.getEstado() == 1 ? "Activo" : "Inactivo") << endl;
                 }
             }
             break;
@@ -102,6 +105,9 @@ void MenuGestionVendedores(){
             break;
             case 0: cout << "Volviendo al menu principal..." << endl;
             return;
+            default: cout << "Ingrese un valor valido" << endl;
+            break;
         }
+        system("pause");
     }
 }

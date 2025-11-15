@@ -10,7 +10,8 @@ public:
     ArchivoVentas(const char* n);
     int agregarVenta(Venta& venta);
     Venta obtenerVenta(int idVenta);
+    Venta *obtenerTodasLasVentas(int cantidadVentas);
     int buscarPosicionPorID(int idVenta);
     int actualizarVentaEnPosicion(int posicion, Venta& venta);
-    Cliente obtenerCliente(int idCliente);
+    Cliente obtenerCliente(int idCliente); //Este metodo se borra?
 };

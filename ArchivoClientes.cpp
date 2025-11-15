@@ -57,7 +57,7 @@ int ArchivoClientes::obtenerPosicionCliente(int idCliente){
     for(int i = 0; i < cantidadRegistros; i++){
         fread(&registro, _tamanioRegistro, 1, p);
         if(registro.getIdCliente() == idCliente){
-            cout << "Registro encontrado correctamente";
+            cout << "Registro encontrado correctamente" << endl; //Sacar estos cout del archivo
             fclose(p);
             return i;
         }
@@ -90,6 +90,7 @@ void ArchivoClientes::listarClientes(){
     p = fopen(_nombre, "rb");
     if(p == nullptr){
         cout << "El archivo no se abrio correctamente" << endl;
+        return;
     }
     fseek(p, 0, SEEK_SET);
     int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro);
@@ -98,6 +99,26 @@ void ArchivoClientes::listarClientes(){
         fread(&registro, _tamanioRegistro, 1, p);
         registro.mostrarCliente();
     }
+    fclose(p);
+}
+
+Cliente* ArchivoClientes::obtenerClientes(int cantidadClientes){
+    FILE* p = nullptr;
+    p = fopen(_nombre, "rb");
+    if(p == nullptr){
+        cout << "No se abrio correctamente el archivo" << endl;
+        return nullptr;
+    }
+    fseek(p, 0, SEEK_SET);
+    Cliente* arrayClientes;
+    arrayClientes = new Cliente[cantidadClientes];
+    Cliente registroCliente;
+    for(int i = 0; i < cantidadClientes; i++){
+        fread(&registroCliente, _tamanioRegistro, 1, p);
+        arrayClientes[i] = registroCliente;
+    }
+    fclose(p);
+    return arrayClientes;
 }
 
 //int ArchivoClientes::eliminarCliente(int idCliente){
