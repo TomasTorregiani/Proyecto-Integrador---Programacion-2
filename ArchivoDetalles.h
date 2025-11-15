@@ -1,5 +1,4 @@
 #pragma once
-
 #include "DetalleVenta.h"
 #include "Venta.h"
 

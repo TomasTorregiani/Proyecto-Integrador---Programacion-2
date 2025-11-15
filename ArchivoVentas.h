@@ -1,5 +1,3 @@
-#pragma once
-
 #include "Venta.h"
 
 class ArchivoVentas{

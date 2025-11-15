@@ -15,16 +15,15 @@ Producto::Producto(){
     _estado = true;
 }
 
-Producto::Producto(int idProducto, string descripcion,
-             string marca, string tipoProducto,
-             int cantidadDisponible, long long precio){
+Producto::Producto(int idProducto, string descripcion, string marca, string tipoProducto,
+int cantidadDisponible, long precio){
 
-                    _idProducto = idProducto; //Mejorar el id para que sea automatico y autoincrementable
-                    strcpy(_descripcion, descripcion.c_str());
-                    strcpy(_marca, marca.c_str());
-                    strcpy(_tipoProducto, tipoProducto.c_str());
-                    _cantidadDisponible = cantidadDisponible;
-                    _precio = precio;
+_idProducto = idProducto; //Mejorar el id para que sea automatico y autoincrementable
+strcpy(_descripcion, descripcion.c_str());
+strcpy(_marca, marca.c_str());
+strcpy(_tipoProducto, tipoProducto.c_str());
+_cantidadDisponible = cantidadDisponible;
+_precio = precio;
 }
 
 void Producto::crearNuevoProducto(){

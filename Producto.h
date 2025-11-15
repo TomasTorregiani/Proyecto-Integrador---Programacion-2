@@ -7,9 +7,7 @@ class Producto{
 public:
     //Constructores
     Producto();
-    Producto(int idProducto, std::string descripcion,
-             std::string marca, std::string tipoProducto,
-             int cantidadDisponible, long precio);
+    Producto(int idProducto, std::string descripcion, std::string marca, std::string tipoProducto,int cantidadDisponible, long precio);
 
     void crearNuevoProducto();
     void modificarProducto();

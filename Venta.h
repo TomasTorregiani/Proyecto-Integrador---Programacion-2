@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Vendedor.h"
 #include "Cliente.h"
 #include "Fecha.h"
