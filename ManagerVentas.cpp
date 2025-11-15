@@ -30,7 +30,9 @@ bool ManagerVentas::nuevaVenta()
         cout << "---------------------" << endl;
 
         Cliente nuevoCliente;
+        
         nuevoCliente.cargarCliente();
+        
         int escribio = archivoC.agregarCliente(nuevoCliente);
         if(escribio == 1)
         {
