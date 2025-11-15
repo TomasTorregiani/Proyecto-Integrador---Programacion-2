@@ -7,7 +7,8 @@ public:
     Cliente();
     Cliente(int idCliente, std::string nombre,std::string apellido, int cuil, int numeroTelefono,std::string email, std::string direccion, bool estado);
     
-    int setIdCliente(); 
+    int setIdCliente();
+    void cargarCliente();
     //Setters
     //El setter de idCliente no es necesario??
     void setNombre(std::string nombre);
