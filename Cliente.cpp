@@ -59,6 +59,10 @@ int Cliente::setIdCliente(){
 	_idCliente =  contarRegistros("clientes.dat", sizeof(Cliente)) + 1;
 }
 
+bool Cliente::setEstado(bool estado){
+	_estado = estado;
+}
+
 int Cliente::getIdCliente(){
     return _idCliente;
 }
@@ -77,5 +81,9 @@ string Cliente::getEmail(){
 }
 string Cliente::getDireccion(){
     return _direccion;
+}
+
+int Cliente::getNumeroTelefono(){
+	return _numeroTelefono; 
 }
 

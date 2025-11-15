@@ -17,7 +17,7 @@ public:
     void setNumeroTelefono(int numeroTelefono);
     void setEmail(std::string email);
     void setDireccion(std::string direccion);
-    void setEstado(bool estado);
+    bool setEstado(bool estado);
 
     //Getters
     int getIdCliente();

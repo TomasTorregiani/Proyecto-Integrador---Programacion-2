@@ -10,6 +10,10 @@ Venta::Venta()
     strcpy(_fecha, "");
 }
 
+Venta::Venta(int idCliente, int idVendedor, std::string fecha){
+	
+}
+
 Venta::Venta(int idVenta,  std::string fecha, int IdCliente, int IdVendedor, DetalleVenta detalle)
 {
     _idVenta = contarRegistros("ventas.dat", sizeof(Venta)) + 1;

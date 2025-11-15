@@ -3,6 +3,7 @@
 #include "Cliente.h"
 #include "Fecha.h"
 #include "DetalleVenta.h"
+#include <string>
 
 class Venta
 {
@@ -10,6 +11,7 @@ class Venta
 public:
 		Venta(); 
     Venta(int idVenta, std::string fecha, int IdVendedor, int IdCliente, DetalleVenta detalle);
+    Venta(int idCliente, int idVendedor, std::string fecha);
 
     long calcularTotal();
     bool anularVenta(); // esto lo tendría que hacer el managerVentas.

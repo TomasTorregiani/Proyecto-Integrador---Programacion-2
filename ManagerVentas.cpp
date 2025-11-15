@@ -57,7 +57,9 @@ bool ManagerVentas::nuevaVenta()
         cout << "No se encontro ningun registro con ese id" << endl;
         cout << "Agregar Nuevo Vendedor: " << endl;
         cout << "---------------------" << endl;
+        
         vendedorEncontrado.crearVendedor();
+        
         int escribio = archivoV.guardarVendedor(nuevoVendedor);
         if(escribio == 1)
         {
@@ -69,8 +71,8 @@ bool ManagerVentas::nuevaVenta()
         nuevoVendedor = vendedorEncontrado;
     }
 
-    // ?????? //
-
+		//Recien aca se crea la VENTA.
+		
     Venta nuevaVenta(clienteParaVenta.getIdCliente(), nuevoVendedor.getIdVendedor(), "11/11/1111");
     ArchivoVentas archivoVenta("ventas.dat");
 
