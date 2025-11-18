@@ -7,65 +7,143 @@
 using namespace std;
 
 ManagerClientes::ManagerClientes()
-: _archivoCliente("clientes.dat"){
+    : _archivoCliente("clientes.dat")
+{
 }
 
-Cliente ManagerClientes::crearNuevoCliente(){
-
+Cliente ManagerClientes::crearNuevoCliente()
+{
     string nombre, apellido, email, direccion;
     int cuil, tipoCliente, numeroTelefono;
     Cliente nuevoCliente;
-
     int idNuevoCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + 1;
-
     nuevoCliente.setIdCliente(idNuevoCliente);
     cout << "Ingresar nombre cliente nuevo: " << endl;
     cin >> nombre;
-
     nuevoCliente.setNombre(nombre);
     cout << "Ingresar apellido cliente nuevo: " << endl;
     cin >> apellido;
-
     nuevoCliente.setApellido(apellido);
     cout << "Ingresar cuit cliente nuevo: " << endl;
     cin >> cuil;
-
     nuevoCliente.setCuilCliente(cuil);
     cout << "Ingresar tipo cliente nuevo: " << endl;
     cin >> tipoCliente;
-
     nuevoCliente.setTipoCliente(tipoCliente);
     cout << "Ingresar numero de telefono: " << endl;
     cin >> numeroTelefono;
-
     nuevoCliente.setNumeroTelefono(numeroTelefono);
     cout << "Ingresar email cliente nuevo: " << endl;
     cin >> email;
-
     nuevoCliente.setEmail(email);
     cout << "Ingresar direccion cliente nuevo: " << endl;
     cin >> direccion;
-
     nuevoCliente.setDireccion(direccion);
     nuevoCliente.setActivo(true);
     return nuevoCliente;
 }
-int ManagerClientes::crearCliente(){
+
+int ManagerClientes::crearCliente()
+{
     Cliente nuevoCliente = crearNuevoCliente();
     int clienteAgregado = _archivoCliente.agregarCliente(nuevoCliente);
     return clienteAgregado;
 }
-int ManagerClientes::modificarCliente(int idCliente){
-    Cliente registro = _archivoCliente.buscarClientePorId(idCliente);
-    int posicion = _archivoCliente.obtenerPosicionCliente(idCliente);
+
+Cliente ManagerClientes::pedirNuevosDatos()
+{
+    string nombre, apellido, email, direccion;
+    int cuil, tipoCliente, numeroTelefono;
+    Cliente clienteModificado;
+    cout << "Ingresar nombre cliente nuevo: " << endl;
+    cin >> nombre;
+    clienteModificado.setNombre(nombre);
+    cout << "Ingresar apellido cliente nuevo: " << endl;
+    cin >> apellido;
+    clienteModificado.setApellido(apellido);
+    cout << "Ingresar cuit cliente nuevo: " << endl;
+    cin >> cuil;
+    clienteModificado.setCuilCliente(cuil);
+    cout << "Ingresar tipo cliente nuevo: " << endl;
+    cin >> tipoCliente;
+    clienteModificado.setTipoCliente(tipoCliente);
+    cout << "Ingresar numero de telefono: " << endl;
+    cin >> numeroTelefono;
+    clienteModificado.setNumeroTelefono(numeroTelefono);
+    cout << "Ingresar email cliente nuevo: " << endl;
+    cin >> email;
+    clienteModificado.setEmail(email);
+    cout << "Ingresar direccion cliente nuevo: " << endl;
+    cin >> direccion;
+    clienteModificado.setDireccion(direccion);
+    clienteModificado.setActivo(true);
+    return clienteModificado;
+}
+
+void ManagerClientes::modificarCliente()
+{
+    int idClienteAModificar;
+    cout << "Ingrese el id del cliente que quiere modificar: " << endl;
+    cin >> idClienteAModificar;
+    Cliente registro = _archivoCliente.buscarClientePorId(idClienteAModificar);
+    int idOriginal = registro.getIdCliente();
+    int posicion = _archivoCliente.obtenerPosicionCliente(idClienteAModificar);
     int datosModificados = 0;
-    if(posicion == -1){
-        cout << "Error al obtener la posicion del archivo" << endl;
-    }else {
-        if(registro.getIdCliente() != 0){
-            registro.modificarCliente();
+    if(posicion == -1)
+    {
+        cout << "Error al encontrar el cliente" << endl;
+    }
+    else
+    {
+        if(registro.getIdCliente() != 0)
+        {
+            registro = pedirNuevosDatos();
+            registro.setIdCliente(idOriginal);//Para mantener el id, porque al cambiar el objeto completo este se perdia.
             datosModificados = _archivoCliente.modificarDatosCliente(registro, posicion);
         }
     }
-    return datosModificados;
+    if(datosModificados > 0)
+    {
+        cout << "Se modificaron los datos correctamente" << endl;
+    }
+    else
+    {
+        cout << "Hubo un error al actualizar los datos" << endl;
+    }
 }
+
+
+Cliente ManagerClientes::buscarClientePorId(int idCliente)
+{
+    Cliente clienteObtenido = _archivoCliente.buscarClientePorId(idCliente);
+    return clienteObtenido;
+}
+
+int ManagerClientes::eliminarCliente(int idCliente)
+{
+    int posicionClienteAEliminar = _archivoCliente.obtenerPosicionCliente(idCliente);
+    if(posicionClienteAEliminar == -1)
+    {
+        return 0;
+    }
+    Cliente clienteAEliminar = _archivoCliente.buscarClientePorId(idCliente);
+    clienteAEliminar.eliminarCliente();
+    int clienteEliminado = _archivoCliente.modificarDatosCliente(clienteAEliminar, posicionClienteAEliminar);
+    return clienteEliminado;
+}
+
+int ManagerClientes::activarCliente(int idCliente)
+{
+    int posicionCliente = _archivoCliente.obtenerPosicionCliente(idCliente);
+    if(posicionCliente == -1)
+    {
+        return 0;
+    }
+    Cliente clienteAActivar = _archivoCliente.buscarClientePorId(idCliente);
+    clienteAActivar.activarCliente();
+    int clienteActivado = _archivoCliente.modificarDatosCliente(clienteAActivar, posicionCliente);
+    return clienteActivado;
+}
+
+
+

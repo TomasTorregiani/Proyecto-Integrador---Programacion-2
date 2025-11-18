@@ -10,5 +10,9 @@ public:
     ManagerClientes();
     Cliente crearNuevoCliente();
     int crearCliente();
-    int modificarCliente(int idCliente);
+    Cliente pedirNuevosDatos();
+    void modificarCliente();
+    Cliente buscarClientePorId(int idCliente);
+    int eliminarCliente(int idCliente);
+    int activarCliente(int idCliente);
 };

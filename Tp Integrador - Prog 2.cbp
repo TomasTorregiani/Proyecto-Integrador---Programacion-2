@@ -60,6 +60,8 @@
 		<Unit filename="FuncionesGlobales.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="ManagerClientes.cpp" />
+		<Unit filename="ManagerClientes.h" />
 		<Unit filename="MenuGestionClientes.cpp" />
 		<Unit filename="MenuGestionFacturacion.cpp" />
 		<Unit filename="MenuGestionProductos.cpp" />

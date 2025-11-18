@@ -10,8 +10,8 @@ public:
             int tipoCliente, int numeroTelefono,
             std::string email, std::string direccion);
 
-    void crearCliente();//Borrar esta funcion
-    void modificarCliente();
+    void crearCliente();//Borrar esta funcion ya que se implementa en el manager
+    void modificarCliente();//Borrar esta funcion ya que se implementa en el manager
     void mostrarCliente();
     //Setters
     void setIdCliente(int idCliente);
