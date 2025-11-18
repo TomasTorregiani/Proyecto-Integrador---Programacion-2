@@ -57,17 +57,15 @@ int ArchivoClientes::obtenerPosicionCliente(int idCliente){
     for(int i = 0; i < cantidadRegistros; i++){
         fread(&registro, _tamanioRegistro, 1, p);
         if(registro.getIdCliente() == idCliente){
-            cout << "Registro encontrado correctamente" << endl; //Sacar estos cout del archivo
             fclose(p);
             return i;
         }
     }
-    cout << "Registro no encontrado" << endl;
     fclose(p);
     return -1;
 }
 
-bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion){
+int ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion){
     FILE *p = nullptr;
     p = fopen(_nombre, "rb+");
 
@@ -77,10 +75,8 @@ bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion){
     }
 
     fseek(p, posicion*_tamanioRegistro, SEEK_SET);
-    bool escribio = fwrite(&registro, _tamanioRegistro, 1, p);
-    if(escribio){
-        cout << "El registro se sobreescribio correctamente" << endl;
-    }
+    int escribio = fwrite(&registro, _tamanioRegistro, 1, p);
+
     fclose(p);
     return escribio;
 }

@@ -149,15 +149,24 @@ void MenuInformesYReportes(){
                 int idVendedor;
                 cout << "Ingrese id vendedor: " << endl;
                 cin >> idVendedor;
-
+                int ventasPorVendedor = 1;
                 bool encontroVentas = false;
                 for(int i = 0; i < cantidadVentas; i++){
                     if(arrayVentas[i].getIdVendedor() == idVendedor){
-                        cout << "Venta ****" << i << "****" << endl;
+                        cout << "Venta ****" << ventasPorVendedor << "****" << endl;
                         cout << "Vendedor: " << arrayVentas[i].getIdVendedor() << endl;
                         cout << "Cliente: " << arrayVentas[i].getIdCliente() << endl;
-                        cout << "Detalles: " << arrayVentas[i].getCantidadDetalles() << endl;
+
+                        //Buscamos los detalles en el archivo 'detalles_venta.dat'
+                        ArchivoDetalles archivoDetalle("detalles_venta.dat");
+                        DetalleVenta arrayDetalles[50];
+                        int cantidadDetalles = archivoDetalle.verDetalleVenta(arrayVentas[i].getIdVenta(),arrayDetalles);
+                        cout << "Cantidad detalles: " << cantidadDetalles << endl;
+                        for(int j = 0; j < cantidadDetalles; j++){
+                            cout << j+1 << "." << arrayDetalles[j].getProducto().getDescripcion() << endl;
+                        }
                         encontroVentas = true;
+                        ventasPorVendedor++;
                     }
                 }
                 if(!encontroVentas){

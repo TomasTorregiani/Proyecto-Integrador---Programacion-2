@@ -6,22 +6,23 @@ public:
     //Constructores
     Cliente();
     Cliente(std::string nombre,
-            std::string apellido, int cuil,
+            std::string apellido, long long cuil,
             int tipoCliente, int numeroTelefono,
             std::string email, std::string direccion);
 
-    void crearCliente();
+    void crearCliente();//Borrar esta funcion
     void modificarCliente();
     void mostrarCliente();
     //Setters
-    //El setter de idCliente no es necesario
+    void setIdCliente(int idCliente);
     void setNombre(std::string nombre);
     void setApellido(std::string apellido);
-    //El setter de cuil no es necesario
+    void setCuilCliente(long long cuil);
     void setTipoCliente(int tipoCliente);
     void setNumeroTelefono(int numeroTelefono);
     void setEmail(std::string email);
     void setDireccion(std::string direccion);
+    void setActivo(bool value);
 
     //Getters
     int getIdCliente();
@@ -31,8 +32,10 @@ public:
     int getTipoCliente();
     std::string getEmail();
     std::string getDireccion();
+    bool getActivo();
 
     void eliminarCliente();
+    void activarCliente();
 
 protected:
 
@@ -43,7 +46,7 @@ private:
     long long _cuil;
     int _tipoCliente;
     int _numeroTelefono;
-    char _email[20];
-    char _direccion[20];
+    char _email[50];
+    char _direccion[50];
     bool _activo;
 };

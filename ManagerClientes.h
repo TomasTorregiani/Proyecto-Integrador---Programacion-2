@@ -5,7 +5,10 @@
 
 class ManagerClientes{
 private:
-    ArchivoClientes _archivo;
+    ArchivoClientes _archivoCliente;
 public:
-    bool agregarCliente(Cliente cliente);
+    ManagerClientes();
+    Cliente crearNuevoCliente();
+    int crearCliente();
+    int modificarCliente(int idCliente);
 };

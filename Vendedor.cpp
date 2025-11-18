@@ -59,7 +59,7 @@ void Vendedor::mostrarVendedor(){
     cout << "Telefono: " << _numeroTelefono << endl;
     cout << "Email: " << _email << endl;
     cout << "Direccion: " << _direccion << endl;
-    cout << "Activo: " << (_activo ? "Sí" : "No") << endl;
+    cout << "Activo: " << (_activo ? "Si" : "No") << endl;
     }
 void Vendedor::setNombre(string nombre){
     strncpy(_nombre, nombre.c_str(), sizeof(_nombre) - 1);

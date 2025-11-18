@@ -40,6 +40,7 @@ Vendedor ArchivoVendedores::buscarVendedorPorId(int idVendedor){
     p = fopen(_nombre, "rb");
     if(p == nullptr){
         cout << "ERROR: No se pudo abrir 'vendedores.dat'. " << endl;
+        cout << "Asegurese de que el archivo existe y tiene productos cargados." << endl;
         return Vendedor();
     }
 

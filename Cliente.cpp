@@ -12,7 +12,7 @@ _tipoCliente(0), _numeroTelefono(0),
 _email(""), _direccion(""){}
 
 Cliente::Cliente(string nombre,
-            string apellido, int cuil,
+            string apellido, long long cuil,
             int tipoCliente, int numeroTelefono,
             string email, string direccion)
 {
@@ -26,7 +26,7 @@ Cliente::Cliente(string nombre,
     setDireccion(direccion);
     _activo = true;
 }
-void Cliente::crearCliente(){
+void Cliente::crearCliente(){  //Esta funcion la estoy implementando en el manager. La tengo que borrar de aca
     _idCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + 1;
     cout << "Ingresar nombre cliente nuevo: " << endl;
     cin >> _nombre;
@@ -68,7 +68,9 @@ void Cliente::mostrarCliente(){
     cout << "Numero de telefono: " << _numeroTelefono << endl;
     cout << "Email: " << _email << endl;
 }
-
+void Cliente::setIdCliente(int idCliente){
+    _idCliente = idCliente;
+}
 void Cliente::setNombre(string nombre){
     strncpy(_nombre, nombre.c_str(), sizeof(_nombre) - 1);
     _nombre[49] = '\0';
@@ -76,6 +78,9 @@ void Cliente::setNombre(string nombre){
 void Cliente::setApellido(string apellido){
     strncpy(_apellido, apellido.c_str(), sizeof(_apellido) - 1);
     _apellido[49] = '\0';
+}
+void Cliente::setCuilCliente(long long cuil){
+    _cuil = cuil;
 }
 void Cliente::setTipoCliente(int tipoCliente){
     _tipoCliente = tipoCliente;
@@ -85,12 +90,15 @@ void Cliente::setNumeroTelefono(int numeroTelefono){
 }
 void Cliente::setEmail(string email){
     strncpy(_email, email.c_str(), sizeof(_email) - 1);
+    _email[49] = '\0';
 }
 void Cliente::setDireccion(string direccion){
     strncpy(_direccion, direccion.c_str(), sizeof(_direccion) - 1);
     _direccion[49] = '\0';
 }
-
+void Cliente::setActivo(bool value){
+    _activo = value;
+}
 int Cliente::getIdCliente(){
     return _idCliente;
 }
@@ -112,8 +120,12 @@ string Cliente::getEmail(){
 string Cliente::getDireccion(){
     return _direccion;
 }
-
 void Cliente::eliminarCliente(){
 	_activo = false;
 }
-
+void Cliente::activarCliente(){
+	_activo = true;
+}
+bool Cliente::getActivo(){
+    return _activo;
+}
