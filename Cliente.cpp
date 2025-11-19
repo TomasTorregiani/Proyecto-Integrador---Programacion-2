@@ -26,11 +26,11 @@ Cliente::Cliente(int idCliente, std::string nombre,std::string apellido, int cui
     _estado = true;
 }
 
-void Cliente::cargarCliente(){
+/*void Cliente::cargarCliente(){
 
 	//TODO//
 
-}
+}*/
 
 void Cliente::setNombre(std::string nombre){
     strncpy(_nombre, nombre.c_str(), sizeof(_nombre) - 1);
