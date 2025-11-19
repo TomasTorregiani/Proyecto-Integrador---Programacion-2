@@ -4,11 +4,14 @@
 #include "Cliente.h"
 
 class ManagerClientes{
-private:
-    ArchivoClientes _archivoCliente;
 public:
     ManagerClientes();
     Cliente crearNuevoCliente();
-    int crearCliente();
-    int modificarCliente(int idCliente);
+    void mostrarCliente();
+    void eliminarCliente();
+    void modificarCliente();
+		~ManagerClientes();
+
+private:
+    ArchivoClientes _archivoCliente; //recibe un archivo de clientes para trabajar en él.
 };
