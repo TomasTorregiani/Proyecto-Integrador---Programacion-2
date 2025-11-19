@@ -7,8 +7,8 @@ using namespace std;
 void MenuGestionProductos(){
     int opcion;
     while(true){
-        system("cls")
-        cout << "****"
+        system("cls");
+        cout << "**** MENU PRODUCTOS ****" << endl;
         cout << "1) Nuevo Producto" << endl;
         cout << "2) Modificar datos producto" << endl;
         cout << "3) Eliminar producto" << endl;
@@ -33,6 +33,7 @@ void MenuGestionProductos(){
                     cout << "No se agrego el archivo" << endl;
                 }
             }
+            break;
             case 2: {
                 cout << "**** MODIFICAR PRODUCTO ****" << endl;
 
@@ -55,9 +56,53 @@ void MenuGestionProductos(){
                     }
                 }
             }
+            break;
+            case 3: {
+                cout << "**** ELIMINAR PRODUCTO****" << endl;
+                int idProducto;
+                cout << "Ingrese id producto a eliminar: " << endl;
+                cin >> idProducto;
+
+                ArchivoProductos archivoProducto("productos.dat");
+                Producto productoAEliminar = archivoProducto.buscarProductoPorId(idProducto);
+
+                if(productoAEliminar.getIdProducto() != 0){
+                    cout << "Registro encontrado" << endl;
+                    int posicionProductoAEliminar = archivoProducto.buscarPosicionPorId(idProducto);
+                    productoAEliminar.eliminarProducto();
+                    int eliminoProducto = archivoProducto.agregarProductoModificado(productoAEliminar, posicionProductoAEliminar);
+                    if(eliminoProducto == 1){
+                        cout << "Registro eliminado correctamente" << endl;
+                    }else{
+                        cout << "Error al eliminar el registro" << endl;
+                    }
+                }else{
+                    cout << "Registro no encontrado" << endl;
+                }
+            }
+            break;
+            case 4:{
+                cout << "**** VER STOCK PRODUCTO ****" << endl;
+                int idProducto;
+                cout << "Ingrese id del producto: " << endl;
+                cin >> idProducto;
+
+                ArchivoProductos archivoProducto("productos.dat");
+                Producto producto = archivoProducto.buscarProductoPorId(idProducto);
+                if(producto.getIdProducto() != 0){
+                    cout << "Producto encontrado correctamente" << endl;
+                    cout << "Stock del producto " << producto.getDescripcion() <<": " << producto.getCantidadDisponible() << endl;
+                }else{
+                    cout << "Error al encontrar el producto" << endl;
+                }
+            }
+            break;
+            case 0:
+                cout << "Volviendo al menu principal" << endl;
+                return;
+            default: cout << "Ingrese un valor valido" << endl;
+            break;
         }
+        system("pause");
     }
-
-
-
 }

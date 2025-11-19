@@ -12,15 +12,19 @@ ArchivoVendedores::ArchivoVendedores(const char *n){
 }
 
 int ArchivoVendedores::agregarVendedor(Vendedor vendedor){
+    cout << "DEBUG: Intentando agregar vendedor con ID: " << vendedor.getIdVendedor() << endl;
+
     FILE* p = nullptr;
     p = fopen(_nombre, "ab");
-
     if(p == nullptr){
-        cout << "El archivo no se abrio correctamente" << endl;
+        cout << "ERROR: No se pudo abrir 'vendedores.dat'. " << endl;
         return 0;
     }
 
+    cout << "DEBUG: Tamaño registro: " << _tamanioRegistro << endl;
     int escribio = fwrite(&vendedor, _tamanioRegistro, 1, p);
+    cout << "DEBUG: fwrite devolvió: " << escribio << endl;
+
     if(escribio == 1){
         fclose(p);
         return 1;
@@ -30,19 +34,24 @@ int ArchivoVendedores::agregarVendedor(Vendedor vendedor){
 }
 
 Vendedor ArchivoVendedores::buscarVendedorPorId(int idVendedor){
+    cout << "DEBUG: Buscando vendedor con ID: " << idVendedor << endl;
+
     FILE *p = nullptr;
     p = fopen(_nombre, "rb");
-
     if(p == nullptr){
-        cout << "El archivo no se abrio correctamente" << endl;
+        cout << "ERROR: No se pudo abrir 'vendedores.dat'. " << endl;
+        cout << "Asegurese de que el archivo existe y tiene productos cargados." << endl;
         return Vendedor();
     }
 
     Vendedor registroVendedor;
-
     int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro);
+    cout << "DEBUG: Cantidad de registros: " << cantidadRegistros << endl;
+
     for(int i = 0; i < cantidadRegistros; i++){
         fread(&registroVendedor, _tamanioRegistro, 1, p);
+        cout << "DEBUG: Registro " << i << " - ID leido: " << registroVendedor.getIdVendedor() << endl;
+
         if(registroVendedor.getIdVendedor() == idVendedor){
             fclose(p);
             return registroVendedor;
@@ -112,6 +121,27 @@ void ArchivoVendedores::listarVendedores(){
         cout << "No se encontraron vendedores" << endl;
     }
     fclose(p);
+}
+
+Vendedor* ArchivoVendedores::obtenerVendedores(int cantidadVendedores){
+    FILE* p = nullptr;
+    p = fopen(_nombre, "rb");
+    if(p == nullptr){
+        cout << "No se abrio correctamente el archivo" << endl;
+        return nullptr;
+    }
+
+    fseek(p, 0, SEEK_SET);
+
+    Vendedor* arrayVendedores;
+    arrayVendedores = new Vendedor[cantidadVendedores]();
+    Vendedor registroVendedor;
+    for(int i = 0; i < cantidadVendedores; i++){
+        fread(&registroVendedor, _tamanioRegistro, 1, p);
+        arrayVendedores[i] = registroVendedor;
+    }
+    fclose(p);
+    return arrayVendedores;
 }
 
 

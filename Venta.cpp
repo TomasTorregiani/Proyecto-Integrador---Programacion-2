@@ -5,8 +5,9 @@
 #include "FuncionesGlobales.h"
 
 Venta::Venta()
-:_idVenta(0), _cantidadDetalles(0){
+:_idVenta(0), _idCliente(0), _idVendedor(0), _cantidadDetalles(0), _anulada(false) {
     strcpy(_fecha, "");
+    _detalles = nullptr;
 }
 
 Venta::Venta(int IdCliente, int IdVendedor, std::string fecha){
@@ -17,7 +18,6 @@ Venta::Venta(int IdCliente, int IdVendedor, std::string fecha){
     _cantidadDetalles = 0;
     _detalles = nullptr;
     _anulada = false;
-
 }
 
 Venta::~Venta(){
@@ -40,13 +40,18 @@ void Venta::anularVenta(){
     _anulada = true;
 }
 
-long long Venta::calcularTotal(){
+void Venta::calcularTotal(){
     float total = 0;
     for(int i = 0; i < _cantidadDetalles; i++){
         total += _detalles[i].getSubtotal();
     }
-    return total;
+    _totalVenta = total;
 }
+
+float Venta::getTotal(){
+    return _totalVenta;
+}
+
 int Venta::getIdVenta(){
     return _idVenta;
 }
@@ -59,9 +64,9 @@ int Venta::getIdVendedor(){
 std::string Venta::getFecha(){
     return _fecha;
 }
-int Venta::getCantidadDetalles(){
-    return _cantidadDetalles;
-}
+//int Venta::getCantidadDetalles(){ // Esto creo que no se usa para nada
+//    return _cantidadDetalles;
+//}
 bool Venta::getAnulada(){
     return _anulada;
 }

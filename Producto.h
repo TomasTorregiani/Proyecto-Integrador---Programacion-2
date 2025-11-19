@@ -5,13 +5,14 @@ class Producto{
 public:
     //Constructores
     Producto();
-    Producto(int idProducto, std::string descripcion,
+    Producto(std::string descripcion,
              std::string marca, std::string tipoProducto,
              int cantidadDisponible, long long precio);
 
     void crearNuevoProducto();
     void modificarProducto();
     void eliminarProducto();
+    void mostrarProducto();
 
     //Setters
     //Setter de idProducto no es necesario

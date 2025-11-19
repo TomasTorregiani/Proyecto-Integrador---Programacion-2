@@ -6,7 +6,7 @@ class Vendedor{
 public:
     //Constructores
     Vendedor();
-    Vendedor(int idVendedor, std::string nombre,
+    Vendedor(std::string nombre,
             std::string apellido, int numeroTelefono,
             std::string email, std::string direccion); //Creo que directamente sacaria este constructor y dejaria uno vacio
 
@@ -32,6 +32,7 @@ public:
     std::string getEmail();
     std::string getDireccion();
     void eliminarVendedor();
+    bool getEstado();
 
 protected:
 

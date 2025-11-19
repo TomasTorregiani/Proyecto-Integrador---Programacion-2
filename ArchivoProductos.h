@@ -12,4 +12,5 @@ public:
     Producto buscarProductoPorId(int idProducto);
     int buscarPosicionPorId(int idProducto);
     int agregarProductoModificado(Producto productoModificado, int posicionProdModificado);
+    Producto *obtenerProductos(int cantidadProductos);
 };

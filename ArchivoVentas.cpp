@@ -16,20 +16,16 @@ int ArchivoVentas::agregarVenta(Venta& venta){
     p = fopen(_nombre, "ab");
 
     if(p == nullptr){
-        cout << "El archivo no se abrio correctamente" << endl;
+        cout << "El archivo 'archivo_ventas.dat' no se abrio correctamente" << endl;
         return -1;
     }
 
     int escribio = fwrite(&venta, _tamanioRegistro, 1, p);
-
-    fclose(p);
-
     if(escribio > 0){
-        cout << "Se escribio correctamente" << endl;
+        fclose(p);
         return 1;
     }
-
-    cout << "No se escribio ningun archivo" << endl;
+    fclose(p);
     return 0;
 }
 
@@ -61,12 +57,11 @@ Venta ArchivoVentas::obtenerVenta(int idVenta){
     p = fopen(_nombre, "rb");
 
     if(p == nullptr){
-        cout << "No se leyo correctamente el archivo" << endl;
+        cout << "No se abrio correctamente el archivo 'ventas.dat'" << endl;
         return Venta();  // Constructor por defecto (debería setear id = -1 o 0)
     }
 
     Venta registro;
-
     int cantidad = contarRegistros(_nombre, _tamanioRegistro);
     for(int i = 0; i < cantidad; i++){
         fread(&registro, _tamanioRegistro, 1, p);
@@ -117,7 +112,20 @@ int ArchivoVentas::actualizarVentaEnPosicion(int posicion, Venta& venta){
     }
 }
 
-Cliente ArchivoVentas::obtenerCliente(int idCliente){
-
+Venta *ArchivoVentas::obtenerTodasLasVentas(int cantidadVentas){
+    FILE *p = nullptr;
+    p = fopen(_nombre, "rb");
+    if(p == nullptr){
+        return nullptr;
+    }
+    Venta registroVenta;
+    Venta *arrayVentas;
+    arrayVentas = new Venta[cantidadVentas]();
+    for(int i = 0; i < cantidadVentas; i++){
+        fread(&registroVenta, _tamanioRegistro, 1, p);
+        arrayVentas[i] = registroVenta;
+    }
+    fclose(p);
+    return arrayVentas;
 }
 

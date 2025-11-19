@@ -11,4 +11,5 @@ public:
     ArchivoDetalles(const char* n);
     int agregarDetalle(DetalleVenta& detalle);
     int verDetalleVenta(int idVenta, DetalleVenta *detalles);
+    int *obtenerVentasPorProducto(int cantidadDetallesVendidos, int &tamanioArray);
 };

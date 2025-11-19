@@ -34,7 +34,8 @@ Producto ArchivoProductos::buscarProductoPorId(int idProducto){
     p = fopen(_nombre, "rb");
 
     if(p == nullptr){
-        cout << "El archivo no se abrio correctamente" << endl;
+        cout << "ERROR: No se pudo abrir 'productos.dat'. " << endl;
+        cout << "Asegurese de que el archivo existe y tiene productos cargados." << endl;
         return Producto();
     }
 
@@ -45,13 +46,11 @@ Producto ArchivoProductos::buscarProductoPorId(int idProducto){
     for(int i = 0; i < cantidadRegistros; i++){
         fread(&registro, _tamanioRegistro, 1, p);
         if(registro.getIdProducto() == idProducto){
-            cout << "Registro encontrado" << endl;
             fclose(p);
             return registro;
         }
     }
     fclose(p);
-    cout << "Registro no encontrado" << endl;
     return Producto();
 }
 
@@ -96,6 +95,25 @@ int ArchivoProductos::agregarProductoModificado(Producto productoModificado, int
     }
     fclose(p);
     return 0;
+}
+
+Producto *ArchivoProductos::obtenerProductos(int cantidadProductos){
+    FILE *p = nullptr;
+    p = fopen(_nombre, "rb");
+    if(p == nullptr){
+        return nullptr;
+    }
+
+    Producto *arrayProductos;
+    arrayProductos = new Producto[cantidadProductos]();
+    Producto registroProducto;
+
+    for(int i = 0; i < cantidadProductos; i++){
+        fread(&registroProducto, _tamanioRegistro, 1, p);
+        arrayProductos[i] = registroProducto;
+    }
+    fclose(p);
+    return arrayProductos;
 }
 
 
