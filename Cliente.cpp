@@ -26,6 +26,15 @@ Cliente::Cliente(int idCliente, std::string nombre,std::string apellido, int cui
     _estado = true;
 }
 
+void Cliente::mostrarCliente(){
+    cout << "=== DATOS DEL CLIENTE ===" << endl;
+    cout << "ID Cliente: " << _idCliente << endl;
+    cout << "Nombre: " << _nombre << endl;
+    cout << "Apellido: " << _apellido << endl;
+    cout << "Numero de telefono: " << _numeroTelefono << endl;
+    cout << "Email: " << _email << endl;
+}
+
 /*void Cliente::cargarCliente(){
 
 	//TODO//

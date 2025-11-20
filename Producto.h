@@ -7,19 +7,20 @@ class Producto{
 public:
     //Constructores
     Producto();
-    Producto(int idProducto, std::string descripcion, std::string marca, std::string tipoProducto,int cantidadDisponible, long precio);
+    Producto(int idProducto, std::string descripcion, std::string marca, std::string tipoProducto,int cantidadDisponible, float precio);
 
-    void crearNuevoProducto();
     void modificarProducto();
+    void mostrarProducto();
     void eliminarProducto();
 
     //Setters
-    //Setter de idProducto no es necesario
+    //Setter de idProducto no es necesario, se crea automaticamente.
     void setDescripcion(std::string descripcion);
-    //Setter de idMarca no es necesario;
+    void setMarca(std::string marca);
     void setTipoProducto(std::string tipoProducto);
     void setCantidadDisponible(int cantidadDisponible);
-    void setPrecio(long precio);
+    void setPrecio(float precio);
+    bool setEstado(bool estado);
 
     //Getters
     int getIdProducto();
@@ -27,7 +28,7 @@ public:
     std::string getMarca();
     std::string getTipoProducto();
     int getCantidadDisponible();
-    long getPrecio();
+    float getPrecio();
     bool getEstado(); 
 
 private:
@@ -36,6 +37,6 @@ private:
     char _marca[50];
     char _tipoProducto[50];
     int _cantidadDisponible;
-    long _precio;
-    bool _estado = true;
+    float _precio;
+    bool _activo;
 };

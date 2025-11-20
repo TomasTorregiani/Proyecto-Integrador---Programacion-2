@@ -9,6 +9,7 @@ public:
     
     int setIdCliente();
     void cargarCliente();
+    void mostrarCliente();
     //Setters
     //El setter de idCliente no es necesario??
     void setNombre(std::string nombre);

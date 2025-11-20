@@ -31,7 +31,7 @@ bool ManagerVentas::nuevaVenta()
 
         Cliente nuevoCliente;
         
-        nuevoCliente.cargarCliente();
+        //nuevoCliente.cargarCliente();
         
         int escribio = archivoC.agregarCliente(nuevoCliente);
         if(escribio == 1)

@@ -12,6 +12,7 @@ public:
     Cliente buscarClientePorId(int idCliente);
     int agregarCliente(Cliente registro);
     
+		Cliente* obtenerClientes(int cantidadClientes);
     bool eliminarCliente(Cliente registro);
     bool modificarDatosCliente(Cliente registro, int posicion);
     
@@ -23,7 +24,7 @@ public:
 		int obtenerPosicionCliente(int idCliente);
     
 private:
-    char _nombreArchivo[50]; //se asigna cuando llamo al constructor?
+    char _nombre[50]; //se asigna cuando llamo al constructor
     int _tamanioRegistro;
 };
 

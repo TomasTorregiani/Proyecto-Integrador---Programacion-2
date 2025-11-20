@@ -17,7 +17,7 @@ bool ArchivoClientes::guardarCliente(Cliente registro)  //recibre el registro de
     FILE *pFile;
     bool escribio; //uso booleano porque solo vamos a escribir de un cliente a la vez.
 
-    pFile = fopen(_nombreArchivo, "ab"); //abre el archivo en la última posición. Si no existe, lo crea.
+    pFile = fopen(_nombre, "ab"); //abre el archivo en la última posición. Si no existe, lo crea.
 
     if (pFile == nullptr)
     {
@@ -38,13 +38,32 @@ bool ArchivoClientes::guardarCliente(Cliente registro)  //recibre el registro de
 
 //FIXME:
 
+Cliente* ArchivoClientes::obtenerClientes(int cantidadClientes){
+    FILE* p = nullptr;
+    p = fopen(_nombre, "rb");
+    if(p == nullptr){
+        cout << "No se abrio correctamente el archivo" << endl;
+        return nullptr;
+    }
+    fseek(p, 0, SEEK_SET);
+    Cliente* arrayClientes;
+    arrayClientes = new Cliente[cantidadClientes];
+    Cliente registroCliente;
+    for(int i = 0; i < cantidadClientes; i++){
+        fread(&registroCliente, _tamanioRegistro, 1, p);
+        arrayClientes[i] = registroCliente;
+    }
+    fclose(p);
+    return arrayClientes;
+}
+
 Cliente ArchivoClientes::buscarClientePorId(int idCliente)
 {
 
     Cliente cliente;
 		
     FILE *pFile;
-    pFile = fopen(_nombreArchivo, "rb"); //ok
+    pFile = fopen(_nombre, "rb"); //ok
 
     if(pFile == nullptr)
     {
@@ -60,7 +79,7 @@ Cliente ArchivoClientes::buscarClientePorId(int idCliente)
         }
     }
 
-    int cantidadRegistros = contarRegistros(_nombreArchivo, _tamanioRegistro);
+    int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro);
     for(int i = 0; i < cantidadRegistros; i++)
     {
         fread(&cliente, _tamanioRegistro,1,pFile);
@@ -77,7 +96,7 @@ Cliente ArchivoClientes::buscarClientePorId(int idCliente)
 int ArchivoClientes::obtenerPosicionCliente(int idCliente)
 {
     FILE* pFile = nullptr;
-    pFile = fopen(_nombreArchivo, "rb");
+    pFile = fopen(_nombre, "rb");
     if(pFile == nullptr)
     {
         cout << "El archivo no se abrio correctamente" << endl;
@@ -104,7 +123,7 @@ int ArchivoClientes::obtenerPosicionCliente(int idCliente)
 bool ArchivoClientes::modificarDatosCliente(Cliente registro, int posicion)
 {
     FILE *p = nullptr;
-    p = fopen(_nombreArchivo, "rb+");
+    p = fopen(_nombre, "rb+");
 
     if(p == nullptr)
     {
@@ -149,7 +168,7 @@ void ArchivoClientes::listarClientes(){
 
 bool ArchivoClientes::eliminarCliente(Cliente registro){
     FILE *p = nullptr;
-    p = fopen(_nombreArchivo, "rb+");
+    p = fopen(_nombre, "rb+");
 
    if(p == nullptr){
        cout << "No se logro leer el archivo" << endl;

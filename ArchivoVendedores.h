@@ -10,6 +10,7 @@ public:
     bool guardarVendedor(Vendedor registro); //ok. siempre guarda al final.
     Vendedor buscarVendedorPorId(int idVendedor);
     bool agregarVendedor(Vendedor registro); 
+    Vendedor* obtenerVendedores(int cantidadVendedores);
     bool eliminarDatosVendedor(int idVendedor); //TODO
     int modificarDatosVendedor(Vendedor registro, int posicion); //TODO
 
@@ -21,6 +22,6 @@ public:
 		int obtenerPosicionVendedor(int idVendedor);
     
 private:
-    char _nombreArchivo[50];
+    char _nombre[50];
     int _tamanioRegistro;
 };
