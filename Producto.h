@@ -1,26 +1,26 @@
 #pragma once
 #include <iostream>
+#include <string>
+#include <cstring>
 
 class Producto{
 public:
     //Constructores
     Producto();
-    Producto(std::string descripcion,
-             std::string marca, std::string tipoProducto,
-             int cantidadDisponible, long long precio);
+    Producto(int idProducto, std::string descripcion, std::string marca, std::string tipoProducto,int cantidadDisponible, float precio);
 
-    void crearNuevoProducto();
     void modificarProducto();
-    void eliminarProducto();
     void mostrarProducto();
+    void eliminarProducto();
 
     //Setters
-    //Setter de idProducto no es necesario
+    //Setter de idProducto no es necesario, se crea automaticamente.
     void setDescripcion(std::string descripcion);
-    //Setter de idMarca no es necesario;
+    void setMarca(std::string marca);
     void setTipoProducto(std::string tipoProducto);
     void setCantidadDisponible(int cantidadDisponible);
-    void setPrecio(long long precio);
+    void setPrecio(float precio);
+    bool setEstado(bool estado);
 
     //Getters
     int getIdProducto();
@@ -28,9 +28,8 @@ public:
     std::string getMarca();
     std::string getTipoProducto();
     int getCantidadDisponible();
-    long long getPrecio();
-
-protected:
+    float getPrecio();
+    bool getEstado(); 
 
 private:
     int _idProducto;
@@ -38,6 +37,6 @@ private:
     char _marca[50];
     char _tipoProducto[50];
     int _cantidadDisponible;
-    long long _precio;
+    float _precio;
     bool _activo;
 };

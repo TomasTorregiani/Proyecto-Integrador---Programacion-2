@@ -10,6 +10,7 @@
 #include "ArchivoProductos.h"
 #include "Producto.h"
 #include "ArchivoProductos.h"
+#include "ManagerProductos.h"
 
 using namespace std;
 
@@ -103,15 +104,10 @@ void MenuGestionFacturacion(){
                         cout << "Detalle agregado correctamente." << endl;
                     }else{
                         cout << "Producto no encontrado" << endl;
-                        Producto nuevoProducto;
-                        nuevoProducto.crearNuevoProducto();
-                        ArchivoProductos archivoP("productos.dat");
-                        int productoAgregado = archivoP.agregarNuevoProducto(nuevoProducto);
-                        if(productoAgregado != 0){
-                            cout << "Producto agregado correctamente" << endl;
-                        }else{
-                            cout << "Error al agregar el nuevo producto" << endl;
-                        }
+                        
+                        ManagerProductos gestorProductos;
+												gestorProductos.nuevoProducto();
+											
                     }
                     cout << "Desea agregar mas productos? (1 = Si / 2 = No)" << endl;
                     cin >> opcion;
