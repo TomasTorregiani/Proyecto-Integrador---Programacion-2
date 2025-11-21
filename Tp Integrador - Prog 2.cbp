@@ -81,6 +81,10 @@
 		<Unit filename="ManagerProductos.h">
 			<Option compile="1" />
 		</Unit>
+		<Unit filename="ManagerVendedores.cpp" />
+		<Unit filename="ManagerVendedores.h">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="MenuGestionClientes.cpp" />
 		<Unit filename="MenuGestionFacturacion.cpp" />
 		<Unit filename="MenuGestionProductos.cpp" />

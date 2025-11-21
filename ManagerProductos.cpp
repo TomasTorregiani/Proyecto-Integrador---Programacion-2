@@ -2,15 +2,18 @@
 #include <string>
 #include "ManagerProductos.h"
 #include "ArchivoProductos.h"
+#include "FuncionesGlobales.h"
 
 using namespace std;
 
-ManagerProductos::ManagerProductos() {}
+ManagerProductos::ManagerProductos(){
+	
+}
 
 void ManagerProductos::nuevoProducto()
 {
     Producto nuevoProducto;
-    int id, cantidad;
+    int idProducto, cantidad;
     string descripcion, marca, tipo;
     float precio;
 
@@ -49,10 +52,10 @@ void ManagerProductos::nuevoProducto()
     nuevoProducto.setTipoProducto(tipo);
 
     cout << "Ingrese la cantidad: " << endl;
-
+    
     while (!(cin >> cantidad) || cantidad < 0 || cin.peek() == '.') //si cin no guarda correctamente un int o si guarda pero el int es menor a 0.
     {
-        cout << "Error: Ingrese un número entero valido (no decimal): " << endl;
+        cout << "Error: Ingrese un numero entero valido (no decimal): " << endl;
         cin.clear();						//limpia el error de cin después de que falló al leer, para que cin pueda leer de nuevo.
         cin.ignore(10000, '\n');	//Borra lo que guardó el buffer de entrada hasta 10000 caracteres (o hasta encontrar un salto de línea \n)
     }
@@ -72,6 +75,10 @@ void ManagerProductos::nuevoProducto()
     nuevoProducto.setPrecio(precio);
 
     nuevoProducto.setEstado(true);
+    
+    idProducto = contarRegistros("productos.dat", sizeof(Producto)) + 1;
+    
+    nuevoProducto.setIdProducto(idProducto);
 
 
     //***** fin de los ingresos *****//
@@ -152,13 +159,4 @@ void ManagerProductos::eliminarProducto()
 void ManagerProductos::listarProductos()
 {
 //TODO//
-}
-
-ManagerProductos::~ManagerProductos()
-{
-    if(_archivo != nullptr)
-    {
-        delete _archivo;
-        _archivo = nullptr;
-    }
 }

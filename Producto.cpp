@@ -76,6 +76,10 @@ void Producto::setDescripcion(string descripcion){
 		_descripcion[99] = '\0'; //valida que no se puedan ingresar mas de 99 caracteres, xq mi char _decripcion es de [100];
 }
 
+int Producto::setIdProducto(int idProducto){
+		_idProducto = idProducto; 
+}
+
 void Producto::setMarca(string marca){
 		strncpy(_marca, marca.c_str(),49);
 		_marca[49] = '\0';

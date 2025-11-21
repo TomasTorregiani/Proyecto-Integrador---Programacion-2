@@ -11,12 +11,10 @@ public:
     void listarProductos();
     void eliminarProducto();
     void modificarProducto();	
-    
-    ~ManagerProductos(); 
 
 /*protected:
 		void mostrarProducto(Producto producto);*/
 		
 private:
-    ArchivoProductos* _archivo; //recibe un archivo de clientes para trabajar en él.
+    ArchivoProductos _archivo; //recibe un archivo de productos para trabajar en él.
 };

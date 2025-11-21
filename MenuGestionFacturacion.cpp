@@ -11,6 +11,7 @@
 #include "Producto.h"
 #include "ArchivoProductos.h"
 #include "ManagerProductos.h"
+#include "ManagerVendedores.h"
 
 using namespace std;
 
@@ -64,11 +65,10 @@ void MenuGestionFacturacion(){
                     cout << "No se encontro ningun registro con ese id" << endl;
                     cout << "Agregar Nuevo Vendedor: " << endl;
                     cout << "---------------------" << endl;
-                    vendedorEncontrado.crearVendedor();
-                    int escribio = archivoV.agregarVendedor(vendedorEncontrado);
-                    if(escribio == 1){
-                        cout << "Vendedor guardado correctamente" << endl;
-                    }
+
+										ManagerVendedores gestorVendedor;
+										gestorVendedor.nuevoVendedor(); 
+										
                 }
                 Venta nuevaVenta(clienteParaVenta.getIdCliente(), vendedorEncontrado.getIdVendedor(), "11/11/1111");
                 ArchivoVentas archivoVenta("ventas.dat");

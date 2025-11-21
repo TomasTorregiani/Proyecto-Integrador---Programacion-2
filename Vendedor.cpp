@@ -23,21 +23,6 @@ Vendedor::Vendedor(std::string nombre,
     _activo = true;
 }
 
-void Vendedor::crearVendedor(){
-    _idVendedor = contarRegistros("vendedores.dat" , sizeof(Vendedor)) + 1;
-    cout << "Ingrese nombre: " << endl;
-    cin >> _nombre;
-    cout << "Ingrese apellido: " << endl;
-    cin >> _apellido;
-    cout << "Ingrese numero de telefono: " << endl;
-    cin >> _numeroTelefono;
-    cout << "Ingrese email: " << endl;
-    cin >> _email;
-    cout << "Ingrese direccion: " << endl;
-    cin >> _direccion;
-    _activo = true;
-}
-
 void Vendedor::modificarVendedor(){
     cout << "Ingrese nombre: " << endl;
     cin >> _nombre;
@@ -70,6 +55,10 @@ void Vendedor::setApellido(string apellido){
     _apellido[49] = '\0';
 }
 
+int Vendedor::setCuilVendedor(int cuil){
+		_cuil = cuil; 
+}
+
 void Vendedor::setNumeroTelefono(int numeroTelefono){
     _numeroTelefono = numeroTelefono;
 }
@@ -81,6 +70,14 @@ void Vendedor::setDireccion(string direccion){
     _direccion[49] = '\0';
 }
 
+int Vendedor::setIdVendedor(int idVendedor){
+	  _idVendedor = idVendedor;
+}
+
+bool Vendedor::setEstado(bool estado){
+		_activo = estado; 
+}
+
 int Vendedor::getIdVendedor(){
     return _idVendedor;
 }
@@ -89,6 +86,10 @@ string Vendedor::getNombre(){
 }
 string Vendedor::getApellido(){
     return _apellido;
+}
+
+int Vendedor::getCuil(){
+		return _cuil; 
 }
 
 string Vendedor::getEmail(){

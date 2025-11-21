@@ -15,6 +15,7 @@ public:
 
     //Setters
     //Setter de idProducto no es necesario, se crea automaticamente.
+    int setIdProducto(int idProducto);
     void setDescripcion(std::string descripcion);
     void setMarca(std::string marca);
     void setTipoProducto(std::string tipoProducto);
