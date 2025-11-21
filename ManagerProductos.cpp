@@ -5,7 +5,7 @@
 
 using namespace std;
 
-ManagerProductos::ManagerProductos(){}
+ManagerProductos::ManagerProductos() {}
 
 void ManagerProductos::nuevoProducto()
 {
@@ -13,48 +13,69 @@ void ManagerProductos::nuevoProducto()
     int id, cantidad;
     string descripcion, marca, tipo;
     float precio;
-    
+
     cout << "Ingrese la descripcion: " << endl;
     cin.ignore();
     getline(cin, descripcion);
 
-    //validar
+    while(descripcion == "")
+    {
+        cout << "Este campo no puede estar vacio. Ingrese la descripcion del producto: " << endl;
+        getline(cin, descripcion);
+    }
 
     nuevoProducto.setDescripcion(descripcion);
 
     cout << "Ingrese la marca: " << endl;
     getline(cin, marca);
 
-    //validar
+    while(marca == "")
+    {
+        cout << "Este campo no puede estar vacio. Ingrese la marca del producto: " << endl;
+        getline(cin, marca);
+    }
 
     nuevoProducto.setMarca(marca);
 
     cout << "Ingrese el tipo de producto: " << endl;
     getline(cin, tipo);
-    
-    //validar
-    
+
+    while(tipo == "")
+    {
+        cout << "Este campo no puede estar vacio. Ingrese el tipo de producto: " << endl;
+        getline(cin, tipo);
+    }
+
     nuevoProducto.setTipoProducto(tipo);
 
     cout << "Ingrese la cantidad: " << endl;
-    cin >> cantidad; 
-    
-    //validar 
-    
+
+    while (!(cin >> cantidad) || cantidad < 0 || cin.peek() == '.') //si cin no guarda correctamente un int o si guarda pero el int es menor a 0.
+    {
+        cout << "Error: Ingrese un número entero valido (no decimal): " << endl;
+        cin.clear();						//limpia el error de cin después de que falló al leer, para que cin pueda leer de nuevo.
+        cin.ignore(10000, '\n');	//Borra lo que guardó el buffer de entrada hasta 10000 caracteres (o hasta encontrar un salto de línea \n)
+    }
+    cin.ignore(10000, '\n');
+
     nuevoProducto.setCantidadDisponible(cantidad);
 
     cout << "Ingrese el precio final: " << endl;
-    cin >> precio;
-    
-    //validar
-    
+
+    while(!(cin >> precio) || precio < 0)
+    {
+        cout << "Error: ingrese un precio final valido: " << endl;
+        cin.clear();
+        cin.ignore(10000, '\n');
+    }
+
     nuevoProducto.setPrecio(precio);
-    
+
     nuevoProducto.setEstado(true);
-        
-        
+
+
     //***** fin de los ingresos *****//
-    
+
 
     ArchivoProductos archivoProductos("productos.dat");
     int agregoArchivo = archivoProductos.agregarNuevoProducto(nuevoProducto);
@@ -70,63 +91,74 @@ void ManagerProductos::nuevoProducto()
 
 void ManagerProductos::modificarProducto()
 {
-	cout << "**** MODIFICAR PRODUCTO ****" << endl;
+    cout << "**** MODIFICAR PRODUCTO ****" << endl;
 
-	int idProductoAModificar;
-	cout << "Ingrese id del producto a modificar: " << endl;
-	cin >> idProductoAModificar;
+    int idProductoAModificar;
+    cout << "Ingrese id del producto a modificar: " << endl;
+    cin >> idProductoAModificar;
 
-	ArchivoProductos archivoProd("productos.dat");
-	int posicionProductoAModificar = archivoProd.buscarPosicionPorId(idProductoAModificar);
+    ArchivoProductos archivoProd("productos.dat");
+    int posicionProductoAModificar = archivoProd.buscarPosicionPorId(idProductoAModificar);
 
-	if(posicionProductoAModificar != -1){
-		cout << "Producto Encontrado" << endl;
-		Producto productoAModificar = archivoProd.buscarProductoPorId(idProductoAModificar);
-		productoAModificar.modificarProducto();
-		int agregoProducto = archivoProd.agregarProductoModificado(productoAModificar, 				posicionProductoAModificar);
-		if(agregoProducto == 1){
-				cout << "Producto agregado correctamente" << endl;
-		}else {
-				cout << "No se pudo agregar el producto" << endl;
-		}
-	}
+    if(posicionProductoAModificar != -1)
+    {
+        cout << "Producto Encontrado" << endl;
+        Producto productoAModificar = archivoProd.buscarProductoPorId(idProductoAModificar);
+        productoAModificar.modificarProducto();
+        int agregoProducto = archivoProd.agregarProductoModificado(productoAModificar, 				posicionProductoAModificar);
+        if(agregoProducto == 1)
+        {
+            cout << "Producto agregado correctamente" << endl;
+        }
+        else
+        {
+            cout << "No se pudo agregar el producto" << endl;
+        }
+    }
 }
 
-void ManagerProductos::eliminarProducto(){
-	
-	cout << "**** ELIMINAR PRODUCTO ****" << endl;
-	
-	int idProductoAEliminar;
-	cout << "Ingrese id del producto a eliminar: " << endl;
-	cin >> idProductoAEliminar;
-	
-	ArchivoProductos archivoProd("productos.dat");
-	int posicionProductoAEliminar = archivoProd.buscarPosicionPorId(idProductoAEliminar);
+void ManagerProductos::eliminarProducto()
+{
 
-	if(posicionProductoAEliminar != -1){
-		cout << "Producto Encontrado" << endl;
-		Producto productoAEliminar = archivoProd.buscarProductoPorId(idProductoAEliminar);
-		productoAEliminar.eliminarProducto();
-		int agregoProducto = archivoProd.agregarProductoModificado(productoAEliminar, 				posicionProductoAEliminar);
-		if(agregoProducto == 1){
-				cout << "Producto eliminado correctamente" << endl;
-		}else {
-				cout << "No se pudo eliminar el producto" << endl;
-		}
-	}
-	
-	
-	
+    cout << "**** ELIMINAR PRODUCTO ****" << endl;
+
+    int idProductoAEliminar;
+    cout << "Ingrese id del producto a eliminar: " << endl;
+    cin >> idProductoAEliminar;
+
+    ArchivoProductos archivoProd("productos.dat");
+    int posicionProductoAEliminar = archivoProd.buscarPosicionPorId(idProductoAEliminar);
+
+    if(posicionProductoAEliminar != -1)
+    {
+        cout << "Producto Encontrado" << endl;
+        Producto productoAEliminar = archivoProd.buscarProductoPorId(idProductoAEliminar);
+        productoAEliminar.eliminarProducto();
+        int agregoProducto = archivoProd.agregarProductoModificado(productoAEliminar, 				posicionProductoAEliminar);
+        if(agregoProducto == 1)
+        {
+            cout << "Producto eliminado correctamente" << endl;
+        }
+        else
+        {
+            cout << "No se pudo eliminar el producto" << endl;
+        }
+    }
+
+
+
 }
 
 void ManagerProductos::listarProductos()
 {
- //TODO//
+//TODO//
 }
 
-ManagerProductos::~ManagerProductos(){
-	if(_archivo != nullptr){
-		delete _archivo; 
-		_archivo = nullptr;
-	}
+ManagerProductos::~ManagerProductos()
+{
+    if(_archivo != nullptr)
+    {
+        delete _archivo;
+        _archivo = nullptr;
+    }
 }
