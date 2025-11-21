@@ -1,18 +1,19 @@
 #include <iostream>
 #include <string>
 #include "ManagerProductos.h"
-#include "ArchivoProductos.h"
 #include "FuncionesGlobales.h"
+#include "ArchivoProductos.h"
 
 using namespace std;
 
-ManagerProductos::ManagerProductos(){
+ManagerProductos::ManagerProductos():_archivo("productos.dat"){
 	
 }
 
 void ManagerProductos::nuevoProducto()
 {
     Producto nuevoProducto;
+    
     int idProducto, cantidad;
     string descripcion, marca, tipo;
     float precio;

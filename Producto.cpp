@@ -77,7 +77,7 @@ void Producto::setDescripcion(string descripcion){
 }
 
 int Producto::setIdProducto(int idProducto){
-		_idProducto = idProducto; 
+		_idProducto = idProducto;
 }
 
 void Producto::setMarca(string marca){

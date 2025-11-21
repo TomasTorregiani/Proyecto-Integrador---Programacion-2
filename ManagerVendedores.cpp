@@ -1,12 +1,11 @@
 #include <iostream>
 #include "ManagerVendedores.h"
-#include "ArchivoVendedores.h"
 #include "FuncionesGlobales.h"
 
 using namespace std;
 
-ManagerVendedores::ManagerVendedores(){
-
+ManagerVendedores::ManagerVendedores():_archivo("vendedores.dat"){
+		
 }
 
 void ManagerVendedores::nuevoVendedor()
@@ -14,41 +13,60 @@ void ManagerVendedores::nuevoVendedor()
 
     Vendedor nuevoVendedor;
 
-    char nombre[50], apellido[50], email[50], direccion[100];
+    string nombre, apellido, email, direccion;
     int idVendedor, cuilVendedor, telefonoVendedor;
     bool estado;
 
     cout << "Ingresar nombre vendedor nuevo: " << endl;
     cin.ignore();
-    cin.getline(nombre, 50);
+    getline(cin, nombre);
+    
+    //validar:
+    
     nuevoVendedor.setNombre(nombre);
 
     cout << "Ingresar apellido vendedor nuevo: " << endl;
-    cin.getline(apellido, 50);
+    getline(cin, apellido);
+    
+    //validar:
+    
     nuevoVendedor.setApellido(apellido);
 
     cout << "Ingresar cuil vendedor nuevo: " << endl;
     cin >> cuilVendedor;
+    
+    //validar:
+    
     nuevoVendedor.setCuilVendedor(cuilVendedor);
 
     cout << "Ingresar numero de telefono: " << endl;
     cin >> telefonoVendedor;
+    
+    //validar
+    
     nuevoVendedor.setNumeroTelefono(telefonoVendedor);
 
     cout << "Ingresar email vendedor nuevo: " << endl;
     cin.ignore();
-    cin.getline(email, 50);
+    getline(cin, email);
+    
+    //validar:
 
     cout << "Ingresar direccion vendedor nuevo: " << endl;
-    cin.getline(direccion, 50);
+    getline(cin, direccion);
+    
+    //validacion.
+    
+    nuevoVendedor.setDireccion(direccion);
 
     nuevoVendedor.setEstado(true);
+    
+    //**** fin de ingreso de datos ****//
     
     idVendedor = contarRegistros("vendedores.dat", sizeof(Vendedor)) + 1;
     nuevoVendedor.setIdVendedor(idVendedor);
 
-    ArchivoVendedores archivoVendedor("vendedores.dat");
-    int agrego = archivoVendedor.agregarVendedor(nuevoVendedor);
+    int agrego = _archivo.agregarVendedor(nuevoVendedor); //porque _archivo ya se creó en el constructor de Vendedores.
     if(agrego != 0)
     {
         cout << "El vendedor se agrego correctamente" << endl;
