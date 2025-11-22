@@ -9,10 +9,11 @@ private:
 public:
     ManagerClientes();
     Cliente crearNuevoCliente();
-    int crearCliente();
+    void crearCliente();
     Cliente pedirNuevosDatos();
     void modificarCliente();
-    Cliente buscarClientePorId(int idCliente);
-    int eliminarCliente(int idCliente);
-    int activarCliente(int idCliente);
+    void buscarClientePorId();
+    void eliminarCliente();
+    void activarCliente();
+    void listarClientes();
 };

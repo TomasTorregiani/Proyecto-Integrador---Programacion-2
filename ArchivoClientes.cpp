@@ -23,7 +23,7 @@ int ArchivoClientes::agregarCliente(Cliente registro){
     return escribio;
 }
 
-Cliente ArchivoClientes::buscarClientePorId(int idCliente){
+Cliente ArchivoClientes::archivoBuscarClientePorId(int idCliente){
     Cliente cliente;
     FILE *p = nullptr;
     p = fopen(_nombre, "rb");
@@ -102,7 +102,6 @@ Cliente* ArchivoClientes::obtenerClientes(int cantidadClientes){
     FILE* p = nullptr;
     p = fopen(_nombre, "rb");
     if(p == nullptr){
-        cout << "No se abrio correctamente el archivo" << endl;
         return nullptr;
     }
     fseek(p, 0, SEEK_SET);

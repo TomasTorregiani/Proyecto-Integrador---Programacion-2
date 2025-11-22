@@ -29,12 +29,8 @@ void MenuGestionClientes(){
             case 1: {
                 cout << "**** NUEVO CLIENTE ****" << endl;
                 ManagerClientes managerCliente;
-                int clienteAgregado = managerCliente.crearCliente();
-                if(clienteAgregado == 1){
-                    cout << "Cliente agregado correctamente" << endl;
-                }else{
-                    cout << "Error al agregar cliente" << endl;
-                }
+                managerCliente.crearCliente();
+
             }
             break;
             case 2:{
@@ -45,64 +41,26 @@ void MenuGestionClientes(){
             break;
             case 3:{
                 cout << "**** BUSCAR CLIENTE POR ID ****" << endl;
-                int idCliente;
-                cout << "Ingresar id de cliente: " << endl;
-                cin >> idCliente;
-
                 ManagerClientes managerCliente;
-                Cliente clienteObtenido = managerCliente.buscarClientePorId(idCliente);
-
-                if(clienteObtenido.getIdCliente() != 0){
-                    cout << "Cliente encontrado" << endl;
-                    clienteObtenido.mostrarCliente();
-                }else{
-                    cout << "No se encontro el cliente" << endl;
-                }
+                managerCliente.buscarClientePorId();
             }
             break;
             case 4:{
                 cout << "**** ELIMINAR CLIENTE ****" << endl;
-                int idClienteAEliminar;
-                cout << "Ingrese id cliente a eliminar" << endl;
-                cin >> idClienteAEliminar;
-
                 ManagerClientes managerCliente;
-                int clienteEliminado = managerCliente.eliminarCliente(idClienteAEliminar);
-
-                if(clienteEliminado != 0){
-                    cout << "Cliente eliminado exitosamente" << endl;
-                }else{
-                    cout << "No se pudo eliminar el cliente" << endl;
-                }
+                managerCliente.eliminarCliente();
             }
             break;
             case 5: {
                 cout << "**** ACTIVAR CLIENTE ****" << endl;
-                int idClienteAActivar;
-                cout << "Ingrese el id del cliente a activar nuevamente" << endl;
-                cin >> idClienteAActivar;
-
                 ManagerClientes managerCliente;
-                int clienteAActivar = managerCliente.activarCliente(idClienteAActivar);
-                if(clienteAActivar != 0){
-                    cout << "Cliente activado correctamente" << endl;
-                }else {
-                    cout << "Error al activar el cliente" << endl;
-                }
+                managerCliente.activarCliente();
             }
             break;
             case 6: {
                 cout << "LISTAR LOS CLIENTES" << endl; //Listar clientes ya lo tenemos en listados
-                int cantidadClientes = contarRegistros("clientes.dat", sizeof(Cliente));
-                ArchivoClientes archivoC("clientes.dat");
-                Cliente* arrayclientes = archivoC.obtenerClientes(cantidadClientes);
-
-                for(int i = 0; i < cantidadClientes; i++){
-                    if(arrayclientes[i].getActivo() == true){
-                        arrayclientes[i].mostrarCliente();
-                    }
-                }
-                delete[] arrayclientes;
+                ManagerClientes managerCliente;
+                managerCliente.listarClientes();
             }
             break;
             case 0:

@@ -26,40 +26,6 @@ Cliente::Cliente(string nombre,
     setDireccion(direccion);
     _activo = true;
 }
-void Cliente::crearCliente(){  //Esta funcion la estoy implementando en el manager. La tengo que borrar de aca
-    _idCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + 1;
-    cout << "Ingresar nombre cliente nuevo: " << endl;
-    cin >> _nombre;
-    cout << "Ingresar apellido cliente nuevo: " << endl;
-    cin >> _apellido;
-    cout << "Ingresar cuit cliente nuevo: " << endl;
-    cin >> _cuil;
-    cout << "Ingresar tipo cliente nuevo: " << endl;
-    cin >> _tipoCliente;
-    cout << "Ingresar numero de telefono: " << endl;
-    cin >> _numeroTelefono;
-    cout << "Ingresar email cliente nuevo: " << endl;
-    cin >> _email;
-    cout << "Ingresar direccion cliente nuevo: " << endl;
-    cin >> _direccion;
-    _activo = true;
-}
-void Cliente::modificarCliente(){
-    cout << "Ingresar nombre cliente nuevo: " << endl;
-    cin >> _nombre;
-    cout << "Ingresar apellido cliente nuevo: " << endl;
-    cin >> _apellido;
-    cout << "Ingresar cuit cliente nuevo: " << endl;
-    cin >> _cuil;
-    cout << "Ingresar tipo cliente nuevo: " << endl;
-    cin >> _tipoCliente;
-    cout << "Ingresar numero de telefono: " << endl;
-    cin >> _numeroTelefono;
-    cout << "Ingresar email cliente nuevo: " << endl;
-    cin >> _email;
-    cout << "Ingresar direccion cliente nuevo: " << endl;
-    cin >> _direccion;
-}
 void Cliente::mostrarCliente(){
     cout << "=== DATOS DEL CLIENTE ===" << endl;
     cout << "ID Cliente: " << _idCliente << endl;

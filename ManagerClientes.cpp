@@ -43,11 +43,15 @@ Cliente ManagerClientes::crearNuevoCliente()
     return nuevoCliente;
 }
 
-int ManagerClientes::crearCliente()
+void ManagerClientes::crearCliente()
 {
     Cliente nuevoCliente = crearNuevoCliente();
     int clienteAgregado = _archivoCliente.agregarCliente(nuevoCliente);
-    return clienteAgregado;
+    if(clienteAgregado == 1){
+        cout << "Cliente agregado correctamente" << endl;
+    }else{
+        cout << "Error al agregar cliente" << endl;
+    }
 }
 
 Cliente ManagerClientes::pedirNuevosDatos()
@@ -85,7 +89,7 @@ void ManagerClientes::modificarCliente()
     int idClienteAModificar;
     cout << "Ingrese el id del cliente que quiere modificar: " << endl;
     cin >> idClienteAModificar;
-    Cliente registro = _archivoCliente.buscarClientePorId(idClienteAModificar);
+    Cliente registro = _archivoCliente.archivoBuscarClientePorId(idClienteAModificar);
     int idOriginal = registro.getIdCliente();
     int posicion = _archivoCliente.obtenerPosicionCliente(idClienteAModificar);
     int datosModificados = 0;
@@ -113,37 +117,74 @@ void ManagerClientes::modificarCliente()
 }
 
 
-Cliente ManagerClientes::buscarClientePorId(int idCliente)
+void ManagerClientes::buscarClientePorId()
 {
-    Cliente clienteObtenido = _archivoCliente.buscarClientePorId(idCliente);
-    return clienteObtenido;
+    int idCliente;
+    cout << "Ingresar id de cliente: " << endl;
+    cin >> idCliente;
+    Cliente clienteObtenido = _archivoCliente.archivoBuscarClientePorId(idCliente);
+    if(clienteObtenido.getIdCliente() != 0){
+        cout << "Cliente encontrado" << endl;
+        clienteObtenido.mostrarCliente();
+    }else{
+        cout << "No se encontro el cliente" << endl;
+    }
 }
 
-int ManagerClientes::eliminarCliente(int idCliente)
+void ManagerClientes::eliminarCliente()
 {
-    int posicionClienteAEliminar = _archivoCliente.obtenerPosicionCliente(idCliente);
+    int idClienteAEliminar;
+    cout << "Ingrese id cliente a eliminar: " << endl;
+    cin >> idClienteAEliminar;
+    int posicionClienteAEliminar = _archivoCliente.obtenerPosicionCliente(idClienteAEliminar);
     if(posicionClienteAEliminar == -1)
     {
-        return 0;
+        cout << "No se encontro el cliente" << endl;
     }
-    Cliente clienteAEliminar = _archivoCliente.buscarClientePorId(idCliente);
+    Cliente clienteAEliminar = _archivoCliente.archivoBuscarClientePorId(idCliente);
     clienteAEliminar.eliminarCliente();
     int clienteEliminado = _archivoCliente.modificarDatosCliente(clienteAEliminar, posicionClienteAEliminar);
-    return clienteEliminado;
+    if(clienteEliminado != 0){
+        cout << "Cliente eliminado exitosamente" << endl;
+    }else{
+        cout << "Error al eliminar el cliente" << endl;
+    }
 }
 
-int ManagerClientes::activarCliente(int idCliente)
+void ManagerClientes::activarCliente()
 {
-    int posicionCliente = _archivoCliente.obtenerPosicionCliente(idCliente);
+    int idClienteAActivar;
+    cout << "Ingrese el id del cliente a activar nuevamente: " << endl;
+    cin >> idClienteAActivar;
+    int posicionCliente = _archivoCliente.obtenerPosicionCliente(idClienteAActivar);
     if(posicionCliente == -1)
     {
-        return 0;
+        cout << "No se encontro el cliente: " << endl;
     }
     Cliente clienteAActivar = _archivoCliente.buscarClientePorId(idCliente);
     clienteAActivar.activarCliente();
     int clienteActivado = _archivoCliente.modificarDatosCliente(clienteAActivar, posicionCliente);
-    return clienteActivado;
+    if(clienteActivado != 0){
+        cout << "Cliente activado correctamente" << endl;
+    }else {
+        cout << "Error al activar el cliente" << endl;
+    }
 }
+
+void ManagerClientes::listarClientes(
+    int cantidadClientes = contarRegistros("clientes.dat", sizeof(Cliente));
+    Cliente* arrayclientes = _archivoCliente.obtenerClientes(cantidadClientes);
+    if(arrayClientes == nullptr){
+        cout << "No se abrio correctamente el archivo" << endl;
+        return;
+    }
+    for(int i = 0; i < cantidadClientes; i++){
+        if(arrayclientes[i].getActivo() == true){
+        arrayclientes[i].mostrarCliente();
+        }
+    }
+    delete[] arrayclientes;
+)
 
 
 
