@@ -80,6 +80,8 @@ void ManagerProductos::nuevoProducto()
     idProducto = contarRegistros("productos.dat", sizeof(Producto)) + 1;
     
     nuevoProducto.setIdProducto(idProducto);
+    
+    cout << "El Id del Producto es: " << nuevoProducto.getIdProducto() << endl; 
 
 
     //***** fin de los ingresos *****//

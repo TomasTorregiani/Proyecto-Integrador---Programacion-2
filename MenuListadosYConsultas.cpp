@@ -68,7 +68,6 @@ void MenuListadosYConsultas(){
                 }
                 delete[] arrayVendedores;
                 
-                
                 /*ArchivoVendedores archivoVendedor("vendedores.dat");
 
                 int cantidadVendedores = contarRegistros("vendedores.dat", sizeof(Vendedor));

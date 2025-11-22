@@ -115,9 +115,10 @@ void MenuGestionVendedores()
         case 5:
         {
             cout << "**** LISTAR TODOS LOS VENDEDORES ****" << endl;
+            
             ArchivoVendedores archivoVendedor("vendedores.dat");
-
-            archivoVendedor.listarVendedores();
+						archivoVendedor.listarVendedores();
+						
         }
         break;
         case 0:

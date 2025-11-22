@@ -97,9 +97,13 @@ void ManagerVendedores::nuevoVendedor()
 
     idVendedor = contarRegistros("vendedores.dat", sizeof(Vendedor)) + 1;
     nuevoVendedor.setIdVendedor(idVendedor);
-
-    int agrego = _archivo.agregarVendedor(nuevoVendedor); //porque _archivo ya se creó en el constructor de Vendedores.
-    if(agrego != 0)
+    
+    cout << "El id del nuevo venvedor es: " << nuevoVendedor.getIdVendedor() << endl; 
+    
+    ArchivoVendedores archivoVendedores("vendedores.dat");
+    
+    int agregoArchivo = archivoVendedores.agregarVendedor(nuevoVendedor); 
+    if(agregoArchivo == 1)
     {
         cout << "El vendedor se agrego correctamente" << endl;
     }
@@ -108,6 +112,7 @@ void ManagerVendedores::nuevoVendedor()
         cout << "Error al agregar el vendedor" << endl;
     }
 }
+
 
 void ManagerVendedores::listarVendedores()
 {

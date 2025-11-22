@@ -18,12 +18,11 @@ int ArchivoVendedores::agregarVendedor(Vendedor vendedor){
     p = fopen(_nombre, "ab");
     if(p == nullptr){
         cout << "ERROR: No se pudo abrir 'vendedores.dat'. " << endl;
-        return 0;
+        return -1;
     }
 
     cout << "DEBUG: Tamaño registro: " << _tamanioRegistro << endl;
     int escribio = fwrite(&vendedor, _tamanioRegistro, 1, p);
-    cout << "DEBUG: fwrite devolvió: " << escribio << endl;
 
     if(escribio == 1){
         fclose(p);
