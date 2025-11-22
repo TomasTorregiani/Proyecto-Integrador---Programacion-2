@@ -15,14 +15,13 @@ public:
     void modificarVendedor();
 
     //Setters
-    //El setter de idCliente no es necesario //Por??
-    //El setter de idVendedor no es necesario //Por??
-
+    void setIdVendedor(int idVendedor);
     void setNombre(std::string nombre);
     void setApellido(std::string apellido);
     void setNumeroTelefono(int numeroTelefono);
     void setEmail(std::string email);
     void setDireccion(std::string direccion);
+    void setActivo(bool value);
 
     //Getters
     int getIdVendedor();

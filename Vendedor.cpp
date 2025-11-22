@@ -80,6 +80,9 @@ void Vendedor::setDireccion(string direccion){
     strncpy(_direccion, direccion.c_str(), sizeof(_direccion) - 1);
     _direccion[49] = '\0';
 }
+void Vendedor::setIdVendedor(int idVendedor){
+    _idVendedor = idVendedor;
+}
 
 int Vendedor::getIdVendedor(){
     return _idVendedor;
@@ -97,8 +100,8 @@ string Vendedor::getEmail(){
 string Vendedor::getDireccion(){
     return _direccion;
 }
-void Vendedor::eliminarVendedor(){
-	_activo = false;
+void setActivo(bool value){
+    _activo = value;
 }
 bool Vendedor::getEstado(){
     return _activo;

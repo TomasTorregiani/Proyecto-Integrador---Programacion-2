@@ -7,10 +7,11 @@ class ManagerVendedores
 
 public:
     ManagerVendedores();
-    Vendedor crearVendedor();
+    void crearVendedor();
     void listarVendedores();
     void modificarVendedor();
     void eliminarVendedor();
+    void obtenerVendedorPorId();
 
 private:
     ArchivoVendedores _archivoVendedores; //recibe un archivo de vendedor para trabajar en él.

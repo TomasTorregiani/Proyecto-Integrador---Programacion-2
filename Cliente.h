@@ -32,9 +32,6 @@ public:
     std::string getDireccion();
     bool getActivo();
 
-    void eliminarCliente();
-    void activarCliente();
-
 protected:
 
 private:

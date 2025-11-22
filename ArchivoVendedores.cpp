@@ -98,7 +98,7 @@ int ArchivoVendedores::modificarDatosVendedor(Vendedor registroVendedor, int pos
     }
 }
 
-void ArchivoVendedores::listarVendedores(){
+/*void ArchivoVendedores::listarVendedores(){ //Este archivo no deberia listar. Deberia devolver y el listado deberia verse en el manager.
     FILE* p = nullptr;
     p = fopen(_nombre, "rb");
 
@@ -121,7 +121,7 @@ void ArchivoVendedores::listarVendedores(){
         cout << "No se encontraron vendedores" << endl;
     }
     fclose(p);
-}
+}*/
 
 Vendedor* ArchivoVendedores::obtenerVendedores(int cantidadVendedores){
     FILE* p = nullptr;

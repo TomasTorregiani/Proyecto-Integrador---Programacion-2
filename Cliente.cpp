@@ -86,12 +86,6 @@ string Cliente::getEmail(){
 string Cliente::getDireccion(){
     return _direccion;
 }
-void Cliente::eliminarCliente(){
-	_activo = false;
-}
-void Cliente::activarCliente(){
-	_activo = true;
-}
 bool Cliente::getActivo(){
     return _activo;
 }

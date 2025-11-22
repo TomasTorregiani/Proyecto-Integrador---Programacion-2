@@ -89,6 +89,7 @@ void ManagerClientes::modificarCliente()
     int idClienteAModificar;
     cout << "Ingrese el id del cliente que quiere modificar: " << endl;
     cin >> idClienteAModificar;
+
     Cliente registro = _archivoCliente.archivoBuscarClientePorId(idClienteAModificar);
     int idOriginal = registro.getIdCliente();
     int posicion = _archivoCliente.obtenerPosicionCliente(idClienteAModificar);
@@ -142,7 +143,7 @@ void ManagerClientes::eliminarCliente()
         cout << "No se encontro el cliente" << endl;
     }
     Cliente clienteAEliminar = _archivoCliente.archivoBuscarClientePorId(idCliente);
-    clienteAEliminar.eliminarCliente();
+    clienteAEliminar.setActivo(false);
     int clienteEliminado = _archivoCliente.modificarDatosCliente(clienteAEliminar, posicionClienteAEliminar);
     if(clienteEliminado != 0){
         cout << "Cliente eliminado exitosamente" << endl;
@@ -162,7 +163,7 @@ void ManagerClientes::activarCliente()
         cout << "No se encontro el cliente: " << endl;
     }
     Cliente clienteAActivar = _archivoCliente.buscarClientePorId(idCliente);
-    clienteAActivar.activarCliente();
+    clienteAActivar.setActivo(true);
     int clienteActivado = _archivoCliente.modificarDatosCliente(clienteAActivar, posicionCliente);
     if(clienteActivado != 0){
         cout << "Cliente activado correctamente" << endl;

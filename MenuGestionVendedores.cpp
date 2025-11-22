@@ -23,84 +23,32 @@ void MenuGestionVendedores(){
         switch(opcion){
             case 1: {
                 cout << "**** NUEVO VENDEDOR ****" << endl;
-                Vendedor nuevoVendedor;
-                nuevoVendedor.crearVendedor();
-                ArchivoVendedores archivoVendedor("vendedores.dat");
-                int agrego = archivoVendedor.agregarVendedor(nuevoVendedor);
-                if(agrego != 0){
-                    cout << "El vendedor se agrego correctamente" << endl;
-                }else{
-                    cout << "Error al agregar el vendedor" << endl;
-                }
+                ManagerVendedores gestorVendedor;
+                gestorVendedor.crearVendedor();
             }
             break;
             case 2:{
-                int idVendedor;
                 cout << "**** MODIFICAR DATOS DEL VENDEDOR ****" << endl;
-                cout << "Ingrese id del vendedor a modificar: " << endl;
-                cin >> idVendedor;
-
-                ArchivoVendedores archivoVendedor("vendedores.dat");
-                int posicionVendedor = archivoVendedor.buscarPosicionDelVendedor(idVendedor);
-                if(posicionVendedor != -1){
-                    Vendedor vendedorAModificar = archivoVendedor.buscarVendedorPorId(idVendedor);
-                    vendedorAModificar.modificarVendedor();
-                        int modifico = archivoVendedor.modificarDatosVendedor(vendedorAModificar, posicionVendedor);
-                        if(modifico == 1){
-                            cout << "Se escribio correctamente" << endl;
-                        }else{
-                            cout << "El archivo no pudo escribirse correctamente" << endl;
-                        }
-                    }
-                }
+                ManagerVendedores gestorVendedor;
+                gestorVendedor.modificarVendedor();
+            }
             break;
             case 3: {
                 cout << "**** BUSCAR VENDEDOR POR ID ****" << endl;
-                int idVendedor;
-                cout << "Ingrese id del vendedor: " << endl;
-                cin >> idVendedor;
-
-                ArchivoVendedores archivoVendedor("vendedores.dat");
-                Vendedor registroVendedor = archivoVendedor.buscarVendedorPorId(idVendedor);
-                if(registroVendedor.getIdVendedor() == 0){
-                    cout << "No se encontro el vendedor" << endl;
-                }else {
-                    cout << "Vendedor encontrado:" << endl;
-                    cout << "Nombre: " << registroVendedor.getNombre() << endl;
-                    cout << "Apellido: " << registroVendedor.getApellido() << endl;
-                    cout << "Estado: " << (registroVendedor.getEstado() == 1 ? "Activo" : "Inactivo") << endl;
-                }
+                ManagerVendedores gestorVendedor;
+                gestorVendedor.obtenerVendedorPorId();
             }
             break;
             case 4: {
                 cout << "**** ELIMINAR VENDEDOR ****" << endl;
-                int idVendedor;
-                cout << "Ingrese el id del vendedor: " << endl;
-                cin >> idVendedor;
-
-                ArchivoVendedores archivoVendedor("vendedores.dat");
-                int posicionVendedor = archivoVendedor.buscarPosicionDelVendedor(idVendedor);
-                if(posicionVendedor != -1){
-                    cout << "Registro encontrado exitosamente" << endl;
-                    Vendedor vendedorAEliminar = archivoVendedor.buscarVendedorPorId(idVendedor);
-                    vendedorAEliminar.eliminarVendedor();
-
-                    int eliminoVendedor = archivoVendedor.modificarDatosVendedor(vendedorAEliminar, posicionVendedor);
-                    if(eliminoVendedor != 0){
-                        cout << "Vendedor eliminado correctamente" << endl;
-                    }else{
-                        cout << "Error al eliminar el vendedor" << endl;
-                    }
-                }else {
-                    cout << "No se encontro el registro" << endl;
-                }
+                ManagerVendedores gestorVendedor;
+                gestorVendedor.eliminarVendedor();
             }
             break;
             case 5: {
                 cout << "**** LISTAR TODOS LOS VENDEDORES ****" << endl;
-                ArchivoVendedores archivoVendedor("vendedores.dat");
-
-                archivoVendedor.listarVendedores();
+                ManagerVendedores gestorVendedor;
+                gestorVendedor.listarVendedores();
             }
             break;
             case 0: cout << "Volviendo al menu principal..." << endl;
