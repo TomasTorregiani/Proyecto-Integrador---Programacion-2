@@ -11,7 +11,6 @@ public:
             std::string apellido, int numeroTelefono,
             std::string email, std::string direccion); //Creo que directamente sacaria este constructor y dejaria uno vacio
 
-    void crearVendedor();
     void mostrarVendedor();
     void modificarVendedor();
 

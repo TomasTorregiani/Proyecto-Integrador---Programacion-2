@@ -58,14 +58,25 @@ void MenuListadosYConsultas(){
             break;
             case 3: {
                 cout << "**** LISTADO DE VENDEDORES ****" << endl;
+                
+                int cantidadVendedores = contarRegistros("vendedores.dat",sizeof(Vendedor));
                 ArchivoVendedores archivoVendedor("vendedores.dat");
+                Vendedor* arrayVendedores = archivoVendedor.obtenerVendedores(cantidadVendedores);
+
+                for(int i = 0; i < cantidadVendedores; i++){
+                    arrayVendedores[i].mostrarVendedor();
+                }
+                delete[] arrayVendedores;
+                
+                
+                /*ArchivoVendedores archivoVendedor("vendedores.dat");
 
                 int cantidadVendedores = contarRegistros("vendedores.dat", sizeof(Vendedor));
                 Vendedor* arrayVendedores = archivoVendedor.obtenerVendedores(cantidadVendedores);
                 for(int i = 0; i < cantidadVendedores; i++){
                     arrayVendedores[i].mostrarVendedor();
                 }
-                delete[] arrayVendedores;
+                delete[] arrayVendedores;*/
             }
             break;
             case 4: {

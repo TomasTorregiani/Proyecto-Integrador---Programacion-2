@@ -4,8 +4,9 @@
 
 using namespace std;
 
-ManagerVendedores::ManagerVendedores():_archivo("vendedores.dat"){
-		
+ManagerVendedores::ManagerVendedores():_archivo("vendedores.dat")
+{
+
 }
 
 void ManagerVendedores::nuevoVendedor()
@@ -20,49 +21,80 @@ void ManagerVendedores::nuevoVendedor()
     cout << "Ingresar nombre vendedor nuevo: " << endl;
     cin.ignore();
     getline(cin, nombre);
-    
-    //validar:
-    
+
+
+    while(nombre == "")
+    {
+        cout << "Error. Ingrese un nombre: " << endl;
+        getline(cin,nombre);
+    }
+
     nuevoVendedor.setNombre(nombre);
 
     cout << "Ingresar apellido vendedor nuevo: " << endl;
     getline(cin, apellido);
-    
-    //validar:
-    
+
+    while(apellido == "")
+    {
+        cout << "Error. Ingrese un apellido: " << endl;
+        getline(cin, apellido);
+    }
+
     nuevoVendedor.setApellido(apellido);
 
     cout << "Ingresar cuil vendedor nuevo: " << endl;
     cin >> cuilVendedor;
-    
-    //validar:
-    
+
+    while(!(cin >> cuilVendedor || cuilVendedor < 0 || cin.peek() == '.'))
+    {
+        cout << "Error. Ingrese un cuil valido: ";
+        cin.clear();  //limpia el error de cin
+        cin.ignore(10000, '\n');
+    }
+    cin.ignore(10000, '\n');
+
     nuevoVendedor.setCuilVendedor(cuilVendedor);
 
     cout << "Ingresar numero de telefono: " << endl;
     cin >> telefonoVendedor;
-    
-    //validar
-    
+
+    while(!(cin >> telefonoVendedor || telefonoVendedor < 0 || cin.peek() == '.'))
+    {
+        cout << "Error. Ingrese un telefono valido: ";
+        cin.clear();  //limpia el error de cin
+        cin.ignore(10000, '\n');
+    }
+    cin.ignore(10000, '\n');
+
     nuevoVendedor.setNumeroTelefono(telefonoVendedor);
 
     cout << "Ingresar email vendedor nuevo: " << endl;
     cin.ignore();
     getline(cin, email);
-    
-    //validar:
+
+    while(email == "")
+    {
+        cout << "Error. Ingrese un email: " << endl;
+        getline(cin, email);
+    }
+
+    nuevoVendedor.setEmail(email);
 
     cout << "Ingresar direccion vendedor nuevo: " << endl;
     getline(cin, direccion);
-    
-    //validacion.
-    
+
+    while(direccion == "")
+    {
+        cout << "Error. Ingrese un email: " << endl;
+        getline(cin, direccion);
+    }
+
     nuevoVendedor.setDireccion(direccion);
 
     nuevoVendedor.setEstado(true);
-    
+
     //**** fin de ingreso de datos ****//
-    
+
     idVendedor = contarRegistros("vendedores.dat", sizeof(Vendedor)) + 1;
     nuevoVendedor.setIdVendedor(idVendedor);
 
