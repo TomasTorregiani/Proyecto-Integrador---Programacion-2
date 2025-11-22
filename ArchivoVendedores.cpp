@@ -18,11 +18,12 @@ int ArchivoVendedores::agregarVendedor(Vendedor vendedor){
     p = fopen(_nombre, "ab");
     if(p == nullptr){
         cout << "ERROR: No se pudo abrir 'vendedores.dat'. " << endl;
-        return -1;
+        return 0;
     }
 
     cout << "DEBUG: Tamaño registro: " << _tamanioRegistro << endl;
     int escribio = fwrite(&vendedor, _tamanioRegistro, 1, p);
+    cout << "DEBUG: fwrite devolvió: " << escribio << endl;
 
     if(escribio == 1){
         fclose(p);
@@ -97,7 +98,7 @@ int ArchivoVendedores::modificarDatosVendedor(Vendedor registroVendedor, int pos
     }
 }
 
-void ArchivoVendedores::listarVendedores(){
+/*void ArchivoVendedores::listarVendedores(){ //Este archivo no deberia listar. Deberia devolver y el listado deberia verse en el manager.
     FILE* p = nullptr;
     p = fopen(_nombre, "rb");
 
@@ -120,7 +121,7 @@ void ArchivoVendedores::listarVendedores(){
         cout << "No se encontraron vendedores" << endl;
     }
     fclose(p);
-}
+}*/
 
 Vendedor* ArchivoVendedores::obtenerVendedores(int cantidadVendedores){
     FILE* p = nullptr;
@@ -142,5 +143,3 @@ Vendedor* ArchivoVendedores::obtenerVendedores(int cantidadVendedores){
     fclose(p);
     return arrayVendedores;
 }
-
-

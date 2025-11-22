@@ -6,15 +6,18 @@ class ManagerVendedores
 {
 
 public:
-		ManagerVendedores();
-    void nuevoVendedor();
+    ManagerVendedores();
+    void crearVendedor();
+    
+    void crearNuevoVendedor(); //nuevo, de la rama-personal
+    
+    Vendedor pedirNuevosDatos(); 
+        
     void listarVendedores();
     void modificarVendedor();
     void eliminarVendedor();
+    void obtenerVendedorPorId();
 
-/*protected:
-		void mostrarVendedor(Vendedor vendedor);*/
-		
 private:
-    ArchivoVendedores _archivo; //recibe un archivo de vendedor para trabajar en él.
+    ArchivoVendedores _archivoVendedores; //recibe un archivo de vendedor para trabajar en él.
 };

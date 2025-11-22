@@ -49,6 +49,8 @@ Cliente ManagerClientes::crearNuevoCliente(){
     nuevoCliente.setDireccion(direccion);
     nuevoCliente.setActivo(true);
     return nuevoCliente;
+    
+    
 }
 int ManagerClientes::crearCliente(){
     Cliente nuevoCliente = crearNuevoCliente();

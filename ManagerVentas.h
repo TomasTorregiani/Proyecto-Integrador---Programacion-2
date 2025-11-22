@@ -1,0 +1,25 @@
+#pragma once
+#include "ArchivoVentas.h"
+#include "Venta.h"
+
+class ManagerVentas
+{
+
+public:
+    ManagerVentas();
+
+    bool crearVenta(); //hace todo, carga datos de venta, productos, calcula el total y guarda la venta.
+    void generarFactura(int idVenta);
+    bool agregarDetalleVenta();
+    void verDetalleFactura();
+    void listarVentas();
+    void eliminarVenta(int idVenta); //sería como una nota de crédito.
+
+    ~ManagerVentas();
+
+   
+
+private:
+    ArchivoVentas _archivoVentas; //recibe un archivo de Ventas para trabajar en él.
+    Venta _ventaActual;
+};

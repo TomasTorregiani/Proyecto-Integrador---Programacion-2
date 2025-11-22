@@ -29,13 +29,16 @@ void MenuGestionClientes(){
             case 1: {
                 cout << "**** NUEVO CLIENTE ****" << endl;
                 ManagerClientes managerCliente;
+                managerCliente.crearNuevoCliente();
+                
+                
                 int clienteAgregado = managerCliente.crearCliente();
                 if(clienteAgregado == 1){
                     cout << "Cliente agregado correctamente" << endl;
                 }else{
                     cout << "Error al agregar cliente" << endl;
-                }
-            }
+										}
+								}
             break;
             case 2: {
                 cout << "**** MODIFICAR DATOS CLIENTE ****" << endl;
