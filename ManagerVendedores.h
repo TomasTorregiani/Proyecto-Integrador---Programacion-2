@@ -8,12 +8,9 @@ class ManagerVendedores
 public:
     ManagerVendedores();
     void crearVendedor();
-    
-    void crearNuevoVendedor(); //nuevo, de la rama-personal
-    
-    Vendedor pedirNuevosDatos(); 
-    Vendedor crearVendedor(); 
         
+    Vendedor pedirNuevosDatos();  // ?????
+    
     void listarVendedores();
     void modificarVendedor();
     void eliminarVendedor();

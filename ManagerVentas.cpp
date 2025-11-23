@@ -1,4 +1,4 @@
-/*#include <iostream>
+#include <iostream>
 #include "ManagerVentas.h"
 #include "ArchivoClientes.h"
 #include "ArchivoVendedores.h"
@@ -15,7 +15,7 @@ using namespace std;
 ManagerVentas::ManagerVentas()
 :_archivoVentas("ventas.dat"){}
 
-bool ManagerVentas::crearVenta()
+/*bool ManagerVentas::crearVenta()
 {
     //agregar CLIENTE:
     int idCliente;
@@ -71,11 +71,9 @@ bool ManagerVentas::crearVenta()
     if(agregoVenta == 0 )
     {
         cout << "Error al agregar el archivo" << endl;
-    }
-    else
-    {
+    }else{
         cout << "Venta agregada correctamente" << endl;
-    }
+			}
 
     //agregar PRODUCTO:
     int opcion;
@@ -163,7 +161,7 @@ void ManagerVentas::verDetalleFactura()
             cout << "-----------------------------------" << endl;
         }
     }
-}
+}*/
 //{
 
 /*Validaciones

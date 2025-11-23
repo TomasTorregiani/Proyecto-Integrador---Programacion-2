@@ -9,7 +9,7 @@ ManagerVendedores::ManagerVendedores():_archivoVendedores("vendedores.dat"){
 	
 }
 
-void ManagerVendedores::crearNuevoVendedor(){
+void ManagerVendedores::crearVendedor(){
 
     Vendedor nuevoVendedor;
 
@@ -81,12 +81,7 @@ void ManagerVendedores::crearNuevoVendedor(){
     nuevoVendedor.setDireccion(direccion);
 
     nuevoVendedor.setActivo(true);
-    return nuevoVendedor;
-}
-
-Vendedor ManagerVendedores::crearVendedor(){
-	
-    Vendedor nuevoVendedor = crearNuevoVendedor();
+    
     int agregoVendedor = _archivoVendedores.agregarVendedor(nuevoVendedor);
     if(agregoVendedor != 0){
         cout << "El vendedor se agrego correctamente" << endl;
@@ -94,6 +89,8 @@ Vendedor ManagerVendedores::crearVendedor(){
         cout << "Error al agregar el vendedor" << endl;
     }
 }
+
+
 Vendedor ManagerVendedores::pedirNuevosDatos(){
     Vendedor vendedorModificado;
 
@@ -236,7 +233,7 @@ void ManagerVendedores::eliminarVendedor(){
 
 void ManagerVendedores::listarVendedores(){
 	
-    int cantidadVendedores = contarRegistros(_archivoVendedores, sizeof(Vendedor));
+    int cantidadVendedores = contarRegistros("vendedores.dat", sizeof(Vendedor));
     
     Vendedor* arrayVendedores = _archivoVendedores.obtenerVendedores(cantidadVendedores);
     if(arrayVendedores == nullptr){
