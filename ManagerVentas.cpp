@@ -18,6 +18,12 @@ ManagerVentas::ManagerVentas()
 
 bool ManagerVentas::crearVenta()
 {
+		//Primero se debe agregar la fecha:
+		
+		
+	
+	
+	
     //agregar CLIENTE:
     int idCliente;
     cout << "Ingrese id del cliente: " << endl;

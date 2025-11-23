@@ -47,7 +47,7 @@ void MenuGestionFacturacion(){
             case 3: {
 							               
 								ManagerVentas gestorVentas;
-								gestorVentas.eliminarVenta(); 
+								gestorVentas.eliminarVenta();
             }
             break;
             case 0: cout << "Volviendo al menu principal" << endl;
