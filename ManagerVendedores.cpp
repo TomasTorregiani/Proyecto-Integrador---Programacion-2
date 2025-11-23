@@ -3,20 +3,20 @@
 
 using namespace std;
 
-ManagerVendedores::ManagerVendedores(){
+ManagerVendedores::ManagerVendedores():_archivoVendedores("vendedores.dat"){
 
 }
 
-void ManagerVendedores::crearNuevoVendedor(){
+void ManagerVendedores::crearVendedor(){
 
     Vendedor nuevoVendedor;
-
-    idVendedor = contarRegistros("vendedores.dat", sizeof(Vendedor)) + 1;
-    nuevoVendedor.setIdVendedor(idVendedor);
 
     string nombre, apellido, email, direccion;
     int idVendedor, cuilVendedor, telefonoVendedor;
     bool estado;
+
+    idVendedor = contarRegistros("vendedores.dat", sizeof(Vendedor)) + 1;
+    nuevoVendedor.setIdVendedor(idVendedor);
 
     cout << "Ingresar nombre vendedor nuevo: " << endl;
     cin.ignore();
@@ -41,19 +41,6 @@ void ManagerVendedores::crearNuevoVendedor(){
     }
 
     nuevoVendedor.setApellido(apellido);
-
-    cout << "Ingresar cuil vendedor nuevo: " << endl;
-    cin >> cuilVendedor;
-
-    while(!(cin >> cuilVendedor || cuilVendedor < 0 || cin.peek() == '.'))
-    {
-        cout << "Error. Ingrese un cuil valido: ";
-        cin.clear();  //limpia el error de cin
-        cin.ignore(10000, '\n');
-    }
-    cin.ignore(10000, '\n');
-
-    nuevoVendedor.setCuilVendedor(cuilVendedor);
 
     cout << "Ingresar numero de telefono: " << endl;
     cin >> telefonoVendedor;
@@ -91,12 +78,8 @@ void ManagerVendedores::crearNuevoVendedor(){
 
     nuevoVendedor.setDireccion(direccion);
 
-    nuevoVendedor.setEstado(true);
-    return nuevoVendedor;
-}
+    nuevoVendedor.setActivo(true);
 
-Vendedor ManagerVendedores::crearVendedor(){
-    Vendedor nuevoVendedor = crearNuevoVendedor();
     int agregoVendedor = _archivoVendedores.agregarVendedor(nuevoVendedor);
     if(agregoVendedor != 0){
         cout << "El vendedor se agrego correctamente" << endl;
@@ -104,6 +87,7 @@ Vendedor ManagerVendedores::crearVendedor(){
         cout << "Error al agregar el vendedor" << endl;
     }
 }
+
 Vendedor ManagerVendedores::pedirNuevosDatos(){
     Vendedor vendedorModificado;
 
