@@ -25,7 +25,7 @@ bool ManagerVentas::crearVenta()
 
     ArchivoClientes archivoC("clientes.dat");
     Cliente clienteEncontrado = archivoC.buscarClientePorId(idCliente);
-    
+
     if(clienteEncontrado.getIdCliente() == 0)
     {
         cout << "No se encontro ningun registro con ese id" << endl;
@@ -33,22 +33,22 @@ bool ManagerVentas::crearVenta()
         cout << "---------------------" << endl;
 
         ManagerClientes managerCliente;
-        managerCliente.crearNuevoCliente(); 
+        managerCliente.crearNuevoCliente();
     }
-    
-     Cliente clienteParaVenta = clienteEncontrado;
-        
-        /*int escribio = managerCliente.crearCliente();
-        if(escribio == 1)
-        {
-            cout << "El archivo se escribio correctamente" << endl;
-            clienteParaVenta = nuevoCliente;
-        }
+
+    Cliente clienteParaVenta = clienteEncontrado;
+
+    /*int escribio = managerCliente.crearCliente();
+    if(escribio == 1)
+    {
+        cout << "El archivo se escribio correctamente" << endl;
+        clienteParaVenta = nuevoCliente;
+    }
 
     }
     else
     {
-        clienteParaVenta = encontrado;
+    clienteParaVenta = encontrado;
     }*/
 
     //agregar VENDEDOR:
@@ -59,7 +59,7 @@ bool ManagerVentas::crearVenta()
 
     ArchivoVendedores archivoV("vendedores.dat");
     Vendedor vendedorEncontrado = archivoV.buscarVendedorPorId(idVendedor); //devuelve un Vendedor
-    
+
     //Vendedor nuevoVendedor;
 
     if(vendedorEncontrado.getIdVendedor() == 0)
@@ -72,8 +72,8 @@ bool ManagerVentas::crearVenta()
         //Vendedor nuevoVendedor = gestorVendedores.crearVendedor();
         gestorVendedores.crearVendedor();
     }
-    
-     Vendedor vendedorParaVenta = vendedorEncontrado;
+
+    Vendedor vendedorParaVenta = vendedorEncontrado;
 
     //Recien aca se crea la VENTA.
 
@@ -122,13 +122,15 @@ bool ManagerVentas::crearVenta()
         }
         cout << "Desea agregar productos? (1 = Si / 2 = No)" << endl;
         cin >> opcion;
-        
-    }while(opcion == 1);
+
+    }
+    while(opcion == 1);
 }
 
 void ManagerVentas::verDetalleFactura()
 {
 
+    cout << "**** VER DETALLE DE FACTURA ****" << endl;
     int idVenta;
     cout << "Ingrese el id de venta: " << endl;
     cin >> idVenta;
@@ -136,9 +138,15 @@ void ManagerVentas::verDetalleFactura()
     ArchivoVentas archivoV("ventas.dat");
 
     Venta ventaObtenida = archivoV.obtenerVenta(idVenta);
+    
+    cout << "DEBUG: ID Venta obtenida: " << ventaObtenida.getIdVenta() << endl;
+    cout << "DEBUG: ID Cliente: " << ventaObtenida.getIdCliente() << endl;
+    cout << "DEBUG: ID Vendedor: " << ventaObtenida.getIdVendedor() << endl;
+    cout << "DEBUG: Fecha: " << ventaObtenida.getFecha() << endl;
+    
     if(ventaObtenida.getIdVenta() == 0)
     {
-        cout << "No se encontro la venta";
+        cout << "No se encontro la venta" << endl;
 
     }
     else
@@ -161,13 +169,14 @@ void ManagerVentas::verDetalleFactura()
             cout << "Vendedor: " << vendedorObtenido.getNombre() << " "
                  << vendedorObtenido.getApellido() << endl;
             cout << "Fecha: " << ventaObtenida.getFecha()<< endl;
-            cout << "Estado de la factura: " << (ventaObtenida.getAnulada() == false ? "Vigente" : "Anulada");
+            cout << "Estado de la factura: " << (ventaObtenida.getAnulada() == false ? "Vigente" : "Anulada") << endl;
         }
 
-        ArchivoDetalles archivo("detalle_ventas.dat");
+        ArchivoDetalles archivo("detalles_venta.dat");
         DetalleVenta detalles[50];
 
         int cantidadDetalles = archivo.verDetalleVenta(idVenta, detalles);
+        cout << "**** Detalles de la factura ****" << endl;
         for(int i = 0; i < cantidadDetalles; i++)
         {
             //Mostramos los detalles de la factura
@@ -179,6 +188,35 @@ void ManagerVentas::verDetalleFactura()
     }
 }
 
+void ManagerVentas::eliminarVenta()
+{
+    cout << "**** ELIMINAR FACTURA ****" << endl;
+    int idVentaAEliminar;
+    cout << "Ingrese id de la venta a eliminar: " << endl;
+    cin >> idVentaAEliminar;
+
+    ArchivoVentas archivo("ventas.dat");
+
+    int posicion = archivo.buscarPosicionPorID(idVentaAEliminar);
+    if(posicion == -1)
+    {
+        cout << "No se encontro el archivo" << endl;
+    }
+    else
+    {
+        Venta ventaAModificar = archivo.obtenerVenta(idVentaAEliminar);
+        ventaAModificar.anularVenta();
+        int ventaActualizada = archivo.actualizarVentaEnPosicion(posicion, ventaAModificar);
+        if(ventaActualizada == 0)
+        {
+            cout << "No se pudo sobreescribir la venta" << endl;
+        }
+        else
+        {
+            cout << "Venta modificada correctamente" << endl;
+        }
+    }
+}
 
 //{
 
@@ -239,15 +277,6 @@ cout << "Error al agregar la venta" << endl;
 //TODO
 
 }
-
-void ManagerVentas::eliminarVenta(int idVenta)
-{
-
-    /*int pos = _archivo;//FIXME
-
-    _activo = false;
-}
-
 ManagerVentas::~ ManagerVentas(){
 	if (_archivo != nullptr) {
         delete _archivo;

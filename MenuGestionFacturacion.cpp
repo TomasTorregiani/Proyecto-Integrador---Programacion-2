@@ -38,75 +38,16 @@ void MenuGestionFacturacion(){
             }
             break;
             case 2: {
-                cout << "**** VER DETALLE DE FACTURA ****" << endl;
-                int idVenta;
-                cout << "Ingrese el id de venta: " << endl;
-                cin >> idVenta;
-
-                ArchivoVentas archivoV("ventas.dat");
-
-                Venta ventaObtenida = archivoV.obtenerVenta(idVenta);
-                cout << "DEBUG: ID Venta obtenida: " << ventaObtenida.getIdVenta() << endl;
-                cout << "DEBUG: ID Cliente: " << ventaObtenida.getIdCliente() << endl;
-                cout << "DEBUG: ID Vendedor: " << ventaObtenida.getIdVendedor() << endl;
-                cout << "DEBUG: Fecha: " << ventaObtenida.getFecha() << endl;
-                if(ventaObtenida.getIdVenta() == 0){
-                    cout << "No se encontro la venta" << endl;
-
-                } else{
-                    ArchivoClientes archivoC("clientes.dat");
-                    Cliente clienteObtenido = archivoC.buscarClientePorId(ventaObtenida.getIdCliente());
-
-                    ArchivoVendedores registroArchivoVendedores("vendedores.dat");
-                    Vendedor vendedorObtenido = registroArchivoVendedores.buscarVendedorPorId(ventaObtenida.getIdVendedor());
-
-                    if(clienteObtenido.getIdCliente() == 0 || vendedorObtenido.getIdVendedor() == 0){
-                        cout << "Error al buscar cliente o vendedor";
-                    }else{
-                        //Mostramos la cabecera de la factura
-                        cout << "Cliente: " << clienteObtenido.getNombre() << " "
-                        << clienteObtenido.getApellido() << endl;
-                        cout << "Vendedor: " << vendedorObtenido.getNombre() << " "
-                        << vendedorObtenido.getApellido() << endl;
-                        cout << "Fecha: " << ventaObtenida.getFecha()<< endl;
-                        cout << "Estado de la factura: " << (ventaObtenida.getAnulada() == false ? "Vigente" : "Anulada") << endl;
-                    }
-
-                    ArchivoDetalles archivo("detalles_venta.dat");
-                    DetalleVenta detalles[50];
-
-                    int cantidadDetalles = archivo.verDetalleVenta(idVenta, detalles);
-                    cout << "**** Detalles de la factura ****" << endl;
-                    for(int i = 0; i < cantidadDetalles; i++){
-                        //Mostramos los detalles de la factura
-                        cout << "Producto: " << detalles[i].getProducto().getDescripcion() << endl;
-                        cout << "Cantidad: " << detalles[i].getCantidad() << endl;
-                        cout << "Subtotal: " << detalles[i].getSubtotal() << endl;
-                        cout << "-----------------------------------" << endl;
-                    }
-                }
+            	
+								ManagerVentas gestorVentas;
+								gestorVentas.verDetalleFactura(); 
+				
             }
             break;
             case 3: {
-                int idVentaAEliminar;
-                cout << "Ingrese id de la venta a eliminar: " << endl;
-                cin >> idVentaAEliminar;
-
-                ArchivoVentas archivo("ventas.dat");
-
-                int posicion = archivo.buscarPosicionPorID(idVentaAEliminar);
-                if(posicion == -1){
-                    cout << "No se encontro el archivo" << endl;
-                }else{
-                    Venta ventaAModificar = archivo.obtenerVenta(idVentaAEliminar);
-                    ventaAModificar.anularVenta();
-                    int ventaActualizada = archivo.actualizarVentaEnPosicion(posicion, ventaAModificar);
-                    if(ventaActualizada == 0){
-                        cout << "No se pudo sobreescribir la venta" << endl;
-                    }else{
-                        cout << "Venta modificada correctamente" << endl;
-                    }
-                }
+							               
+								ManagerVentas gestorVentas;
+								gestorVentas.eliminarVenta(); 
             }
             break;
             case 0: cout << "Volviendo al menu principal" << endl;
