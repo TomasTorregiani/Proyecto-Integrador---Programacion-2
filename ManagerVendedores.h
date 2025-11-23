@@ -12,6 +12,7 @@ public:
     void crearNuevoVendedor(); //nuevo, de la rama-personal
     
     Vendedor pedirNuevosDatos(); 
+    Vendedor crearVendedor(); 
         
     void listarVendedores();
     void modificarVendedor();

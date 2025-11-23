@@ -5,7 +5,7 @@
 
 using namespace std;
 
-ManagerVendedores::ManagerVendedores(){
+ManagerVendedores::ManagerVendedores():_archivoVendedores("vendedores.dat"){
 	
 }
 
