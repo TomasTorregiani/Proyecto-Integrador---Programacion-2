@@ -52,11 +52,13 @@ Cliente ManagerClientes::crearNuevoCliente(){
     
     
 }
+
 int ManagerClientes::crearCliente(){
     Cliente nuevoCliente = crearNuevoCliente();
     int clienteAgregado = _archivoCliente.agregarCliente(nuevoCliente);
     return clienteAgregado;
 }
+
 int ManagerClientes::modificarCliente(int idCliente){
     Cliente registro = _archivoCliente.buscarClientePorId(idCliente);
     int posicion = _archivoCliente.obtenerPosicionCliente(idCliente);

@@ -8,14 +8,15 @@
 #include "ArchivoProductos.h"
 #include "ManagerClientes.h"
 #include "ManagerVendedores.h"
+#include "FuncionesGlobales.h"
 #include <string>
 
 using namespace std;
 
 ManagerVentas::ManagerVentas()
-:_archivoVentas("ventas.dat"){}
+    :_archivoVentas("ventas.dat") {}
 
-/*bool ManagerVentas::crearVenta()
+bool ManagerVentas::crearVenta()
 {
     //agregar CLIENTE:
     int idCliente;
@@ -23,16 +24,21 @@ ManagerVentas::ManagerVentas()
     cin >> idCliente;
 
     ArchivoClientes archivoC("clientes.dat");
-    Cliente encontrado = archivoC.buscarClientePorId(idCliente);
-    Cliente clienteParaVenta;
-    if(encontrado.getIdCliente() == 0)
+    Cliente clienteEncontrado = archivoC.buscarClientePorId(idCliente);
+    
+    if(clienteEncontrado.getIdCliente() == 0)
     {
         cout << "No se encontro ningun registro con ese id" << endl;
         cout << "Agregar Nuevo Cliente: " << endl;
         cout << "---------------------" << endl;
 
         ManagerClientes managerCliente;
-        int escribio = managerCliente.crearCliente();
+        managerCliente.crearNuevoCliente(); 
+    }
+    
+     Cliente clienteParaVenta = clienteEncontrado;
+        
+        /*int escribio = managerCliente.crearCliente();
         if(escribio == 1)
         {
             cout << "El archivo se escribio correctamente" << endl;
@@ -43,7 +49,7 @@ ManagerVentas::ManagerVentas()
     else
     {
         clienteParaVenta = encontrado;
-    }
+    }*/
 
     //agregar VENDEDOR:
 
@@ -52,8 +58,10 @@ ManagerVentas::ManagerVentas()
     cin >> idVendedor;
 
     ArchivoVendedores archivoV("vendedores.dat");
-    Vendedor vendedorEncontrado = archivoV.buscarVendedorPorId(idVendedor);
-    Vendedor nuevoVendedor;
+    Vendedor vendedorEncontrado = archivoV.buscarVendedorPorId(idVendedor); //devuelve un Vendedor
+    
+    //Vendedor nuevoVendedor;
+
     if(vendedorEncontrado.getIdVendedor() == 0)
     {
         cout << "No se encontro ningun registro con ese id" << endl;
@@ -61,19 +69,27 @@ ManagerVentas::ManagerVentas()
         cout << "---------------------" << endl;
 
         ManagerVendedores gestorVendedores;
-        Vendedor nuevoVendedor = gestorVendedores.crearVendedor();
+        //Vendedor nuevoVendedor = gestorVendedores.crearVendedor();
+        gestorVendedores.crearVendedor();
+    }
+    
+     Vendedor vendedorParaVenta = vendedorEncontrado;
 
-		//Recien aca se crea la VENTA.
+    //Recien aca se crea la VENTA.
 
-    Venta nuevaVenta(clienteParaVenta.getIdCliente(), nuevoVendedor.getIdVendedor(), "11/11/1111");
+    //Venta nuevaVenta(clienteParaVenta.getIdCliente(), nuevoVendedor.getIdVendedor(), "11/11/1111");
 
-    int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta) //archivoVenta.agregarVenta(nuevaVenta);
+    Venta nuevaVenta(clienteParaVenta.getIdCliente(), vendedorParaVenta.getIdVendedor(), "11/11/1111");
+
+    int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta); //archivoVenta.agregarVenta(nuevaVenta);
     if(agregoVenta == 0 )
     {
         cout << "Error al agregar el archivo" << endl;
-    }else{
+    }
+    else
+    {
         cout << "Venta agregada correctamente" << endl;
-			}
+    }
 
     //agregar PRODUCTO:
     int opcion;
@@ -104,10 +120,10 @@ ManagerVentas::ManagerVentas()
             archivoDetalles.agregarDetalle(detalle);
             cout << "Detalle agregado correctamente." << endl;
         }
-    }
-    cout << "Desea agregar productos? (1 = Si / 2 = No)" << endl;
-    cin >> opcion;
-    while(opcion == 1);
+        cout << "Desea agregar productos? (1 = Si / 2 = No)" << endl;
+        cin >> opcion;
+        
+    }while(opcion == 1);
 }
 
 void ManagerVentas::verDetalleFactura()
@@ -145,7 +161,7 @@ void ManagerVentas::verDetalleFactura()
             cout << "Vendedor: " << vendedorObtenido.getNombre() << " "
                  << vendedorObtenido.getApellido() << endl;
             cout << "Fecha: " << ventaObtenida.getFecha()<< endl;
-            cout << "Estado de la factura: " << (ventaObtenida.getEstado() == false ? "Vigente" : "Anulada");
+            cout << "Estado de la factura: " << (ventaObtenida.getAnulada() == false ? "Vigente" : "Anulada");
         }
 
         ArchivoDetalles archivo("detalle_ventas.dat");
@@ -161,7 +177,9 @@ void ManagerVentas::verDetalleFactura()
             cout << "-----------------------------------" << endl;
         }
     }
-}*/
+}
+
+
 //{
 
 /*Validaciones

@@ -14,9 +14,6 @@ public:
     void verDetalleFactura();
     void listarVentas();
     void eliminarVenta(int idVenta); //sería como una nota de crédito.
-
-    ~ManagerVentas();
-
    
 
 private:

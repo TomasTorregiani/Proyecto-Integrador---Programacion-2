@@ -32,8 +32,8 @@ void MenuGestionFacturacion(){
             case 1: {
                 cout << "**** NUEVA VENTA ****" << endl;               
                 
-                /*ManagerVentas gestorVentas;
-                gestorVentas.crearVenta();*/
+                ManagerVentas gestorVentas;
+                gestorVentas.crearVenta();
                 
             }
             break;
