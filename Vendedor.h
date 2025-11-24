@@ -37,10 +37,10 @@ protected:
 
 private:
     int _idVendedor;
-    char _nombre[50];
-    char _apellido[50];
+    char _nombre[100];
+    char _apellido[100];
     int _numeroTelefono;
-    char _email[20];
-    char _direccion[20];
+    char _email[100];
+    char _direccion[100];
     bool _activo;
 };

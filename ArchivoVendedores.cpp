@@ -15,8 +15,8 @@ int ArchivoVendedores::agregarVendedor(Vendedor vendedor){
     cout << "DEBUG: Intentando agregar vendedor con ID: " << vendedor.getIdVendedor() << endl;
 
     FILE* p = nullptr;
-    p = fopen(_nombre, "ab");
-    if(p == nullptr){
+    p = fopen(_nombre, "ab"); //_nombre es el nombre como atributo de ArchivoVendedores, es decir "vendedores.dat"
+    if(p == nullptr){	
         cout << "ERROR: No se pudo abrir 'vendedores.dat'. " << endl;
         return 0;
     }

@@ -7,59 +7,24 @@ using namespace std;
 
 Cliente::Cliente()
 :_idCliente(0), _nombre(),
-_apellido(), _cuil(0),
-_tipoCliente(0), _numeroTelefono(0),
+_apellido(), _cuil(0), _numeroTelefono(0),
 _email(""), _direccion(""){}
 
 Cliente::Cliente(string nombre,
-            string apellido, long long cuil,
-            int tipoCliente, int numeroTelefono,
+            string apellido, int cuil,
+						int numeroTelefono,
             string email, string direccion)
 {
     _idCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + 1;
     setNombre(nombre);
     setApellido(apellido);
-    _cuil = 1111; //En donde se pide el cuil? No deberia ser necesario un set ya
-                   //que este no deberia cambiar
-    setTipoCliente(tipoCliente);
+    setCuil(cuil);
     setEmail(email);
     setDireccion(direccion);
     _activo = true;
 }
-void Cliente::crearCliente(){  //Esta funcion la estoy implementando en el manager. La tengo que borrar de aca
-    _idCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + 1;
-    cout << "Ingresar nombre cliente nuevo: " << endl;
-    cin >> _nombre;
-    cout << "Ingresar apellido cliente nuevo: " << endl;
-    cin >> _apellido;
-    cout << "Ingresar cuit cliente nuevo: " << endl;
-    cin >> _cuil;
-    cout << "Ingresar tipo cliente nuevo: " << endl;
-    cin >> _tipoCliente;
-    cout << "Ingresar numero de telefono: " << endl;
-    cin >> _numeroTelefono;
-    cout << "Ingresar email cliente nuevo: " << endl;
-    cin >> _email;
-    cout << "Ingresar direccion cliente nuevo: " << endl;
-    cin >> _direccion;
-    _activo = true;
-}
-void Cliente::modificarCliente(){
-    cout << "Ingresar nombre cliente nuevo: " << endl;
-    cin >> _nombre;
-    cout << "Ingresar apellido cliente nuevo: " << endl;
-    cin >> _apellido;
-    cout << "Ingresar cuit cliente nuevo: " << endl;
-    cin >> _cuil;
-    cout << "Ingresar tipo cliente nuevo: " << endl;
-    cin >> _tipoCliente;
-    cout << "Ingresar numero de telefono: " << endl;
-    cin >> _numeroTelefono;
-    cout << "Ingresar email cliente nuevo: " << endl;
-    cin >> _email;
-    cout << "Ingresar direccion cliente nuevo: " << endl;
-    cin >> _direccion;
-}
+
+
 void Cliente::mostrarCliente(){
     cout << "=== DATOS DEL CLIENTE ===" << endl;
     cout << "ID Cliente: " << _idCliente << endl;
@@ -68,6 +33,7 @@ void Cliente::mostrarCliente(){
     cout << "Numero de telefono: " << _numeroTelefono << endl;
     cout << "Email: " << _email << endl;
 }
+
 void Cliente::setIdCliente(int idCliente){
     _idCliente = idCliente;
 }
@@ -79,12 +45,10 @@ void Cliente::setApellido(string apellido){
     strncpy(_apellido, apellido.c_str(), sizeof(_apellido) - 1);
     _apellido[49] = '\0';
 }
-void Cliente::setCuilCliente(long long cuil){
+void Cliente::setCuil(int cuil){
     _cuil = cuil;
 }
-void Cliente::setTipoCliente(int tipoCliente){
-    _tipoCliente = tipoCliente;
-}
+
 void Cliente::setNumeroTelefono(int numeroTelefono){
     _numeroTelefono = numeroTelefono;
 }
@@ -111,9 +75,7 @@ string Cliente::getApellido(){
 int Cliente::getCuil(){
     return _cuil;
 }
-int Cliente::getTipoCliente(){
-    return _tipoCliente;
-}
+
 string Cliente::getEmail(){
     return _email;
 }

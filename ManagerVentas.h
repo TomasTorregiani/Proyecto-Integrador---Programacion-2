@@ -14,7 +14,12 @@ public:
     void verDetalleFactura();
     void listarVentas();
     void eliminarVenta(); //sería como una nota de crédito.
-   
+
+    /*Consultas y reportes
+    void listarVentas();
+    void consultarPorFecha(Fecha inicio, Fecha fin);
+    void consultarPorCliente(int idCliente);*/
+
 
 private:
     ArchivoVentas _archivoVentas; //recibe un archivo de Ventas para trabajar en él.
