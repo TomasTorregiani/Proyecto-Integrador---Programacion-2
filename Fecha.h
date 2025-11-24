@@ -6,6 +6,8 @@ class Fecha{
 public:
 	Fecha();
 	Fecha(int dia, int mes, int anio);
+	
+	void obtenerFechaActual(); // << nuevo
 
 	void setDia(int dia);
 	void setMes(int mes);
@@ -20,6 +22,6 @@ public:
 
 private:
 	int _dia, _mes, _anio;
-	bool anioBisiesto(int anio); //privado porque es una validación interna de la clase.
-    int diasDelMes(int mes, int anio); // idem;
+	bool anioBisiesto(int anio);
+    int diasDelMes(int mes, int anio);
 };

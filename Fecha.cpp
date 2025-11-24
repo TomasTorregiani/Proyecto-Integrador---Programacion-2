@@ -1,10 +1,21 @@
 #include "Fecha.h"
 #include <string>
 #include <iostream>
+#include <ctime>
 
 using namespace std;
 
 Fecha::Fecha(){}
+
+void Fecha::obtenerFechaActual(){
+	
+    time_t ahora = time(0);
+    tm* tiempoLocal = localtime(&ahora);
+    
+    int dia = tiempoLocal->tm_mday;
+    int mes = tiempoLocal->tm_mon + 1;
+    int anio = tiempoLocal->tm_year + 1900;
+}
 
 Fecha::Fecha(int dia, int mes, int anio){
 	if (validarFecha(dia, mes, anio)){
@@ -34,6 +45,10 @@ bool Fecha::validarFecha(int dia, int mes, int anio){
     }
 
     return true;
+}
+
+std::string Fecha::getFecha(){
+	return std::to_string(_dia) + "/" + std::to_string(_mes) + "/" + std::to_string(_anio);
 }
 
 bool Fecha::anioBisiesto(int anio){
@@ -71,7 +86,5 @@ int Fecha::getMes(){return _mes;}
 
 int Fecha::getAnio(){return _anio;}
 
-std::string Fecha::getFecha(){
-	return std::to_string(_dia) + "/" + std::to_string(_mes) + "/" + std::to_string(_anio);
-}
+
 

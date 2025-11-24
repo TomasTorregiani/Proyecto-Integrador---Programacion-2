@@ -9,6 +9,7 @@
 #include "ManagerClientes.h"
 #include "ManagerVendedores.h"
 #include "FuncionesGlobales.h"
+#include "Fecha.h"
 #include <string>
 
 using namespace std;
@@ -18,13 +19,16 @@ ManagerVentas::ManagerVentas()
 
 bool ManagerVentas::crearVenta()
 {
-		//Primero se debe agregar la fecha:
+    //Primero se agrega automaticamente la fecha:
+
+		Fecha fechaActual;
+		fechaActual.obtenerFechaActual(); 
 		
+		string fechaParaVenta = fechaActual.getFecha();
+		cout << "Fecha de venta: " << fechaParaVenta << endl;
 		
-	
-	
-	
     //agregar CLIENTE:
+    
     int idCliente;
     cout << "Ingrese id del cliente: " << endl;
     cin >> idCliente;
@@ -85,7 +89,7 @@ bool ManagerVentas::crearVenta()
 
     //Venta nuevaVenta(clienteParaVenta.getIdCliente(), nuevoVendedor.getIdVendedor(), "11/11/1111");
 
-    Venta nuevaVenta(clienteParaVenta.getIdCliente(), vendedorParaVenta.getIdVendedor(), "11/11/1111");
+    Venta nuevaVenta(clienteParaVenta.getIdCliente(), vendedorParaVenta.getIdVendedor(), fechaParaVenta);
 
     int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta); //archivoVenta.agregarVenta(nuevaVenta);
     if(agregoVenta == 0 )
@@ -98,6 +102,7 @@ bool ManagerVentas::crearVenta()
     }
 
     //agregar PRODUCTO:
+    
     int opcion;
 
     do // <<----- acá empieza un do while
@@ -144,12 +149,12 @@ void ManagerVentas::verDetalleFactura()
     ArchivoVentas archivoV("ventas.dat");
 
     Venta ventaObtenida = archivoV.obtenerVenta(idVenta);
-    
+
     cout << "DEBUG: ID Venta obtenida: " << ventaObtenida.getIdVenta() << endl;
     cout << "DEBUG: ID Cliente: " << ventaObtenida.getIdCliente() << endl;
     cout << "DEBUG: ID Vendedor: " << ventaObtenida.getIdVendedor() << endl;
     cout << "DEBUG: Fecha: " << ventaObtenida.getFecha() << endl;
-    
+
     if(ventaObtenida.getIdVenta() == 0)
     {
         cout << "No se encontro la venta" << endl;
