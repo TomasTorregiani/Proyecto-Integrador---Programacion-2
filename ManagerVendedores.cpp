@@ -75,7 +75,7 @@ void ManagerVendedores::crearVendedor(){
 
     while(direccion == "")
     {
-        cout << "Error. Ingrese un email: " << endl;
+        cout << "Error. Ingrese una direccion: " << endl;
         getline(cin, direccion);
     }
 
