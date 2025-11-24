@@ -22,7 +22,7 @@ bool ManagerVentas::crearVenta()
     //Primero se agrega automaticamente la fecha:
 
 		Fecha fechaActual;
-		fechaActual.obtenerFechaActual(); 
+		fechaActual.obtenerFechaActual();
 		
 		string fechaParaVenta = fechaActual.getFecha();
 		cout << "Fecha de venta: " << fechaParaVenta << endl;
