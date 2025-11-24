@@ -100,6 +100,8 @@ bool ManagerVentas::crearVenta()
     {
         cout << "Venta agregada correctamente" << endl;
     }
+    
+    cout << "El id de la venta es: " << nuevaVenta.getIdVenta() << endl; 
 
     //agregar PRODUCTO:
     
