@@ -13,7 +13,7 @@ public:
     bool agregarDetalleVenta();
     void verDetalleFactura();
     void listarVentas();
-    void eliminarVenta(int idVenta); //sería como una nota de crédito.
+    void eliminarVenta(); //sería como una nota de crédito.
 
     ~ManagerVentas();
 

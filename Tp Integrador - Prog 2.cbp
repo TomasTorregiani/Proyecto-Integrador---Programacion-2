@@ -62,6 +62,10 @@
 		</Unit>
 		<Unit filename="ManagerClientes.cpp" />
 		<Unit filename="ManagerClientes.h" />
+		<Unit filename="ManagerProductos.cpp" />
+		<Unit filename="ManagerProductos.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="ManagerVendedores.cpp" />
 		<Unit filename="ManagerVendedores.h">
 			<Option target="&lt;{~None~}&gt;" />

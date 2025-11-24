@@ -27,7 +27,7 @@ Producto::Producto(string descripcion,
                     _activo = true;
 }
 
-void Producto::crearNuevoProducto(){
+/*void Producto::crearNuevoProducto(){
     _idProducto = contarRegistros("productos.dat", sizeof(Producto)) + 1; //Deberiamos cambiar esto. Y que el id de cada producto
     cout << "Ingrese descripcion: " << endl;                              //asi como de cada venta o lo que sea se deberia trabajar
     cin >> _descripcion;                                                  //directamente en archivos o manager
@@ -53,7 +53,7 @@ void Producto::modificarProducto(){
     cin >> _cantidadDisponible;
     cout << "Ingrese precio: " << endl;
     cin >> _precio;
-}
+}*/
 void Producto::mostrarProducto(){
     cout << "=== DATOS DEL PRODUCTO ===" << endl;
     cout << "ID Producto: " << _idProducto << endl;
@@ -64,8 +64,18 @@ void Producto::mostrarProducto(){
     cout << "Precio: " << _precio << endl;
     cout << "Estado: " << _activo << endl;
 }
+void Producto::setMarca(string marca){
+    strncpy(_marca, marca.c_str(), sizeof(_marca) - 1);
+    _marca[49] = '\0';
+}
+void Producto::setEstado(bool value){
+    _activo = value;
+}
 void Producto::eliminarProducto(){
     _activo = false;
+}
+void Producto::setIdProducto(int idProducto){
+    _idProducto = idProducto;
 }
 long long Producto::getPrecio(){
     return _precio;

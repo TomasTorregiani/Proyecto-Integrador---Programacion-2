@@ -142,7 +142,7 @@ void ManagerClientes::eliminarCliente()
     {
         cout << "No se encontro el cliente" << endl;
     }
-    Cliente clienteAEliminar = _archivoCliente.archivoBuscarClientePorId(idCliente);
+    Cliente clienteAEliminar = _archivoCliente.archivoBuscarClientePorId(idClienteAEliminar);
     clienteAEliminar.setActivo(false);
     int clienteEliminado = _archivoCliente.modificarDatosCliente(clienteAEliminar, posicionClienteAEliminar);
     if(clienteEliminado != 0){
@@ -162,7 +162,7 @@ void ManagerClientes::activarCliente()
     {
         cout << "No se encontro el cliente: " << endl;
     }
-    Cliente clienteAActivar = _archivoCliente.buscarClientePorId(idCliente);
+    Cliente clienteAActivar = _archivoCliente.archivoBuscarClientePorId(idClienteAActivar);
     clienteAActivar.setActivo(true);
     int clienteActivado = _archivoCliente.modificarDatosCliente(clienteAActivar, posicionCliente);
     if(clienteActivado != 0){
@@ -172,20 +172,20 @@ void ManagerClientes::activarCliente()
     }
 }
 
-void ManagerClientes::listarClientes(
+void ManagerClientes::listarClientes(){
     int cantidadClientes = contarRegistros("clientes.dat", sizeof(Cliente));
-    Cliente* arrayclientes = _archivoCliente.obtenerClientes(cantidadClientes);
+    Cliente* arrayClientes = _archivoCliente.obtenerClientes(cantidadClientes);
     if(arrayClientes == nullptr){
         cout << "No se abrio correctamente el archivo" << endl;
         return;
     }
     for(int i = 0; i < cantidadClientes; i++){
-        if(arrayclientes[i].getActivo() == true){
-        arrayclientes[i].mostrarCliente();
+        if(arrayClientes[i].getActivo() == true){
+        arrayClientes[i].mostrarCliente();
         }
     }
-    delete[] arrayclientes;
-)
+    delete[] arrayClientes;
+}
 
 
 

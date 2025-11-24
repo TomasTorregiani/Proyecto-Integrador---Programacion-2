@@ -1,6 +1,8 @@
 #include <iostream>
 #include "TodosLosMenu.h"
 #include "ArchivoProductos.h"
+#include "ManagerProductos.h"
+#include "Producto.h"
 
 using namespace std;
 

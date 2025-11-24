@@ -1,5 +1,7 @@
 #include <iostream>
 #include "ManagerVendedores.h"
+#include "FuncionesGlobales.h"
+#include "ArchivoVendedores.h"
 
 using namespace std;
 
@@ -88,6 +90,7 @@ void ManagerVendedores::crearVendedor(){
     }
 }
 
+
 Vendedor ManagerVendedores::pedirNuevosDatos(){
     Vendedor vendedorModificado;
 
@@ -117,19 +120,6 @@ Vendedor ManagerVendedores::pedirNuevosDatos(){
     }
 
     vendedorModificado.setApellido(apellido);
-
-    cout << "Ingresar cuil vendedor nuevo: " << endl;
-    cin >> cuilVendedor;
-
-    while(!(cin >> cuilVendedor || cuilVendedor < 0 || cin.peek() == '.'))
-    {
-        cout << "Error. Ingrese un cuil valido: ";
-        cin.clear();  //limpia el error de cin
-        cin.ignore(10000, '\n');
-    }
-    cin.ignore(10000, '\n');
-
-    vendedorModificado.setCuilVendedor(cuilVendedor);
 
     cout << "Ingresar numero de telefono: " << endl;
     cin >> telefonoVendedor;
@@ -167,7 +157,7 @@ Vendedor ManagerVendedores::pedirNuevosDatos(){
 
     vendedorModificado.setDireccion(direccion);
 
-    vendedorModificado.setEstado(true);
+    vendedorModificado.setActivo(true);
     return vendedorModificado;
 }
 void ManagerVendedores::modificarVendedor(){
@@ -227,10 +217,10 @@ void ManagerVendedores::eliminarVendedor(){
     int posicionVendedor = _archivoVendedores.buscarPosicionDelVendedor(idVendedor);
     if(posicionVendedor != -1){
         cout << "Registro encontrado exitosamente" << endl;
-        Vendedor vendedorAEliminar = archivoVendedor.buscarVendedorPorId(idVendedor);
+        Vendedor vendedorAEliminar = _archivoVendedores.buscarVendedorPorId(idVendedor);
         vendedorAEliminar.setActivo(false);
 
-        int eliminoVendedor = archivoVendedor.modificarDatosVendedor(vendedorAEliminar, posicionVendedor);
+        int eliminoVendedor = _archivoVendedores.modificarDatosVendedor(vendedorAEliminar, posicionVendedor);
         if(eliminoVendedor != 0){
             cout << "Vendedor eliminado correctamente" << endl;
         }else{
@@ -242,14 +232,16 @@ void ManagerVendedores::eliminarVendedor(){
 }
 
 void ManagerVendedores::listarVendedores(){
-    int cantidadVendedores = contarRegistros(_archivoVendedores, sizeof(Vendedor));
+
+    int cantidadVendedores = contarRegistros("vendedores.dat", sizeof(Vendedor));
+
     Vendedor* arrayVendedores = _archivoVendedores.obtenerVendedores(cantidadVendedores);
     if(arrayVendedores == nullptr){
         cout << "No se abrio correctamente el archivo" << endl;
         return;
     }
     for(int i = 0; i < cantidadVendedores; i++){
-        if(arrayVendedores[i].getActivo() == true){
+        if(arrayVendedores[i].getEstado() == true){
         arrayVendedores[i].mostrarVendedor();
         }
     }

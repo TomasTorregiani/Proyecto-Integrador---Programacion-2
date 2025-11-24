@@ -100,7 +100,7 @@ string Vendedor::getEmail(){
 string Vendedor::getDireccion(){
     return _direccion;
 }
-void setActivo(bool value){
+void Vendedor::setActivo(bool value){
     _activo = value;
 }
 bool Vendedor::getEstado(){

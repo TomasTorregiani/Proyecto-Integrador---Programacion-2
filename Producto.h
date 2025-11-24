@@ -15,12 +15,13 @@ public:
     void mostrarProducto();
 
     //Setters
-    //Setter de idProducto no es necesario
+    void setIdProducto(int idProducto);
     void setDescripcion(std::string descripcion);
-    //Setter de idMarca no es necesario;
+    void setMarca(std::string marca);
     void setTipoProducto(std::string tipoProducto);
     void setCantidadDisponible(int cantidadDisponible);
     void setPrecio(long long precio);
+    void setEstado(bool value);
 
     //Getters
     int getIdProducto();

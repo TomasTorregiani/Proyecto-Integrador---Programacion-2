@@ -7,6 +7,8 @@ public:
 	Fecha();
 	Fecha(int dia, int mes, int anio);
 
+	void obtenerFechaActual();
+
 	void setDia(int dia);
 	void setMes(int mes);
 	void setAnio(int anio);

@@ -2,6 +2,7 @@
 #include "TodosLosMenu.h"
 #include "Vendedor.h"
 #include "ArchivoVendedores.h"
+#include "ManagerVendedores.h"
 
 using namespace std;
 
