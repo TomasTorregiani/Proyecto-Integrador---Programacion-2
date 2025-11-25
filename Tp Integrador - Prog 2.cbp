@@ -77,6 +77,14 @@
 		<Unit filename="ManagerClientes.h">
 			<Option compile="1" />
 		</Unit>
+		<Unit filename="ManagerInformesYReportes.cpp" />
+		<Unit filename="ManagerInformesYReportes.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="ManagerListadosYConsultas.cpp" />
+		<Unit filename="ManagerListadosYConsultas.h">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="ManagerProductos.cpp" />
 		<Unit filename="ManagerProductos.h">
 			<Option compile="1" />

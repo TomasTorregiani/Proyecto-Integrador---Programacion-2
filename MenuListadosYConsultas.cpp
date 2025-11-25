@@ -9,12 +9,15 @@
 #include "ArchivoVendedores.h"
 #include "TodosLosMenu.h"
 #include "FuncionesGlobales.h"
+#include "ManagerListadosYConsultas.h"
 
 using namespace std;
 
-void MenuListadosYConsultas(){
+void MenuListadosYConsultas()
+{
     int opcion;
-    while(true){
+    while(true)
+    {
         system("cls");
         cout << "**** MENU INFORMES Y REPORTES ****" << endl;
         cout << "1) Listado de clientes" << endl;
@@ -26,65 +29,40 @@ void MenuListadosYConsultas(){
         cout << "Elige una opcion: " << endl;
         cin >> opcion;
         system("cls");
-        switch(opcion){
-            case 1: {
-                cout << "**** LISTADO DE CLIENTES ****" << endl;
+        switch(opcion)
+        {
+        case 1:
+        {
 
-                int cantidadClientes = contarRegistros("clientes.dat",sizeof(Cliente));
-                ArchivoClientes archivoCliente("clientes.dat");
-                Cliente* arrayClientes = archivoCliente.obtenerClientes(cantidadClientes);
+            listadoClientes();
 
-                for(int i = 0; i < cantidadClientes; i++){
-                    arrayClientes[i].mostrarCliente();
-                }
-                delete[] arrayClientes;
-            }
-            break;
-            case 2: {
-                cout << "**** LISTADO DE PRODUCTOS ****" << endl;  //Este case es identico al anterior,
-                ArchivoProductos archivoProducto("productos.dat"); //sin embargo lo encare de una manera
-                                                                   //mucho mas rebuscada
-                int cantidadProductos = contarRegistros("productos.dat", sizeof(Producto));
+        }
+        break;
+        case 2:
+        {
+        	
+           listadoProductos();
+           
+        }
+        break;
+        case 3:
+        {
+            
+            listadoVendedores(); 
 
-                Producto* productosObtenidos;
-                productosObtenidos = archivoProducto.obtenerProductos(cantidadProductos);
-
-                for(int i = 0; i < cantidadProductos; i++){
-                    productosObtenidos[i].mostrarProducto();
-                }
-
-                delete[] productosObtenidos;
-            }
-            break;
-            case 3: {
-                cout << "**** LISTADO DE VENDEDORES ****" << endl;
-                
-                int cantidadVendedores = contarRegistros("vendedores.dat",sizeof(Vendedor));
-                ArchivoVendedores archivoVendedor("vendedores.dat");
-                Vendedor* arrayVendedores = archivoVendedor.obtenerVendedores(cantidadVendedores);
-
-                for(int i = 0; i < cantidadVendedores; i++){
-                    arrayVendedores[i].mostrarVendedor();
-                }
-                delete[] arrayVendedores;
-                
-                /*ArchivoVendedores archivoVendedor("vendedores.dat");
-
-                int cantidadVendedores = contarRegistros("vendedores.dat", sizeof(Vendedor));
-                Vendedor* arrayVendedores = archivoVendedor.obtenerVendedores(cantidadVendedores);
-                for(int i = 0; i < cantidadVendedores; i++){
-                    arrayVendedores[i].mostrarVendedor();
-                }
-                delete[] arrayVendedores;*/
-            }
-            break;
-            case 4: {
-                cout << "**** LISTADO DE VENTAS POR FECHA(MES/ANIO/DIA)" << endl;
-
-            }
-            case 0: cout << "Volviendo al menu principal" << endl;
+        }
+        break;
+        case 4:
+        {
+        	
+            listadoVentasPorFecha(); 
+            
+        }
+        case 0:
+            cout << "Volviendo al menu principal" << endl;
             return;
-            default: cout << "Ingrese una opcion valida" << endl;
+        default:
+            cout << "Ingrese una opcion valida" << endl;
             break;
         }
         system("pause");
