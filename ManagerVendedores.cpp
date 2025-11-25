@@ -20,12 +20,13 @@ void ManagerVendedores::crearVendedor(){
     idVendedor = contarRegistros("vendedores.dat", sizeof(Vendedor)) + 1;
     nuevoVendedor.setIdVendedor(idVendedor);
 
+    cin.ignore(10000, '\n');
+
     cout << "Ingresar nombre vendedor nuevo: " << endl;
-    cin.ignore();
     getline(cin, nombre);
 
 
-    while(nombre == "")
+    while(nombre == "") //o puedo usar nombre.empty()
     {
         cout << "Error. Ingrese un nombre: " << endl;
         getline(cin,nombre);
@@ -44,24 +45,24 @@ void ManagerVendedores::crearVendedor(){
 
     nuevoVendedor.setApellido(apellido);
 
-    cout << "Ingresar numero de telefono: " << endl;
+    cout << "Ingresar numero de telefono (sin guiones): " << endl;
     cin >> telefonoVendedor;
 
-    while(!(cin >> telefonoVendedor || telefonoVendedor < 0 || cin.peek() == '.'))
+    while(cin.fail() || telefonoVendedor < 0 || cin.peek() == '.' || cin.peek() == '-') //si "falla" el cin, si el nro es menor a "0", si se ingresa un "." o un "-"
     {
         cout << "Error. Ingrese un telefono valido: ";
         cin.clear();  //limpia el error de cin
         cin.ignore(10000, '\n');
+        cin >> telefonoVendedor;
     }
     cin.ignore(10000, '\n');
 
     nuevoVendedor.setNumeroTelefono(telefonoVendedor);
 
     cout << "Ingresar email vendedor nuevo: " << endl;
-    cin.ignore();
     getline(cin, email);
 
-    while(email == "")
+    while(email.empty())
     {
         cout << "Error. Ingrese un email: " << endl;
         getline(cin, email);
@@ -74,7 +75,7 @@ void ManagerVendedores::crearVendedor(){
 
     while(direccion == "")
     {
-        cout << "Error. Ingrese un email: " << endl;
+        cout << "Error. Ingrese una direccion: " << endl;
         getline(cin, direccion);
     }
 
@@ -98,8 +99,9 @@ Vendedor ManagerVendedores::pedirNuevosDatos(){
     int idVendedor, cuilVendedor, telefonoVendedor;
     bool estado;
 
-    cout << "Ingresar nombre vendedor a modificar: " << endl;
-    cin.ignore();
+    cin.ignore(10000, '\n');
+
+    cout << "Ingresar nombre vendedor nuevo: " << endl;
     getline(cin, nombre);
 
     while(nombre == "")
@@ -121,14 +123,15 @@ Vendedor ManagerVendedores::pedirNuevosDatos(){
 
     vendedorModificado.setApellido(apellido);
 
-    cout << "Ingresar numero de telefono: " << endl;
+    cout << "Ingresar numero de telefono (sin guiones): " << endl;
     cin >> telefonoVendedor;
 
-    while(!(cin >> telefonoVendedor || telefonoVendedor < 0 || cin.peek() == '.'))
+    while(cin.fail() || telefonoVendedor < 0 || cin.peek() == '.' || cin.peek() == '-')
     {
         cout << "Error. Ingrese un telefono valido: ";
         cin.clear();  //limpia el error de cin
         cin.ignore(10000, '\n');
+        cin >> telefonoVendedor;
     }
     cin.ignore(10000, '\n');
 
@@ -158,6 +161,7 @@ Vendedor ManagerVendedores::pedirNuevosDatos(){
     vendedorModificado.setDireccion(direccion);
 
     vendedorModificado.setActivo(true);
+
     return vendedorModificado;
 }
 void ManagerVendedores::modificarVendedor(){
@@ -204,9 +208,8 @@ void ManagerVendedores::obtenerVendedorPorId(){
         cout << "Vendedor encontrado:" << endl;
         cout << "Nombre: " << registroVendedor.getNombre() << endl;
         cout << "Apellido: " << registroVendedor.getApellido() << endl;
-        cout << "Estado: " << (registroVendedor.getEstado() == 1 ? "Activo" : "Inactivo") << endl;
+        cout << "Estado: " << (registroVendedor.getActivo() == 1 ? "Activo" : "Inactivo") << endl;
     }
-
 }
 
 void ManagerVendedores::eliminarVendedor(){
@@ -241,7 +244,7 @@ void ManagerVendedores::listarVendedores(){
         return;
     }
     for(int i = 0; i < cantidadVendedores; i++){
-        if(arrayVendedores[i].getEstado() == true){
+        if(arrayVendedores[i].getActivo() == true){
         arrayVendedores[i].mostrarVendedor();
         }
     }

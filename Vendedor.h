@@ -31,7 +31,7 @@ public:
     std::string getEmail();
     std::string getDireccion();
     void eliminarVendedor();
-    bool getEstado();
+    bool getActivo();
 
 protected:
 

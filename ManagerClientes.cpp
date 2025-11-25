@@ -7,40 +7,99 @@
 using namespace std;
 
 ManagerClientes::ManagerClientes()
-    : _archivoCliente("clientes.dat")
-{
+: _archivoCliente("clientes.dat"){
 }
 
-Cliente ManagerClientes::crearNuevoCliente()
-{
+Cliente ManagerClientes::crearNuevoCliente(){
+
     string nombre, apellido, email, direccion;
-    int cuil, tipoCliente, numeroTelefono;
+    int cuil, numeroTelefono;
     Cliente nuevoCliente;
+
     int idNuevoCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + 1;
+
     nuevoCliente.setIdCliente(idNuevoCliente);
+
+    cin.ignore(100000, '\n');
+
     cout << "Ingresar nombre cliente nuevo: " << endl;
-    cin >> nombre;
+    getline(cin, nombre);
+
+    while(nombre.empty()){
+
+			cout << "Error. Ingrese un nombre: ";
+			getline(cin, nombre);
+    }
+
     nuevoCliente.setNombre(nombre);
+
     cout << "Ingresar apellido cliente nuevo: " << endl;
-    cin >> apellido;
+    getline(cin, apellido);
+
+    while(apellido.empty()){
+
+			cout << "Error. Ingrese un apellido: ";
+			getline(cin, apellido);
+    }
+
     nuevoCliente.setApellido(apellido);
-    cout << "Ingresar cuit cliente nuevo: " << endl;
+
+    cout << "Ingresar cuil cliente nuevo: " << endl;
     cin >> cuil;
-    nuevoCliente.setCuilCliente(cuil);
-    cout << "Ingresar tipo cliente nuevo: " << endl;
-    cin >> tipoCliente;
-    nuevoCliente.setTipoCliente(tipoCliente);
-    cout << "Ingresar numero de telefono: " << endl;
+
+    while(cin.fail() || cuil < 0 || cin.peek() == '+' || cin.peek() == '.'){
+
+			cout << "Ingresar un cuil valido: ";
+			cin.clear();
+			cin.ignore(10000, '\n');
+			cin >> cuil;
+    }
+
+    cin.ignore(10000, '\n');
+
+    nuevoCliente.setCuil(cuil);
+
+    cout << "Ingresar numero de telefono (sin guiones) : " << endl;
     cin >> numeroTelefono;
+
+    while(cin.fail() || numeroTelefono < 0 || cin.peek() == '+' || cin.peek() == '.' || cin.peek() == '-'){
+
+			cout << "Ingresar un telefono valido (sin guiones): ";
+			cin.clear();
+			cin.ignore(10000, '\n');
+			cin >> numeroTelefono;
+    }
+
+    cin.ignore(10000, '\n');
+
+
     nuevoCliente.setNumeroTelefono(numeroTelefono);
+
     cout << "Ingresar email cliente nuevo: " << endl;
-    cin >> email;
+    getline (cin, email);
+
+		while(email.empty()){
+			cout << "Error: ingresar un email valido: ";
+			getline(cin, email);
+		}
+
     nuevoCliente.setEmail(email);
+
     cout << "Ingresar direccion cliente nuevo: " << endl;
-    cin >> direccion;
+    getline(cin, direccion);
+
+    while(direccion == "")
+    {
+        cout << "Error. Ingrese una direccion: " << endl;
+        getline(cin, direccion);
+    }
+
     nuevoCliente.setDireccion(direccion);
+
     nuevoCliente.setActivo(true);
+
     return nuevoCliente;
+
 }
 
 void ManagerClientes::crearCliente()
@@ -67,10 +126,7 @@ Cliente ManagerClientes::pedirNuevosDatos()
     clienteModificado.setApellido(apellido);
     cout << "Ingresar cuit cliente nuevo: " << endl;
     cin >> cuil;
-    clienteModificado.setCuilCliente(cuil);
-    cout << "Ingresar tipo cliente nuevo: " << endl;
-    cin >> tipoCliente;
-    clienteModificado.setTipoCliente(tipoCliente);
+    clienteModificado.setCuil(cuil);
     cout << "Ingresar numero de telefono: " << endl;
     cin >> numeroTelefono;
     clienteModificado.setNumeroTelefono(numeroTelefono);
@@ -116,7 +172,6 @@ void ManagerClientes::modificarCliente()
         cout << "Hubo un error al actualizar los datos" << endl;
     }
 }
-
 
 void ManagerClientes::buscarClientePorId()
 {
@@ -186,6 +241,4 @@ void ManagerClientes::listarClientes(){
     }
     delete[] arrayClientes;
 }
-
-
 

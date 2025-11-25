@@ -6,10 +6,11 @@ class ManagerProductos
 {
 public:
     ManagerProductos();
-    void nuevoProducto();
+    void crearNuevoProducto();
     void verStockProducto();
     void eliminarProducto();
     void modificarProducto();
+    Producto pedirNuevosDatos();
 
 /*protected:
 		void mostrarProducto(Producto producto);*/

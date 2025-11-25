@@ -24,7 +24,7 @@ void MenuGestionProductos(){
             case 1: {
                 cout << "**** NUEVO PRODUCTO ****" << endl;
                 ManagerProductos gestorProductos;
-                gestorProductos.nuevoProducto();
+                gestorProductos.crearNuevoProducto();
             }
             break;
             case 2: {

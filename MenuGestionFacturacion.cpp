@@ -33,15 +33,16 @@ void MenuGestionFacturacion(){
                 cout << "**** NUEVA VENTA ****" << endl;
                 ManagerVentas gestorVentas;
                 gestorVentas.crearVenta();
-
             }
             break;
             case 2: {
+                cout << "**** VER DETALLE DE FACTURA ****" << endl;
                 ManagerVentas gestorVentas;
                 gestorVentas.verDetalleFactura();
             }
             break;
             case 3: {
+                cout << "**** ELIMINAR FACTURA ****" << endl;
                 ManagerVentas gestorVentas;
                 gestorVentas.eliminarVenta();
             }

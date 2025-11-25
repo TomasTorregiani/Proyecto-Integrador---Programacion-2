@@ -27,33 +27,6 @@ Producto::Producto(string descripcion,
                     _activo = true;
 }
 
-/*void Producto::crearNuevoProducto(){
-    _idProducto = contarRegistros("productos.dat", sizeof(Producto)) + 1; //Deberiamos cambiar esto. Y que el id de cada producto
-    cout << "Ingrese descripcion: " << endl;                              //asi como de cada venta o lo que sea se deberia trabajar
-    cin >> _descripcion;                                                  //directamente en archivos o manager
-    cout << "Ingrese marca: " << endl;
-    cin >> _marca;
-    cout << "Ingrese tipo de producto: " << endl;
-    cin >> _tipoProducto;
-    cout << "Ingrese cantidad disponible: " << endl;
-    cin >> _cantidadDisponible;
-    cout << "Ingrese precio: " << endl;
-    cin >> _precio;
-    _activo = true;
-}
-
-void Producto::modificarProducto(){
-    cout << "Ingrese descripcion: " << endl;
-    cin >> _descripcion;
-    cout << "Ingrese marca: " << endl;
-    cin >> _marca;
-    cout << "Ingrese tipo de producto: " << endl;
-    cin >> _tipoProducto;
-    cout << "Ingrese cantidad disponible: " << endl;
-    cin >> _cantidadDisponible;
-    cout << "Ingrese precio: " << endl;
-    cin >> _precio;
-}*/
 void Producto::mostrarProducto(){
     cout << "=== DATOS DEL PRODUCTO ===" << endl;
     cout << "ID Producto: " << _idProducto << endl;
@@ -76,6 +49,20 @@ void Producto::eliminarProducto(){
 }
 void Producto::setIdProducto(int idProducto){
     _idProducto = idProducto;
+}
+void Producto::setDescripcion(string descripcion){
+     strncpy(_descripcion, descripcion.c_str(), sizeof(_descripcion) - 1);
+    _descripcion[49] = '\0';
+}
+void Producto::setTipoProducto(string tipoProducto){
+     strncpy(_tipoProducto, tipoProducto.c_str(), sizeof(_tipoProducto) - 1);
+    _tipoProducto[49] = '\0';
+}
+void Producto::setCantidadDisponible(int cantidadDisponible){
+    _cantidadDisponible = cantidadDisponible;
+}
+void Producto::setPrecio(long long precio){
+    _precio = precio;
 }
 long long Producto::getPrecio(){
     return _precio;

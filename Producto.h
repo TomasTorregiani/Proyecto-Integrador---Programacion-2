@@ -39,6 +39,6 @@ private:
     char _marca[50];
     char _tipoProducto[50];
     int _cantidadDisponible;
-    long long _precio;
+    float _precio;
     bool _activo;
 };

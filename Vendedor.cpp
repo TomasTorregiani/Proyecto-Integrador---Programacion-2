@@ -103,6 +103,6 @@ string Vendedor::getDireccion(){
 void Vendedor::setActivo(bool value){
     _activo = value;
 }
-bool Vendedor::getEstado(){
+bool Vendedor::getActivo(){
     return _activo;
 }

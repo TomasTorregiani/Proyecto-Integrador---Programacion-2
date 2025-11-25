@@ -15,7 +15,7 @@ public:
     void listarVentas();
     void eliminarVenta(); //sería como una nota de crédito.
 
-    ~ManagerVentas();
+    //~ManagerVentas();//Para que el destructor?
 
     /*Consultas y reportes
     void listarVentas();
