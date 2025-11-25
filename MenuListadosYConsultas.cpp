@@ -19,7 +19,7 @@ void MenuListadosYConsultas()
     while(true)
     {
         system("cls");
-        cout << "**** MENU INFORMES Y REPORTES ****" << endl;
+        cout << "**** MENU LISTADOS Y CONSULTAS ****" << endl << endl; 
         cout << "1) Listado de clientes" << endl;
         cout << "2) Listado de productos" << endl;
         cout << "3) Listado de vendedores" << endl;
@@ -55,7 +55,7 @@ void MenuListadosYConsultas()
         case 4:
         {
         	
-            listadoVentasPorFecha(); 
+            MenuVentasPorFecha(); 
             
         }
         case 0:

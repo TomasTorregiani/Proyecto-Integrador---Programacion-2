@@ -65,10 +65,23 @@ void listadoVendedores()
 
 }
 
-void listadoVentasPorFecha()
+void ventasPorAnio()
 {
 
-	cout << "**** LISTADO DE VENTAS POR FECHA(MES/ANIO/DIA)" << endl;
+} 
+
+void ventasPorMes()
+{
+
+
+}
+        
+void ventasPorFechaExacta()
+{
 	
+}
+
+void ventasPorIntervaloDeFecha()
+{
 
 }

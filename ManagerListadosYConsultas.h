@@ -7,4 +7,10 @@ void listadoProductos();
 
 void listadoVendedores(); 
 
-void listadoVentasPorFecha(); 
+void ventasPorAnio(); 
+
+void ventasPorMes();
+        
+void ventasPorFechaExacta();
+
+void ventasPorIntervaloDeFecha(); 

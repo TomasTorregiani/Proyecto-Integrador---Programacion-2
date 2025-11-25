@@ -7,3 +7,4 @@ void MenuGestionProductos();
 void MenuGestionVendedores();
 void MenuListadosYConsultas();
 void MenuInformesYReportes();
+void MenuVentasPorFecha(); 

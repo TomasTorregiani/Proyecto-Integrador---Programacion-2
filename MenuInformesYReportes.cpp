@@ -57,7 +57,7 @@ void MenuInformesYReportes(){
             break;
             case 5: {
             	
-								clientesQueMasCompraron(); 
+								clientesQueMasCompraron();
                 
             }
             break;

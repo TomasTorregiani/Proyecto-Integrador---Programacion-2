@@ -104,6 +104,7 @@
 		<Unit filename="MenuInformesYReportes.cpp" />
 		<Unit filename="MenuListadosYConsultas.cpp" />
 		<Unit filename="MenuPrincipal.cpp" />
+		<Unit filename="MenuVentasPorFecha.cpp" />
 		<Unit filename="Producto.cpp" />
 		<Unit filename="Producto.h">
 			<Option compile="1" />
