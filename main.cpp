@@ -6,6 +6,7 @@
 using namespace std;
 
 int main(){
+    system("color 1F");
     MenuPrincipal();
     return 0;
 }
