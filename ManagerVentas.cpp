@@ -11,6 +11,7 @@
 #include "FuncionesGlobales.h"
 #include "Fecha.h"
 #include <string>
+#include <cstring>
 
 using namespace std;
 
@@ -24,8 +25,8 @@ bool ManagerVentas::crearVenta()
 		Fecha fechaActual;
 		fechaActual.obtenerFechaActual();
 		
-		string fechaParaVenta = fechaActual.getFecha();
-		cout << "Fecha de venta: " << fechaParaVenta << endl;
+		Fecha fechaParaVenta = fechaActual.getFecha();
+		cout << "Fecha de venta: " << fechaParaVenta.toString() << endl;
 		
     //agregar CLIENTE:
     
@@ -155,7 +156,7 @@ void ManagerVentas::verDetalleFactura()
     cout << "DEBUG: ID Venta obtenida: " << ventaObtenida.getIdVenta() << endl;
     cout << "DEBUG: ID Cliente: " << ventaObtenida.getIdCliente() << endl;
     cout << "DEBUG: ID Vendedor: " << ventaObtenida.getIdVendedor() << endl;
-    cout << "DEBUG: Fecha: " << ventaObtenida.getFecha() << endl;
+    cout << "DEBUG: Fecha: " << ventaObtenida.getFechaString() << endl;
 
     if(ventaObtenida.getIdVenta() == 0)
     {
@@ -181,7 +182,7 @@ void ManagerVentas::verDetalleFactura()
                  << clienteObtenido.getApellido() << endl;
             cout << "Vendedor: " << vendedorObtenido.getNombre() << " "
                  << vendedorObtenido.getApellido() << endl;
-            cout << "Fecha: " << ventaObtenida.getFecha()<< endl;
+            cout << "Fecha: " << ventaObtenida.getFechaString()<< endl;
             cout << "Estado de la factura: " << (ventaObtenida.getAnulada() == false ? "Vigente" : "Anulada") << endl;
         }
 

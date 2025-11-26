@@ -1,5 +1,5 @@
 #include <iostream>
-#include "ManagerListadosYConsultas.h"
+#include "FuncionesInformesYReportes.h"
 #include "ArchivoClientes.h"
 #include "ArchivoProductos.h"
 #include "ArchivoVendedores.h"

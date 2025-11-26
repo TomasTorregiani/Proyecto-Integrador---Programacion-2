@@ -9,7 +9,7 @@
 #include "ArchivoVendedores.h"
 #include "TodosLosMenu.h"
 #include "FuncionesGlobales.h"
-#include "ManagerListadosYConsultas.h"
+#include "FuncionesListadosYConsultas.h"
 
 using namespace std;
 

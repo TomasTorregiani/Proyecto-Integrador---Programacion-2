@@ -11,7 +11,8 @@
 #include "Producto.h"
 #include "ManagerVendedores.h"
 #include "ManagerVentas.h"
-#include "ManagerListadosYConsultas.h"
+#include "FuncionesInformesYReportes.h"
+#include "FuncionesListadosYConsultas.h"
 
 using namespace std;
 

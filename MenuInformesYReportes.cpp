@@ -11,7 +11,7 @@
 #include "ArchivoVendedores.h"
 #include "TodosLosMenu.h"
 #include "FuncionesGlobales.h"
-#include "ManagerInformesYReportes.h"
+#include "FuncionesInformesYReportes.h"
 
 using namespace std;
 

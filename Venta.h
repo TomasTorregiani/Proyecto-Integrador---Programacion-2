@@ -1,6 +1,8 @@
 #pragma once
 #include "Vendedor.h"
 #include "Cliente.h"
+#include "Fecha.h"
+#include <string>
 
 //Declaracion adelantada
 class DetalleVenta;
@@ -8,8 +10,8 @@ class DetalleVenta;
 class Venta{
 public:
     Venta();
-    Venta(int IdCliente, int IdVendedor, std::string fecha);
-    ~Venta(); // cuando se carga el detalle de la venta?? (DetalleVenta)
+    Venta(int IdCliente, int IdVendedor, Fecha fecha);
+     // cuando se carga el detalle de la venta?? (DetalleVenta)
 
     bool agregarDetalle(DetalleVenta detalle);
 
@@ -21,11 +23,14 @@ public:
     int getIdVenta();
     int getIdCliente();
     int getIdVendedor();
-    std::string getFecha();
+    Fecha getFecha();
+    std::string getFechaString(); 
     int getCantidadDetalles();
     float getTotal();
     bool getAnulada();
     void anularVenta();
+    
+    ~Venta();
 
 protected:
 
@@ -33,7 +38,7 @@ private:
     int _idVenta;
     int _idCliente;
     int _idVendedor; //agregue el vendedor
-    char _fecha[30];
+    Fecha _fecha;
     DetalleVenta* _detalles; //Detalles es cada producto de la venta
     int _cantidadDetalles;
     float _totalVenta;

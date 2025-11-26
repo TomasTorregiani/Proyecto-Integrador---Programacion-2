@@ -56,9 +56,17 @@ bool Fecha::validarFecha(int dia, int mes, int anio)
     return true;
 }
 
-std::string Fecha::getFecha()
+Fecha Fecha::getFecha()
 {
-    return std::to_string(_dia) + "/" + std::to_string(_mes) + "/" + std::to_string(_anio);
+    return Fecha(_dia, _mes,_anio);
+}
+
+string Fecha::toString(){
+	return to_string(_dia) + "/" + to_string(_mes) + "/" + to_string(_anio);
+}
+
+string Fecha::toString(Fecha fecha){
+	return to_string(fecha.getDia()) + "/" + to_string(fecha.getMes()) + "/" + to_string(fecha.getAnio());
 }
 
 bool Fecha::anioBisiesto(int anio)

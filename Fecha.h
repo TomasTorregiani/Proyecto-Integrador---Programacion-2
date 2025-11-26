@@ -18,10 +18,12 @@ public:
 	int getAnio();
 
 	bool validarFecha(int dia, int mes, int anio);
-	std::string getFecha();
+	Fecha getFecha();
+	std::string toString();
+	std::string toString(Fecha fecha);
 
 private:
 	int _dia, _mes, _anio;
 	bool anioBisiesto(int anio);
-    int diasDelMes(int mes, int anio);
+	int diasDelMes(int mes, int anio);
 };
