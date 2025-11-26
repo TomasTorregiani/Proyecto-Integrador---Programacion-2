@@ -59,8 +59,7 @@ void MenuListadosYConsultas()
             
         }
         case 0:
-            cout << "Volviendo al menu principal" << endl;
-            return;
+            MenuPrincipal();
         default:
             cout << "Ingrese una opcion valida" << endl;
             break;

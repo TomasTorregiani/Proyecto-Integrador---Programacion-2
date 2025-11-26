@@ -40,7 +40,7 @@ void MenuPrincipal(){
             case 6: MenuInformesYReportes();
             break;
             case 0: cout << "Saliendo del programa..." << endl;
-            return;
+            exit(0);
             default: cout << "Ingrese una opcion valida" << endl;
             break;
         }

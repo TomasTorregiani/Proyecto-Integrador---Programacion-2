@@ -8,8 +8,10 @@
 #include "Producto.h"
 #include "Vendedor.h"
 #include "Venta.h"
+#include "Fecha.h"
 #include "FuncionesGlobales.h"
 #include <string>
+#include <ctime>
 
 using namespace std;
 
@@ -67,18 +69,51 @@ void listadoVendedores()
 
 void ventasPorAnio()
 {
+    time_t ahora = time(0);
+    tm* tiempoLocal = localtime(&ahora);
 
-} 
+    int anioActual = tiempoLocal->tm_year + 1900;
+    int anio;
+
+    cout << "Ingrese un anio para mostrar: " << endl;
+    cin >> anio;
+
+    while(cin.fail() || anio > anioActual || anio < 2000)
+    {
+        cout << "Error. Ingres un anio valido: " << endl;
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cin >> anio;
+		}
+		
+		ArchivoVentas archivoV("ventas.dat");
+    int cantidadVentas = contarRegistros("ventas.dat", sizeof(Venta));
+
+    Venta* vectorVentas = archivoV.obtenerTodasLasVentas(cantidadVentas);
+
+    /*for(int i = 0; i < cantidadVentas; i++)
+    {
+        // >>> ERROR: >>> Fecha fecha = vectorVentas[i].getFecha();
+
+        if(fecha.getAnio() == anio)
+        {
+            cout << "Fecha: " << vectorVentas[i].getFecha() << endl;
+            cout << "ID Venta: " << vectorVentas[i].getIdVenta() << endl;
+            cout << "ID Cliente: " << vectorVentas[i].getIdCliente() << endl;
+            cout << "ID Vendedor: " << vectorVentas[i].getIdVendedor() << endl;
+        }
+    }
+    delete[]vectorVentas;*/
+}
+
 
 void ventasPorMes()
 {
-
-
 }
-        
+
 void ventasPorFechaExacta()
 {
-	
+
 }
 
 void ventasPorIntervaloDeFecha()
