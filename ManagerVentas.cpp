@@ -31,7 +31,7 @@ bool ManagerVentas::crearVenta()
     //agregar CLIENTE:
     
     int idCliente;
-    cout << "Ingrese id del cliente: " << endl;
+    cout << "Ingrese id del cliente: ";
     cin >> idCliente;
 
     ArchivoClientes archivoC("clientes.dat");
@@ -48,7 +48,8 @@ bool ManagerVentas::crearVenta()
     }
 
     Cliente clienteParaVenta = clienteEncontrado;
-
+    cout << "Cliente: " << clienteParaVenta.getNombre() << " " << clienteParaVenta.getApellido()<<  endl << endl; 
+    
     /*int escribio = managerCliente.crearCliente();
     if(escribio == 1)
     {
@@ -85,6 +86,7 @@ bool ManagerVentas::crearVenta()
     }
 
     Vendedor vendedorParaVenta = vendedorEncontrado;
+    cout << "Vendedor: " << vendedorParaVenta.getNombre() << " " << vendedorParaVenta.getApellido()<<  endl << endl; 
 
     //Recien aca se crea la VENTA.
 
