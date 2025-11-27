@@ -16,6 +16,7 @@ public:
 	int getDia();
 	int getMes();
 	int getAnio();
+	bool validarAnio(int anio);
 
 	bool validarFecha(int dia, int mes, int anio);
 	Fecha getFecha();

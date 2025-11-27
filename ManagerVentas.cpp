@@ -141,6 +141,7 @@ bool ManagerVentas::crearVenta()
 
     }
     while(opcion == 1);
+    return true; 
 }
 
 void ManagerVentas::verDetalleFactura()

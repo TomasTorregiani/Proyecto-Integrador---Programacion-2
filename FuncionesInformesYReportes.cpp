@@ -223,16 +223,16 @@ void clientesQueMasCompraron()
     {
         if(arrayVentasObtenidas[i].getIdCliente() > maximoId)
         {
-            maximoId = arrayVentasObtenidas[i].getIdCliente();
+            maximoId = arrayVentasObtenidas[i].getIdCliente();  // rae el maximo nro de ID, es decir todos los clientes que hay.
         }
     }
 
     int* arrayIdsClientes;
-    arrayIdsClientes = new int[maximoId + 1]();
+    arrayIdsClientes = new int[maximoId + 1](); // al tamaño del vector lo define la cantidad de clientes que haya.
 
     for(int i = 0; i < maximoId; i++)
     {
-        arrayIdsClientes[i] = i;
+        arrayIdsClientes[i] = i;		// el array se carga con todos los ids de los clientes.S
     }
 
     float* arrayTotalesClientes;

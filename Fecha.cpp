@@ -57,6 +57,7 @@ bool Fecha::validarFecha(int dia, int mes, int anio)
     return true;
 }
 
+
 Fecha Fecha::getFecha()
 {
     return Fecha(_dia, _mes,_anio);
