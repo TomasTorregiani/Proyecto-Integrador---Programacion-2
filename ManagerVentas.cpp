@@ -147,8 +147,8 @@ bool ManagerVentas::crearVenta()
         cin >> opcion;
     }
     while(opcion == 1);
+    return true; 
 
-    return true;
 }
 
 void ManagerVentas::verDetalleFactura()

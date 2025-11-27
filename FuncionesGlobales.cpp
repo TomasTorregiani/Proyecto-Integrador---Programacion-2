@@ -23,7 +23,10 @@ int contarRegistros(const char *nombreArchivo, int tamanioRegistro){
 bool esAnioBisiesto(int anio)
 {
 
-	return (anio % 4 == 0 && anio % 100 != 0) || (anio %400 == 0);
+	if ((anio % 4 == 0 && anio % 100 != 0) || (anio %400 == 0))
+	{
+		return true; 
+	}
 
 }
 
