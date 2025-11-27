@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <ctime>
+#include "FuncionesGlobales.h"
 
 using namespace std;
 
@@ -88,6 +89,7 @@ int Fecha::diasDelMes(int mes, int anio)
     }
     return dias[mes - 1];
 }
+
 
 void Fecha::setMes(int mes)
 {
