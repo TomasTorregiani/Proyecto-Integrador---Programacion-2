@@ -112,10 +112,10 @@ bool ManagerVentas::crearVenta()
 
             // Crear detalle con producto y cantidad
             DetalleVenta detalle(productoAAgregar, cantidad);
-            cout << "DEBUG: Se agrega el producto a la venta" << endl;
+
             // Asociar al id de la venta
             detalle.setIdVenta(nuevaVenta.getIdVenta());
-            cout << "DEBUG: Se setea el id de la venta" << endl;
+
             // Guardar detalle
             archivoDetalles.agregarDetalle(detalle);
             cout << "Detalle agregado correctamente." << endl;
@@ -124,8 +124,6 @@ bool ManagerVentas::crearVenta()
         cin >> opcion;
     }
 while(opcion == 1);
-cout << "DEBUG: Salió del bucle correctamente" << endl;
-cout << "DEBUG: A punto de terminar la función" << endl;
 return true;
 }
 
@@ -139,11 +137,6 @@ void ManagerVentas::verDetalleFactura()
     ArchivoVentas archivoV("ventas.dat");
 
     Venta ventaObtenida = archivoV.obtenerVenta(idVenta);
-
-    cout << "DEBUG: ID Venta obtenida: " << ventaObtenida.getIdVenta() << endl;
-    cout << "DEBUG: ID Cliente: " << ventaObtenida.getIdCliente() << endl;
-    cout << "DEBUG: ID Vendedor: " << ventaObtenida.getIdVendedor() << endl;
-    cout << "DEBUG: Fecha: " << ventaObtenida.getFechaString() << endl;
 
     if(ventaObtenida.getIdVenta() == 0)
     {

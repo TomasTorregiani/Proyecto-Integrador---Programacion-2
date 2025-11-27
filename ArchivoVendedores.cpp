@@ -16,7 +16,7 @@ int ArchivoVendedores::agregarVendedor(Vendedor vendedor){
 
     FILE* p = nullptr;
     p = fopen(_nombre, "ab"); //_nombre es el nombre como atributo de ArchivoVendedores, es decir "vendedores.dat"
-    if(p == nullptr){	
+    if(p == nullptr){
         cout << "ERROR: No se pudo abrir 'vendedores.dat'. " << endl;
         return 0;
     }
@@ -34,7 +34,6 @@ int ArchivoVendedores::agregarVendedor(Vendedor vendedor){
 }
 
 Vendedor ArchivoVendedores::buscarVendedorPorId(int idVendedor){
-    cout << "DEBUG: Buscando vendedor con ID: " << idVendedor << endl;
 
     FILE *p = nullptr;
     p = fopen(_nombre, "rb");
@@ -46,11 +45,9 @@ Vendedor ArchivoVendedores::buscarVendedorPorId(int idVendedor){
 
     Vendedor registroVendedor;
     int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro);
-    cout << "DEBUG: Cantidad de registros: " << cantidadRegistros << endl;
 
     for(int i = 0; i < cantidadRegistros; i++){
         fread(&registroVendedor, _tamanioRegistro, 1, p);
-        cout << "DEBUG: Registro " << i << " - ID leido: " << registroVendedor.getIdVendedor() << endl;
 
         if(registroVendedor.getIdVendedor() == idVendedor){
             fclose(p);
