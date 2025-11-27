@@ -42,9 +42,7 @@ void MenuGestionVendedores(){
             break;
             case 4: {
                 cout << "**** ELIMINAR VENDEDOR ****" << endl;
-                
                 ManagerVendedores gestorVendedor;
-                
                 gestorVendedor.eliminarVendedor();
             }
             break;

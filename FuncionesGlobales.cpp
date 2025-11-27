@@ -20,7 +20,6 @@ int contarRegistros(const char *nombreArchivo, int tamanioRegistro){
     return cantidadDeRegistros;
 }
 
-
 bool esAnioBisiesto(int anio)
 {
 
@@ -30,12 +29,12 @@ bool esAnioBisiesto(int anio)
 
 int diasDelMes(int mes, int anio)
 {
-	
+
 	int dias[] = {31,28,31,30,31,30,31,31,30,31,30,31};
-	
+
 	if(mes == 2 && esAnioBisiesto(anio))
 	{
-		return 29; 
+		return 29;
 	}
 	return dias [mes-1];
 }

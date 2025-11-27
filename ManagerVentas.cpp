@@ -13,10 +13,33 @@
 #include <string>
 #include <cstring>
 
-using namespace std; 
+using namespace std;
 
 ManagerVentas::ManagerVentas()
     :_archivoVentas("ventas.dat"), _ventaActual(){}
+
+
+float ManagerVentas::calcularTotal(int idVenta)
+{
+    ArchivoDetalles archivoD("detalles_venta.dat");
+
+    int cantidad = contarRegistros("detalles_venta.dat", sizeof(DetalleVenta));
+    float total = 0;
+
+    for (int i = 0; i < cantidad; i++)
+    {
+        DetalleVenta d = archivoD.leerRegistro(i);
+
+        if (d.getIdVenta() == idVenta)
+        {
+            total += d.getSubtotal();
+        }
+    }
+
+    return total;
+}
+
+
 
 bool ManagerVentas::crearVenta()
 {
@@ -123,13 +146,13 @@ bool ManagerVentas::crearVenta()
         cout << "Desea agregar productos? (1 = Si / 2 = No)" << endl;
         cin >> opcion;
     }
-while(opcion == 1);
-return true;
+    while(opcion == 1);
+
+    return true;
 }
 
 void ManagerVentas::verDetalleFactura()
 {
-    cout << "**** VER DETALLE DE FACTURA ****" << endl;
     int idVenta;
     cout << "Ingrese el id de venta: " << endl;
     cin >> idVenta;
@@ -179,12 +202,13 @@ void ManagerVentas::verDetalleFactura()
             cout << "Subtotal: " << detalles[i].getSubtotal() << endl;
             cout << "-----------------------------------" << endl;
         }
+            float totalVenta = calcularTotal(ventaObtenida.getIdVenta());
+            cout << "TOTAL FACTURA: " << totalVenta << endl;
     }
 }
 
 void ManagerVentas::eliminarVenta()
 {
-    cout << "**** ELIMINAR FACTURA ****" << endl;
     int idVentaAEliminar;
     cout << "Ingrese id de la venta a eliminar: " << endl;
     cin >> idVentaAEliminar;

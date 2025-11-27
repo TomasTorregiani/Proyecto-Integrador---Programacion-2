@@ -88,5 +88,23 @@ int *ArchivoDetalles::obtenerVentasPorProducto(int cantidadDetallesVendidos, int
     return cantidadesPorProducto;
 }
 
+DetalleVenta ArchivoDetalles::leerRegistro(int indice)
+{
+    DetalleVenta registro;
+
+    FILE* p = fopen(_nombre, "rb");
+    if(p == nullptr){
+        cout << "Error al abrir el archivo" << endl;
+        return registro;
+    }
+
+    fseek(p, indice * _tamanioRegistro, SEEK_SET);
+
+    fread(&registro, _tamanioRegistro, 1, p);
+
+    fclose(p);
+
+    return registro;
+}
 
 

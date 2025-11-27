@@ -36,7 +36,6 @@ Fecha::Fecha(int dia, int mes, int anio)
     }
 }
 
-
 bool Fecha::validarFecha(int dia, int mes, int anio)
 {
     if (anio < 2000 || anio > 2100)
@@ -69,27 +68,6 @@ string Fecha::toString(){
 string Fecha::toString(Fecha fecha){
 	return to_string(fecha.getDia()) + "/" + to_string(fecha.getMes()) + "/" + to_string(fecha.getAnio());
 }
-
-bool Fecha::anioBisiesto(int anio)
-{
-    if((anio % 4 == 0 && anio % 100 != 0) || (anio % 400 == 0))
-    {
-        return true;
-    }
-    return false;
-}
-
-int Fecha::diasDelMes(int mes, int anio)
-{
-    int dias[]= {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-
-    if(mes == 2 && anioBisiesto(anio))
-    {
-        return 29;
-    }
-    return dias[mes - 1];
-}
-
 
 void Fecha::setMes(int mes)
 {

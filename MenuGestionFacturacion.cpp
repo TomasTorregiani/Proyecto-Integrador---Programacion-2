@@ -30,24 +30,22 @@ void MenuGestionFacturacion(){
         system("cls");
         switch(opcion){
             case 1: {
-                cout << "**** NUEVA VENTA ****" << endl;               
-                
+                cout << "**** NUEVA VENTA ****" << endl;
                 ManagerVentas gestorVentas;
                 gestorVentas.crearVenta();
-                
+
             }
             break;
             case 2: {
-            	
-								ManagerVentas gestorVentas;
-								gestorVentas.verDetalleFactura(); 
-				
+                cout << "**** VER DETALLE DE FACTURA ****" << endl;
+                ManagerVentas gestorVentas;
+                gestorVentas.verDetalleFactura();
             }
             break;
             case 3: {
-							               
-								ManagerVentas gestorVentas;
-								gestorVentas.eliminarVenta();
+                cout << "**** ELIMINAR FACTURA ****" << endl;
+                ManagerVentas gestorVentas;
+                gestorVentas.eliminarVenta();
             }
             break;
             case 0: cout << "Volviendo al menu principal" << endl;

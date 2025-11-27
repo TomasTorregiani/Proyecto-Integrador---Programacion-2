@@ -15,8 +15,6 @@ public:
 
     bool agregarDetalle(DetalleVenta detalle);
 
-    void calcularTotal();
-
     ~Venta();
 
     //No es necesario ningun setter

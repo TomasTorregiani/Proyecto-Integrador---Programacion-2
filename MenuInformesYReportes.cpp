@@ -32,33 +32,28 @@ void MenuInformesYReportes(){
         system("cls");
         switch(opcion){
             case 1: {
-            	
-                recaudacionMensualYAnual(); 
-                
+                cout << "**** RECAUDACION MENSUAL/ANUAL ****" << endl;
+                recaudacionMensualYAnual();
             }
             break;
             case 2: {
-             
-								productosMasVendidos(); 
-                
+                cout << "**** PRODUCTOS MAS VENDIDOS ****" << endl;
+                productosMasVendidos();
             }
             break;
             case 3: {
-                
-                productosConBajoStock(); 
-                
+                cout << "**** PRODUCTOS CON BAJO STOCK ****" << endl;
+                productosConBajoStock();
             }
             break;
             case 4: {
-                
-                ventasPorVendedor(); 
-                
+                cout << "**** VENTAS POR VENDEDOR ****" << endl;
+                ventasPorVendedor();
             }
             break;
             case 5: {
-            	
-								clientesQueMasCompraron();
-                
+                cout << "**** CLIENTES QUE MAS COMPRARON ****" << endl;
+                clientesQueMasCompraron();
             }
             break;
             case 0: cout << "Volviendo al menu principal..." << endl;

@@ -19,7 +19,7 @@ void MenuListadosYConsultas()
     while(true)
     {
         system("cls");
-        cout << "**** MENU LISTADOS Y CONSULTAS ****" << endl << endl; 
+        cout << "**** MENU LISTADOS Y CONSULTAS ****" << endl << endl;
         cout << "1) Listado de clientes" << endl;
         cout << "2) Listado de productos" << endl;
         cout << "3) Listado de vendedores" << endl;
@@ -33,30 +33,28 @@ void MenuListadosYConsultas()
         {
         case 1:
         {
-
+            cout << "**** LISTADO DE CLIENTES ****" << endl;
             listadoClientes();
-
         }
         break;
         case 2:
         {
-        	
+           cout << "**** LISTADO DE PRODUCTOS ****" << endl;
            listadoProductos();
-           
         }
         break;
         case 3:
         {
-            
-            listadoVendedores(); 
+            cout << "**** LISTADO DE VENDEDORES ****" << endl;
+            listadoVendedores();
 
         }
         break;
         case 4:
         {
-        	
-            MenuVentasPorFecha(); 
-            
+        	cout << "**** LISTADO DE VENTAS(POR FECHA/MES/ANIO/DIAS)" << endl;
+            MenuVentasPorFecha();
+
         }
         case 0:
             MenuPrincipal();

@@ -14,6 +14,7 @@ public:
     void verDetalleFactura();
     void listarVentas();
     void eliminarVenta(); //sería como una nota de crédito.
+    float calcularTotal(int idVenta);
 
     /*Consultas y reportes
     void listarVentas();

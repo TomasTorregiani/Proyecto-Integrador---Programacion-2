@@ -12,4 +12,5 @@ public:
     int agregarDetalle(DetalleVenta& detalle);
     int verDetalleVenta(int idVenta, DetalleVenta *detalles);
     int *obtenerVentasPorProducto(int cantidadDetallesVendidos, int &tamanioArray);
+    DetalleVenta leerRegistro(int indice);
 };
