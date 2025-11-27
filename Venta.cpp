@@ -22,8 +22,10 @@ Venta::Venta(int IdCliente, int IdVendedor, Fecha fecha){
     _anulada = false;
 }
 
-Venta::~Venta(){
-    delete[] _detalles;
+Venta::~Venta() {
+    if (_detalles != nullptr) {
+        delete[] _detalles;
+    }
 }
 
 bool Venta::agregarDetalle(DetalleVenta detalle){

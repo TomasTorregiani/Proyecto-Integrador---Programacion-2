@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Fecha::Fecha() {}
+Fecha::Fecha() : _dia(1), _mes(1), _anio(2000) {}
 
 void Fecha::obtenerFechaActual()
 {
@@ -75,6 +75,7 @@ bool Fecha::anioBisiesto(int anio)
     {
         return true;
     }
+    return false;
 }
 
 int Fecha::diasDelMes(int mes, int anio)

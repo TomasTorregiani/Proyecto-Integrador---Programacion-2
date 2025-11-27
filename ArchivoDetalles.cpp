@@ -24,7 +24,6 @@ int ArchivoDetalles::agregarDetalle(DetalleVenta& detalle){
     fclose(p);
 
     if(escribio != 0){
-        cout << "El registro se guardo correctamente" << endl;
         return escribio;
     } else{
         return 0;

@@ -16,7 +16,7 @@
 using namespace std;
 
 ManagerVentas::ManagerVentas()
-    :_archivoVentas("ventas.dat") {}
+    :_archivoVentas("ventas.dat"), _ventaActual(){}
 
 bool ManagerVentas::crearVenta()
 {
@@ -24,12 +24,12 @@ bool ManagerVentas::crearVenta()
 
 		Fecha fechaActual;
 		fechaActual.obtenerFechaActual();
-		
+
 		Fecha fechaParaVenta = fechaActual.getFecha();
 		cout << "Fecha de venta: " << fechaParaVenta.toString() << endl;
-		
+
     //agregar CLIENTE:
-    
+
     int idCliente;
     cout << "Ingrese id del cliente: ";
     cin >> idCliente;
@@ -48,20 +48,7 @@ bool ManagerVentas::crearVenta()
     }
 
     Cliente clienteParaVenta = clienteEncontrado;
-    cout << "Cliente: " << clienteParaVenta.getNombre() << " " << clienteParaVenta.getApellido()<<  endl << endl; 
-    
-    /*int escribio = managerCliente.crearCliente();
-    if(escribio == 1)
-    {
-        cout << "El archivo se escribio correctamente" << endl;
-        clienteParaVenta = nuevoCliente;
-    }
-
-    }
-    else
-    {
-    clienteParaVenta = encontrado;
-    }*/
+    cout << "Cliente: " << clienteParaVenta.getNombre() << " " << clienteParaVenta.getApellido()<<  endl << endl;
 
     //agregar VENDEDOR:
 
@@ -81,20 +68,17 @@ bool ManagerVentas::crearVenta()
         cout << "---------------------" << endl;
 
         ManagerVendedores gestorVendedores;
-        //Vendedor nuevoVendedor = gestorVendedores.crearVendedor();
         gestorVendedores.crearVendedor();
     }
 
     Vendedor vendedorParaVenta = vendedorEncontrado;
-    cout << "Vendedor: " << vendedorParaVenta.getNombre() << " " << vendedorParaVenta.getApellido()<<  endl << endl; 
+    cout << "Vendedor: " << vendedorParaVenta.getNombre() << " " << vendedorParaVenta.getApellido()<<  endl << endl;
 
     //Recien aca se crea la VENTA.
 
-    //Venta nuevaVenta(clienteParaVenta.getIdCliente(), nuevoVendedor.getIdVendedor(), "11/11/1111");
-
     Venta nuevaVenta(clienteParaVenta.getIdCliente(), vendedorParaVenta.getIdVendedor(), fechaParaVenta);
 
-    int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta); //archivoVenta.agregarVenta(nuevaVenta);
+    int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta);
     if(agregoVenta == 0 )
     {
         cout << "Error al agregar el archivo" << endl;
@@ -103,14 +87,14 @@ bool ManagerVentas::crearVenta()
     {
         cout << "Venta agregada correctamente" << endl;
     }
-    
-    cout << "El id de la venta es: " << nuevaVenta.getIdVenta() << endl; 
+
+    cout << "El id de la venta es: " << nuevaVenta.getIdVenta() << endl;
 
     //agregar PRODUCTO:
-    
+
     int opcion;
 
-    do // <<----- ac� empieza un do while
+    do // <<----- acá empieza un do while
     {
         int idProducto;
         cout << "Ingrese id del producto a agregar: " << endl;
@@ -128,24 +112,25 @@ bool ManagerVentas::crearVenta()
 
             // Crear detalle con producto y cantidad
             DetalleVenta detalle(productoAAgregar, cantidad);
-
+            cout << "DEBUG: Se agrega el producto a la venta" << endl;
             // Asociar al id de la venta
             detalle.setIdVenta(nuevaVenta.getIdVenta());
-
+            cout << "DEBUG: Se setea el id de la venta" << endl;
             // Guardar detalle
             archivoDetalles.agregarDetalle(detalle);
             cout << "Detalle agregado correctamente." << endl;
         }
         cout << "Desea agregar productos? (1 = Si / 2 = No)" << endl;
         cin >> opcion;
-
     }
-    while(opcion == 1);
+while(opcion == 1);
+cout << "DEBUG: Salió del bucle correctamente" << endl;
+cout << "DEBUG: A punto de terminar la función" << endl;
+return true;
 }
 
 void ManagerVentas::verDetalleFactura()
 {
-
     cout << "**** VER DETALLE DE FACTURA ****" << endl;
     int idVenta;
     cout << "Ingrese el id de venta: " << endl;

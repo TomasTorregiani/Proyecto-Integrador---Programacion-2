@@ -17,6 +17,8 @@ public:
 
     void calcularTotal();
 
+    ~Venta();
+
     //No es necesario ningun setter
 
     //Getters
@@ -24,13 +26,11 @@ public:
     int getIdCliente();
     int getIdVendedor();
     Fecha getFecha();
-    std::string getFechaString(); 
+    std::string getFechaString();
     int getCantidadDetalles();
     float getTotal();
     bool getAnulada();
     void anularVenta();
-    
-    ~Venta();
 
 protected:
 

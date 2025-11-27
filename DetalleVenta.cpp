@@ -2,7 +2,7 @@
 #include "DetalleVenta.h"
 
 DetalleVenta::DetalleVenta()
-:_cantidad(0){}
+:_cantidad(0), _idVenta(0){}
 
 DetalleVenta::DetalleVenta(Producto producto, int cantidad)
 :_producto(producto) , _cantidad(cantidad){}
