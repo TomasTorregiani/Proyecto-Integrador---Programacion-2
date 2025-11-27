@@ -24,6 +24,4 @@ public:
 
 private:
 	int _dia, _mes, _anio;
-	bool anioBisiesto(int anio);
-	int diasDelMes(int mes, int anio);
 };

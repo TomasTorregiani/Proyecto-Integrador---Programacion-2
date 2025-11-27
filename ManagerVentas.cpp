@@ -13,7 +13,7 @@
 #include <string>
 #include <cstring>
 
-using namespace std;
+using namespace std; 
 
 ManagerVentas::ManagerVentas()
     :_archivoVentas("ventas.dat") {}
