@@ -71,7 +71,8 @@ bool ManagerVentas::crearVenta()
     }
 
     Cliente clienteParaVenta = clienteEncontrado;
-    cout << "Cliente: " << clienteParaVenta.getNombre() << " " << clienteParaVenta.getApellido()<<  endl << endl;
+    
+    cout << "Cliente: (" << idCliente << ") = " << clienteParaVenta.getNombre() << " " << clienteParaVenta.getApellido()<<  endl << endl;
 
     //agregar VENDEDOR:
 
@@ -95,7 +96,7 @@ bool ManagerVentas::crearVenta()
     }
 
     Vendedor vendedorParaVenta = vendedorEncontrado;
-    cout << "Vendedor: " << vendedorParaVenta.getNombre() << " " << vendedorParaVenta.getApellido()<<  endl << endl;
+    cout << "Vendedor: (" << idVendedor << ") = "<< vendedorParaVenta.getNombre() << " " << vendedorParaVenta.getApellido()<<  endl << endl;
 
     //Recien aca se crea la VENTA.
 
@@ -190,9 +191,9 @@ void ManagerVentas::verDetalleFactura()
         }
 
         ArchivoDetalles archivo("detalles_venta.dat");
-        DetalleVenta detalles[50];
+        DetalleVenta detalles[50]; 											// ver esto!! 
 
-        int cantidadDetalles = archivo.verDetalleVenta(idVenta, detalles);
+        int cantidadDetalles = archivo.verDetalleVenta(idVenta, detalles); // ver esto.
         cout << "**** Detalles de la factura ****" << endl;
         for(int i = 0; i < cantidadDetalles; i++)
         {

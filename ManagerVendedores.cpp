@@ -165,13 +165,16 @@ Vendedor ManagerVendedores::pedirNuevosDatos(){
     return vendedorModificado;
 }
 void ManagerVendedores::modificarVendedor(){
-    int idVendedorAModidficar;
+    int idVendedorAModificar;
     cout << "Ingrese id del vendedor a modificar: " << endl;
-    cin >> idVendedorAModidficar;
+    cin >> idVendedorAModificar;
 
-    Vendedor registro = _archivoVendedores.buscarVendedorPorId(idVendedorAModidficar);
+    Vendedor registro = _archivoVendedores.buscarVendedorPorId(idVendedorAModificar);
+    
+    cout << registro.getNombre() << " " << registro.getApellido() << endl; 
+    
     int idOriginal = registro.getIdVendedor();
-    int posicion = _archivoVendedores.buscarPosicionDelVendedor(idVendedorAModidficar);
+    int posicion = _archivoVendedores.buscarPosicionDelVendedor(idVendedorAModificar);
     int datosModificados = 0;
     if(posicion == -1)
     {
