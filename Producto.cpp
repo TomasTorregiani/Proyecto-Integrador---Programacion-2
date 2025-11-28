@@ -17,7 +17,7 @@ Producto::Producto(){
 
 Producto::Producto(string descripcion,
              string marca, string tipoProducto,
-             int cantidadDisponible, long long precio){
+             int cantidadDisponible, float precio){
                     _idProducto = contarRegistros("productos.dat", sizeof(Producto))+1;
 
                     strcpy(_descripcion, descripcion.c_str());
@@ -63,10 +63,10 @@ void Producto::setTipoProducto(string tipoProducto){
 void Producto::setCantidadDisponible(int cantidadDisponible){
     _cantidadDisponible = cantidadDisponible;
 }
-void Producto::setPrecio(long long precio){
+void Producto::setPrecio(float precio){
     _precio = precio;
 }
-long long Producto::getPrecio(){
+float Producto::getPrecio(){
     return _precio;
 }
 int Producto::getIdProducto(){

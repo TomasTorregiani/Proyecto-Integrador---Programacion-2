@@ -7,7 +7,7 @@ public:
     Producto();
     Producto(std::string descripcion,
              std::string marca, std::string tipoProducto,
-             int cantidadDisponible, long long precio);
+             int cantidadDisponible, float precio);
 
     void crearNuevoProducto();
     void modificarProducto();
@@ -20,7 +20,7 @@ public:
     void setMarca(std::string marca);
     void setTipoProducto(std::string tipoProducto);
     void setCantidadDisponible(int cantidadDisponible);
-    void setPrecio(long long precio);
+    void setPrecio(float precio);
     void setEstado(bool value);
 
     //Getters
@@ -29,7 +29,7 @@ public:
     std::string getMarca();
     std::string getTipoProducto();
     int getCantidadDisponible();
-    long long getPrecio();
+    float getPrecio();
 
 protected:
 

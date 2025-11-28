@@ -125,7 +125,11 @@ bool ManagerVentas::crearVenta()
         cin >> idProducto;
 
         ArchivoProductos archivoProducto("productos.dat");
+        
         Producto productoAAgregar = archivoProducto.buscarProductoPorId(idProducto);
+        
+        cout << productoAAgregar.getDescripcion() << " - Precio unitario: $" << productoAAgregar.getPrecio() << endl; 
+        
         ArchivoDetalles archivoDetalles("detalles_venta.dat");
 
         if(productoAAgregar.getIdProducto() != 0)

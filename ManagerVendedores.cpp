@@ -165,13 +165,15 @@ Vendedor ManagerVendedores::pedirNuevosDatos(){
     return vendedorModificado;
 }
 void ManagerVendedores::modificarVendedor(){
+	
     int idVendedorAModificar;
+    
     cout << "Ingrese id del vendedor a modificar: " << endl;
     cin >> idVendedorAModificar;
 
     Vendedor registro = _archivoVendedores.buscarVendedorPorId(idVendedorAModificar);
     
-    cout << registro.getNombre() << " " << registro.getApellido() << endl; 
+    cout << "Vendedor ("<< idVendedorAModificar << ") = " << registro.getNombre() << " " << registro.getApellido() << endl << endl;
     
     int idOriginal = registro.getIdVendedor();
     int posicion = _archivoVendedores.buscarPosicionDelVendedor(idVendedorAModificar);
@@ -184,7 +186,7 @@ void ManagerVendedores::modificarVendedor(){
     {
         if(registro.getIdVendedor() != 0)
         {
-            registro = pedirNuevosDatos();
+            registro = pedirNuevosDatos(); //acá se piden todos los datos de nuevo (menos el id)
             registro.setIdVendedor(idOriginal);//Para mantener el id, porque al cambiar el objeto completo este se perdia.
             datosModificados = _archivoVendedores.modificarDatosVendedor(registro, posicion);
         }
