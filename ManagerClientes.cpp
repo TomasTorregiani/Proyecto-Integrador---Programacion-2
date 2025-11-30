@@ -237,6 +237,7 @@ void ManagerClientes::listarClientes(){
     for(int i = 0; i < cantidadClientes; i++){
         if(arrayClientes[i].getActivo() == true){
         arrayClientes[i].mostrarCliente();
+        cout << endl; 
         }
     }
     delete[] arrayClientes;

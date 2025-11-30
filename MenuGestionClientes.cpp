@@ -27,38 +27,38 @@ void MenuGestionClientes(){
         system("cls");
         switch(opcion){
             case 1: {
-                cout << "**** NUEVO CLIENTE ****" << endl;
+                cout << "**** NUEVO CLIENTE ****" << endl << endl; 
                 ManagerClientes managerCliente;
                 managerCliente.crearCliente();
 
             }
             break;
             case 2:{
-                cout << "**** MODIFICAR DATOS CLIENTE ****" << endl;
+                cout << "**** MODIFICAR DATOS CLIENTE ****" << endl << endl; 
                 ManagerClientes managerCliente;
                 managerCliente.modificarCliente();
             }
             break;
             case 3:{
-                cout << "**** BUSCAR CLIENTE POR ID ****" << endl;
+                cout << "**** BUSCAR CLIENTE POR ID ****" << endl << endl; 
                 ManagerClientes managerCliente;
                 managerCliente.buscarClientePorId();
             }
             break;
             case 4:{
-                cout << "**** ELIMINAR CLIENTE ****" << endl;
+                cout << "**** ELIMINAR CLIENTE ****" << endl << endl; 
                 ManagerClientes managerCliente;
                 managerCliente.eliminarCliente();
             }
             break;
             case 5: {
-                cout << "**** ACTIVAR CLIENTE ****" << endl;
+                cout << "**** ACTIVAR CLIENTE ****" << endl << endl; 
                 ManagerClientes managerCliente;
                 managerCliente.activarCliente();
             }
             break;
             case 6: {
-                cout << "LISTAR LOS CLIENTES" << endl; //Listar clientes ya lo tenemos en listados
+                cout << "LISTAR LOS CLIENTES" << endl << endl; //Listar clientes ya lo tenemos en listados
                 ManagerClientes managerCliente;
                 managerCliente.listarClientes();
             }

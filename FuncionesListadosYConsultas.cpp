@@ -18,8 +18,6 @@ using namespace std;
 
 void listadoClientes()
 {
-    cout << "**** LISTADO DE CLIENTES ****" << endl;
-
     int cantidadClientes = contarRegistros("clientes.dat",sizeof(Cliente));
     ArchivoClientes archivoCliente("clientes.dat");
     Cliente* arrayClientes = archivoCliente.obtenerClientes(cantidadClientes);
@@ -33,10 +31,9 @@ void listadoClientes()
 
 void listadoProductos()
 {
-
-    cout << "**** LISTADO DE PRODUCTOS ****" << endl;  //Este case es identico al anterior,
-    ArchivoProductos archivoProducto("productos.dat"); //sin embargo lo encare de una manera
-    //mucho mas rebuscada
+		//Este case es identico al anterior sin embargo lo encare de una manera mucho mas rebuscada
+		
+    ArchivoProductos archivoProducto("productos.dat"); 
     int cantidadProductos = contarRegistros("productos.dat", sizeof(Producto));
 
     Producto* productosObtenidos;
@@ -53,8 +50,6 @@ void listadoProductos()
 
 void listadoVendedores()
 {
-    cout << "**** LISTADO DE VENDEDORES ****" << endl;
-
     int cantidadVendedores = contarRegistros("vendedores.dat",sizeof(Vendedor));
     ArchivoVendedores archivoVendedor("vendedores.dat");
     Vendedor* arrayVendedores = archivoVendedor.obtenerVendedores(cantidadVendedores);

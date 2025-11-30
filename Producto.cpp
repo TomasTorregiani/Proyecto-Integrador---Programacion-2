@@ -30,13 +30,14 @@ Producto::Producto(string descripcion,
 }
 
 void Producto::mostrarProducto(){
-    cout << "=== DATOS DEL PRODUCTO ===" << endl;
+    cout << endl; 
+    cout << "=== DATOS DEL PRODUCTO " << _idProducto << " ===" << endl << endl; 
     cout << "ID Producto: " << _idProducto << endl;
     cout << "Descripcion: " << _descripcion << endl;
     cout << "Marca: " << _marca << endl;
     cout << "Tipo de producto: " << _tipoProducto << endl;
     cout << "Cantidad Disponible: " << _cantidadDisponible << endl;
-    cout << "Precio: " << _precio << endl;
+    cout << "Precio: $" << _precio << endl;
     cout << "Estado: " << _activo << endl;
 }
 void Producto::setMarca(string marca){

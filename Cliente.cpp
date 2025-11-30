@@ -26,7 +26,8 @@ Cliente::Cliente(string nombre,
 
 
 void Cliente::mostrarCliente(){
-    cout << "=== DATOS DEL CLIENTE ===" << endl;
+		cout << endl; 
+    cout << "=== DATOS DEL CLIENTE " << _idCliente << " ===" << endl << endl; 
     cout << "ID Cliente: " << _idCliente << endl;
     cout << "Nombre: " << _nombre << endl;
     cout << "Apellido: " << _apellido << endl;

@@ -10,7 +10,7 @@ void MenuGestionVendedores(){
     int opcion;
     while(true){
         system("cls");
-        cout << "**** GESTION DE VENDEDORES ****" << endl;
+        cout << "**** GESTION DE VENDEDORES ****" << endl << endl; 
         cout << "1) Nuevo Vendedor" << endl;
         cout << "2) Modificar Datos Vendedor" << endl;
         cout << "3) Buscar Vendedor por Id" << endl;
@@ -23,31 +23,31 @@ void MenuGestionVendedores(){
         system("cls");
         switch(opcion){
             case 1: {
-                cout << "**** NUEVO VENDEDOR ****" << endl;
+                cout << "**** NUEVO VENDEDOR ****" << endl << endl; 
                 ManagerVendedores gestorVendedor;
                 gestorVendedor.crearVendedor();
             }
             break;
             case 2:{
-                cout << "**** MODIFICAR DATOS DEL VENDEDOR ****" << endl;
+                cout << "**** MODIFICAR DATOS DEL VENDEDOR ****" << endl << endl; 
                 ManagerVendedores gestorVendedor;
                 gestorVendedor.modificarVendedor();
             }
             break;
             case 3: {
-                cout << "**** BUSCAR VENDEDOR POR ID ****" << endl;
+                cout << "**** BUSCAR VENDEDOR POR ID ****" << endl << endl; 
                 ManagerVendedores gestorVendedor;
                 gestorVendedor.obtenerVendedorPorId();
             }
             break;
             case 4: {
-                cout << "**** ELIMINAR VENDEDOR ****" << endl;
+                cout << "**** ELIMINAR VENDEDOR ****" << endl << endl; 
                 ManagerVendedores gestorVendedor;
                 gestorVendedor.eliminarVendedor();
             }
             break;
             case 5: {
-                cout << "**** LISTAR TODOS LOS VENDEDORES ****" << endl;
+                cout << "**** LISTAR TODOS LOS VENDEDORES ****" << endl << endl; 
                 ManagerVendedores gestorVendedor;
                 gestorVendedor.listarVendedores();
             }

@@ -251,6 +251,7 @@ void ManagerVendedores::listarVendedores(){
     for(int i = 0; i < cantidadVendedores; i++){
         if(arrayVendedores[i].getActivo() == true){
         arrayVendedores[i].mostrarVendedor();
+        cout << endl; 
         }
     }
     delete[] arrayVendedores;

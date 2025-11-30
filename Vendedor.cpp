@@ -32,7 +32,6 @@ _apellido(), _numeroTelefono(0),
 _email(""), _direccion(""){
 }*/
 
-
 void Vendedor::crearVendedor()
 {
     _idVendedor = contarRegistros("vendedores.dat", sizeof(Vendedor)) + 1;
@@ -65,7 +64,8 @@ void Vendedor::modificarVendedor()
 
 void Vendedor::mostrarVendedor()
 {
-    cout << "\n--- Datos del vendedor ---\n";
+		cout << endl;
+		cout << "=== DATOS DEL VENDEDOR " << _idVendedor << " ===" << endl << endl; 
     cout << "ID: " << _idVendedor << endl;
     cout << "Nombre: " << _nombre << endl;
     cout << "Apellido: " << _apellido << endl;
