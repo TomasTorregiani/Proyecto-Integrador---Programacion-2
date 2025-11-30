@@ -54,13 +54,13 @@ bool ManagerVentas::crearVenta()
     //agregar CLIENTE:
 
     int idCliente;
-    cout << "Ingrese id del cliente: ";
+    cout << "Ingrese ID del cliente: ";
     cin >> idCliente;
 
     ArchivoClientes archivoC("clientes.dat");
     Cliente clienteEncontrado = archivoC.buscarClientePorId(idCliente);
 
-    if(clienteEncontrado.getIdCliente() == 0)
+     if(clienteEncontrado.getIdCliente() == 0)
     {
         cout << "No se encontro ningun registro con ese id" << endl;
         cout << "Agregar Nuevo Cliente: " << endl;
@@ -70,7 +70,7 @@ bool ManagerVentas::crearVenta()
         managerCliente.crearNuevoCliente();
     }
 
-    Cliente clienteParaVenta = clienteEncontrado;
+	Cliente clienteParaVenta = clienteEncontrado;
     
     cout << "Cliente: (" << idCliente << ") = " << clienteParaVenta.getNombre() << " " << clienteParaVenta.getApellido()<<  endl << endl;
 

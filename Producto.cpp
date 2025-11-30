@@ -15,18 +15,17 @@ Producto::Producto(){
     _activo = true;
 }
 
-Producto::Producto(string descripcion,
-             string marca, string tipoProducto,
-             int cantidadDisponible, float precio){
-                    _idProducto = contarRegistros("productos.dat", sizeof(Producto))+1;
+Producto::Producto(string descripcion,string marca, string tipoProducto,int cantidadDisponible, float precio){
+	
+		_idProducto = contarRegistros("productos.dat", sizeof(Producto))+1;
 
-                    strcpy(_descripcion, descripcion.c_str());
-                    strcpy(_marca, marca.c_str());
-                    strcpy(_tipoProducto, tipoProducto.c_str());
+		strcpy(_descripcion, descripcion.c_str());
+		strcpy(_marca, marca.c_str());
+		strcpy(_tipoProducto, tipoProducto.c_str());
 
-                    _cantidadDisponible = cantidadDisponible;
-                    _precio = precio;
-                    _activo = true;
+		_cantidadDisponible = cantidadDisponible;
+		_precio = precio;
+		_activo = true;
 }
 
 void Producto::mostrarProducto(){
@@ -38,7 +37,11 @@ void Producto::mostrarProducto(){
     cout << "Tipo de producto: " << _tipoProducto << endl;
     cout << "Cantidad Disponible: " << _cantidadDisponible << endl;
     cout << "Precio: $" << _precio << endl;
-    cout << "Estado: " << _activo << endl;
+    if(_activo == 1){
+			cout << "Estado: Disponible" << endl;
+    }else{
+				cout << "Estado: No disponible" << endl; 
+			}
 }
 void Producto::setMarca(string marca){
     strncpy(_marca, marca.c_str(), sizeof(_marca) - 1);
