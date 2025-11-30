@@ -113,6 +113,15 @@ void ManagerClientes::crearCliente()
     }
 }
 
+void ManagerClientes::guardarUnCliente(Cliente cliente){
+	int clienteAgregado = _archivoCliente.agregarCliente(cliente);
+	if(clienteAgregado == 1){
+        cout << "Cliente agregado correctamente" << endl;
+    }else{
+        cout << "Error al agregar cliente" << endl;
+    }
+}
+
 void ManagerClientes::modificarCliente()
 {
     int idClienteAModificar;

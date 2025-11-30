@@ -72,7 +72,7 @@ void Vendedor::mostrarVendedor()
     cout << "Telefono: " << _numeroTelefono << endl;
     cout << "Email: " << _email << endl;
     cout << "Direccion: " << _direccion << endl;
-    cout << "Activo: " << (_activo ? "Si" : "No") << endl;
+    cout << "Estado: " << (_activo ? "Activo" : "Inactivo") << endl;
 }
 
 void Vendedor::setIdVendedor(int idVendedor)

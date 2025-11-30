@@ -67,10 +67,11 @@ bool ManagerVentas::crearVenta()
         cout << "---------------------" << endl;
 
         ManagerClientes managerCliente;
-        managerCliente.crearNuevoCliente();
+        clienteEncontrado = managerCliente.crearNuevoCliente();
+        managerCliente.guardarUnCliente(clienteEncontrado);
     }
 
-	Cliente clienteParaVenta = clienteEncontrado;
+		Cliente clienteParaVenta = clienteEncontrado;
     
     cout << "Cliente: (" << idCliente << ") = " << clienteParaVenta.getNombre() << " " << clienteParaVenta.getApellido()<<  endl << endl;
 
@@ -92,10 +93,12 @@ bool ManagerVentas::crearVenta()
         cout << "---------------------" << endl;
 
         ManagerVendedores gestorVendedores;
-        gestorVendedores.crearVendedor();
+        vendedorEncontrado = gestorVendedores.crearNuevoVendedor();
+        gestorVendedores.guardarUnVendedor(vendedorEncontrado); 
     }
 
     Vendedor vendedorParaVenta = vendedorEncontrado;
+    
     cout << "Vendedor: (" << idVendedor << ") = "<< vendedorParaVenta.getNombre() << " " << vendedorParaVenta.getApellido()<<  endl << endl;
 
     //Recien aca se crea la VENTA.
@@ -181,7 +184,8 @@ void ManagerVentas::verDetalleFactura()
 
         if(clienteObtenido.getIdCliente() == 0 || vendedorObtenido.getIdVendedor() == 0)
         {
-            cout << "Error al buscar cliente o vendedor";
+            cout << endl; 
+            cout << "ERROR al buscar cliente o vendedor !!" << endl << endl; 
         }
         else
         {
@@ -198,7 +202,7 @@ void ManagerVentas::verDetalleFactura()
         DetalleVenta detalles[50]; 											// ver esto!! 
 
         int cantidadDetalles = archivo.verDetalleVenta(idVenta, detalles); // ver esto.
-        cout << "**** Detalles de la factura ****" << endl;
+        cout << "**** Detalles de la factura ****" << endl << endl; 
         for(int i = 0; i < cantidadDetalles; i++)
         {
             //Mostramos los detalles de la factura

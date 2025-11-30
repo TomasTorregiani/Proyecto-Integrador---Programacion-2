@@ -8,6 +8,8 @@ class ManagerVendedores
 public:
     ManagerVendedores();
     void crearVendedor();
+    Vendedor crearNuevoVendedor(); 
+    void guardarUnVendedor(Vendedor vendedor);
         
     Vendedor pedirNuevosDatos();  // ?????
     

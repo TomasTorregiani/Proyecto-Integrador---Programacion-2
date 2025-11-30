@@ -10,6 +10,7 @@ public:
     ManagerClientes();
     Cliente crearNuevoCliente();
     void crearCliente();
+    void guardarUnCliente(Cliente cliente);
     Cliente pedirNuevosDatos();
     void modificarCliente();
     void buscarClientePorId();

@@ -9,7 +9,7 @@ public:
             std::string apellido, int cuil, int numeroTelefono,
             std::string email, std::string direccion);
 
-    void crearCliente();//Borrar esta funcion
+    void crearCliente();//Borrar esta funcion?
     void modificarCliente();
     void mostrarCliente();
     //Setters

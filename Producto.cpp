@@ -40,7 +40,7 @@ void Producto::mostrarProducto(){
     if(_activo == 1){
 			cout << "Estado: Disponible" << endl;
     }else{
-				cout << "Estado: No disponible" << endl; 
+				cout << "Estado: No disponible" << endl;
 			}
 }
 void Producto::setMarca(string marca){

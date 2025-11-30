@@ -12,7 +12,8 @@ ArchivoVendedores::ArchivoVendedores(const char *n){
 }
 
 int ArchivoVendedores::agregarVendedor(Vendedor vendedor){
-    cout << "DEBUG: Intentando agregar vendedor con ID: " << vendedor.getIdVendedor() << endl;
+	
+    vendedor.getIdVendedor();
 
     FILE* p = nullptr;
     p = fopen(_nombre, "ab"); //_nombre es el nombre como atributo de ArchivoVendedores, es decir "vendedores.dat"
@@ -21,9 +22,7 @@ int ArchivoVendedores::agregarVendedor(Vendedor vendedor){
         return 0;
     }
 
-    cout << "DEBUG: Tamaño registro: " << _tamanioRegistro << endl;
     int escribio = fwrite(&vendedor, _tamanioRegistro, 1, p);
-    cout << "DEBUG: fwrite devolvió: " << escribio << endl;
 
     if(escribio == 1){
         fclose(p);
