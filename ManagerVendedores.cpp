@@ -48,7 +48,7 @@ Vendedor ManagerVendedores::crearNuevoVendedor(){
     cout << "Ingresar numero de telefono (sin guiones): " << endl;
     cin >> telefonoVendedor;
 
-    while(cin.fail() || telefonoVendedor < 0 || cin.peek() == '.' || cin.peek() == '-') //si "falla" el cin, si el nro es menor a "0", si se ingresa un "." o un "-"
+    while(cin.fail() || esUnNumero(telefonoVendedor) || telefonoVendedor < 0 || cin.peek() == '.' || cin.peek() == '-' || cin.peek() == ',') //si "falla" el cin, si el nro es menor a "0", si se ingresa un "." o un "-"
     {
         cout << "Error. Ingrese un telefono valido: ";
         cin.clear();  //limpia el error de cin
@@ -62,7 +62,7 @@ Vendedor ManagerVendedores::crearNuevoVendedor(){
     cout << "Ingresar email vendedor nuevo: " << endl;
     getline(cin, email);
 
-    while(email.empty())
+    while(validarMail(email))
     {
         cout << "Error. Ingrese un email: " << endl;
         getline(cin, email);
