@@ -62,7 +62,7 @@ Cliente ManagerClientes::crearNuevoCliente(){
     cout << "Ingresar numero de telefono (sin guiones) : " << endl;
     cin >> numeroTelefono;
     
-    while(cin.fail() || !esUnNumero(numeroTelefono) || numeroTelefono < 0 || cin.peek() == '+' || cin.peek() == '.' || cin.peek() == '-' || cin.peek() == ','){
+    while(cin.fail() || numeroTelefono < 0 || cin.peek() == '+' || cin.peek() == '.' || cin.peek() == '-' || cin.peek() == ','){
 				
 			cout << "Ingresar un telefono valido (sin guiones): ";
 			cin.clear(); 
