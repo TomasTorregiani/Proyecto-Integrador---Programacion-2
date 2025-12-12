@@ -108,3 +108,4 @@ DetalleVenta ArchivoDetalles::leerRegistro(int indice)
 }
 
 
+

@@ -142,6 +142,14 @@ void productosConBajoStock()
             }
         }
     }
+
+    for(int i = 0; i < cantidadProductosConStockMenorA10; i++)
+    {
+        cout << arrayProductosConBajoStock[i].getDescripcion()
+             << " | Stock: " << arrayProductosConBajoStock[i].getCantidadDisponible()
+             << endl;
+    }
+
     delete[] productos;
     delete[] arrayProductosConBajoStock;
 
@@ -161,11 +169,11 @@ void ventasPorVendedor()
     int idVendedor;
     cout << "Ingrese id vendedor: " << endl;
     cin >> idVendedor;
-    
+
     ///////
-    
+
     ArchivoVendedores archivoVendedores("vendedores.dat");
-    
+
     Vendedor registroVendedor = archivoVendedores.buscarVendedorPorId(idVendedor);
     if(registroVendedor.getIdVendedor() == 0)
     {
@@ -175,7 +183,7 @@ void ventasPorVendedor()
     {
         cout << "Vendedor: " << registroVendedor.getNombre() << " " << registroVendedor.getApellido() << endl << endl;
     }
-    
+
     ///////
 
     int ventasPorVendedor = 1;
@@ -258,6 +266,12 @@ void clientesQueMasCompraron()
             }
         }
     }
+    
+    cout << "----  Clientes que mas compraron ----" << endl; //Implementar aca
+    for(int i = 0; i < 3; i++){
+        cout << "Id Cliente " << arrayIdsClientes[i] << ", total comprado: " << arrayTotalesClientes[i] << endl;
+    }
+    
     delete[] arrayVentasObtenidas;
     delete[] arrayIdsClientes;
     delete[] arrayTotalesClientes;
