@@ -106,7 +106,7 @@ bool ManagerVentas::crearVenta()
     Venta nuevaVenta(clienteParaVenta.getIdCliente(), vendedorParaVenta.getIdVendedor(), fechaParaVenta);
 
     int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta);
-    if(agregoVenta == 0 )
+    if(agregoVenta == 0)
     {
         cout << "Error al agregar el archivo" << endl;
     }
