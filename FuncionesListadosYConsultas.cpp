@@ -31,7 +31,6 @@ void listadoClientes()
 
 void listadoProductos()
 {
-		//Este case es identico al anterior sin embargo lo encare de una manera mucho mas rebuscada
 		
     ArchivoProductos archivoProducto("productos.dat"); 
     int cantidadProductos = contarRegistros("productos.dat", sizeof(Producto));
