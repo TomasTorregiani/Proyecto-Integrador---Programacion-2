@@ -31,7 +31,6 @@ void listadoClientes()
 
 void listadoProductos()
 {
-		//Este case es identico al anterior sin embargo lo encare de una manera mucho mas rebuscada
 		
     ArchivoProductos archivoProducto("productos.dat"); 
     int cantidadProductos = contarRegistros("productos.dat", sizeof(Producto));
@@ -216,7 +215,7 @@ void ventasPorFechaExacta()
     cout << "Ingrese un dia: " << endl;
     cin >> dia;
     
-    int cantDiasMes = diasDelMes(mes,anio); //ya chequea si es bisiesto
+    int cantDiasMes = diasDelMes(mes,anio); //chequea si es bisiesto
 	
     while (dia < 1 || dia > cantDiasMes)
     {
@@ -237,7 +236,7 @@ void ventasPorFechaExacta()
     {
 
         Fecha fechaRegistro = vectorVentas[i].getFecha();
-        if(fechaRegistro.getAnio() == anio && fechaRegistro.getMes() == mes && fechaRegistro.getDia())
+        if(fechaRegistro.getAnio() == anio && fechaRegistro.getMes() == mes && fechaRegistro.getDia()== dia)
         {
             cout << "Fecha: " << vectorVentas[i].getFechaString() << endl;
             cout << "ID Venta: " << vectorVentas[i].getIdVenta() << endl;
