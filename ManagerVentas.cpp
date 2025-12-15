@@ -72,7 +72,7 @@ bool ManagerVentas::crearVenta()
     }
 
 		Cliente clienteParaVenta = clienteEncontrado;
-    
+
     cout << "Cliente: (" << idCliente << ") = " << clienteParaVenta.getNombre() << " " << clienteParaVenta.getApellido()<<  endl << endl;
 
     //agregar VENDEDOR:
@@ -94,11 +94,11 @@ bool ManagerVentas::crearVenta()
 
         ManagerVendedores gestorVendedores;
         vendedorEncontrado = gestorVendedores.crearNuevoVendedor();
-        gestorVendedores.guardarUnVendedor(vendedorEncontrado); 
+        gestorVendedores.guardarUnVendedor(vendedorEncontrado);
     }
 
     Vendedor vendedorParaVenta = vendedorEncontrado;
-    
+
     cout << "Vendedor: (" << idVendedor << ") = "<< vendedorParaVenta.getNombre() << " " << vendedorParaVenta.getApellido()<<  endl << endl;
 
     //Recien aca se crea la VENTA.
@@ -128,11 +128,11 @@ bool ManagerVentas::crearVenta()
         cin >> idProducto;
 
         ArchivoProductos archivoProducto("productos.dat");
-        
+
         Producto productoAAgregar = archivoProducto.buscarProductoPorId(idProducto);
-        
-        cout << productoAAgregar.getDescripcion() << " - Precio unitario: $" << productoAAgregar.getPrecio() << endl; 
-        
+
+        cout << productoAAgregar.getDescripcion() << " - Precio unitario: $" << productoAAgregar.getPrecio() << endl;
+
         ArchivoDetalles archivoDetalles("detalles_venta.dat");
 
         if(productoAAgregar.getIdProducto() != 0)
@@ -155,8 +155,7 @@ bool ManagerVentas::crearVenta()
         cin >> opcion;
     }
     while(opcion == 1);
-    return true; 
-
+    return true;
 }
 
 void ManagerVentas::verDetalleFactura()
@@ -184,8 +183,8 @@ void ManagerVentas::verDetalleFactura()
 
         if(clienteObtenido.getIdCliente() == 0 || vendedorObtenido.getIdVendedor() == 0)
         {
-            cout << endl; 
-            cout << "ERROR al buscar cliente o vendedor !!" << endl << endl; 
+            cout << endl;
+            cout << "ERROR al buscar cliente o vendedor !!" << endl << endl;
         }
         else
         {
@@ -199,10 +198,10 @@ void ManagerVentas::verDetalleFactura()
         }
 
         ArchivoDetalles archivo("detalles_venta.dat");
-        DetalleVenta detalles[50]; 											// ver esto!! 
+        DetalleVenta detalles[50]; 											// ver esto!!
 
         int cantidadDetalles = archivo.verDetalleVenta(idVenta, detalles); // ver esto.
-        cout << "**** Detalles de la factura ****" << endl << endl; 
+        cout << "**** Detalles de la factura ****" << endl << endl;
         for(int i = 0; i < cantidadDetalles; i++)
         {
             //Mostramos los detalles de la factura

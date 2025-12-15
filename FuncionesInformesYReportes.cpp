@@ -217,7 +217,7 @@ void ventasPorVendedor()
 
 }
 
-void clientesQueMasCompraron()
+/*void clientesQueMasCompraron()
 {
 
     cout << "**** CLIENTES QUE MAS COMPRARON ****" << endl;
@@ -231,7 +231,7 @@ void clientesQueMasCompraron()
     {
         if(arrayVentasObtenidas[i].getIdCliente() > maximoId)
         {
-            maximoId = arrayVentasObtenidas[i].getIdCliente();  // rae el maximo nro de ID, es decir todos los clientes que hay.
+            maximoId = arrayVentasObtenidas[i].getIdCliente();  // trae el maximo nro de ID, es decir todos los clientes que hay.
         }
     }
 
@@ -240,7 +240,7 @@ void clientesQueMasCompraron()
 
     for(int i = 0; i < maximoId; i++)
     {
-        arrayIdsClientes[i] = i;		// el array se carga con todos los ids de los clientes.S
+        arrayIdsClientes[i] = i;		// el array se carga con todos los ids de los clientes.
     }
 
     float* arrayTotalesClientes;
@@ -266,14 +266,112 @@ void clientesQueMasCompraron()
             }
         }
     }
-    
+
     cout << "----  Clientes que mas compraron ----" << endl; //Implementar aca
     for(int i = 0; i < 3; i++){
         cout << "Id Cliente " << arrayIdsClientes[i] << ", total comprado: " << arrayTotalesClientes[i] << endl;
     }
-    
+
     delete[] arrayVentasObtenidas;
     delete[] arrayIdsClientes;
     delete[] arrayTotalesClientes;
 
+}*/
+
+void clientesQueMasCompraron() //Agregando fechas
+{
+
+    cout << "**** CLIENTES QUE MAS COMPRARON ****" << endl;
+
+    int cantidadVentas = contarRegistros("ventas.dat", sizeof(Venta));
+    ArchivoVentas archivoVenta("ventas.dat");
+    Venta* arrayVentasObtenidas = archivoVenta.obtenerTodasLasVentas(cantidadVentas);
+
+    int maximoId = 0;
+    for(int i = 0; i < cantidadVentas; i++){
+        if(arrayVentasObtenidas[i].getIdCliente() > maximoId){
+            maximoId = arrayVentasObtenidas[i].getIdCliente();
+        }
+    }
+
+    int* arrayIdsClientes = new int[maximoId + 1]();
+
+    for(int i = 0; i <= maximoId; i++){
+        arrayIdsClientes[i] = i;
+    }
+
+    Fecha fechaInicio;
+    fechaInicio.ingresarFecha();
+
+    Fecha fechaFinal;
+    fechaFinal.ingresarFecha();
+
+    float* arrayTotalesClientes;
+    arrayTotalesClientes = new float[maximoId + 1](); // al tamaño del vector lo define la cantidad de ventas que haya.
+
+    for(int i = 0; i < cantidadVentas; i++){
+        bool esMayorIgualInicio = (arrayVentasObtenidas[i].getFecha().getAnio() > fechaInicio.getAnio()) ||
+                              (arrayVentasObtenidas[i].getFecha().getAnio() == fechaInicio.getAnio() &&
+                               arrayVentasObtenidas[i].getFecha().getMes() > fechaInicio.getMes()) ||
+                              (arrayVentasObtenidas[i].getFecha().getAnio() == fechaInicio.getAnio() &&
+                               arrayVentasObtenidas[i].getFecha().getMes() == fechaInicio.getMes() &&
+                               arrayVentasObtenidas[i].getFecha().getDia() >= fechaInicio.getDia());
+
+        bool esMenorIgualFinal = (arrayVentasObtenidas[i].getFecha().getAnio() < fechaFinal.getAnio()) ||
+                              (arrayVentasObtenidas[i].getFecha().getAnio() == fechaFinal.getAnio() &&
+                               arrayVentasObtenidas[i].getFecha().getMes() < fechaFinal.getMes()) ||
+                              (arrayVentasObtenidas[i].getFecha().getAnio() == fechaFinal.getAnio() &&
+                               arrayVentasObtenidas[i].getFecha().getMes() == fechaFinal.getMes() &&
+                               arrayVentasObtenidas[i].getFecha().getDia() <= fechaFinal.getDia());
+
+        if(esMayorIgualInicio && esMenorIgualFinal){
+            arrayTotalesClientes[arrayVentasObtenidas[i].getIdCliente()] += arrayVentasObtenidas[i].getTotal();
+        }
+    }
+
+    for(int i = 0; i < maximoId; i++)
+    {
+        for(int j = 0; j < maximoId - i - 1; j++)
+        {
+            if(arrayTotalesClientes[j] < arrayTotalesClientes[j+1])
+            {
+                float auxiliar = arrayTotalesClientes[j];
+                arrayTotalesClientes[j] = arrayTotalesClientes[j+1];
+                arrayTotalesClientes[j+1] = auxiliar;
+                int auxiliarIds = arrayIdsClientes[j];
+                arrayIdsClientes[j] = arrayIdsClientes[j+1];
+                arrayIdsClientes[j+1] = auxiliarIds;
+            }
+        }
+    }
+
+    cout << "----  Clientes que mas compraron ----" << endl;
+
+    cout << "Periodo: " << fechaInicio.toString() << " a " << fechaFinal.toString() << endl;
+
+
+    int clientesConCompras = 0;
+    for(int i = 0; i < maximoId + 1; i++){
+        if(arrayTotalesClientes[i] > 0){
+            clientesConCompras++;
+        }
+    }
+
+    int topAMostrar = (clientesConCompras < 3) ? clientesConCompras : 3;
+    ArchivoClientes archivoCliente("clientes.dat");
+    if(clientesConCompras == 0){
+        cout << "No hubo ventas en el periodo seleccionado." << endl;
+    } else {
+        for(int i = 0; i < topAMostrar; i++){
+            Cliente cliente = archivoCliente.buscarClientePorId(arrayIdsClientes[i]);
+
+            cout << "Id Cliente " << arrayIdsClientes[i]
+                 << ", Cliente: " << cliente.getApellido() << ", " << cliente.getNombre()
+                 << ", total comprado: $" << arrayTotalesClientes[i] << endl;
+        }
+    }
+
+    delete[] arrayVentasObtenidas;
+    delete[] arrayIdsClientes;
+    delete[] arrayTotalesClientes;
 }

@@ -56,6 +56,27 @@ bool Fecha::validarFecha(int dia, int mes, int anio)
     return true;
 }
 
+void Fecha::ingresarFecha(){
+    int dia, mes, anio;
+    cout << "Ingrese dia: " << endl;
+    cin >> dia;
+    cout << "Ingrese mes: " << endl;
+    cin >> mes;
+    cout << "Ingrese anio: " << endl;
+    cin >> anio;
+    _dia = dia;
+    _mes = mes;
+    _anio = anio;
+     if(validarFecha(dia, mes, anio)){
+        _dia = dia;
+        _mes = mes;
+        _anio = anio;
+    } else {
+        cout << "Fecha invalida. Intente nuevamente." << endl;
+        ingresarFecha();
+    }
+}
+
 
 Fecha Fecha::getFecha()
 {

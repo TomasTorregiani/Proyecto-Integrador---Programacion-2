@@ -6,7 +6,7 @@ class Fecha{
 public:
 	Fecha();
 	Fecha(int dia, int mes, int anio);
-	
+
 	void obtenerFechaActual(); // << nuevo
 
 	void setDia(int dia);
@@ -19,6 +19,7 @@ public:
 	bool validarAnio(int anio);
 
 	bool validarFecha(int dia, int mes, int anio);
+	void ingresarFecha();
 	Fecha getFecha();
 	std::string toString();
 	std::string toString(Fecha fecha);
