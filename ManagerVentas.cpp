@@ -42,23 +42,23 @@ float ManagerVentas::calcularTotal(int idVenta)
 bool ManagerVentas::testingCrearVenta()
 {
 
-cout << endl; 
+cout << endl;
 
-//agregar FECHA MANUALMENTE: 
+//agregar FECHA MANUALMENTE:
 
 int dia, mes, anio;
 
-cout << "Ingrese un dia: " << endl; 
+cout << "Ingrese un dia: " << endl;
 cin >> dia;
-cout << endl; 
+cout << endl;
 
-cout << "Ingrese un mes: " << endl; 
+cout << "Ingrese un mes: " << endl;
 cin >> mes;
-cout << endl; 
+cout << endl;
 
 cout << "Ingrese un anio" << endl;
-cin >> anio; 
-cout << endl; 
+cin >> anio;
+cout << endl;
 
 Fecha fechaParaVenta(dia, mes, anio);
 
@@ -236,18 +236,6 @@ bool ManagerVentas::crearVenta()
 
     Venta nuevaVenta(clienteParaVenta.getIdCliente(), vendedorParaVenta.getIdVendedor(), fechaParaVenta);
 
-    int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta);
-    if(agregoVenta == 0)
-    {
-        cout << "Error al agregar el archivo" << endl;
-    }
-    else
-    {
-        cout << "Venta agregada correctamente" << endl;
-    }
-
-    cout << "El id de la venta es: " << nuevaVenta.getIdVenta() << endl;
-
     //agregar PRODUCTO:
 
     int opcion;
@@ -286,6 +274,18 @@ bool ManagerVentas::crearVenta()
         cin >> opcion;
     }
     while(opcion == 1);
+
+    int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta);
+    if(agregoVenta == 0)
+    {
+        cout << "Error al agregar el archivo" << endl;
+    }
+    else
+    {
+        cout << "Venta agregada correctamente" << endl;
+    }
+
+    cout << "El id de la venta es: " << nuevaVenta.getIdVenta() << endl;
     return true;
 }
 
@@ -340,11 +340,11 @@ void ManagerVentas::verDetalleFactura()
             //Mostramos los detalles de la factura
             cout << "Producto: " << detalles[i].getProducto().getDescripcion() << endl;
             cout << "Cantidad: " << detalles[i].getCantidad() << endl;
-            cout << "Subtotal: " << detalles[i].getSubtotal() << endl;
+            cout << "Subtotal: $" << detalles[i].getSubtotal() << endl;
             cout << "-----------------------------------" << endl;
         }
         float totalVenta = calcularTotal(ventaObtenida.getIdVenta());
-        cout << "TOTAL FACTURA: " << totalVenta << endl;
+        cout << "TOTAL FACTURA: $" << totalVenta << endl;
     }
 }
 
