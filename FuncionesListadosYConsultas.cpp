@@ -10,6 +10,7 @@
 #include "Venta.h"
 #include "Fecha.h"
 #include "FuncionesGlobales.h"
+#include "ManagerVentas.h"
 #include <string>
 #include <ctime>
 
@@ -95,12 +96,17 @@ void ventasPorAnio()
 
         if(fecha.getAnio() == anio)
         {
+						int idVentaActual = vectorVentas[i].getIdVenta();
             cout << "Fecha: " << vectorVentas[i].getFechaString() << endl;
             cout << "ID Venta: " << vectorVentas[i].getIdVenta() << endl;
             cout << "ID Cliente: " << vectorVentas[i].getIdCliente() << endl;
             cout << "ID Vendedor: " << vectorVentas[i].getIdVendedor() << endl;
+            
+            ManagerVentas ventaActual;
+            
+            cout << "Total : $" << ventaActual.calcularTotal(idVentaActual) << endl; 
             cout << endl;
-
+            
             contVentas ++;
         }
     }
@@ -162,10 +168,15 @@ void ventasPorMes()
         Fecha fechaRegistro = vectorVentas[i].getFecha();
         if(fechaRegistro.getAnio() == anio && fechaRegistro.getMes() == mes)
         {
+						int idVentaActual = vectorVentas[i].getIdVenta();
             cout << "Fecha: " << vectorVentas[i].getFechaString() << endl;
             cout << "ID Venta: " << vectorVentas[i].getIdVenta() << endl;
             cout << "ID Cliente: " << vectorVentas[i].getIdCliente() << endl;
             cout << "ID Vendedor: " << vectorVentas[i].getIdVendedor() << endl;
+            
+            ManagerVentas ventaActual;
+            
+            cout << "Total : $" << ventaActual.calcularTotal(idVentaActual) << endl; 
             cout << endl;
 
             contVentas ++;
@@ -219,6 +230,7 @@ void ventasPorFechaExacta()
     int dia;
     cout << "Ingrese un dia: " << endl;
     cin >> dia;
+    cout << endl; 
 
     int cantDiasMes = diasDelMes(mes,anio); //chequea si es bisiesto
 
@@ -243,12 +255,17 @@ void ventasPorFechaExacta()
         Fecha fechaRegistro = vectorVentas[i].getFecha();
         if(fechaRegistro.getAnio() == anio && fechaRegistro.getMes() == mes && fechaRegistro.getDia()== dia)
         {
+						int idVentaActual = vectorVentas[i].getIdVenta();
             cout << "Fecha: " << vectorVentas[i].getFechaString() << endl;
             cout << "ID Venta: " << vectorVentas[i].getIdVenta() << endl;
             cout << "ID Cliente: " << vectorVentas[i].getIdCliente() << endl;
             cout << "ID Vendedor: " << vectorVentas[i].getIdVendedor() << endl;
+            
+            ManagerVentas ventaActual;
+            
+            cout << "Total : $" << ventaActual.calcularTotal(idVentaActual) << endl; 
             cout << endl;
-
+						
             contVentas ++;
         }
     }
@@ -259,7 +276,7 @@ void ventasPorFechaExacta()
     }
     else
     {
-        cout << "Se registraron " << contVentas << " en la fecha ingresada." << endl;
+        cout << "Se registraron " << contVentas << " ventas en la fecha ingresada." << endl;
     }
     delete[]vectorVentas;
 }
@@ -372,21 +389,28 @@ void ventasPorIntervaloDeFecha()
         Fecha fechaRegistro = vectorVentas[i].getFecha();
         if((fechaRegistro.getDia() == primeraFechaUsuario.getDia() && fechaRegistro.getMes() == primeraFechaUsuario.getMes() && fechaRegistro.getAnio() == primeraFechaUsuario.getAnio()) && (fechaRegistro.getDia() == segundaFechaUsuario.getDia() && fechaRegistro.getMes() == segundaFechaUsuario.getMes() && fechaRegistro.getAnio() == segundaFechaUsuario.getAnio()))
         {
+						int idVentaActual = vectorVentas[i].getIdVenta();
             cout << "Fecha: " << vectorVentas[i].getFechaString() << endl;
             cout << "ID Venta: " << vectorVentas[i].getIdVenta() << endl;
             cout << "ID Cliente: " << vectorVentas[i].getIdCliente() << endl;
             cout << "ID Vendedor: " << vectorVentas[i].getIdVendedor() << endl;
+            
+            ManagerVentas ventaActual;
+            
+            cout << "Total : $" << ventaActual.calcularTotal(idVentaActual) << endl; 
             cout << endl;
 
             contVentas ++;
         }
-        else
-        {
-            cout << "No se registraron ventas en el periodo solicitado. " << endl;
-            break;
-        }
+        
     }
-    cout << "Se registraron " << contVentas << " en el periodo ingresado." << endl;
+    if(contVentas == 0){
+			cout << "No se registraron ventas en el periodo solicitado." << endl; 
+    }else
+			{
+				cout << "Se registraron " << contVentas << " en el periodo ingresado." << endl;
+			}
+    
     delete[]vectorVentas;
 }
 
