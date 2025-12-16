@@ -198,7 +198,9 @@ void ManagerVentas::verDetalleFactura()
         }
 
         ArchivoDetalles archivo("detalles_venta.dat");
-        DetalleVenta detalles[50]; 											// ver esto!!
+        DetalleVenta detalles[50]; 											// quizás se podría hacer un vector dinámico.
+        
+        cout << endl; 
 
         int cantidadDetalles = archivo.verDetalleVenta(idVenta, detalles); // ver esto.
         cout << "**** Detalles de la factura ****" << endl << endl;

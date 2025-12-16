@@ -204,6 +204,7 @@ void ventasPorFechaExacta()
 
     cout << "Primero ingrese un anio: " << endl;
     cin >> anio;
+    cout << endl; 
 
     while(cin.fail() || anio > anioActual || anio < 2000)
     {
@@ -292,6 +293,8 @@ void ventasPorIntervaloDeFecha()
     int mes, mes2;
     int dia, dia2;
     int cantidadDiasMes = 0;
+    
+    //-------------------------- INGRESO DE 1º FECHA  --------------------------------//
 
     cout << "**** PRIMERA FECHA ****" <<  endl << endl;
     cout << "Ingrese un anio: " << endl;
@@ -330,8 +333,10 @@ void ventasPorIntervaloDeFecha()
         cin.ignore(100000, '\n');
         cin >> dia;
     }
-
-    ///////////////////////////////////////////////////////////////////////////////////////
+    
+	
+    ///------------------------  INGRESO DE 2º FECHA  ----------------------------//
+    
 
     cout << "**** SEGUNDA FECHA ****" <<  endl << endl;
     cout << "Ingrese un anio: " << endl;
@@ -365,17 +370,28 @@ void ventasPorIntervaloDeFecha()
 
     while((dia2 < 1) || (dia2 > cantidadDiasMes))
     {
-        cout << "Error. Ingese un dia valido: " << endl;
+        cout << "Error. Ingrese un dia valido: " << endl;
         cin.clear();
         cin.ignore(100000, '\n');
         cin >> dia2;
+    }    
+    
+    int fechaInicio = anio * 10000 + mes * 100 + dia;
+    
+    //cout << " DEBUG: La fecha de incio es: " << fechaInicio << endl; 
+    
+    int fechaFin = anio2 * 10000 + mes2 * 100 + dia2;
+    
+    //cout << " DEBUG: la fecha de fin es: " << fechaFin << endl; 
+    
+    if(fechaFin < fechaInicio){
+			cout << "Error: la segunda fecha debe ser mayor o igual a la primera" << endl; 
+			return;
     }
-
-    Fecha primeraFechaUsuario(dia, mes, anio);
-    Fecha segundaFechaUsuario(dia2, mes2, anio2);
-
-    ////////////////////////////////////////////////////////////////////////////////////////////
-
+    
+    //------------------------  BUSCAR VENTAS EN EL INTERVALO ------------------------//
+    
+    
     ArchivoVentas archivoV("ventas.dat");
     int cantidadVentas = contarRegistros("ventas.dat", sizeof(Venta));
 
@@ -387,7 +403,10 @@ void ventasPorIntervaloDeFecha()
     {
 
         Fecha fechaRegistro = vectorVentas[i].getFecha();
-        if((fechaRegistro.getDia() == primeraFechaUsuario.getDia() && fechaRegistro.getMes() == primeraFechaUsuario.getMes() && fechaRegistro.getAnio() == primeraFechaUsuario.getAnio()) && (fechaRegistro.getDia() == segundaFechaUsuario.getDia() && fechaRegistro.getMes() == segundaFechaUsuario.getMes() && fechaRegistro.getAnio() == segundaFechaUsuario.getAnio()))
+        
+        int fechaVenta = fechaRegistro.getAnio() * 10000 + fechaRegistro.getMes() * 100 + fechaRegistro.getDia();
+					
+        if(fechaVenta >= fechaInicio && fechaVenta <= fechaFin)
         {
 						int idVentaActual = vectorVentas[i].getIdVenta();
             cout << "Fecha: " << vectorVentas[i].getFechaString() << endl;
@@ -408,7 +427,7 @@ void ventasPorIntervaloDeFecha()
 			cout << "No se registraron ventas en el periodo solicitado." << endl; 
     }else
 			{
-				cout << "Se registraron " << contVentas << " en el periodo ingresado." << endl;
+				cout << "Se registraron " << contVentas << " ventas en el periodo ingresado." << endl;
 			}
     
     delete[]vectorVentas;
