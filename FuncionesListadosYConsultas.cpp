@@ -31,8 +31,8 @@ void listadoClientes()
 
 void listadoProductos()
 {
-		
-    ArchivoProductos archivoProducto("productos.dat"); 
+
+    ArchivoProductos archivoProducto("productos.dat");
     int cantidadProductos = contarRegistros("productos.dat", sizeof(Producto));
 
     Producto* productosObtenidos;
@@ -103,16 +103,18 @@ void ventasPorAnio()
 
             contVentas ++;
         }
-        else
-        {
-            cout << "No se regitraron ventas en el: " << anio << ". " << endl;
-            break;
-        }
     }
-    cout << "Se registraron " << contVentas << " ventas en el anio " << anio << ". " << endl;
+    if(contVentas == 0)
+    {
+        cout << "No se registraron ventas en el anio " << anio << "." << endl;
+    }
+    else
+    {
+        cout << "Se registraron " << contVentas << " ventas en el anio " << anio << ". " << endl;
+    }
+
     delete[]vectorVentas;
 }
-
 
 void ventasPorMes()
 {
@@ -139,7 +141,7 @@ void ventasPorMes()
 
     cout << endl;
 
-    while(mes < 1 && mes > 12)
+    while(mes < 1 || mes > 12)
     {
         cout << "Error. Ingese un mes valido: " << endl;
         cin.clear();
@@ -168,13 +170,16 @@ void ventasPorMes()
 
             contVentas ++;
         }
-        else
-        {
-            cout << "No se registraron ventas en el periodo solicitado. " << endl;
-            break;
-        }
     }
-    cout << "Se registraron " << contVentas << " ventas en el mes de " << mes << " del anio " << anio << ". " << endl;
+    if(contVentas == 0)
+    {
+        cout << "No se registraron ventas en el mes " << mes << "." << endl;
+    }
+    else
+    {
+        cout << "Se registraron " << contVentas << " ventas en el mes " << mes << " del anio " << anio << ". " << endl;
+    }
+
     delete[]vectorVentas;
 }
 
@@ -214,9 +219,9 @@ void ventasPorFechaExacta()
     int dia;
     cout << "Ingrese un dia: " << endl;
     cin >> dia;
-    
+
     int cantDiasMes = diasDelMes(mes,anio); //chequea si es bisiesto
-	
+
     while (dia < 1 || dia > cantDiasMes)
     {
         cout << "Error. Ingrese un dia valido: " << endl;
@@ -246,13 +251,16 @@ void ventasPorFechaExacta()
 
             contVentas ++;
         }
-        else
-        {
-            cout << "No se registraron ventas en el periodo solicitado. " << endl;
-            break;
-        }
     }
-    cout << "Se registraron " << contVentas << " en la fecha ingresada." << endl;
+
+    if(contVentas == 0)
+    {
+        cout << "No se registraron ventas en la fecha solicitada." << endl;
+    }
+    else
+    {
+        cout << "Se registraron " << contVentas << " en la fecha ingresada." << endl;
+    }
     delete[]vectorVentas;
 }
 
@@ -266,9 +274,9 @@ void ventasPorIntervaloDeFecha()
     int anio, anio2;
     int mes, mes2;
     int dia, dia2;
-    int cantidadDiasMes = 0; 
+    int cantidadDiasMes = 0;
 
-    cout << "**** PRIMERA FECHA ****" <<  endl << endl; 
+    cout << "**** PRIMERA FECHA ****" <<  endl << endl;
     cout << "Ingrese un anio: " << endl;
     cin >> anio;
 
@@ -295,8 +303,8 @@ void ventasPorIntervaloDeFecha()
 
     cout << "Ingrese un dia: " << endl;
     cin >> dia;
-    
-		cantidadDiasMes = diasDelMes(mes, anio);
+
+    cantidadDiasMes = diasDelMes(mes, anio);
 
     while((dia < 1 || dia > cantidadDiasMes))
     {
@@ -335,7 +343,7 @@ void ventasPorIntervaloDeFecha()
 
     cout << "Ingrese un dia: " << endl;
     cin >> dia2;
-    
+
     cantidadDiasMes = diasDelMes(mes2, anio2);
 
     while((dia2 < 1) || (dia2 > cantidadDiasMes))

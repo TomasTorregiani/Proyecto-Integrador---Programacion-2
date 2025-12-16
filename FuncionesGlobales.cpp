@@ -73,7 +73,8 @@ bool validarMail(std::string mail){
 		if( (mail [cadenaMail-4] == '.' &&
 				mail [cadenaMail-3] == 'c' &&
 				mail [cadenaMail-2] == 'o' &&
-				mail [cadenaMail-1] == 'm' ) || 
+				mail [cadenaMail-1] == 'm' ) ||
+				 
 				(mail [cadenaMail-7] == '.' &&
 				 mail [cadenaMail-6] == 'c' &&
 				 mail [cadenaMail-5] == 'o' &&
@@ -101,7 +102,7 @@ bool validarMail(std::string mail){
 }
 
 bool esUnNumero(int numero){
-	if((numero == 'a' || numero == 'A' || numero == 'b' || numero == 'B' ||
+	if(!(numero == 'a' || numero == 'A' || numero == 'b' || numero == 'B' ||
 		 numero == 'c' || numero == 'C' ||
 		 numero == 'd' || numero == 'D' ||	
 		 numero == 'e' || numero == 'E' ||	
@@ -126,7 +127,7 @@ bool esUnNumero(int numero){
 		 numero == 'x' || numero == 'X' ||
 		 numero == 'y' || numero == 'Y' || 
 		 numero == 'z' || numero == 'Z')){
-		return false; 
+		return true; 
 	}
 }
 
