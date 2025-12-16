@@ -5,6 +5,7 @@
 #include "ArchivoProductos.h"
 #include "Venta.h"
 #include "ArchivoVentas.h"
+#include "ManagerVentas.h"
 #include "DetalleVenta.h"
 #include "ArchivoDetalles.h"
 #include "Vendedor.h"
@@ -157,9 +158,6 @@ void productosConBajoStock()
 
 void ventasPorVendedor()
 {
-
-    cout << "**** VENTAS POR VENDEDOR ****" << endl;
-
     ArchivoVentas archivoVenta("ventas.dat");
     int cantidadVentas = contarRegistros("ventas.dat", sizeof(Venta));
 
@@ -169,6 +167,7 @@ void ventasPorVendedor()
     int idVendedor;
     cout << "Ingrese id vendedor: " << endl;
     cin >> idVendedor;
+    cout << endl; 
 
     ///////
 
@@ -192,21 +191,30 @@ void ventasPorVendedor()
     {
         if(arrayVentas[i].getIdVendedor() == idVendedor)
         {
+						int idVentaActual = arrayVentas[i].getIdVenta();
+						
             cout << "Venta ****  " << ventasPorVendedor << "  ****" << endl;
-            cout << "Vendedor: " << arrayVentas[i].getIdVendedor() << endl;
             cout << "Cliente: " << arrayVentas[i].getIdCliente() << endl;
-
+            
             //Buscamos los detalles en el archivo 'detalles_venta.dat'
+            
             ArchivoDetalles archivoDetalle("detalles_venta.dat");
             DetalleVenta arrayDetalles[50];
             int cantidadDetalles = archivoDetalle.verDetalleVenta(arrayVentas[i].getIdVenta(),arrayDetalles);
-            cout << "Cantidad detalles: " << cantidadDetalles << endl;
+            cout << "Detalle de la venta: " << endl;
+            
             for(int j = 0; j < cantidadDetalles; j++)
             {
                 cout << j+1 << "." << arrayDetalles[j].getProducto().getDescripcion() << endl;
             }
+            
+						ManagerVentas ventaActual;
+            cout << "Total : $" << ventaActual.calcularTotal(idVentaActual) << endl; 
+            cout << endl;
+
             encontroVentas = true;
             ventasPorVendedor++;
+            cout << endl; 
         }
     }
     if(!encontroVentas)
