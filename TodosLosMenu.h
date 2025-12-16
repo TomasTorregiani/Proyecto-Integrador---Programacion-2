@@ -8,3 +8,4 @@ void MenuGestionVendedores();
 void MenuListadosYConsultas();
 void MenuInformesYReportes();
 void MenuVentasPorFecha(); 
+void MenuTesting();

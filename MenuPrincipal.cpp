@@ -19,6 +19,7 @@ void MenuPrincipal(){
         cout << "4) Gestion de vendedores" << endl;
         cout << "5) Listados y consultas" << endl;
         cout << "6) Informes y reportes" << endl;
+				cout << "7) Testing" << endl;
         cout << "0) Salir" << endl;
         cout << endl;
         cout << "Elegi una opcion: " << endl;
@@ -38,6 +39,8 @@ void MenuPrincipal(){
             case 5: MenuListadosYConsultas();
             break;
             case 6: MenuInformesYReportes();
+            break;
+            case 7: MenuTesting();
             break;
             case 0: cout << "Saliendo del programa..." << endl;
             exit(0);

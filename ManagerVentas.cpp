@@ -16,7 +16,7 @@
 using namespace std;
 
 ManagerVentas::ManagerVentas()
-    :_archivoVentas("ventas.dat"), _ventaActual(){}
+    :_archivoVentas("ventas.dat"), _ventaActual() {}
 
 
 float ManagerVentas::calcularTotal(int idVenta)
@@ -39,19 +39,31 @@ float ManagerVentas::calcularTotal(int idVenta)
     return total;
 }
 
-
-
-bool ManagerVentas::crearVenta()
+bool ManagerVentas::testingCrearVenta()
 {
-    //Primero se agrega automaticamente la fecha:
 
-		Fecha fechaActual;
-		fechaActual.obtenerFechaActual();
+cout << endl; 
 
-		Fecha fechaParaVenta = fechaActual.getFecha();
-		cout << "Fecha de venta: " << fechaParaVenta.toString() << endl;
+//agregar FECHA MANUALMENTE: 
 
-    //agregar CLIENTE:
+int dia, mes, anio;
+
+cout << "Ingrese un dia: " << endl; 
+cin >> dia;
+cout << endl; 
+
+cout << "Ingrese un mes: " << endl; 
+cin >> mes;
+cout << endl; 
+
+cout << "Ingrese un anio" << endl;
+cin >> anio; 
+cout << endl; 
+
+Fecha fechaParaVenta(dia, mes, anio);
+
+
+//agregar CLIENTE:
 
     int idCliente;
     cout << "Ingrese ID del cliente: ";
@@ -72,6 +84,125 @@ bool ManagerVentas::crearVenta()
     }
 
 		Cliente clienteParaVenta = clienteEncontrado;
+
+    cout << "Cliente: (" << idCliente << ") = " << clienteParaVenta.getNombre() << " " << clienteParaVenta.getApellido()<<  endl << endl;
+
+    //agregar VENDEDOR:
+
+    int idVendedor;
+    cout << "Ingrese id Vendedor: " << endl;
+    cin >> idVendedor;
+
+    ArchivoVendedores archivoV("vendedores.dat");
+    Vendedor vendedorEncontrado = archivoV.buscarVendedorPorId(idVendedor); //devuelve un Vendedor
+
+    //Vendedor nuevoVendedor;
+
+    if(vendedorEncontrado.getIdVendedor() == 0)
+    {
+        cout << "No se encontro ningun registro con ese id" << endl;
+        cout << "Agregar Nuevo Vendedor: " << endl;
+        cout << "---------------------" << endl;
+
+        ManagerVendedores gestorVendedores;
+        vendedorEncontrado = gestorVendedores.crearNuevoVendedor();
+        gestorVendedores.guardarUnVendedor(vendedorEncontrado);
+    }
+
+    Vendedor vendedorParaVenta = vendedorEncontrado;
+
+    cout << "Vendedor: (" << idVendedor << ") = "<< vendedorParaVenta.getNombre() << " " << vendedorParaVenta.getApellido()<<  endl << endl;
+
+    //Recien aca se crea la VENTA.
+
+    Venta nuevaVenta(clienteParaVenta.getIdCliente(), vendedorParaVenta.getIdVendedor(), fechaParaVenta);
+
+    int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta);
+    if(agregoVenta == 0)
+    {
+        cout << "Error al agregar el archivo" << endl;
+    }
+    else
+    {
+        cout << "Venta agregada correctamente" << endl;
+    }
+
+    cout << "El id de la venta es: " << nuevaVenta.getIdVenta() << endl;
+
+    //agregar PRODUCTO:
+
+    int opcion;
+
+    do // <<----- acá empieza un do while
+    {
+        int idProducto;
+        cout << "Ingrese id del producto a agregar: " << endl;
+        cin >> idProducto;
+
+        ArchivoProductos archivoProducto("productos.dat");
+
+        Producto productoAAgregar = archivoProducto.buscarProductoPorId(idProducto);
+
+        cout << productoAAgregar.getDescripcion() << " - Precio unitario: $" << productoAAgregar.getPrecio() << endl;
+
+        ArchivoDetalles archivoDetalles("detalles_venta.dat");
+
+        if(productoAAgregar.getIdProducto() != 0)
+        {
+            int cantidad;
+            cout << "Ingrese la cantidad: ";
+            cin >> cantidad;
+
+            // Crear detalle con producto y cantidad
+            DetalleVenta detalle(productoAAgregar, cantidad);
+
+            // Asociar al id de la venta
+            detalle.setIdVenta(nuevaVenta.getIdVenta());
+
+            // Guardar detalle
+            archivoDetalles.agregarDetalle(detalle);
+            cout << "Detalle agregado correctamente." << endl;
+        }
+        cout << "Desea agregar productos? (1 = Si / 2 = No)" << endl;
+        cin >> opcion;
+    }
+    while(opcion == 1);
+    return true;
+
+}
+
+
+bool ManagerVentas::crearVenta()
+{
+    //Primero se agrega automaticamente la fecha:
+
+    Fecha fechaActual;
+    fechaActual.obtenerFechaActual();
+
+    Fecha fechaParaVenta = fechaActual.getFecha();
+    cout << "Fecha de venta: " << fechaParaVenta.toString() << endl;
+
+    //agregar CLIENTE:
+
+    int idCliente;
+    cout << "Ingrese ID del cliente: ";
+    cin >> idCliente;
+
+    ArchivoClientes archivoC("clientes.dat");
+    Cliente clienteEncontrado = archivoC.buscarClientePorId(idCliente);
+
+    if(clienteEncontrado.getIdCliente() == 0)
+    {
+        cout << "No se encontro ningun registro con ese id" << endl;
+        cout << "Agregar Nuevo Cliente: " << endl;
+        cout << "---------------------" << endl;
+
+        ManagerClientes managerCliente;
+        clienteEncontrado = managerCliente.crearNuevoCliente();
+        managerCliente.guardarUnCliente(clienteEncontrado);
+    }
+
+    Cliente clienteParaVenta = clienteEncontrado;
 
     cout << "Cliente: (" << idCliente << ") = " << clienteParaVenta.getNombre() << " " << clienteParaVenta.getApellido()<<  endl << endl;
 
@@ -199,8 +330,8 @@ void ManagerVentas::verDetalleFactura()
 
         ArchivoDetalles archivo("detalles_venta.dat");
         DetalleVenta detalles[50]; 											// quizás se podría hacer un vector dinámico.
-        
-        cout << endl; 
+
+        cout << endl;
 
         int cantidadDetalles = archivo.verDetalleVenta(idVenta, detalles); // ver esto.
         cout << "**** Detalles de la factura ****" << endl << endl;
@@ -212,8 +343,8 @@ void ManagerVentas::verDetalleFactura()
             cout << "Subtotal: " << detalles[i].getSubtotal() << endl;
             cout << "-----------------------------------" << endl;
         }
-            float totalVenta = calcularTotal(ventaObtenida.getIdVenta());
-            cout << "TOTAL FACTURA: " << totalVenta << endl;
+        float totalVenta = calcularTotal(ventaObtenida.getIdVenta());
+        cout << "TOTAL FACTURA: " << totalVenta << endl;
     }
 }
 

@@ -29,10 +29,8 @@ Fecha::Fecha(int dia, int mes, int anio)
     }
     else
     {
-        _dia = 1;
-        _mes = 1;
-        _anio = 2000;
-        cout << "FECHA INCORRECTA. Se asigno una fecha por defecto." << endl;
+        cout << "ERROR: FECHA INVALIDA." << endl;
+        return; 
     }
 }
 

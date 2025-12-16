@@ -15,6 +15,8 @@ public:
     void listarVentas();
     void eliminarVenta(); //sería como una nota de crédito.
     float calcularTotal(int idVenta);
+    
+    bool testingCrearVenta();
 
     /*Consultas y reportes
     void listarVentas();
