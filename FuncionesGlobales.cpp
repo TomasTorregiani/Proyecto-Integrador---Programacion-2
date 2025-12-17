@@ -26,7 +26,7 @@ bool esAnioBisiesto(int anio)
 
 	if ((anio % 4 == 0 && anio % 100 != 0) || (anio %400 == 0))
 	{
-		return true; 
+		return true;
 	}
 
 }
@@ -49,65 +49,66 @@ bool validarMail(std::string mail){
 	{
 		return false;
 	}
-	
-	int cadenaMail = mail.length(); 
-	cout << " DEBUG: El mail tiene " << cadenaMail << " caracteres." << endl; 
-	
-	int posArroba = -1; //porque al cero lo voy a usar para inciar el i.
-	bool arrobaExiste = false; 
-	bool arrobaBien = false; 
 
-	for(int i = 0; i < cadenaMail ; i ++)
+	int cantCaracteres = mail.length();
+	cout << "DEBUG: El mail tiene " << cantCaracteres << " caracteres." << endl;
+
+	int posArroba = -1; //porque al cero lo voy a usar para inciar el i.
+	bool arrobaExiste = false;
+
+	for(int i = 0; i < cantCaracteres ; i ++)
 	{
 		if(mail[i]=='@')
 		{
 			posArroba = i; //primero encuentro donde esta el @
 			arrobaExiste = true;
+			cout << "DEBUG: arrobaExixte: " << arrobaExiste << endl;
 		}
 	}
-	
+
 	bool puntoComExiste = false;
-		
-	for(int i = 0; i < cadenaMail ; i++) 
+
+	for(int i = 0; i < cantCaracteres ; i++)
 	{
-		if( (mail [cadenaMail-4] == '.' &&
-				mail [cadenaMail-3] == 'c' &&
-				mail [cadenaMail-2] == 'o' &&
-				mail [cadenaMail-1] == 'm' ) ||
-				 
-				(mail [cadenaMail-7] == '.' &&
-				 mail [cadenaMail-6] == 'c' &&
-				 mail [cadenaMail-5] == 'o' &&
-				 mail [cadenaMail-4] == 'm' &&
-				 mail [cadenaMail-3] == '.' &&
-				 mail [cadenaMail-2] == 'a' &&
-				 mail [cadenaMail-1] == 'r'))
+		if( (mail [cantCaracteres-4] == '.' &&
+				mail [cantCaracteres-3] == 'c' &&
+				mail [cantCaracteres-2] == 'o' &&
+				mail [cantCaracteres-1] == 'm' ) ||
+
+				(mail [cantCaracteres-7] == '.' &&
+				 mail [cantCaracteres-6] == 'c' &&
+				 mail [cantCaracteres-5] == 'o' &&
+				 mail [cantCaracteres-4] == 'm' &&
+				 mail [cantCaracteres-3] == '.' &&
+				 mail [cantCaracteres-2] == 'a' &&
+				 mail [cantCaracteres-1] == 'r'))
 		{
 			puntoComExiste = true;
 		}
 	}
-	
-	if ((!arrobaExiste || posArroba == 0))
+
+	cout << "DEBUG: puncoComExiste: " << puntoComExiste << endl;
+
+	if ((arrobaExiste == false) || (posArroba == -1))
 	{
 		return false;
-	}else
-		{ 
-			arrobaBien = true;
-		}
-	
-	if(arrobaBien && puntoComExiste)
+	}
+
+	if(arrobaExiste && puntoComExiste)
 	{
-		return true; 
+		return true;
+	}else{
+        return false;
 	}
 }
 
 bool esUnNumero(int numero){
 	if(!(numero == 'a' || numero == 'A' || numero == 'b' || numero == 'B' ||
 		 numero == 'c' || numero == 'C' ||
-		 numero == 'd' || numero == 'D' ||	
-		 numero == 'e' || numero == 'E' ||	
-		 numero == 'f' || numero == 'F' ||	
-		 numero == 'g' || numero == 'G' ||	
+		 numero == 'd' || numero == 'D' ||
+		 numero == 'e' || numero == 'E' ||
+		 numero == 'f' || numero == 'F' ||
+		 numero == 'g' || numero == 'G' ||
 		 numero == 'h' || numero == 'H' ||
 		 numero == 'i' || numero == 'I' ||
 		 numero == 'j' || numero == 'J' ||
@@ -125,18 +126,18 @@ bool esUnNumero(int numero){
 		 numero == 'v' || numero == 'V' ||
 		 numero == 'w' || numero == 'W' ||
 		 numero == 'x' || numero == 'X' ||
-		 numero == 'y' || numero == 'Y' || 
+		 numero == 'y' || numero == 'Y' ||
 		 numero == 'z' || numero == 'Z')){
-		return true; 
+		return true;
 	}
 }
 
 /*bool validarDireccion(std::string direccion){
-	
+
 	bool hayUnEspacio = false;
 	bool hayUnNumero = false;
-	
-	int len = direccion.length(); 
-	
-	
+
+	int len = direccion.length();
+
+
 }*/

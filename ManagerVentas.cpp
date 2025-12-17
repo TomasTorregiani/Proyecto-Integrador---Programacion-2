@@ -9,6 +9,7 @@
 #include "ManagerClientes.h"
 #include "ManagerVendedores.h"
 #include "FuncionesGlobales.h"
+#include "TodosLosMenu.h"
 #include "Fecha.h"
 #include <string>
 #include <cstring>
@@ -42,25 +43,25 @@ float ManagerVentas::calcularTotal(int idVenta)
 bool ManagerVentas::testingCrearVenta()
 {
 
-cout << endl;
+    cout << endl;
 
 //agregar FECHA MANUALMENTE:
 
-int dia, mes, anio;
+    int dia, mes, anio;
 
-cout << "Ingrese un dia: " << endl;
-cin >> dia;
-cout << endl;
+    cout << "Ingrese un dia: " << endl;
+    cin >> dia;
+    cout << endl;
 
-cout << "Ingrese un mes: " << endl;
-cin >> mes;
-cout << endl;
+    cout << "Ingrese un mes: " << endl;
+    cin >> mes;
+    cout << endl;
 
-cout << "Ingrese un anio" << endl;
-cin >> anio;
-cout << endl;
+    cout << "Ingrese un anio" << endl;
+    cin >> anio;
+    cout << endl;
 
-Fecha fechaParaVenta(dia, mes, anio);
+    Fecha fechaParaVenta(dia, mes, anio);
 
 
 //agregar CLIENTE:
@@ -72,7 +73,7 @@ Fecha fechaParaVenta(dia, mes, anio);
     ArchivoClientes archivoC("clientes.dat");
     Cliente clienteEncontrado = archivoC.buscarClientePorId(idCliente);
 
-     if(clienteEncontrado.getIdCliente() == 0)
+    if(clienteEncontrado.getIdCliente() == 0)
     {
         cout << "No se encontro ningun registro con ese id" << endl;
         cout << "Agregar Nuevo Cliente: " << endl;
@@ -83,7 +84,7 @@ Fecha fechaParaVenta(dia, mes, anio);
         managerCliente.guardarUnCliente(clienteEncontrado);
     }
 
-		Cliente clienteParaVenta = clienteEncontrado;
+    Cliente clienteParaVenta = clienteEncontrado;
 
     cout << "Cliente: (" << idCliente << ") = " << clienteParaVenta.getNombre() << " " << clienteParaVenta.getApellido()<<  endl << endl;
 
@@ -133,7 +134,7 @@ Fecha fechaParaVenta(dia, mes, anio);
 
     int opcion;
 
-    do // <<----- acÃ¡ empieza un do while
+    do // <<----- acá empieza un do while
     {
         int idProducto;
         cout << "Ingrese id del producto a agregar: " << endl;
@@ -194,12 +195,26 @@ bool ManagerVentas::crearVenta()
     if(clienteEncontrado.getIdCliente() == 0)
     {
         cout << "No se encontro ningun registro con ese id" << endl;
-        cout << "Agregar Nuevo Cliente: " << endl;
-        cout << "---------------------" << endl;
+        cout << "Agregar Nuevo Cliente? 1(si) - 2(no): " << endl;
 
-        ManagerClientes managerCliente;
-        clienteEncontrado = managerCliente.crearNuevoCliente();
-        managerCliente.guardarUnCliente(clienteEncontrado);
+        int opcion;
+        cin >> opcion;
+        while(opcion != 1 && opcion != 2)
+        {
+            cout << "Ingrese una opcion valida: " << endl;
+            cin >> opcion;
+        }
+        if(opcion == 1)
+        {
+            ManagerClientes managerCliente;
+            clienteEncontrado = managerCliente.crearNuevoCliente();
+            managerCliente.guardarUnCliente(clienteEncontrado);
+        }
+        else
+        {
+            cout << "Volviendo al menu principal" << endl;
+            MenuPrincipal();
+        }
     }
 
     Cliente clienteParaVenta = clienteEncontrado;
@@ -216,16 +231,29 @@ bool ManagerVentas::crearVenta()
     Vendedor vendedorEncontrado = archivoV.buscarVendedorPorId(idVendedor); //devuelve un Vendedor
 
     //Vendedor nuevoVendedor;
-
     if(vendedorEncontrado.getIdVendedor() == 0)
     {
         cout << "No se encontro ningun registro con ese id" << endl;
-        cout << "Agregar Nuevo Vendedor: " << endl;
-        cout << "---------------------" << endl;
+        cout << "Agregar Nuevo Vendedor? 1(si) - 2(no): " << endl;
 
-        ManagerVendedores gestorVendedores;
-        vendedorEncontrado = gestorVendedores.crearNuevoVendedor();
-        gestorVendedores.guardarUnVendedor(vendedorEncontrado);
+        int opcion;
+        cin >> opcion;
+        while(opcion != 1 && opcion != 2)
+        {
+            cout << "Ingrese una opcion valida: " << endl;
+            cin >> opcion;
+        }
+        if(opcion == 1)
+        {
+            ManagerVendedores gestorVendedores;
+            vendedorEncontrado = gestorVendedores.crearNuevoVendedor();
+            gestorVendedores.guardarUnVendedor(vendedorEncontrado);
+        }
+        else
+        {
+            cout << "Volviendo al menu principal" << endl;
+            MenuGestionFacturacion();
+        }
     }
 
     Vendedor vendedorParaVenta = vendedorEncontrado;
@@ -240,7 +268,7 @@ bool ManagerVentas::crearVenta()
 
     int opcion;
 
-    do // <<----- acÃ¡ empieza un do while
+    do // <<----- acá empieza un do while
     {
         int idProducto;
         cout << "Ingrese id del producto a agregar: " << endl;
@@ -329,7 +357,7 @@ void ManagerVentas::verDetalleFactura()
         }
 
         ArchivoDetalles archivo("detalles_venta.dat");
-        DetalleVenta detalles[50]; 											// quizÃ¡s se podrÃ­a hacer un vector dinÃ¡mico.
+        DetalleVenta detalles[50]; 											// quizás se podría hacer un vector dinámico.
 
         cout << endl;
 

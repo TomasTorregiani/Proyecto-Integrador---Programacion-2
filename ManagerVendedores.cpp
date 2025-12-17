@@ -6,7 +6,7 @@
 using namespace std;
 
 ManagerVendedores::ManagerVendedores():_archivoVendedores("vendedores.dat"){
-	
+
 }
 
 Vendedor ManagerVendedores::crearNuevoVendedor(){
@@ -16,17 +16,17 @@ Vendedor ManagerVendedores::crearNuevoVendedor(){
     string nombre, apellido, email, direccion;
     int idVendedor, cuilVendedor, telefonoVendedor;
     bool estado;
-    
+
     idVendedor = contarRegistros("vendedores.dat", sizeof(Vendedor)) + 1;
     nuevoVendedor.setIdVendedor(idVendedor);
 
     cin.ignore(10000, '\n');
-    
+
     cout << "Ingresar nombre vendedor nuevo: " << endl;
     getline(cin, nombre);
 
 
-    while(nombre == "") //o puedo usar nombre.empty() 
+    while(nombre == "") //o puedo usar nombre.empty()
     {
         cout << "Error. Ingrese un nombre: " << endl;
         getline(cin,nombre);
@@ -48,7 +48,7 @@ Vendedor ManagerVendedores::crearNuevoVendedor(){
     cout << "Ingresar numero de telefono (sin guiones): " << endl;
     cin >> telefonoVendedor;
 
-    while(cin.fail() || esUnNumero(telefonoVendedor) || telefonoVendedor < 0 || cin.peek() == '.' || cin.peek() == '-' || cin.peek() == ',') //si "falla" el cin, si el nro es menor a "0", si se ingresa un "." o un "-"
+    while(cin.fail() || !esUnNumero(telefonoVendedor) || telefonoVendedor < 0 || cin.peek() == '.' || cin.peek() == '-' || cin.peek() == ',') //si "falla" el cin, si el nro es menor a "0", si se ingresa un "." o un "-"
     {
         cout << "Error. Ingrese un telefono valido: ";
         cin.clear();  //limpia el error de cin
@@ -62,7 +62,7 @@ Vendedor ManagerVendedores::crearNuevoVendedor(){
     cout << "Ingresar email vendedor nuevo: " << endl;
     getline(cin, email);
 
-    while(validarMail(email))
+    while(!validarMail(email))
     {
         cout << "Error. Ingrese un email: " << endl;
         getline(cin, email);
@@ -82,7 +82,7 @@ Vendedor ManagerVendedores::crearNuevoVendedor(){
     nuevoVendedor.setDireccion(direccion);
 
     nuevoVendedor.setActivo(true);
-    
+
     return nuevoVendedor;
 }
 
@@ -114,7 +114,7 @@ Vendedor ManagerVendedores::pedirNuevosDatos(){
     bool estado;
 
     cin.ignore(10000, '\n');
-    
+
     cout << "Ingresar nombre vendedor nuevo: " << endl;
     getline(cin, nombre);
 
@@ -175,20 +175,20 @@ Vendedor ManagerVendedores::pedirNuevosDatos(){
     vendedorModificado.setDireccion(direccion);
 
     vendedorModificado.setActivo(true);
-    
+
     return vendedorModificado;
 }
 void ManagerVendedores::modificarVendedor(){
-	
+
     int idVendedorAModificar;
-    
+
     cout << "Ingrese id del vendedor a modificar: " << endl;
     cin >> idVendedorAModificar;
 
     Vendedor registro = _archivoVendedores.buscarVendedorPorId(idVendedorAModificar);
-    
+
     cout << "Vendedor ("<< idVendedorAModificar << ") = " << registro.getNombre() << " " << registro.getApellido() << endl << endl;
-    
+
     int idOriginal = registro.getIdVendedor();
     int posicion = _archivoVendedores.buscarPosicionDelVendedor(idVendedorAModificar);
     int datosModificados = 0;
@@ -223,7 +223,7 @@ void ManagerVendedores::obtenerVendedorPorId(){
     Vendedor registroVendedor = _archivoVendedores.buscarVendedorPorId(idVendedor);
     if(registroVendedor.getIdVendedor() == 0){
         cout << "No se encontro el vendedor" << endl;
-    }else {																																
+    }else {
         cout << "Vendedor encontrado:" << endl;
         cout << "Nombre: " << registroVendedor.getNombre() << endl;
         cout << "Apellido: " << registroVendedor.getApellido() << endl;
@@ -233,7 +233,7 @@ void ManagerVendedores::obtenerVendedorPorId(){
 
 void ManagerVendedores::eliminarVendedor(){
     int idVendedor;
-    cout << "Ingrese el id del vendedor: " << endl; 
+    cout << "Ingrese el id del vendedor: " << endl;
     cin >> idVendedor;
 
     int posicionVendedor = _archivoVendedores.buscarPosicionDelVendedor(idVendedor);
@@ -254,9 +254,9 @@ void ManagerVendedores::eliminarVendedor(){
 }
 
 void ManagerVendedores::listarVendedores(){
-	
+
     int cantidadVendedores = contarRegistros("vendedores.dat", sizeof(Vendedor));
-    
+
     Vendedor* arrayVendedores = _archivoVendedores.obtenerVendedores(cantidadVendedores);
     if(arrayVendedores == nullptr){
         cout << "No se abrio correctamente el archivo" << endl;
@@ -265,7 +265,7 @@ void ManagerVendedores::listarVendedores(){
     for(int i = 0; i < cantidadVendedores; i++){
         if(arrayVendedores[i].getActivo() == true){
         arrayVendedores[i].mostrarVendedor();
-        cout << endl; 
+        cout << endl;
         }
     }
     delete[] arrayVendedores;

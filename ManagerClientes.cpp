@@ -19,87 +19,87 @@ Cliente ManagerClientes::crearNuevoCliente(){
     int idNuevoCliente = contarRegistros("clientes.dat", sizeof(Cliente)) + 1;
 
     nuevoCliente.setIdCliente(idNuevoCliente);
-    
+
     cin.ignore(100000, '\n');
-    
+
     cout << "Ingresar nombre cliente nuevo: " << endl;
     getline(cin, nombre);
 
     while(nombre.empty()){
-			
+
 			cout << "Error. Ingrese un nombre: ";
-			getline(cin, nombre);			
+			getline(cin, nombre);
     }
-    
+
     nuevoCliente.setNombre(nombre);
-    
+
     cout << "Ingresar apellido cliente nuevo: " << endl;
     getline(cin, apellido);
-    
+
     while(apellido.empty()){
-			
+
 			cout << "Error. Ingrese un apellido: ";
-			getline(cin, apellido);			
+			getline(cin, apellido);
     }
 
     nuevoCliente.setApellido(apellido);
-    
+
     cout << "Ingresar cuil cliente nuevo: " << endl;
     cin >> cuil;
-    
+
     while(cin.fail() || !esUnNumero(cuil) || cuil < 0 || cin.peek() == '+' || cin.peek() == '.' || cin.peek() == ','){
-				
+
 			cout << "Ingresar un cuil valido: ";
-			cin.clear(); 
+			cin.clear();
 			cin.ignore(10000, '\n');
 			cin >> cuil;
     }
-    
+
     cin.ignore(10000, '\n');
-    
+
     nuevoCliente.setCuil(cuil);
 
     cout << "Ingresar numero de telefono (sin guiones) : " << endl;
     cin >> numeroTelefono;
-    
-    while(cin.fail() || numeroTelefono < 0 || cin.peek() == '+' || cin.peek() == '.' || cin.peek() == '-' || cin.peek() == ','){
-				
+
+    while(cin.fail() || !esUnNumero(numeroTelefono) || numeroTelefono < 0 || cin.peek() == '+' || cin.peek() == '.' || cin.peek() == '-' || cin.peek() == ','){
+
 			cout << "Ingresar un telefono valido (sin guiones): ";
-			cin.clear(); 
+			cin.clear();
 			cin.ignore(10000, '\n');
 			cin >> numeroTelefono;
     }
-    
+
     cin.ignore(10000, '\n');
-    
+
 
     nuevoCliente.setNumeroTelefono(numeroTelefono);
-    
+
     cout << "Ingresar email cliente nuevo: " << endl;
     getline (cin, email);
-    
+
 		while(!validarMail(email)){
 			cout << "Error: ingresar un email valido (con @ y .com): ";
 			getline(cin, email);
 		}
-    
+
     nuevoCliente.setEmail(email);
-    
+
     cout << "Ingresar direccion cliente nuevo: " << endl;
     getline(cin, direccion);
-    
+
     while(direccion == "")
     {
         cout << "Error. Ingrese una direccion: " << endl;
         getline(cin, direccion);
     }
-		
+
     nuevoCliente.setDireccion(direccion);
-    
+
     nuevoCliente.setActivo(true);
-    
+
     return nuevoCliente;
-    
+
 }
 
 void ManagerClientes::crearCliente()
@@ -246,7 +246,7 @@ void ManagerClientes::listarClientes(){
     for(int i = 0; i < cantidadClientes; i++){
         if(arrayClientes[i].getActivo() == true){
         arrayClientes[i].mostrarCliente();
-        cout << endl; 
+        cout << endl;
         }
     }
     delete[] arrayClientes;
