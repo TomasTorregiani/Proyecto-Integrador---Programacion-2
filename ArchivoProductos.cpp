@@ -35,14 +35,8 @@ int ArchivoProductos::agregarNuevoProducto(Producto nuevoProducto)
     }
 }
 
-Producto ArchivoProductos::buscarProductoPorId(int idProducto)
+ Producto ArchivoProductos::buscarProductoPorId(int idProducto) //solo devuelve un producto, no valida nada. 
 {
-
-    if(idProducto <= 0)
-    {
-				cout << "ERROR: El ID ingresado es invalido" << endl; 
-        return Producto();
-    }
 
     FILE* p = nullptr;
     p = fopen(_nombre, "rb");

@@ -164,8 +164,6 @@ bool ManagerVentas::testingCrearVenta()
             archivoDetalles.agregarDetalle(detalle);
             cout << "Detalle agregado correctamente." << endl;
         }
-        cout << "Desea agregar productos? (1 = Si / 2 = No)" << endl;
-        cin >> opcion;
     }
     while(opcion == 1);
     return true;
@@ -277,22 +275,39 @@ bool ManagerVentas::crearVenta()
         ArchivoProductos archivoProducto("productos.dat");
 
         Producto productoAAgregar = archivoProducto.buscarProductoPorId(idProducto);
-	
-				if(productoAAgregar.getIdProducto() != 0){
-				cout << productoAAgregar.getDescripcion() << " - Precio unitario: $" << productoAAgregar.getPrecio() << endl;
-				}
-				
-        ArchivoDetalles archivoDetalles("detalles_venta.dat");
-        
-        if(productoAAgregar.getCantidadDisponible() <= 0){
-					cout << "El producto no cuenta con stock disponible" << endl; 
+
+
+        // VALIDACIONES DEL PRODUCTO //
+
+        if(productoAAgregar.getIdProducto()!= idProducto)
+        {
+            cout << "No existe un producto con ese ID" << endl;
+            return false;
         }
+
+        if(productoAAgregar.getCantidadDisponible() <= 0)
+        {
+            cout << "El producto no tiene stock disponible" << endl;
+            return false;
+        }
+
+        cout << productoAAgregar.getDescripcion() << " - Precio unitario: $" << productoAAgregar.getPrecio() << endl;
+
+
+        ArchivoDetalles archivoDetalles("detalles_venta.dat");
+
 
         if(productoAAgregar.getIdProducto() != 0 )
         {
             int cantidad;
             cout << "Ingrese la cantidad: ";
             cin >> cantidad;
+
+            if(productoAAgregar.getCantidadDisponible() < cantidad)
+            {
+                cout << "El producto no cuenta con stock suficiente" << endl;
+                return false;
+            }
 
             // Crear detalle con producto y cantidad
             DetalleVenta detalle(productoAAgregar, cantidad);
@@ -309,18 +324,41 @@ bool ManagerVentas::crearVenta()
     }
     while(opcion == 1);
 
-    int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta);
-    if(agregoVenta == 0)
+    //dibujarFactura();
+
+    cout << "*** DESEA CONFIRMAR LA VENTA? ***    1(si) / 2(no)" << endl;
+    
+    int op;
+    cin >> op;
+
+    while(true)
     {
-        cout << "Error al agregar el archivo" << endl;
-    }
-    else
-    {
-        cout << "Venta agregada correctamente" << endl;
+        if(op == 1)
+        {
+            int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta);
+            if(agregoVenta == 0)
+            {
+                cout << "Error al agregar el archivo" << endl;
+            }
+            else
+            {
+                cout << "Venta agregada correctamente" << endl;
+            }
+
+            cout << "El id de la venta es: " << nuevaVenta.getIdVenta() << endl;
+            return true;
+        }
+					else if(op == 2)
+					{
+            MenuGestionFacturacion();
+					}
+						else
+						{
+								cout << "Ingrese una opcion valida: 1 (confirmar venta) / 2 (cancelar venta)" << endl;
+								cin >> op;
+						}
     }
 
-    cout << "El id de la venta es: " << nuevaVenta.getIdVenta() << endl;
-    return true;
 }
 
 void ManagerVentas::verDetalleFactura()
