@@ -303,10 +303,12 @@ bool ManagerVentas::crearVenta()
             cout << "Ingrese la cantidad: ";
             cin >> cantidad;
 
-            if(productoAAgregar.getCantidadDisponible() < cantidad)
+            while(productoAAgregar.getCantidadDisponible() < cantidad)
             {
                 cout << "El producto no cuenta con stock suficiente" << endl;
-                return false;
+                cout << "El stock actual del producto es: " << productoAAgregar.getCantidadDisponible() << " unidades." << endl;
+                cout << "Ingrese otra cantidad:" << endl;
+                cin >> cantidad;
             }
 
             // Crear detalle con producto y cantidad
@@ -327,7 +329,7 @@ bool ManagerVentas::crearVenta()
     //dibujarFactura();
 
     cout << "*** DESEA CONFIRMAR LA VENTA? ***    1(si) / 2(no)" << endl;
-    
+
     int op;
     cin >> op;
 
