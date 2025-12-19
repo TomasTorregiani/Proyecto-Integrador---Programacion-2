@@ -47,7 +47,7 @@ void Producto::setMarca(string marca){
     strncpy(_marca, marca.c_str(), sizeof(_marca) - 1);
     _marca[49] = '\0';
 }
-void Producto::setEstado(bool value){
+void Producto::setActivo(bool value){
     _activo = value;
 }
 void Producto::eliminarProducto(){
@@ -70,6 +70,7 @@ void Producto::setCantidadDisponible(int cantidadDisponible){
 void Producto::setPrecio(float precio){
     _precio = precio;
 }
+
 float Producto::getPrecio(){
     return _precio;
 }
@@ -81,4 +82,8 @@ int Producto::getCantidadDisponible(){
 }
 string Producto::getDescripcion(){
     return _descripcion;
+}
+
+bool Producto::getActivo(){
+	return _activo;
 }

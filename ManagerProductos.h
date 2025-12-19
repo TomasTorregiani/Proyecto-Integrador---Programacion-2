@@ -9,6 +9,7 @@ public:
     void crearNuevoProducto();
     void verStockProducto();
     void eliminarProducto();
+    void activarProducto();
     void modificarProducto();
     Producto pedirNuevosDatos();
 

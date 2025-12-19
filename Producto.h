@@ -12,6 +12,7 @@ public:
     void crearNuevoProducto();
     void modificarProducto();
     void eliminarProducto();
+    void activarProducto();
     void mostrarProducto();
 
     //Setters
@@ -21,7 +22,7 @@ public:
     void setTipoProducto(std::string tipoProducto);
     void setCantidadDisponible(int cantidadDisponible);
     void setPrecio(float precio);
-    void setEstado(bool value);
+    void setActivo(bool value);
 
     //Getters
     int getIdProducto();
@@ -30,6 +31,7 @@ public:
     std::string getTipoProducto();
     int getCantidadDisponible();
     float getPrecio();
+    bool getActivo();
 
 protected:
 

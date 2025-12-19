@@ -75,7 +75,7 @@ void ManagerProductos::crearNuevoProducto()
 
     nuevoProducto.setPrecio(precio);
 
-    nuevoProducto.setEstado(true);
+    nuevoProducto.setActivo(true);
 
     idProducto = contarRegistros("productos.dat", sizeof(Producto)) + 1;
 
@@ -154,7 +154,7 @@ Producto ManagerProductos::pedirNuevosDatos(){
     cin.ignore(10000, '\n');
     productoModificado.setPrecio(precio);
 
-    productoModificado.setEstado(true);
+    productoModificado.setActivo(true);
     return productoModificado;
 }
 
@@ -203,7 +203,7 @@ void ManagerProductos::eliminarProducto()
     {
         cout << "Producto Encontrado" << endl;
         Producto productoAEliminar = _archivo.buscarProductoPorId(idProductoAEliminar);
-        productoAEliminar.setEstado(false);
+        productoAEliminar.setActivo(false);
         int eliminoProducto = _archivo.agregarProductoModificado(productoAEliminar, posicionProductoAEliminar);
         if(eliminoProducto == 1)
         {
@@ -215,6 +215,32 @@ void ManagerProductos::eliminarProducto()
         }
     }
 }
+
+void ManagerProductos::activarProducto()
+{
+    int idProductoAActivar;
+    cout << "Ingrese id del producto a activar: " << endl;
+    cin >> idProductoAActivar;
+
+    int posicionProductoAActivar = _archivo.buscarPosicionPorId(idProductoAActivar);
+
+    if(posicionProductoAActivar != -1)
+    {
+        cout << "Producto Encontrado" << endl;
+        Producto productoAActivar = _archivo.buscarProductoPorId(idProductoAActivar);
+        productoAActivar.setActivo(true);
+        int activoProducto = _archivo.agregarProductoModificado(productoAActivar, posicionProductoAActivar);
+        if(activoProducto == 1)
+        {
+            cout << "Producto activado correctamente" << endl;
+        }
+        else
+        {
+            cout << "No se pudo activar el producto" << endl;
+        }
+    }
+}
+
 
 void ManagerProductos::verStockProducto()
 {

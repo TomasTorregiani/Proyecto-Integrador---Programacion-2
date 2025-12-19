@@ -14,7 +14,8 @@ void MenuGestionProductos(){
         cout << "1) Nuevo Producto" << endl;
         cout << "2) Modificar datos producto" << endl;
         cout << "3) Eliminar producto" << endl;
-        cout << "4) Ver stock producto" << endl;
+        cout << "4) Activar producto" << endl; 
+        cout << "5) Ver stock producto" << endl;
         cout << "0) Volver al menu principal" << endl;
         cout << endl;
         cout << "Elige una opcion: " << endl;
@@ -40,6 +41,12 @@ void MenuGestionProductos(){
             }
             break;
             case 4:{
+								cout << "**** ACTIVAR PRODUCTO ****" << endl; 
+								ManagerProductos gestorProductos;
+								gestorProductos.activarProducto();
+            }
+            break;
+            case 5:{
                 cout << "**** VER STOCK PRODUCTO ****" << endl;
                 ManagerProductos gestorProductos;
                 gestorProductos.verStockProducto();

@@ -277,12 +277,18 @@ bool ManagerVentas::crearVenta()
         ArchivoProductos archivoProducto("productos.dat");
 
         Producto productoAAgregar = archivoProducto.buscarProductoPorId(idProducto);
-
-        cout << productoAAgregar.getDescripcion() << " - Precio unitario: $" << productoAAgregar.getPrecio() << endl;
-
+	
+				if(productoAAgregar.getIdProducto() != 0){
+				cout << productoAAgregar.getDescripcion() << " - Precio unitario: $" << productoAAgregar.getPrecio() << endl;
+				}
+				
         ArchivoDetalles archivoDetalles("detalles_venta.dat");
+        
+        if(productoAAgregar.getCantidadDisponible() <= 0){
+					cout << "El producto no cuenta con stock disponible" << endl; 
+        }
 
-        if(productoAAgregar.getIdProducto() != 0)
+        if(productoAAgregar.getIdProducto() != 0 )
         {
             int cantidad;
             cout << "Ingrese la cantidad: ";
