@@ -256,3 +256,15 @@ void ManagerProductos::verStockProducto()
         cout << "Error al encontrar el producto" << endl;
     }
 }
+
+bool ManagerProductos::modificarStock(int idProducto, int nuevoStock)
+{
+
+    bool stockModificado = _archivo.modificarStock(idProducto, nuevoStock);
+    if(stockModificado == true){
+        cout << "Stock modificado correctamente" << endl;
+        return true;
+    }else{ cout << "Error al modificar el stock" << endl;
+        return false;
+        }
+}

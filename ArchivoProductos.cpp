@@ -35,7 +35,7 @@ int ArchivoProductos::agregarNuevoProducto(Producto nuevoProducto)
     }
 }
 
- Producto ArchivoProductos::buscarProductoPorId(int idProducto) //solo devuelve un producto, no valida nada. 
+ Producto ArchivoProductos::buscarProductoPorId(int idProducto) //solo devuelve un producto, no valida nada.
 {
 
     FILE* p = nullptr;
@@ -154,10 +154,34 @@ Producto *ArchivoProductos::obtenerProductos(int cantidadProductos)
     return arrayProductos;
 }
 
+bool ArchivoProductos::modificarStock(int idProducto, int nuevoStock)
+{
+    Producto producto;
 
+    FILE *p = nullptr;
+    p = fopen(_nombre, "rb+");
 
+    if(p==nullptr){
+        cout << "Error al abrir el archivo" << endl;
+        return false;
+    }
 
+    int cantidadRegistros = contarRegistros(_nombre, _tamanioRegistro); //para saber cuanto tengo que recorrer
 
+    for(int i = 0; i < cantidadRegistros; i++){
+        fread(&producto, _tamanioRegistro, 1, p);
+        if(producto.getIdProducto() == idProducto){
+            producto.setCantidadDisponible(nuevoStock);
+            fseek(p, (_tamanioRegistro * i), SEEK_SET);
+            fwrite(&producto, _tamanioRegistro, 1, p);
+            fclose(p);
+            return true;
+        }
+    }
+    fclose(p);
+    return false;
+
+}
 
 
 

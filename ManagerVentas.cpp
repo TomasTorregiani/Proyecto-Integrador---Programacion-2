@@ -8,6 +8,7 @@
 #include "ArchivoProductos.h"
 #include "ManagerClientes.h"
 #include "ManagerVendedores.h"
+#include "ManagerProductos.h"
 #include "FuncionesGlobales.h"
 #include "TodosLosMenu.h"
 #include "Fecha.h"
@@ -229,6 +230,7 @@ bool ManagerVentas::crearVenta()
     Vendedor vendedorEncontrado = archivoV.buscarVendedorPorId(idVendedor); //devuelve un Vendedor
 
     //Vendedor nuevoVendedor;
+
     if(vendedorEncontrado.getIdVendedor() == 0)
     {
         cout << "No se encontro ningun registro con ese id" << endl;
@@ -266,7 +268,7 @@ bool ManagerVentas::crearVenta()
 
     int opcion;
 
-    do // <<----- acá empieza un do while
+    do
     {
         int idProducto;
         cout << "Ingrese id del producto a agregar: " << endl;
@@ -282,12 +284,6 @@ bool ManagerVentas::crearVenta()
         if(productoAAgregar.getIdProducto()!= idProducto)
         {
             cout << "No existe un producto con ese ID" << endl;
-            return false;
-        }
-
-        if(productoAAgregar.getCantidadDisponible() <= 0)
-        {
-            cout << "El producto no tiene stock disponible" << endl;
             return false;
         }
 
@@ -311,16 +307,29 @@ bool ManagerVentas::crearVenta()
                 cin >> cantidad;
             }
 
+
             // Crear detalle con producto y cantidad
+
             DetalleVenta detalle(productoAAgregar, cantidad);
 
-            // Asociar al id de la venta
+
+            // Disminuir el stock del producto
+
+            ManagerProductos gestorProducto;
+
+            int nuevoStock = productoAAgregar.getCantidadDisponible() - cantidad;
+            gestorProducto.modificarStock(idProducto, nuevoStock);
+
+            // Asociar el detalle al id de la venta
+
             detalle.setIdVenta(nuevaVenta.getIdVenta());
 
             // Guardar detalle
+
             archivoDetalles.agregarDetalle(detalle);
             cout << "Detalle agregado correctamente." << endl;
         }
+
         cout << "Desea agregar productos? (1 = Si / 2 = No)" << endl;
         cin >> opcion;
     }
@@ -350,15 +359,15 @@ bool ManagerVentas::crearVenta()
             cout << "El id de la venta es: " << nuevaVenta.getIdVenta() << endl;
             return true;
         }
-					else if(op == 2)
-					{
+        else if(op == 2)
+        {
             MenuGestionFacturacion();
-					}
-						else
-						{
-								cout << "Ingrese una opcion valida: 1 (confirmar venta) / 2 (cancelar venta)" << endl;
-								cin >> op;
-						}
+        }
+        else
+        {
+            cout << "Ingrese una opcion valida: 1 (confirmar venta) / 2 (cancelar venta)" << endl;
+            cin >> op;
+        }
     }
 
 }
