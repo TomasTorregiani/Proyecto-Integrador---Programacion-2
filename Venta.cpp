@@ -44,6 +44,10 @@ void Venta::anularVenta(){
     _anulada = true;
 }
 
+void Venta::setTotal(float totalVenta){
+    _totalVenta = totalVenta;
+}
+
 float Venta::getTotal(){
     return _totalVenta;
 }

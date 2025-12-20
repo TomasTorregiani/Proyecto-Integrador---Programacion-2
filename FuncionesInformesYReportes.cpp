@@ -18,8 +18,6 @@ using namespace std;
 
 void recaudacionMensualYAnual()
 {
-
-    cout << "**** RECAUDACION MENSUAL/ANUAL ****" << endl;
     int solicitudRecaudacion;
     do
     {
@@ -27,9 +25,41 @@ void recaudacionMensualYAnual()
         cin >> solicitudRecaudacion;
         switch(solicitudRecaudacion)
         {
-        case 1:
-            int mesSeleccionado;
-            cout << "Ingrese el mes: " << endl;
+        case 1:{
+                int mesSeleccionado, anioSeleccionado;
+                cout << "Ingrese el mes: " << endl;
+                cin >> mesSeleccionado;
+                cout << "Ingrese anio: " << endl;
+                cin >> anioSeleccionado;
+
+                int cantidadVentas = contarRegistros("ventas.dat", sizeof(Venta));
+
+                ArchivoVentas archivoV("ventas.dat");
+                Venta* arrayVentas = archivoV.obtenerTodasLasVentas(cantidadVentas);
+
+                float totalPeriodoSeleccionado = 0;
+
+                for(int i = 0; i < cantidadVentas; i++){
+                    if(arrayVentas[i].getFecha().getAnio() == anioSeleccionado && arrayVentas[i].getFecha().getMes() == mesSeleccionado){
+                        totalPeriodoSeleccionado += arrayVentas[i].getTotal();
+                    }
+                }
+                cout << "Total periodo Seleccionado: " << totalPeriodoSeleccionado << endl;
+
+                /*int cantidadVentas = contarRegistros("ventas.dat", sizeof(Venta));
+                Venta registroVenta;
+                ArchivoVentas archivoV("ventas.dat");
+
+                Venta* arrayVentasDelPeriodo = nullptr;
+                int cantidadVentasDelPeriodo = 0;
+                for(int i = 0; i < cantidadVentas; i++){
+                    registroVenta = archivoV.obtenerVenta(i);
+                    if(registroVenta.getFecha().getAnio() == anioSeleccionado && registroVenta.getFecha().getMes() == mesSeleccionado){
+                        cantidadVentasDelPeriodo++;
+                    }
+                }
+                arrayVentasDelPeriodo = new Venta[cantidadVentasDelPeriodo];*/
+            }
             break;
         case 2:
             int anioSeleccionado;
@@ -47,9 +77,6 @@ void recaudacionMensualYAnual()
 
 void productosMasVendidos()
 {
-
-    cout << "**** PRODUCTOS MAS VENDIDOS ****" << endl;
-
     int cantidadDetallesVendidos = contarRegistros("detalles_venta.dat", sizeof(DetalleVenta));
     ArchivoDetalles archivoDetalles("detalles_venta.dat");
 
@@ -89,7 +116,7 @@ void productosMasVendidos()
         if(detalles[i] > 0)
         {
             productoObtenido = archivoP.buscarProductoPorId(idsProductos[i]);
-            cout << "ID" << idsProductos[i] << ". " << productoObtenido.getDescripcion() << ", cantidad vendida: " << detalles[i] << endl;
+            cout << "ID producto: " << idsProductos[i] << ". " << productoObtenido.getDescripcion() << ", cantidad vendida: " << detalles[i] << endl;
             hayVentas = true;
         }
     }
@@ -101,10 +128,8 @@ void productosMasVendidos()
     delete[] idsProductos;
 }
 
-void productosConBajoStock()
+void productosConBajoStock() //Podemos cambiar este nombre por "stock por producto" o algo parecido
 {
-
-    cout << "PRODUCTOS CON BAJO STOCK" << endl;
     ArchivoProductos archivoProducto("productos.dat");
 
     int cantidadProductos = contarRegistros("productos.dat", sizeof(Producto));

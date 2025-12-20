@@ -132,12 +132,3 @@ bool esUnNumero(int numero){
 	}
 }
 
-/*bool validarDireccion(std::string direccion){
-
-	bool hayUnEspacio = false;
-	bool hayUnNumero = false;
-
-	int len = direccion.length();
-
-
-}*/

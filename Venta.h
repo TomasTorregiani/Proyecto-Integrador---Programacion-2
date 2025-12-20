@@ -17,7 +17,7 @@ public:
 
     ~Venta();
 
-    //No es necesario ningun setter
+    void setTotal(float totalVenta);
 
     //Getters
     int getIdVenta();

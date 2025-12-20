@@ -67,7 +67,7 @@ bool ManagerVentas::testingCrearVenta()
 
 //agregar CLIENTE:
 
-    int idCliente;
+int idCliente;
     cout << "Ingrese ID del cliente: ";
     cin >> idCliente;
 
@@ -77,12 +77,26 @@ bool ManagerVentas::testingCrearVenta()
     if(clienteEncontrado.getIdCliente() == 0)
     {
         cout << "No se encontro ningun registro con ese id" << endl;
-        cout << "Agregar Nuevo Cliente: " << endl;
-        cout << "---------------------" << endl;
+        cout << "Agregar Nuevo Cliente? 1(si) - 2(no): " << endl;
 
-        ManagerClientes managerCliente;
-        clienteEncontrado = managerCliente.crearNuevoCliente();
-        managerCliente.guardarUnCliente(clienteEncontrado);
+        int opcion;
+        cin >> opcion;
+        while(opcion != 1 && opcion != 2)
+        {
+            cout << "Ingrese una opcion valida: " << endl;
+            cin >> opcion;
+        }
+        if(opcion == 1)
+        {
+            ManagerClientes managerCliente;
+            clienteEncontrado = managerCliente.crearNuevoCliente();
+            managerCliente.guardarUnCliente(clienteEncontrado);
+        }
+        else
+        {
+            cout << "Volviendo al menu principal" << endl;
+            MenuPrincipal();
+        }
     }
 
     Cliente clienteParaVenta = clienteEncontrado;
@@ -103,12 +117,26 @@ bool ManagerVentas::testingCrearVenta()
     if(vendedorEncontrado.getIdVendedor() == 0)
     {
         cout << "No se encontro ningun registro con ese id" << endl;
-        cout << "Agregar Nuevo Vendedor: " << endl;
-        cout << "---------------------" << endl;
+        cout << "Agregar Nuevo Vendedor? 1(si) - 2(no): " << endl;
 
-        ManagerVendedores gestorVendedores;
-        vendedorEncontrado = gestorVendedores.crearNuevoVendedor();
-        gestorVendedores.guardarUnVendedor(vendedorEncontrado);
+        int opcion;
+        cin >> opcion;
+        while(opcion != 1 && opcion != 2)
+        {
+            cout << "Ingrese una opcion valida: " << endl;
+            cin >> opcion;
+        }
+        if(opcion == 1)
+        {
+            ManagerVendedores gestorVendedores;
+            vendedorEncontrado = gestorVendedores.crearNuevoVendedor();
+            gestorVendedores.guardarUnVendedor(vendedorEncontrado);
+        }
+        else
+        {
+            cout << "Volviendo al menu principal" << endl;
+            MenuGestionFacturacion();
+        }
     }
 
     Vendedor vendedorParaVenta = vendedorEncontrado;
@@ -119,23 +147,12 @@ bool ManagerVentas::testingCrearVenta()
 
     Venta nuevaVenta(clienteParaVenta.getIdCliente(), vendedorParaVenta.getIdVendedor(), fechaParaVenta);
 
-    int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta);
-    if(agregoVenta == 0)
-    {
-        cout << "Error al agregar el archivo" << endl;
-    }
-    else
-    {
-        cout << "Venta agregada correctamente" << endl;
-    }
-
-    cout << "El id de la venta es: " << nuevaVenta.getIdVenta() << endl;
-
     //agregar PRODUCTO:
 
     int opcion;
+    float totalVenta = 0;
 
-    do // <<----- acá empieza un do while
+    do
     {
         int idProducto;
         cout << "Ingrese id del producto a agregar: " << endl;
@@ -145,29 +162,116 @@ bool ManagerVentas::testingCrearVenta()
 
         Producto productoAAgregar = archivoProducto.buscarProductoPorId(idProducto);
 
+
+        // VALIDACIONES DEL PRODUCTO //
+
+        if(productoAAgregar.getIdProducto()!= idProducto)
+        {
+            cout << "No existe un producto con ese ID" << endl;
+            return false;
+        }
+
         cout << productoAAgregar.getDescripcion() << " - Precio unitario: $" << productoAAgregar.getPrecio() << endl;
+
 
         ArchivoDetalles archivoDetalles("detalles_venta.dat");
 
-        if(productoAAgregar.getIdProducto() != 0)
+
+        if(productoAAgregar.getIdProducto() != 0 )
         {
             int cantidad;
             cout << "Ingrese la cantidad: ";
             cin >> cantidad;
 
-            // Crear detalle con producto y cantidad
-            DetalleVenta detalle(productoAAgregar, cantidad);
+            while(productoAAgregar.getCantidadDisponible() < cantidad)
+            {
+                cout << "El producto no cuenta con stock suficiente" << endl;
+                cout << "El stock actual del producto es: " << productoAAgregar.getCantidadDisponible() << " unidades." << endl;
+                cout << "Ingrese otra cantidad:" << endl;
+                cin >> cantidad;
+            }
 
-            // Asociar al id de la venta
-            detalle.setIdVenta(nuevaVenta.getIdVenta());
+            // Crear detalle con producto y cantidad
+
+            DetalleVenta detalleCarrito(productoAAgregar, cantidad);
+
+            // Disminuir el stock del producto
+
+            ManagerProductos gestorProducto;
+
+            int nuevoStock = productoAAgregar.getCantidadDisponible() - cantidad;
+            gestorProducto.modificarStock(idProducto, nuevoStock);
+
+
+            // Asociar el detalle al id de la venta
+
+            detalleCarrito.setIdVenta(nuevaVenta.getIdVenta());
+
+            // Agregar el subtotal de la venta
+
+            float subtotal = productoAAgregar.getPrecio() * cantidad;
+            totalVenta += subtotal;
 
             // Guardar detalle
-            archivoDetalles.agregarDetalle(detalle);
+
+            archivoDetalles.agregarDetalle(detalleCarrito);
             cout << "Detalle agregado correctamente." << endl;
         }
+
+        cout << "Desea agregar productos? (1 = Si / 2 = No)" << endl;
+        cin >> opcion;
     }
+
     while(opcion == 1);
-    return true;
+
+    nuevaVenta.setTotal(totalVenta);
+
+    //dibujarFactura();
+
+    cout << "*** DESEA CONFIRMAR LA VENTA? ***    1(si) / 2(no)" << endl;
+
+    int op;
+    cin >> op;
+
+    while(true)
+    {
+        if(op == 1)
+        {
+
+            // Grabar la venta
+
+            int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta);
+            if(agregoVenta == 0)
+            {
+                cout << "Error al agregar el archivo" << endl;
+            }
+            else
+            {
+                cout << "Venta agregada correctamente" << endl;
+            }
+
+            //Debug 1
+
+            float totalVenta = calcularTotal(nuevaVenta.getIdVenta());
+            cout << "DEBUG GUARDAR Venta" << endl;
+            cout << " ID Cliente: " << nuevaVenta.getIdCliente() << endl;
+            cout << " Total: $" << totalVenta << endl << endl;
+
+            cout << "El id de la venta es: " << nuevaVenta.getIdVenta() << endl;
+            return true;
+        }
+
+        else if(op == 2)
+        {
+            MenuGestionFacturacion();
+        }
+        else
+        {
+            cout << "Ingrese una opcion valida: 1 (confirmar venta) / 2 (cancelar venta)" << endl;
+            cin >> op;
+        }
+    }
+
 }
 
 
@@ -266,6 +370,7 @@ bool ManagerVentas::crearVenta()
     //agregar PRODUCTO:
 
     int opcion;
+    float totalVenta = 0;
 
     do
     {
@@ -308,7 +413,7 @@ bool ManagerVentas::crearVenta()
 
             // Crear detalle con producto y cantidad
 
-            DetalleVenta detalleCarrito(productoAAgregar, cantidad);
+            DetalleVenta detalle(productoAAgregar, cantidad);
 
             // Disminuir el stock del producto
 
@@ -316,11 +421,16 @@ bool ManagerVentas::crearVenta()
 
             int nuevoStock = productoAAgregar.getCantidadDisponible() - cantidad;
             gestorProducto.modificarStock(idProducto, nuevoStock);
-            
+
 
             // Asociar el detalle al id de la venta
 
-            detalle.setIdVenta(nuevaVenta.getIdVenta()); 
+            detalle.setIdVenta(nuevaVenta.getIdVenta());
+
+            // Agregar el subtotal de la venta
+
+            float subtotal = productoAAgregar.getPrecio() * cantidad;
+            totalVenta += subtotal;
 
             // Guardar detalle
 
@@ -331,8 +441,10 @@ bool ManagerVentas::crearVenta()
         cout << "Desea agregar productos? (1 = Si / 2 = No)" << endl;
         cin >> opcion;
     }
-    
+
     while(opcion == 1);
+
+    nuevaVenta.setTotal(totalVenta);
 
     //dibujarFactura();
 
@@ -345,10 +457,10 @@ bool ManagerVentas::crearVenta()
     {
         if(op == 1)
         {
-						
+
             // Grabar la venta
-            
-            int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta); 
+
+            int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta);
             if(agregoVenta == 0)
             {
                 cout << "Error al agregar el archivo" << endl;
@@ -359,7 +471,7 @@ bool ManagerVentas::crearVenta()
             }
 
             //Debug 1
-            
+
             float totalVenta = calcularTotal(nuevaVenta.getIdVenta());
             cout << "DEBUG GUARDAR Venta" << endl;
             cout << " ID Cliente: " << nuevaVenta.getIdCliente() << endl;
@@ -368,7 +480,7 @@ bool ManagerVentas::crearVenta()
             cout << "El id de la venta es: " << nuevaVenta.getIdVenta() << endl;
             return true;
         }
-        
+
         else if(op == 2)
         {
             MenuGestionFacturacion();

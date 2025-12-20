@@ -35,7 +35,7 @@ void MenuTesting()
         {
             cout << "**** Crear venta ingresando fecha manualmente ****" << endl;
             ManagerVentas gestorVentas;
-						gestorVentas.testingCrearVenta();
+            gestorVentas.testingCrearVenta();
         }
         break;
         case 0:
