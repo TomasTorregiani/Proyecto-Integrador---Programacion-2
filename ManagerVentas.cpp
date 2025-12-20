@@ -306,11 +306,9 @@ bool ManagerVentas::crearVenta()
                 cin >> cantidad;
             }
 
-
             // Crear detalle con producto y cantidad
 
-            DetalleVenta detalle(productoAAgregar, cantidad);
-
+            DetalleVenta detalleCarrito(productoAAgregar, cantidad);
 
             // Disminuir el stock del producto
 
@@ -318,10 +316,11 @@ bool ManagerVentas::crearVenta()
 
             int nuevoStock = productoAAgregar.getCantidadDisponible() - cantidad;
             gestorProducto.modificarStock(idProducto, nuevoStock);
+            
 
             // Asociar el detalle al id de la venta
 
-            detalle.setIdVenta(nuevaVenta.getIdVenta());
+            detalle.setIdVenta(nuevaVenta.getIdVenta()); 
 
             // Guardar detalle
 
@@ -332,6 +331,7 @@ bool ManagerVentas::crearVenta()
         cout << "Desea agregar productos? (1 = Si / 2 = No)" << endl;
         cin >> opcion;
     }
+    
     while(opcion == 1);
 
     //dibujarFactura();
@@ -345,8 +345,10 @@ bool ManagerVentas::crearVenta()
     {
         if(op == 1)
         {
-
-            int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta);
+						
+            // Grabar la venta
+            
+            int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta); 
             if(agregoVenta == 0)
             {
                 cout << "Error al agregar el archivo" << endl;
@@ -366,6 +368,7 @@ bool ManagerVentas::crearVenta()
             cout << "El id de la venta es: " << nuevaVenta.getIdVenta() << endl;
             return true;
         }
+        
         else if(op == 2)
         {
             MenuGestionFacturacion();
@@ -376,7 +379,6 @@ bool ManagerVentas::crearVenta()
             cin >> op;
         }
     }
-
 }
 
 void ManagerVentas::verDetalleFactura()

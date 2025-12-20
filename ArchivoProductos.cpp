@@ -84,7 +84,7 @@ int ArchivoProductos::buscarPosicionPorId(int idProducto)  //retorna la posición
         return -1;
     }
 
-    fseek(p, 0, SEEK_SET); //solo posiciona el buscador al principio del registro.
+    fseek(p, 0, SEEK_SET); //posiciona el buscador al principio del registro.
 
     Producto registroProducto;
 
