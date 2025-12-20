@@ -346,6 +346,13 @@ bool ManagerVentas::crearVenta()
     {
         if(op == 1)
         {
+            //Debug 1
+            Venta venta;
+            cout << "DEBUG GUARDAR Venta"
+     << " ID Cliente: " << venta.getIdCliente()
+     << " Total: " << venta.getTotal()
+     << endl;
+
             int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta);
             if(agregoVenta == 0)
             {
