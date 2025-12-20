@@ -168,7 +168,6 @@ bool ManagerVentas::testingCrearVenta()
     }
     while(opcion == 1);
     return true;
-
 }
 
 
@@ -346,12 +345,6 @@ bool ManagerVentas::crearVenta()
     {
         if(op == 1)
         {
-            //Debug 1
-            Venta venta;
-            cout << "DEBUG GUARDAR Venta"
-     << " ID Cliente: " << venta.getIdCliente()
-     << " Total: " << venta.getTotal()
-     << endl;
 
             int agregoVenta = _archivoVentas.agregarVenta(nuevaVenta);
             if(agregoVenta == 0)
@@ -362,6 +355,13 @@ bool ManagerVentas::crearVenta()
             {
                 cout << "Venta agregada correctamente" << endl;
             }
+
+            //Debug 1
+            
+            float totalVenta = calcularTotal(nuevaVenta.getIdVenta());
+            cout << "DEBUG GUARDAR Venta" << endl;
+            cout << " ID Cliente: " << nuevaVenta.getIdCliente() << endl;
+            cout << " Total: $" << totalVenta << endl << endl;
 
             cout << "El id de la venta es: " << nuevaVenta.getIdVenta() << endl;
             return true;
