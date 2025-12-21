@@ -251,10 +251,7 @@ int idCliente;
                 cout << "Venta agregada correctamente" << endl;
             }
 
-            //Debug 1
-
             float totalVenta = calcularTotal(nuevaVenta.getIdVenta());
-            cout << "DEBUG GUARDAR Venta" << endl;
             cout << " ID Cliente: " << nuevaVenta.getIdCliente() << endl;
             cout << " Total: $" << totalVenta << endl << endl;
 
@@ -380,8 +377,8 @@ bool ManagerVentas::crearVenta()
         cin >> idProducto;
 
         ArchivoProductos archivoProducto("productos.dat");
-        
-        bool productoExiste = archivoProducto.existeElProducto(idProducto);	
+
+        bool productoExiste = archivoProducto.existeElProducto(idProducto);
 
         // VALIDACIONES DEL PRODUCTO //
 
@@ -390,14 +387,14 @@ bool ManagerVentas::crearVenta()
             cout << "No existe un producto con ese ID" << endl;
             cout << "Ingrese id del producto a agregar: " << endl;
             cin >> idProducto;
-						
+
 						productoExiste = archivoProducto.existeElProducto(idProducto);
         }
-        
+
         Producto productoAAgregar = archivoProducto.buscarProductoPorId(idProducto);
 
         cout << productoAAgregar.getDescripcion() << " - Precio unitario: $" << productoAAgregar.getPrecio() << endl;
-        
+
 
         ArchivoDetalles archivoDetalles("detalles_venta.dat");
 
@@ -474,15 +471,13 @@ bool ManagerVentas::crearVenta()
                 cout << "Venta agregada correctamente" << endl;
             }
 
-            //Debug 1
 
             float totalVenta = calcularTotal(nuevaVenta.getIdVenta());
-            cout << "DEBUG GUARDAR Venta" << endl;
             cout << " ID Cliente: " << nuevaVenta.getIdCliente() << endl;
-            cout << fixed << setprecision(2);
             cout << " Total: $" << totalVenta << endl << endl;
 
             cout << "El id de la venta es: " << nuevaVenta.getIdVenta() << endl;
+
             return true;
         }
 

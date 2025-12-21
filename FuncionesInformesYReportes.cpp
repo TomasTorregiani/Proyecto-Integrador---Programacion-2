@@ -46,27 +46,29 @@ void recaudacionMensualYAnual()
                     }
                 }
                 cout << fixed << setprecision(2);
-                cout << "Total periodo Seleccionado: " << totalPeriodoSeleccionado << endl;
-
-                /*int cantidadVentas = contarRegistros("ventas.dat", sizeof(Venta));
-                Venta registroVenta;
-                ArchivoVentas archivoV("ventas.dat");
-
-                Venta* arrayVentasDelPeriodo = nullptr;
-                int cantidadVentasDelPeriodo = 0;
-                for(int i = 0; i < cantidadVentas; i++){
-                    registroVenta = archivoV.obtenerVenta(i);
-                    if(registroVenta.getFecha().getAnio() == anioSeleccionado && registroVenta.getFecha().getMes() == mesSeleccionado){
-                        cantidadVentasDelPeriodo++;
-                    }
-                }
-                arrayVentasDelPeriodo = new Venta[cantidadVentasDelPeriodo];*/
+                cout << "Total periodo Seleccionado: " << mesSeleccionado << "/" << anioSeleccionado << " = $" << totalPeriodoSeleccionado << endl;
             }
             break;
-        case 2:
+        case 2:{
             int anioSeleccionado;
             cout << "Ingrese el anio: " << endl;
             cin >> anioSeleccionado;
+
+            int cantidadRegistros = contarRegistros("ventas.dat", sizeof(Venta));
+
+            ArchivoVentas archivoV("ventas.dat");
+            Venta* arrayVentas = archivoV.obtenerTodasLasVentas(cantidadRegistros);
+
+            int totalAcumulado = 0;
+
+            for(int i = 0; i < cantidadRegistros; i++){
+                if(arrayVentas[i].getFecha().getAnio() == anioSeleccionado){
+                    totalAcumulado += arrayVentas[i].getTotal();
+                }
+            }
+
+            cout << "Total acumulado en el anio " << anioSeleccionado << " = $" << totalAcumulado << endl;
+        }
             break;
         default:
             cout << "Ingrese una opcion correcta" << endl;
@@ -406,12 +408,6 @@ for(int i = 0; i <= maximoId; i++){
             }
         }
     }
-    //DEBUG 2
-    cout << "\nDEBUG - Ranking compacto\n";
-for(int i = 0; i < cantidadClientesConCompras; i++){
-    cout << i << ") ID " << ids[i]
-         << " Total: " << totales[i] << endl;
-}
 
     cout << "---- Clientes que mas compraron ----" << endl;
     cout << "Periodo: " << fechaInicio.toString() << " a " << fechaFinal.toString() << endl;
@@ -419,12 +415,6 @@ for(int i = 0; i < cantidadClientesConCompras; i++){
     ArchivoClientes archivoCliente("clientes.dat");
 
     int top = (cantidadClientesConCompras < 3) ? cantidadClientesConCompras : 3;
-    //DEBUG 3
-    cout << "\nDEBUG - TOP A MOSTRAR\n";
-for(int i = 0; i < top; i++){
-    cout << "TOP " << i << ": ID " << ids[i]
-         << " Total: " << totales[i] << endl;
-}
 
     for(int i = 0; i < top; i++){
         Cliente c = archivoCliente.buscarClientePorId(ids[i]);
