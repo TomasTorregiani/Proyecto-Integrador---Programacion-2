@@ -35,6 +35,36 @@ int ArchivoProductos::agregarNuevoProducto(Producto nuevoProducto)
     }
 }
 
+bool ArchivoProductos::existeElProducto(int idProducto){ //para saber si el producto con ese Id existe;
+
+    FILE* p = nullptr;
+    p = fopen(_nombre, "rb");
+
+    if(p == nullptr)
+    {
+        cout << "ERROR: No se pudo abrir 'productos.dat'. " << endl;
+        cout << "Asegurese de que el archivo existe y tiene productos cargados." << endl;
+        return false;
+    }
+
+    fseek(p, 0, SEEK_SET);
+    int cantidadRegistros = contarRegistros("productos.dat", _tamanioRegistro);
+
+    Producto registro;
+    for(int i = 0; i < cantidadRegistros; i++)
+    {
+        fread(&registro, _tamanioRegistro, 1, p);
+
+        if(registro.getIdProducto() == idProducto)
+        {
+            fclose(p);
+            return true;
+        }
+    }
+    fclose(p);
+    return false;
+}
+
  Producto ArchivoProductos::buscarProductoPorId(int idProducto) //solo devuelve un producto, no valida nada.
 {
 

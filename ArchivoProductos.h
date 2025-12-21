@@ -10,6 +10,7 @@ public:
     int agregarNuevoProducto(Producto nuevoProducto);
     bool modificarStock(int idProducto, int nuevoStock);
     Producto buscarProductoPorId(int idProducto);
+    bool existeElProducto(int idProducto);
     int buscarPosicionPorId(int idProducto);
     int agregarProductoModificado(Producto productoModificado, int posicionProdModificado);
     Producto *obtenerProductos(int cantidadProductos);

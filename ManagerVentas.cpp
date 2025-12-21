@@ -380,23 +380,26 @@ bool ManagerVentas::crearVenta()
         cin >> idProducto;
 
         ArchivoProductos archivoProducto("productos.dat");
-
-        Producto productoAAgregar = archivoProducto.buscarProductoPorId(idProducto);
-
+        
+        bool productoExiste = archivoProducto.existeElProducto(idProducto);	
 
         // VALIDACIONES DEL PRODUCTO //
 
-        if(productoAAgregar.getIdProducto()!= idProducto)
+        while(!productoExiste)
         {
             cout << "No existe un producto con ese ID" << endl;
-            return false;
+            cout << "Ingrese id del producto a agregar: " << endl;
+            cin >> idProducto;
+						
+						productoExiste = archivoProducto.existeElProducto(idProducto);
         }
+        
+        Producto productoAAgregar = archivoProducto.buscarProductoPorId(idProducto);
 
         cout << productoAAgregar.getDescripcion() << " - Precio unitario: $" << productoAAgregar.getPrecio() << endl;
-
+        
 
         ArchivoDetalles archivoDetalles("detalles_venta.dat");
-
 
         if(productoAAgregar.getIdProducto() != 0 )
         {

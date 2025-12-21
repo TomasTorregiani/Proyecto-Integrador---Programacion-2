@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "Cliente.h"
 #include "ArchivoClientes.h"
 #include "Producto.h"
@@ -44,6 +45,7 @@ void recaudacionMensualYAnual()
                         totalPeriodoSeleccionado += arrayVentas[i].getTotal();
                     }
                 }
+                cout << fixed << setprecision(2);
                 cout << "Total periodo Seleccionado: " << totalPeriodoSeleccionado << endl;
 
                 /*int cantidadVentas = contarRegistros("ventas.dat", sizeof(Venta));
@@ -234,6 +236,7 @@ void ventasPorVendedor()
             }
 
 						ManagerVentas ventaActual;
+						cout << fixed << setprecision(2);
             cout << "Total : $" << ventaActual.calcularTotal(idVentaActual) << endl;
             cout << endl;
 
@@ -336,7 +339,7 @@ void clientesQueMasCompraron()
 
     for(int i = 0; i < cantidadVentas; i++){
         Fecha f = arrayVentasObtenidas[i].getFecha();
-
+				cout << fixed << setprecision(2);
         cout << "DEBUG Venta"
      << " ID Cliente: " << arrayVentasObtenidas[i].getIdCliente()
      << " Total venta: " << arrayVentasObtenidas[i].getTotal()

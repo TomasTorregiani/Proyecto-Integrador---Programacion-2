@@ -49,7 +49,7 @@ void MenuGestionFacturacion(){
             }
             break;
             case 0: cout << "Volviendo al menu principal" << endl;
-            return;
+								MenuPrincipal();
             default: cout << "Ingrese un valor valido" << endl;
             break;
         }
