@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "FuncionesInformesYReportes.h"
 #include "ArchivoClientes.h"
 #include "ArchivoProductos.h"
@@ -103,7 +104,7 @@ void ventasPorAnio()
             cout << "ID Vendedor: " << vectorVentas[i].getIdVendedor() << endl;
             
             ManagerVentas ventaActual;
-            
+            cout << fixed << setprecision(2);
             cout << "Total : $" << ventaActual.calcularTotal(idVentaActual) << endl; 
             cout << endl;
             
@@ -175,7 +176,7 @@ void ventasPorMes()
             cout << "ID Vendedor: " << vectorVentas[i].getIdVendedor() << endl;
             
             ManagerVentas ventaActual;
-            
+            cout << fixed << setprecision(2);
             cout << "Total : $" << ventaActual.calcularTotal(idVentaActual) << endl; 
             cout << endl;
 
@@ -263,7 +264,7 @@ void ventasPorFechaExacta()
             cout << "ID Vendedor: " << vectorVentas[i].getIdVendedor() << endl;
             
             ManagerVentas ventaActual;
-            
+            cout << fixed << setprecision(2);
             cout << "Total : $" << ventaActual.calcularTotal(idVentaActual) << endl; 
             cout << endl;
 						
@@ -415,7 +416,7 @@ void ventasPorIntervaloDeFecha()
             cout << "ID Vendedor: " << vectorVentas[i].getIdVendedor() << endl;
             
             ManagerVentas ventaActual;
-            
+            cout << fixed << setprecision(2);
             cout << "Total : $" << ventaActual.calcularTotal(idVentaActual) << endl; 
             cout << endl;
 

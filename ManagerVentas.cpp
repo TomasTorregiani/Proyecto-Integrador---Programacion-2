@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "ManagerVentas.h"
 #include "ArchivoClientes.h"
 #include "ArchivoVendedores.h"
@@ -475,6 +476,7 @@ bool ManagerVentas::crearVenta()
             float totalVenta = calcularTotal(nuevaVenta.getIdVenta());
             cout << "DEBUG GUARDAR Venta" << endl;
             cout << " ID Cliente: " << nuevaVenta.getIdCliente() << endl;
+            cout << fixed << setprecision(2);
             cout << " Total: $" << totalVenta << endl << endl;
 
             cout << "El id de la venta es: " << nuevaVenta.getIdVenta() << endl;
@@ -544,10 +546,12 @@ void ManagerVentas::verDetalleFactura()
             //Mostramos los detalles de la factura
             cout << "Producto: " << detalles[i].getProducto().getDescripcion() << endl;
             cout << "Cantidad: " << detalles[i].getCantidad() << endl;
+            cout << fixed << setprecision(2);
             cout << "Subtotal: $" << detalles[i].getSubtotal() << endl;
             cout << "-----------------------------------" << endl;
         }
         float totalVenta = calcularTotal(ventaObtenida.getIdVenta());
+        cout << fixed << setprecision(2);
         cout << "TOTAL FACTURA: $" << totalVenta << endl;
     }
 }
