@@ -40,22 +40,22 @@ void MenuVentasPorFecha()
         {
         case 1:
         {
-            ventasPorAnio(); 
+            ventasPorAnio();
         }
         break;
         case 2:
         {
-						ventasPorMes();
+            ventasPorMes();
         }
         break;
         case 3:
         {
-						ventasPorFechaExacta();
+            ventasPorFechaExacta();
         }
         break;
         case 4:
         {
-						ventasPorIntervaloDeFecha(); 
+            ventasPorIntervaloDeFecha();
         }
         break;
         case 0:

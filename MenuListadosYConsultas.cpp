@@ -47,14 +47,12 @@ void MenuListadosYConsultas()
         {
             cout << "**** LISTADO DE VENDEDORES ****" << endl;
             listadoVendedores();
-
         }
         break;
         case 4:
         {
         	cout << "**** LISTADO DE VENTAS(POR FECHA/MES/ANIO/DIAS)" << endl;
             MenuVentasPorFecha();
-
         }
         case 0:
             MenuPrincipal();
