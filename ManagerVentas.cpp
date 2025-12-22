@@ -474,6 +474,7 @@ bool ManagerVentas::crearVenta()
 
             float totalVenta = calcularTotal(nuevaVenta.getIdVenta());
             cout << " ID Cliente: " << nuevaVenta.getIdCliente() << endl;
+            cout << fixed << setprecision(2) << endl; 
             cout << " Total: $" << totalVenta << endl << endl;
 
             cout << "El id de la venta es: " << nuevaVenta.getIdVenta() << endl;

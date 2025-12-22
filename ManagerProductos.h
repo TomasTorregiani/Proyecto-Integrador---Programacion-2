@@ -8,6 +8,7 @@ public:
     ManagerProductos();
     void crearNuevoProducto();
     void verStockProducto();
+    bool modificarStock();
     bool modificarStock(int idProducto, int nuevoStock);
     void eliminarProducto();
     void activarProducto();

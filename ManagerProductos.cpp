@@ -257,9 +257,28 @@ void ManagerProductos::verStockProducto()
     }
 }
 
-bool ManagerProductos::modificarStock(int idProducto, int nuevoStock)
+bool ManagerProductos::modificarStock()
 {
+		int idProducto;
+		int nuevoStock;
+		
+		cout << "Ingrese el id del producto a modificar: " << endl; 
+		cin >> idProducto;
+		
+		cout << "Ingrese el nuevo stock: " << endl; 
+		cin >> nuevoStock;  
+		
+    bool stockModificado = _archivo.modificarStock(idProducto, nuevoStock);
+    if(stockModificado == true){
+        cout << "Stock modificado correctamente" << endl;
+        return true;
+    }else{ cout << "Error al modificar el stock" << endl;
+        return false;
+        }
+}
 
+bool ManagerProductos::modificarStock(int idProducto, int nuevoStock)
+{		
     bool stockModificado = _archivo.modificarStock(idProducto, nuevoStock);
     if(stockModificado == true){
         cout << "Stock modificado correctamente" << endl;
