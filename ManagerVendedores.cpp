@@ -9,6 +9,17 @@ ManagerVendedores::ManagerVendedores():_archivoVendedores("vendedores.dat"){
 
 }
 
+
+void ManagerVendedores::crearVendedor(){
+	Vendedor nuevoVendedor = crearNuevoVendedor();
+    int vendedorAgregado = _archivoVendedores.agregarVendedor(nuevoVendedor);
+    if(vendedorAgregado == 1){
+        cout << "Vendedor agregado correctamente" << endl;
+    }else{
+        cout << "Error al agregar vendedor" << endl;
+    }
+}
+
 Vendedor ManagerVendedores::crearNuevoVendedor(){
 
     Vendedor nuevoVendedor;
@@ -84,16 +95,6 @@ Vendedor ManagerVendedores::crearNuevoVendedor(){
     nuevoVendedor.setActivo(true);
 
     return nuevoVendedor;
-}
-
-void ManagerVendedores::crearVendedor(){
-	Vendedor nuevoVendedor = crearNuevoVendedor();
-    int vendedorAgregado = _archivoVendedores.agregarVendedor(nuevoVendedor);
-    if(vendedorAgregado == 1){
-        cout << "Vendedor agregado correctamente" << endl;
-    }else{
-        cout << "Error al agregar vendedor" << endl;
-    }
 }
 
 

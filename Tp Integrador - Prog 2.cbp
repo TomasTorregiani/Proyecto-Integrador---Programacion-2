@@ -106,6 +106,10 @@
 		<Unit filename="MenuPrincipal.cpp" />
 		<Unit filename="MenuTesting.cpp" />
 		<Unit filename="MenuVentasPorFecha.cpp" />
+		<Unit filename="Persona.cpp" />
+		<Unit filename="Persona.h">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="Producto.cpp" />
 		<Unit filename="Producto.h">
 			<Option compile="1" />

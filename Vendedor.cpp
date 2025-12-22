@@ -5,32 +5,40 @@
 
 using namespace std;
 
-Vendedor::Vendedor()
-    :_idVendedor(0), _numeroTelefono(0), _activo(false)
-{
-    strcpy(_nombre, "");
-    strcpy(_apellido, "");
-    strcpy(_email, "");
-    strcpy(_direccion, "");
-}
+Vendedor::Vendedor() 
+: Persona(), _idVendedor(0), _activo(false) {} //el constructor "vacio";
 
-Vendedor::Vendedor(string nombre, string apellido, int numeroTelefono,
-                   string email, string direccion)
+Vendedor::Vendedor(int idVendedor, string nombre,string apellido, int numeroTelefono,
+									string email, string direccion, bool activo) 
+									: Persona(nombre, apellido, numeroTelefono, email, direccion)
 {
     _idVendedor = contarRegistros("vendedores.dat", sizeof(Vendedor)) + 1;
-    setNombre(nombre);
-    setApellido(apellido);
-    _numeroTelefono = numeroTelefono;
-    setEmail(email);
-    setDireccion(direccion);
     _activo = true;
 }
 
-/*Vendedor::Vendedor()
-: _idVendedor(0), _nombre(),
-_apellido(), _numeroTelefono(0),
-_email(""), _direccion(""){
-}*/
+//setters 
+
+void Vendedor::setIdVendedor(int idVendedor)
+{
+    _idVendedor = idVendedor;
+}
+
+void Vendedor::setActivo(bool value)
+{
+    _activo = value;
+}
+
+//getters
+
+int Vendedor::getIdVendedor()
+{
+    return _idVendedor;
+}
+
+bool Vendedor::getActivo()
+{
+    return _activo;
+}
 
 void Vendedor::crearVendedor()
 {
@@ -47,6 +55,7 @@ void Vendedor::crearVendedor()
     cin >> _direccion;
     _activo = true;
 }
+
 
 void Vendedor::modificarVendedor()
 {
@@ -75,62 +84,5 @@ void Vendedor::mostrarVendedor()
     cout << "Estado: " << (_activo ? "Activo" : "Inactivo") << endl;
 }
 
-void Vendedor::setIdVendedor(int idVendedor)
-{
-    _idVendedor = idVendedor;
-}
-
-void Vendedor::setNombre(string nombre)
-{
-    strncpy(_nombre, nombre.c_str(), sizeof(_nombre) - 1);
-    _nombre[99] = '\0';
-}
-void Vendedor::setApellido(string apellido)
-{
-    strncpy(_apellido, apellido.c_str(), sizeof(_apellido) - 1);
-    _apellido[99] = '\0';
-}
-
-void Vendedor::setNumeroTelefono(int numeroTelefono)
-{
-    _numeroTelefono = numeroTelefono;
-}
-void Vendedor::setEmail(string email)
-{
-    strncpy(_email, email.c_str(), sizeof(_email) - 1);
-}
-void Vendedor::setDireccion(string direccion)
-{
-    strncpy(_direccion, direccion.c_str(), sizeof(_direccion) - 1);
-    _direccion[99] = '\0';
-}
-
-int Vendedor::getIdVendedor()
-{
-    return _idVendedor;
-}
-string Vendedor::getNombre()
-{
-    return _nombre;
-}
-string Vendedor::getApellido()
-{
-    return _apellido;
-}
-
-string Vendedor::getEmail()
-{
-    return _email;
-}
-string Vendedor::getDireccion()
-{
-    return _direccion;
-}
-void Vendedor::setActivo(bool value)
-{
-    _activo = value;
-}
-bool Vendedor::getActivo()
-{
-    return _activo;
-}
+    
+    

@@ -1,50 +1,30 @@
 #pragma once
 #include <iostream>
+#include "Persona.h"
 
-class Cliente{
+class Cliente : public Persona{
 public:
+	
     //Constructores
     Cliente();
-    Cliente(std::string nombre,
+    Cliente(int idCliente, std::string nombre,
             std::string apellido, int cuil, int numeroTelefono,
-            std::string email, std::string direccion);
+            std::string email, std::string direccion, bool value);
 
-    void crearCliente();//Borrar esta funcion?
-    void modificarCliente();
-    void mostrarCliente();
+    void mostrarCliente(); //esto deberia ser un metodo del managerClientes;
+    
     //Setters
     void setIdCliente(int idCliente);
-    void setNombre(std::string nombre);
-    void setApellido(std::string apellido);
     void setCuil(int cuil);
-    void setTipoCliente(int tipoCliente);
-    void setNumeroTelefono(int numeroTelefono);
-    void setEmail(std::string email);
-    void setDireccion(std::string direccion);
     void setActivo(bool value);
 
     //Getters
     int getIdCliente();
-    std::string getNombre();
-    std::string getApellido();
     int getCuil();
-    int getTipoCliente();
-    std::string getEmail();
-    std::string getDireccion();
     bool getActivo();
-
-    void eliminarCliente();
-    void activarCliente();
-
-protected:
 
 private:
     int _idCliente;
-    char _nombre[50];
-    char _apellido[50];
     int _cuil;
-    int _numeroTelefono;
-    char _email[50];
-    char _direccion[50];
     bool _activo;
 };

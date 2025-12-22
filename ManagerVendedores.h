@@ -14,9 +14,9 @@ public:
     Vendedor pedirNuevosDatos();  // ?????
     
     void listarVendedores();
-    void modificarVendedor();
     void eliminarVendedor();
     void obtenerVendedorPorId();
+    void modificarVendedor();
 
 private:
     ArchivoVendedores _archivoVendedores; //recibe un archivo de vendedor para trabajar en él.
