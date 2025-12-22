@@ -254,6 +254,26 @@ void ManagerVendedores::eliminarVendedor(){
         }
 }
 
+void ManagerVendedores::activarVendedor()
+{
+    int idVendedorAActivar;
+    cout << "Ingrese el id del vendedor a activar nuevamente: " << endl;
+    cin >> idVendedorAActivar;
+    int posicionVendedor = _archivoVendedores.obtenerPosicionVendedor(idVendedorAActivar);
+    if(posicionVendedor == -1)
+    {
+        cout << "No se encontro el vendedor: " << endl;
+    }
+    Vendedor vendedorAActivar = _archivoVendedores.buscarVendedorPorId(idVendedorAActivar);
+    vendedorAActivar.setActivo(true);
+    int vendedorActivado = _archivoVendedores.modificarDatosVendedor(vendedorAActivar, posicionVendedor);
+    if(vendedorActivado != 0){
+        cout << "Vendedor activado correctamente." << endl;
+    }else {
+        cout << "Error al activar el vendedor." << endl;
+    }
+}
+
 void ManagerVendedores::listarVendedores(){
 
     int cantidadVendedores = contarRegistros("vendedores.dat", sizeof(Vendedor));

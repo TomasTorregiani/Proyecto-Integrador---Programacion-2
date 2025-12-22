@@ -75,6 +75,28 @@ int ArchivoVendedores::buscarPosicionDelVendedor(int idVendedor){
     fclose(p);
     return -1;
 }
+
+int ArchivoVendedores::obtenerPosicionVendedor(int idVendedor){
+    FILE* p = nullptr;
+    p = fopen(_nombre, "rb");
+    if(p == nullptr){
+        cout << "El archivo no se abrio correctamente" << endl;
+        return -1;
+    }
+    fseek(p, 0, SEEK_SET);
+    int cantidadRegistros = contarRegistros("vendedores.dat", _tamanioRegistro);
+    Vendedor registro;
+    for(int i = 0; i < cantidadRegistros; i++){
+        fread(&registro, _tamanioRegistro, 1, p);
+        if(registro.getIdVendedor() == idVendedor){
+            fclose(p);
+            return i;
+        }
+    }
+    fclose(p);
+    return -1;
+}
+
 int ArchivoVendedores::modificarDatosVendedor(Vendedor registroVendedor, int posicion){
     FILE* p = nullptr;
     p = fopen(_nombre, "rb+");
@@ -93,31 +115,6 @@ int ArchivoVendedores::modificarDatosVendedor(Vendedor registroVendedor, int pos
         return 0;
     }
 }
-
-/*void ArchivoVendedores::listarVendedores(){ //Este archivo no deberia listar. Deberia devolver y el listado deberia verse en el manager.
-    FILE* p = nullptr;
-    p = fopen(_nombre, "rb");
-
-    if(p == nullptr){
-        cout << "Error al abrir el archivo" << endl;
-        return;
-    }
-
-    fseek(p, 0, SEEK_SET);
-    int cantidadDeRegistros = contarRegistros(_nombre, _tamanioRegistro);
-    Vendedor registroVendedor;
-
-    if(cantidadDeRegistros > 0){
-        for(int i = 0; i < cantidadDeRegistros; i++){
-            fread(&registroVendedor, _tamanioRegistro, 1, p);
-            cout << "Id Vendedor: " << registroVendedor.getIdVendedor() << endl;
-            cout << "Nombre Vendedor: " << registroVendedor.getNombre() << " " << registroVendedor.getApellido() << endl;
-        }
-    }else{
-        cout << "No se encontraron vendedores" << endl;
-    }
-    fclose(p);
-}*/
 
 Vendedor* ArchivoVendedores::obtenerVendedores(int cantidadVendedores){
     FILE* p = nullptr;

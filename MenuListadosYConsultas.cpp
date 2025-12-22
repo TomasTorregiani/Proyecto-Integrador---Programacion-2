@@ -20,9 +20,9 @@ void MenuListadosYConsultas()
     {
         system("cls");
         cout << "**** MENU LISTADOS Y CONSULTAS ****" << endl << endl;
-        cout << "1) Listado de clientes" << endl;
+        cout << "1) Listado de clientes (activos e inactivos)" << endl;
         cout << "2) Listado de productos" << endl;
-        cout << "3) Listado de vendedores" << endl;
+        cout << "3) Listado de vendedores (activos e inactivos)" << endl;
         cout << "4) Listado de ventas(Por fecha, mes, anio, dias)" << endl;
         cout << "0) Salir" << endl;
         cout << "-------------------------------------" <<  endl;

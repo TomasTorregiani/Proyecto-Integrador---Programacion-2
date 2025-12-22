@@ -15,7 +15,8 @@ void MenuGestionVendedores(){
         cout << "2) Modificar Datos Vendedor" << endl;
         cout << "3) Buscar Vendedor por Id" << endl;
         cout << "4) Eliminar Vendedor" << endl;
-        cout << "5) Listar todos los vendedores" << endl;
+        cout << "5) Activar Vendedor" << endl; 
+        cout << "6) Listar todos los vendedores activos" << endl;
         cout << "0) Volver al menu principal" << endl;
         cout << endl;
         cout << "Elige una opcion: " << endl;
@@ -47,6 +48,11 @@ void MenuGestionVendedores(){
             }
             break;
             case 5: {
+								ManagerVendedores gestorVendedor;
+								gestorVendedor.activarVendedor(); 
+            }
+            break;
+            case 6: {
                 cout << "**** LISTAR TODOS LOS VENDEDORES ****" << endl << endl; 
                 ManagerVendedores gestorVendedor;
                 gestorVendedor.listarVendedores();

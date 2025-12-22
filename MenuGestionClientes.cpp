@@ -18,7 +18,7 @@ void MenuGestionClientes(){
         cout << "3) Buscar Cliente por Id" << endl;
         cout << "4) Eliminar Cliente" << endl;
         cout << "5) Activar Cliente" << endl;
-        cout << "6) Listar todos los clientes" << endl;
+        cout << "6) Listar todos los clientes activos" << endl;
         cout << "0) Volver al menu principal" << endl;
         cout << endl;
         cout << "Elige una opcion: " << endl;

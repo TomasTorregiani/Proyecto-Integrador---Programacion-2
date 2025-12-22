@@ -15,6 +15,7 @@ public:
     
     void listarVendedores();
     void eliminarVendedor();
+    void activarVendedor(); 
     void obtenerVendedorPorId();
     void modificarVendedor();
 

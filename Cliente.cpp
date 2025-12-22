@@ -48,4 +48,12 @@ void Cliente::mostrarCliente(){ //esto deberia ser un metodo del managerClientes
     cout << "Apellido: " << _apellido << endl;
     cout << "Numero de telefono: " << _numeroTelefono << endl;
     cout << "Email: " << _email << endl;
+    if(_activo)
+		{
+			cout << "Estado: Activo" << endl; 
+		}else
+			{
+				cout << "Estado: Inactivo" << endl; 
+			}
+    
 }
