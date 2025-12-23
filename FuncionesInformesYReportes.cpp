@@ -319,12 +319,7 @@ void clientesQueMasCompraron()
 
     for(int i = 0; i < cantidadVentas; i++){
         Fecha f = arrayVentasObtenidas[i].getFecha();
-				cout << fixed << setprecision(2);
-        cout << "DEBUG Venta"
-     << " ID Cliente: " << arrayVentasObtenidas[i].getIdCliente()
-     << " Total venta: " << arrayVentasObtenidas[i].getTotal()
-     << endl;
-
+        cout << fixed << setprecision(2);
 
         bool desdeInicio =
             (f.getAnio() > fechaInicio.getAnio()) ||
@@ -341,11 +336,7 @@ void clientesQueMasCompraron()
         }
     }
 
-    //DEBUG 1
-    cout << "\nDEBUG - Totales por ID\n";
-for(int i = 0; i <= maximoId; i++){
-    cout << "ID " << i << " -> Total: " << arrayTotalesClientes[i] << endl;
-}
+
 
     int cantidadClientesConCompras = 0;
     for(int i = 0; i <= maximoId; i++){
