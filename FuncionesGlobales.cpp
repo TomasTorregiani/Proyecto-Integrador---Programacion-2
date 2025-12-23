@@ -4,7 +4,8 @@
 
 using namespace std;
 
-int contarRegistros(const char *nombreArchivo, int tamanioRegistro){
+int contarRegistros(const char *nombreArchivo, int tamanioRegistro)
+{
 
     FILE *p = nullptr;
     p = fopen(nombreArchivo, "rb");
@@ -14,7 +15,7 @@ int contarRegistros(const char *nombreArchivo, int tamanioRegistro){
         return 0;
     }
 
-    fseek(p, 0, SEEK_END);
+    fseek(p, 0, SEEK_END); //cursor al final para que ftell() devuelva todo el tamaño del archivo.
     int cantidadDeRegistros = ftell(p)/tamanioRegistro;
 
     fclose(p);
@@ -51,7 +52,7 @@ bool validarMail(std::string mail){
 	}
 
 	int cantCaracteres = mail.length();
-	cout << "DEBUG: El mail tiene " << cantCaracteres << " caracteres." << endl;
+	//cout << "DEBUG: El mail tiene " << cantCaracteres << " caracteres." << endl;
 
 	int posArroba = -1; //porque al cero lo voy a usar para inciar el i.
 	bool arrobaExiste = false;
@@ -62,7 +63,7 @@ bool validarMail(std::string mail){
 		{
 			posArroba = i; //primero encuentro donde esta el @
 			arrobaExiste = true;
-			cout << "DEBUG: arrobaExixte: " << arrobaExiste << endl;
+			//cout << "DEBUG: arrobaExixte: " << arrobaExiste << endl;
 		}
 	}
 
@@ -87,7 +88,7 @@ bool validarMail(std::string mail){
 		}
 	}
 
-	cout << "DEBUG: puncoComExiste: " << puntoComExiste << endl;
+	//cout << "DEBUG: puncoComExiste: " << puntoComExiste << endl;
 
 	if ((arrobaExiste == false) || (posArroba == -1))
 	{

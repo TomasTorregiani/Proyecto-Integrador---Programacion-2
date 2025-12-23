@@ -132,7 +132,7 @@ void productosMasVendidos()
     delete[] idsProductos;
 }
 
-void productosConBajoStock() //Podemos cambiar este nombre por "stock por producto" o algo parecido
+void productosConBajoStock()
 {
     ArchivoProductos archivoProducto("productos.dat");
 
