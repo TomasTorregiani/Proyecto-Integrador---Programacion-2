@@ -4,15 +4,15 @@
 
 class Cliente : public Persona{
 public:
-	
+
     //Constructores
     Cliente();
     Cliente(int idCliente, std::string nombre,
             std::string apellido, int cuil, int numeroTelefono,
             std::string email, std::string direccion, bool value);
 
-    void mostrarCliente(); //esto deberia ser un metodo del managerClientes;
-    
+    void mostrarCliente();
+
     //Setters
     void setIdCliente(int idCliente);
     void setCuil(int cuil);

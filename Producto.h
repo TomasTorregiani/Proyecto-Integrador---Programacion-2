@@ -9,10 +9,6 @@ public:
              std::string marca, std::string tipoProducto,
              int cantidadDisponible, float precio);
 
-    void crearNuevoProducto();
-    void modificarProducto();
-    void eliminarProducto();
-    void activarProducto();
     void mostrarProducto();
 
     //Setters

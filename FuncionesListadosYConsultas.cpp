@@ -102,12 +102,12 @@ void ventasPorAnio()
             cout << "ID Venta: " << vectorVentas[i].getIdVenta() << endl;
             cout << "ID Cliente: " << vectorVentas[i].getIdCliente() << endl;
             cout << "ID Vendedor: " << vectorVentas[i].getIdVendedor() << endl;
-            
+
             ManagerVentas ventaActual;
             cout << fixed << setprecision(2);
-            cout << "Total : $" << ventaActual.calcularTotal(idVentaActual) << endl; 
+            cout << "Total : $" << ventaActual.calcularTotal(idVentaActual) << endl;
             cout << endl;
-            
+
             contVentas ++;
         }
     }
@@ -169,15 +169,15 @@ void ventasPorMes()
         Fecha fechaRegistro = vectorVentas[i].getFecha();
         if(fechaRegistro.getAnio() == anio && fechaRegistro.getMes() == mes)
         {
-						int idVentaActual = vectorVentas[i].getIdVenta();
+            int idVentaActual = vectorVentas[i].getIdVenta();
             cout << "Fecha: " << vectorVentas[i].getFechaString() << endl;
             cout << "ID Venta: " << vectorVentas[i].getIdVenta() << endl;
             cout << "ID Cliente: " << vectorVentas[i].getIdCliente() << endl;
             cout << "ID Vendedor: " << vectorVentas[i].getIdVendedor() << endl;
-            
+
             ManagerVentas ventaActual;
             cout << fixed << setprecision(2);
-            cout << "Total : $" << ventaActual.calcularTotal(idVentaActual) << endl; 
+            cout << "Total : $" << ventaActual.calcularTotal(idVentaActual) << endl;
             cout << endl;
 
             contVentas ++;
@@ -205,7 +205,7 @@ void ventasPorFechaExacta()
 
     cout << "Primero ingrese un anio: " << endl;
     cin >> anio;
-    cout << endl; 
+    cout << endl;
 
     while(cin.fail() || anio > anioActual || anio < 2000)
     {
@@ -232,7 +232,7 @@ void ventasPorFechaExacta()
     int dia;
     cout << "Ingrese un dia: " << endl;
     cin >> dia;
-    cout << endl; 
+    cout << endl;
 
     int cantDiasMes = diasDelMes(mes,anio); //chequea si es bisiesto
 
@@ -262,12 +262,12 @@ void ventasPorFechaExacta()
             cout << "ID Venta: " << vectorVentas[i].getIdVenta() << endl;
             cout << "ID Cliente: " << vectorVentas[i].getIdCliente() << endl;
             cout << "ID Vendedor: " << vectorVentas[i].getIdVendedor() << endl;
-            
+
             ManagerVentas ventaActual;
             cout << fixed << setprecision(2);
-            cout << "Total : $" << ventaActual.calcularTotal(idVentaActual) << endl; 
+            cout << "Total : $" << ventaActual.calcularTotal(idVentaActual) << endl;
             cout << endl;
-						
+
             contVentas ++;
         }
     }
@@ -294,7 +294,7 @@ void ventasPorIntervaloDeFecha()
     int mes, mes2;
     int dia, dia2;
     int cantidadDiasMes = 0;
-    
+
     //-------------------------- INGRESO DE 1º FECHA  --------------------------------//
 
     cout << "**** PRIMERA FECHA ****" <<  endl << endl;
@@ -334,10 +334,10 @@ void ventasPorIntervaloDeFecha()
         cin.ignore(100000, '\n');
         cin >> dia;
     }
-    
-	
+
+
     ///------------------------  INGRESO DE 2º FECHA  ----------------------------//
-    
+
 
     cout << "**** SEGUNDA FECHA ****" <<  endl << endl;
     cout << "Ingrese un anio: " << endl;
@@ -375,24 +375,24 @@ void ventasPorIntervaloDeFecha()
         cin.clear();
         cin.ignore(100000, '\n');
         cin >> dia2;
-    }    
-    
+    }
+
     int fechaInicio = anio * 10000 + mes * 100 + dia;
-    
-    //cout << " DEBUG: La fecha de incio es: " << fechaInicio << endl; 
-    
+
+    //cout << " DEBUG: La fecha de incio es: " << fechaInicio << endl;
+
     int fechaFin = anio2 * 10000 + mes2 * 100 + dia2;
-    
-    //cout << " DEBUG: la fecha de fin es: " << fechaFin << endl; 
-    
+
+    //cout << " DEBUG: la fecha de fin es: " << fechaFin << endl;
+
     if(fechaFin < fechaInicio){
-			cout << "Error: la segunda fecha debe ser mayor o igual a la primera" << endl; 
+			cout << "Error: la segunda fecha debe ser mayor o igual a la primera" << endl;
 			return;
     }
-    
+
     //------------------------  BUSCAR VENTAS EN EL INTERVALO ------------------------//
-    
-    
+
+
     ArchivoVentas archivoV("ventas.dat");
     int cantidadVentas = contarRegistros("ventas.dat", sizeof(Venta));
 
@@ -404,9 +404,9 @@ void ventasPorIntervaloDeFecha()
     {
 
         Fecha fechaRegistro = vectorVentas[i].getFecha();
-        
+
         int fechaVenta = fechaRegistro.getAnio() * 10000 + fechaRegistro.getMes() * 100 + fechaRegistro.getDia();
-					
+
         if(fechaVenta >= fechaInicio && fechaVenta <= fechaFin)
         {
 						int idVentaActual = vectorVentas[i].getIdVenta();
@@ -414,23 +414,23 @@ void ventasPorIntervaloDeFecha()
             cout << "ID Venta: " << vectorVentas[i].getIdVenta() << endl;
             cout << "ID Cliente: " << vectorVentas[i].getIdCliente() << endl;
             cout << "ID Vendedor: " << vectorVentas[i].getIdVendedor() << endl;
-            
+
             ManagerVentas ventaActual;
             cout << fixed << setprecision(2);
-            cout << "Total : $" << ventaActual.calcularTotal(idVentaActual) << endl; 
+            cout << "Total : $" << ventaActual.calcularTotal(idVentaActual) << endl;
             cout << endl;
 
             contVentas ++;
         }
-        
+
     }
     if(contVentas == 0){
-			cout << "No se registraron ventas en el periodo solicitado." << endl; 
+			cout << "No se registraron ventas en el periodo solicitado." << endl;
     }else
 			{
 				cout << "Se registraron " << contVentas << " ventas en el periodo ingresado." << endl;
 			}
-    
+
     delete[]vectorVentas;
 }
 

@@ -16,7 +16,7 @@ Producto::Producto(){
 }
 
 Producto::Producto(string descripcion,string marca, string tipoProducto,int cantidadDisponible, float precio){
-	
+
 		_idProducto = contarRegistros("productos.dat", sizeof(Producto))+1;
 
 		strcpy(_descripcion, descripcion.c_str());
@@ -29,8 +29,8 @@ Producto::Producto(string descripcion,string marca, string tipoProducto,int cant
 }
 
 void Producto::mostrarProducto(){
-    cout << endl; 
-    cout << "=== DATOS DEL PRODUCTO " << _idProducto << " ===" << endl << endl; 
+    cout << endl;
+    cout << "=== DATOS DEL PRODUCTO " << _idProducto << " ===" << endl << endl;
     cout << "ID Producto: " << _idProducto << endl;
     cout << "Descripcion: " << _descripcion << endl;
     cout << "Marca: " << _marca << endl;
@@ -49,9 +49,6 @@ void Producto::setMarca(string marca){
 }
 void Producto::setActivo(bool value){
     _activo = value;
-}
-void Producto::eliminarProducto(){
-    _activo = false;
 }
 void Producto::setIdProducto(int idProducto){
     _idProducto = idProducto;

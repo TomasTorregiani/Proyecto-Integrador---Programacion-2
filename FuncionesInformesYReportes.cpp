@@ -14,6 +14,8 @@
 #include "TodosLosMenu.h"
 #include "FuncionesGlobales.h"
 #include "FuncionesInformesYReportes.h"
+#include <string>
+#include <ctime>
 
 using namespace std;
 
@@ -27,11 +29,36 @@ void recaudacionMensualYAnual()
         switch(solicitudRecaudacion)
         {
         case 1:{
-                int mesSeleccionado, anioSeleccionado;
-                cout << "Ingrese el mes: " << endl;
-                cin >> mesSeleccionado;
-                cout << "Ingrese anio: " << endl;
-                cin >> anioSeleccionado;
+                time_t ahora = time(0);
+                tm* tiempoLocal = localtime(&ahora);
+
+                int anioActual = tiempoLocal->tm_year + 1900;
+                int anio;
+
+                cout << "Primero ingrese un anio: " << endl;
+                cin >> anio;
+
+                while(cin.fail() || anio > anioActual || anio < 2000)
+                {
+                    cout << "Error. Ingres un anio valido: " << endl;
+                    cin.clear();
+                    cin.ignore(10000, '\n');
+                    cin >> anio;
+                }
+
+                int mes;
+                cout << "Ingrese un mes: " << endl;
+                cin >> mes;
+
+                cout << endl;
+
+                while(mes < 1 || mes > 12)
+                {
+                    cout << "Error. Ingese un mes valido: " << endl;
+                    cin.clear();
+                    cin.ignore(100000, '\n');
+                    cin >> mes;
+                }
 
                 int cantidadVentas = contarRegistros("ventas.dat", sizeof(Venta));
 
@@ -41,35 +68,47 @@ void recaudacionMensualYAnual()
                 float totalPeriodoSeleccionado = 0;
 
                 for(int i = 0; i < cantidadVentas; i++){
-                    if(arrayVentas[i].getFecha().getAnio() == anioSeleccionado && arrayVentas[i].getFecha().getMes() == mesSeleccionado){
+                    if(arrayVentas[i].getFecha().getAnio() == anio && arrayVentas[i].getFecha().getMes() == mes){
                         totalPeriodoSeleccionado += arrayVentas[i].getTotal();
                     }
                 }
                 cout << fixed << setprecision(2);
-                cout << "Total periodo Seleccionado: " << mesSeleccionado << "/" << anioSeleccionado << " = $" << totalPeriodoSeleccionado << endl;
+                cout << "Total periodo Seleccionado: " << mes << "/" << anio << " = $" << totalPeriodoSeleccionado << endl;
+                delete[] arrayVentas;
             }
             break;
-        case 2:{
-            int anioSeleccionado;
-            cout << "Ingrese el anio: " << endl;
-            cin >> anioSeleccionado;
+        case 2: {
+            time_t ahora = time(0);
+            tm* tiempoLocal = localtime(&ahora);
+            int anioActual = tiempoLocal->tm_year + 1900;
+
+            int anio;
+            cout << "Ingrese un anio: ";
+            cin >> anio;
+
+            while (cin.fail() || anio > anioActual || anio < 2000) {
+                cout << "Error. Ingrese un anio valido: ";
+                cin.clear();
+                cin.ignore(10000, '\n');
+                cin >> anio;
+            }
 
             int cantidadRegistros = contarRegistros("ventas.dat", sizeof(Venta));
-
             ArchivoVentas archivoV("ventas.dat");
             Venta* arrayVentas = archivoV.obtenerTodasLasVentas(cantidadRegistros);
 
             int totalAcumulado = 0;
-
-            for(int i = 0; i < cantidadRegistros; i++){
-                if(arrayVentas[i].getFecha().getAnio() == anioSeleccionado){
+            for (int i = 0; i < cantidadRegistros; i++) {
+                if (arrayVentas[i].getFecha().getAnio() == anio) {
                     totalAcumulado += arrayVentas[i].getTotal();
                 }
             }
 
-            cout << "Total acumulado en el anio " << anioSeleccionado << " = $" << totalAcumulado << endl;
+            cout << "Total acumulado en el anio " << anio << " = $" << totalAcumulado << endl;
+            delete[] arrayVentas;
         }
-            break;
+        break;
+
         default:
             cout << "Ingrese una opcion correcta" << endl;
             break;
@@ -254,67 +293,6 @@ void ventasPorVendedor()
     delete[] arrayVentas;
 
 }
-
-/*void clientesQueMasCompraron()
-{
-
-    cout << "**** CLIENTES QUE MAS COMPRARON ****" << endl;
-
-    int cantidadVentas = contarRegistros("ventas.dat", sizeof(Venta));
-    ArchivoVentas archivoVenta("ventas.dat");
-    Venta* arrayVentasObtenidas = archivoVenta.obtenerTodasLasVentas(cantidadVentas);
-
-    int maximoId = 0;
-    for(int i = 0; i < cantidadVentas; i++)
-    {
-        if(arrayVentasObtenidas[i].getIdCliente() > maximoId)
-        {
-            maximoId = arrayVentasObtenidas[i].getIdCliente();  // trae el maximo nro de ID, es decir todos los clientes que hay.
-        }
-    }
-
-    int* arrayIdsClientes;
-    arrayIdsClientes = new int[maximoId + 1](); // al tamaño del vector lo define la cantidad de clientes que haya.
-
-    for(int i = 0; i < maximoId; i++)
-    {
-        arrayIdsClientes[i] = i;		// el array se carga con todos los ids de los clientes.
-    }
-
-    float* arrayTotalesClientes;
-    arrayTotalesClientes = new float[maximoId + 1]();
-
-    for(int i = 0; i < cantidadVentas; i++)
-    {
-        arrayTotalesClientes[arrayVentasObtenidas[i].getIdCliente()] +=  arrayVentasObtenidas[i].getTotal();
-    }
-
-    for(int i = 0; i < maximoId; i++)
-    {
-        for(int j = 0; j < maximoId - i - 1; j++)
-        {
-            if(arrayTotalesClientes[j] < arrayTotalesClientes[j+1])
-            {
-                float auxiliar = arrayTotalesClientes[j];
-                arrayTotalesClientes[j] = arrayTotalesClientes[j+1];
-                arrayTotalesClientes[j+1] = auxiliar;
-                int auxiliarIds = arrayIdsClientes[j];
-                arrayIdsClientes[j] = arrayIdsClientes[j+1];
-                arrayIdsClientes[j+1] = auxiliarIds;
-            }
-        }
-    }
-
-    cout << "----  Clientes que mas compraron ----" << endl; //Implementar aca
-    for(int i = 0; i < 3; i++){
-        cout << "Id Cliente " << arrayIdsClientes[i] << ", total comprado: " << arrayTotalesClientes[i] << endl;
-    }
-
-    delete[] arrayVentasObtenidas;
-    delete[] arrayIdsClientes;
-    delete[] arrayTotalesClientes;
-
-}*/
 
 void clientesQueMasCompraron()
 {

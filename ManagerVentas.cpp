@@ -404,12 +404,16 @@ bool ManagerVentas::crearVenta()
             cout << "Ingrese la cantidad: ";
             cin >> cantidad;
 
-            while(productoAAgregar.getCantidadDisponible() < cantidad)
-            {
-                cout << "El producto no cuenta con stock suficiente" << endl;
-                cout << "El stock actual del producto es: " << productoAAgregar.getCantidadDisponible() << " unidades." << endl;
-                cout << "Ingrese otra cantidad:" << endl;
-                cin >> cantidad;
+            if(productoAAgregar.getCantidadDisponible() == 0){
+                cout << "El producto no tiene stock disponible." << endl;
+                return false;
+            }
+             while (cantidad < 1 || cantidad > productoAAgregar.getCantidadDisponible()){
+                    cout << "Cantidad invalida." << endl;
+                    cout << "Stock disponible: "
+                         << productoAAgregar.getCantidadDisponible() << endl;
+                    cout << "Ingrese otra cantidad: ";
+                    cin >> cantidad;
             }
 
             // Crear detalle con producto y cantidad
@@ -474,7 +478,7 @@ bool ManagerVentas::crearVenta()
 
             float totalVenta = calcularTotal(nuevaVenta.getIdVenta());
             cout << " ID Cliente: " << nuevaVenta.getIdCliente() << endl;
-            cout << fixed << setprecision(2) << endl; 
+            cout << fixed << setprecision(2) << endl;
             cout << " Total: $" << totalVenta << endl << endl;
 
             cout << "El id de la venta es: " << nuevaVenta.getIdVenta() << endl;
@@ -584,69 +588,4 @@ void ManagerVentas::eliminarVenta()
     }
 }
 
-//{
 
-/*Validaciones
-bool validarStock(int idProducto, int cantidad);
-
-// Actualizar datos relacionados
-bool actualizarStock(const Venta& venta);
-}
-
-bool ManagerVentas::agregarDetalleVenta()
-{
-
-
-}
-
-void ManagerVentas::listarVentas() {}
-
-void ManagerVentas::eliminarVenta(int idVenta){
-
-	//TODO//
-
-}
-
-
-/*Venta venta;
-
-ArchivoVentas archivoVenta("ventas.dat");
-int agregado = archivoVenta.agregarVenta(venta);
-if(agregado == 1){
-cout << "Venta agregada correctamente" << endl;
-}else{
-cout << "Error al agregar la venta" << endl;
-}*/
-
-
-/*void ManagerVentas::cargarCliente()
-{
-    Venta registroVenta;
-    int escribio = archivoC.agregarCliente(nuevoCliente);
-    if(escribio == 1)
-    {
-        cout << "El archivo se escribio correctamente" << endl;
-        clienteParaVenta = nuevoCliente;
-    }
-}*/
-
-/*void ManagerVentas::listarVentas()
-{
-
-//TODO
-
-}*/
-
-/*void ManagerVentas::modificarVenta()
-{
-
-//TODO
-
-}
-ManagerVentas::~ ManagerVentas(){
-	if (_archivo != nullptr) {
-        delete _archivo;
-        _archivo = nullptr;
-	}
-}
-*/

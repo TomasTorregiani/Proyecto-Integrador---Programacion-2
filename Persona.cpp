@@ -18,7 +18,6 @@ Persona::Persona(std::string nombre, std::string apellido, int numeroTelefono, s
     setDireccion(direccion);
 }
 
-
 //setters
 
 void Persona::setNombre(std::string nombre)
@@ -54,7 +53,7 @@ void Persona::setDireccion(std::string direccion)
 
 std::string Persona::getNombre()
 {
-	return _nombre; 
+	return _nombre;
 }
 
 std::string Persona::getApellido()
@@ -74,5 +73,5 @@ std::string Persona::getEmail()
 
 std::string Persona::getDireccion()
 {
-	return _direccion; 
+	return _direccion;
 }

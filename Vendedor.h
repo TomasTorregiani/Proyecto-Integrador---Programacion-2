@@ -9,15 +9,9 @@ public:
     Vendedor();
     Vendedor(int idVendedor, std::string nombre,
             std::string apellido, int numeroTelefono,
-            std::string email, std::string direccion, bool activo); 
-            
+            std::string email, std::string direccion, bool activo);
+
     void mostrarVendedor();
-    void crearVendedor();
-    void listarVendedores();
-    void eliminarVendedor();
-    void obtenerVendedorPorId();
-    void modificarVendedor();
-    
     //Setters
     void setIdVendedor(int idVendedor);
     void setActivo(bool value);

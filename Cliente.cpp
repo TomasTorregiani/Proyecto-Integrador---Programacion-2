@@ -39,10 +39,10 @@ bool Cliente::getActivo(){
     return _activo;
 }
 
-void Cliente::mostrarCliente(){ //esto deberia ser un metodo del managerClientes; 
-	
-		cout << endl; 
-    cout << "=== DATOS DEL CLIENTE " << _idCliente << " ===" << endl << endl; 
+void Cliente::mostrarCliente(){
+
+    cout << endl;
+    cout << "=== DATOS DEL CLIENTE " << _idCliente << " ===" << endl << endl;
     cout << "ID Cliente: " << _idCliente << endl;
     cout << "Nombre: " << _nombre << endl;
     cout << "Apellido: " << _apellido << endl;
@@ -50,10 +50,10 @@ void Cliente::mostrarCliente(){ //esto deberia ser un metodo del managerClientes
     cout << "Email: " << _email << endl;
     if(_activo)
 		{
-			cout << "Estado: Activo" << endl; 
+			cout << "Estado: Activo" << endl;
 		}else
 			{
-				cout << "Estado: Inactivo" << endl; 
+				cout << "Estado: Inactivo" << endl;
 			}
-    
+
 }
